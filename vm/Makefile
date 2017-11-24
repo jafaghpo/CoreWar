@@ -6,7 +6,7 @@
 #    By: niragne <niragne@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2017/11/24 15:19:53 by iburel           ###   ########.fr        #
+#    Updated: 2017/11/24 15:42:02 by iburel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -103,12 +103,12 @@ $(LIB_PATH):
 ft: $(LIB_PATH)/libft
 	make "DEBUG=$(DEBUG)" "TIME=$(TIME)" -C $(LIB_SRC_PATH)/libft str printf mem put file char conv
 	mv $(LIB_SRC_PATH)/libft/libft.a $(LIB_PATH)/libft
-	mv $(LIB_SRC_PATH)/libft/include $(LIB_PATH)/libft
+	cp -R $(LIB_SRC_PATH)/libft/include $(LIB_PATH)/libft
 
 mat: $(LIB_PATH)/libmat
 	make "DEBUG=$(DEBUG)" "TIME=$(TIME)" -C $(LIB_SRC_PATH)/libmat
 	mv $(LIB_SRC_PATH)/libmat/libmat.a $(LIB_PATH)/libmat
-	mv $(LIB_SRC_PATH)/libmat/include $(LIB_PATH)/libmat
+	cp -R $(LIB_SRC_PATH)/libmat/include $(LIB_PATH)/libmat
 
 sdl2: $(LIB_PATH)/SDL2
 	cd $(LIB_SRC_PATH)/SDL2 && \
