@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 11:14:25 by root              #+#    #+#             */
-/*   Updated: 2017/11/23 11:59:25 by niragne          ###   ########.fr       */
+/*   Updated: 2017/11/24 16:33:23 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,5 @@ void 		op_ld(t_proc *p, t_inst *args)
 
     tmp = get_real_value(args, p);
     p->reg[args[1].value - 1] = tmp;
-    if (!tmp)
-        p->carry = 1;
+    p->carry = !tmp;
 }

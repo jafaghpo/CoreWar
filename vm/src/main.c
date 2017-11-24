@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/09 20:49:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2017/11/23 21:45:33 by iburel           ###   ########.fr       */
+/*   Updated: 2017/11/24 16:28:48 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int		main(int ac, char **av)
 #ifdef DEBUG
 	debug_map();
 #endif
-
 	pthread_create(&tid, NULL, vm, &flags);
 	display();
 }

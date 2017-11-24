@@ -1,0 +1,14 @@
+prefix=/Users/niragne/proj/corewar/vm/../lib/freetype
+exec_prefix=/Users/niragne/proj/corewar/vm/../lib/freetype
+libdir=/Users/niragne/proj/corewar/vm/../lib/freetype/lib
+includedir=/Users/niragne/proj/corewar/vm/../lib/freetype/include
+
+Name: FreeType 2
+URL: http://freetype.org
+Description: A free, high-quality, and portable font engine.
+Version: 21.0.15
+Requires:
+Requires.private: 
+Libs: -L${libdir} -lfreetype
+Libs.private: -lz -lbz2
+Cflags: -I${includedir}/freetype2

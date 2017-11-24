@@ -6,13 +6,13 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 18:24:54 by niragne           #+#    #+#             */
-/*   Updated: 2017/11/16 15:02:30 by niragne          ###   ########.fr       */
+/*   Updated: 2017/11/24 17:44:00 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-t_proc      *create_proc(t_proc *p, t_int32 pc)
+t_proc      *create_proc(t_proc *p, t_int32 pc, t_int32 nb_cycle)
 {
     t_proc *ret;
     
@@ -21,7 +21,7 @@ t_proc      *create_proc(t_proc *p, t_int32 pc)
     ret->pc = pc;
     ret->carry = p->carry;
     ret->player = p->player;
-    ret->live = 0;
+    ret->live = nb_cycle;
     ft_memcpy(ret->reg, p->reg, REG_NUMBER);
     ret->carry = p->carry;
     ret->next = NULL;

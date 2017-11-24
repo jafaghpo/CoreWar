@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 18:31:33 by niragne           #+#    #+#             */
-/*   Updated: 2017/11/23 21:43:55 by iburel           ###   ########.fr       */
+/*   Updated: 2017/11/24 17:44:49 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,13 +117,12 @@ t_int32		get_reg(t_uint32 pc, t_inst *args, t_int8 index, t_int8 octal);
 t_int32		get_dir(t_uint32 pc, t_inst *args, t_int8 index, t_int8 octal);
 t_int32		get_void(t_uint32 pc, t_inst *args, t_int8 index, t_int8 octal);
 void   		live(t_int32 value, t_int32 player);
-void	    get_values(t_uint pc, t_inst *args, t_int8 octal);
-void    	get_sizes(t_uint8 op, t_inst *args);
 t_int32		get_mod(t_int32 x, t_int32 mod);
 void   		put_uint32(t_uint32 x, t_uint32 i);
-t_proc      *create_proc(t_proc *p, t_int32 pc);
+t_proc      *create_proc(t_proc *p, t_int32 pc, t_int32 nb_cycle);
 t_int32    	get_real_value(t_inst *args, t_proc *p);
 t_int32 	ft_abs(t_int32 x);
+t_uint8  	check_reg(t_inst *args);
 
 /*
 ** debug

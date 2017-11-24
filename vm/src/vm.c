@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 15:21:22 by niragne           #+#    #+#             */
-/*   Updated: 2017/11/23 21:45:59 by iburel           ###   ########.fr       */
+/*   Updated: 2017/11/24 17:54:55 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,11 @@ void        *vm(void *av)
 		tmp = cycle[nb_cycle % 1001];
         while (tmp)
         {
+            tmp->reg[0] = 0xdeadbeef;
             op = g_mem[tmp->pc];
             if (nb_cycle - tmp->live > g_cycle_to_die)
             {
-                ft_printf("t mor\n");
+                ft_printf("t mor %d %d\n", nb_cycle , tmp->live);
                 remove_proc(tmp);
             }
             else if (op <= 0 || op > 16)
@@ -68,22 +69,22 @@ void        *vm(void *av)
                 else
                 {
                     #ifdef DEBUG
-                        debug_inst(args, tmp->pc, op);
+                        //debug_inst(args, tmp->pc, op);
                     #endif
                     f[op](tmp, args, nb_cycle, cycle);
                     ft_printf("cycle %d\n", nb_cycle);                    
-                    ft_printf("increment %d %d\n", size, op_tab[op].octal);
+                    //ft_printf("increment %d %d\n", size, op_tab[op].octal);
                     ft_printf("INST: %s\n", op_tab[op].inst);
                     tmp->pc += size + 1 + op_tab[op].octal;
                     tmp->pc %= MEM_SIZE;
-                    debug_proc(tmp);
+                    //debug_proc(tmp);
                     insert_proc(cycle, tmp, (nb_cycle + op_tab[g_mem[tmp->pc]].cycles) % 1001);
                     //usleep(300000);
-                    g_player[tmp->pc] = 0;
-                    read(1, buf, 1);
                     g_player[tmp->pc] = 1;
-                    system("clear");
-                    debug_map();
+                   // read(1, buf, 1);
+                    g_player[tmp->pc] = 0;
+                    //system("clear");
+                    //debug_map();
                 }
             }
             tmp = tmp->next;
