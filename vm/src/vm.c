@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 15:21:22 by niragne           #+#    #+#             */
-/*   Updated: 2017/11/23 21:45:59 by iburel           ###   ########.fr       */
+/*   Updated: 2017/11/26 14:57:05 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void        *vm(void *av)
                         debug_inst(args, tmp->pc, op);
                     #endif
                     f[op](tmp, args, nb_cycle, cycle);
-                    ft_printf("cycle %d\n", nb_cycle);                    
+                    ft_printf("cycle %d\n", nb_cycle);
                     ft_printf("increment %d %d\n", size, op_tab[op].octal);
                     ft_printf("INST: %s\n", op_tab[op].inst);
                     tmp->pc += size + 1 + op_tab[op].octal;

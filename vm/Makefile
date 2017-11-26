@@ -6,7 +6,7 @@
 #    By: niragne <niragne@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2017/11/24 15:42:02 by iburel           ###   ########.fr        #
+#    Updated: 2017/11/24 18:54:45 by iburel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -113,22 +113,22 @@ mat: $(LIB_PATH)/libmat
 sdl2: $(LIB_PATH)/SDL2
 	cd $(LIB_SRC_PATH)/SDL2 && \
 	./configure --prefix=$(shell pwd)/$(LIB_PATH)/SDL2 && \
-	make -j install
+	make install
 
 sdl2_image: $(LIB_PATH)/SDL2
 	cd $(LIB_SRC_PATH)/SDL2_image && \
 	./configure --prefix=$(shell pwd)/$(LIB_PATH)/SDL2 && \
-	make -j install
+	make install
 
 sdl2_mixer: $(LIB_PATH)/SDL2
 	cd $(LIB_SRC_PATH)/SDL2_mixer && \
 	./configure --prefix=$(shell pwd)/$(LIB_PATH)/SDL2 && \
-	make -j install
+	make install
 
 freetype: $(LIB_PATH)/freetype
 	cd $(LIB_SRC_PATH)/freetype && \
 	./configure --prefix=$(shell pwd)/$(LIB_PATH)/freetype && \
-	make -j install
+	make install
 
 $(LIB_PATH)/libft:
 	mkdir $(LIB_PATH)/libft
@@ -148,6 +148,6 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re: fclean all
+re: fclean build
 
 .PHONY: all build libs ft mat sdl2 sdl2_image sdl2_mixer freetype clean fclean re

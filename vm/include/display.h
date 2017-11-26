@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:50:56 by iburel            #+#    #+#             */
-/*   Updated: 2017/11/23 20:38:22 by iburel           ###   ########.fr       */
+/*   Updated: 2017/11/26 20:14:16 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,6 @@ void            display_load(SDL_Window *win, float per);
 int             init_square_texture(void);
 void            display_square(t_vec2 offset, t_vec2 size, GLuint text);
 void            *display(void);
-int             init_freetype(void);
+FT_Library		init_freetype(void);
 
 #endif

@@ -14,19 +14,20 @@
 
 void	*display(void)
 {
-	t_sdl	sdl;
-	t_gl	gl;
-	t_mat4	projection;
-	t_mat4	modelview;
-	int		done;
-	GLuint	text;
-	GLuint	text2;
-	GLuint	police_text[64];
-	GLuint	fond;
-	GLuint	image_load;
-	GLint	model_location;
-	GLint	proj_location;
-	Uint32	i;
+	t_sdl		sdl;
+	t_gl		gl;
+	t_mat4		projection;
+	t_mat4		modelview;
+	int			done;
+	GLuint		text;
+	GLuint		text2;
+	GLuint		police_text[64];
+	GLuint		fond;
+	GLuint		image_load;
+	GLint		model_location;
+	GLint		proj_location;
+	FT_Library	lib;
+	Uint32		i;
 
 	if (!init_sdl(&sdl))
 		return (NULL);
@@ -36,8 +37,10 @@ void	*display(void)
 		return (NULL);
 	if (!init_square_texture())
 		return (NULL);
-	if (!init_freetype())
+	if (!(lib = init_freetype()))
 		return (NULL);
+	SDL_GL_SwapWindow(sdl.win);
+//	SDL_Delay(5000);
 	if ((image_load = load_image("texture/load.jpg")) == UINT_MAX)
 		return (NULL);
 	display_square((t_vec2){-1.f, -1.f}, (t_vec2){2.f, 2.f}, image_load);

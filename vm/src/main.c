@@ -15,7 +15,7 @@
 
 t_uint8		g_mem[MEM_SIZE] = {0};
 t_uint8		g_player[MEM_SIZE] = {0};
-t_int8		g_line_chat;
+t_uint8		g_line_chat;
 t_int8		g_chat[50][30];
 
 int		main(int ac, char **av)
