@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/09 20:49:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2017/11/24 16:28:48 by niragne          ###   ########.fr       */
+/*   Updated: 2017/11/25 17:33:18 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		main(int ac, char **av)
 	load_players(players, flags.nb_players);
 
 #ifdef DEBUG
-	debug_map();
+	//debug_map();
 #endif
 	pthread_create(&tid, NULL, vm, &flags);
 	display();

@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 13:30:14 by niragne           #+#    #+#             */
-/*   Updated: 2017/11/11 18:12:01 by niragne          ###   ########.fr       */
+/*   Updated: 2017/11/26 16:06:50 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,5 @@
 
 void        remove_proc(t_proc *proc)
 {
-    (void)proc;
-    //grosse fonction;
+    
 }

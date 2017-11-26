@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/20 19:16:53 by niragne           #+#    #+#             */
-/*   Updated: 2017/11/21 20:02:40 by iburel           ###   ########.fr       */
+/*   Updated: 2017/11/26 17:35:48 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	debug_map(void)
 void	debug_proc(t_proc *proc)
 {
 	ft_printf("pc : %u\n", proc->pc);
+	ft_printf("op : %u\n", g_mem[proc->pc]);
 	ft_printf("carry : %u\n", proc->carry);
 	ft_printf("player : %u\n", proc->player);
 	ft_printf("live : %u\n", proc->live);

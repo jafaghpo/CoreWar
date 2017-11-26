@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 14:17:36 by niragne           #+#    #+#             */
-/*   Updated: 2017/11/12 19:25:03 by niragne          ###   ########.fr       */
+/*   Updated: 2017/11/26 17:59:25 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ t_int32 get_ind(t_uint32 pc, t_inst *args, t_int8 index, t_int8 octal)
     t_int16  ret;
     
     i = 0;
-    pc += 1 + octal;
+    pc = (t_uint32)(pc + 1 + octal) % MEM_SIZE;
     while (i < index)
     {
-        pc += args[i].size;
+        pc = (t_uint32)(pc + args[i].size) % MEM_SIZE;
         i++;
     }
-    ret = get_uint16(g_mem + pc);
+    ret = get_uint16(pc);
     return ((t_int16)ret);
 }

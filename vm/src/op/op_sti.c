@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 11:18:48 by root              #+#    #+#             */
-/*   Updated: 2017/11/23 17:37:12 by niragne          ###   ########.fr       */
+/*   Updated: 2017/11/25 18:09:29 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void 		op_sti(t_proc *p, t_inst *args)
     while (tmp < 0)
         tmp += MEM_SIZE;
     put_uint32(p->reg[args[0].value - 1], tmp);
-    ft_printf("TMP %d %d %d %d\n", a, b, p->pc, tmp - p->pc);
     g_player[tmp % MEM_SIZE + 0] = 1;
     g_player[tmp % MEM_SIZE + 1] = 1;
     g_player[tmp % MEM_SIZE + 2] = 1;

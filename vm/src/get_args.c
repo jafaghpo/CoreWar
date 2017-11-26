@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:29:50 by niragne           #+#    #+#             */
-/*   Updated: 2017/11/24 16:18:05 by niragne          ###   ########.fr       */
+/*   Updated: 2017/11/26 17:38:50 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,14 @@ static void    get_values(t_uint pc, t_inst *args, t_int8 op)
 
 t_int32     get_args(t_uint32 pc, t_inst *args, t_uint8 op)
 {   
-    get_types(g_mem[pc + 1], args, op);
+    get_types(g_mem[(pc + 1) % MEM_SIZE], args, op);
     get_sizes(g_mem[pc], args);
     if (check_type(g_mem[pc], args))
     {
         get_values(pc, args, op);
         if (check_reg(args))
             return (args[0].size + args[1].size + args[2].size + args[3].size);
-        else
-            return (-(args[0].size + args[1].size + args[2].size + args[3].size));
+        return (-(args[0].size + args[1].size + args[2].size + args[3].size));
     }
     return (-(args[0].size + args[1].size + args[2].size + args[3].size));
 }

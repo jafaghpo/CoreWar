@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_xor.c                                           :+:      :+:    :+:   */
+/*   proc_foreach.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/26 11:17:08 by root              #+#    #+#             */
-/*   Updated: 2017/11/25 12:07:27 by niragne          ###   ########.fr       */
+/*   Created: 2017/11/26 15:55:44 by niragne           #+#    #+#             */
+/*   Updated: 2017/11/26 18:07:15 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void 		op_xor(t_proc *p, t_inst *args)
+void    proc_foreach(t_proc **cycle, t_uint32 nb_cycle)
 {
-    t_int32 a;
-    t_int32 b;
-
-    a = get_real_value(args, p);
-    b = get_real_value(args + 1, p);
-    p->reg[args[2].value - 1] = a ^ b;
-    p->carry = !p->reg[args[2].value - 1];    
+    t_uint32    pos;
+    t_proc      *tmp;
+    t_proc      *tmp2;
+    
+    pos = nb_cycle % 1001;
+    tmp = cycle[pos];
+    while (tmp)
+    {
+        tmp2 = tmp->next;
+        //debug_cycle(cycle);
+        ft_printf("cycle : %d\n", nb_cycle);
+        exec_proc(cycle, nb_cycle, tmp);
+        cycle[pos] = tmp2;
+        tmp = tmp2;
+    }
 }

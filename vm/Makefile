@@ -6,7 +6,7 @@
 #    By: niragne <niragne@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2017/11/24 16:07:57 by niragne          ###   ########.fr        #
+#    Updated: 2017/11/26 16:28:42 by niragne          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,10 @@ SRC_PATH				=	src
 SRCS					=	parse_flags.c flags_v.c add_file.c get_nums.c get_dumps.c \
 							fill_pos_players.c get_players.c get_uint32.c get_uint16.c \
 							load_players.c debug.c vm.c op.c init_proc.c insert_proc.c \
-							remove_proc.c get_args.c check_type.c get_reg.c get_dir.c \
+							get_args.c check_type.c get_reg.c get_dir.c \
 							get_ind.c get_void.c live.c get_mod.c put_uint32.c \
-							create_proc.c get_real_value.c ft_abs.c check_reg.c main.c
+							create_proc.c get_real_value.c ft_abs.c check_reg.c \
+							proc_foreach.c exec_proc.c main.c
 
 SRC_OP_PATH				=	$(SRC_PATH)/op
 SRCS_OP					=	op_live.c op_ld.c op_st.c op_add.c op_sub.c op_and.c \
