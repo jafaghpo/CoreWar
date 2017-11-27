@@ -6,7 +6,7 @@
 /*   By: iburel <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 03:11:16 by iburel            #+#    #+#             */
-/*   Updated: 2017/11/26 20:14:37 by iburel           ###   ########.fr       */
+/*   Updated: 2017/11/23 00:46:37 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,10 @@
 static GLuint   g_prog;
 static GLuint   g_vao;
 static GLuint   g_vbo;
+static GLuint   g_arial[128];
+static float    g_size[2][128];
 
-# define SIZE_X 76.f
-# define SIZE_Y 80.f
-
-int         prog_text(void)
+static int  prog_text(void)
 {
     static float    coord_text[8] = {0.f, 1.f, 1.f, 1.f, 0.f, 0.f, 1.f, 0.f};
 
@@ -42,40 +41,13 @@ int         prog_text(void)
     return (1);
 }
 
-FT_Library  init_freetype(void)
+static int  load_arial(FT_Face face)
 {
     FT_GlyphSlot    slot;
-    FT_Library      lib;
-    FT_Face         face;
-    GLuint          text[128];
-    float           size[2][128];
     int             i;
 
-    if (!prog_text())
-    {
-        ft_printf("error\n");
-        return (NULL);
-    }
-    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-    if (FT_Init_FreeType(&lib))
-    {
-        ft_printf(ERROR_INIT_FREETYPE"\n");
-        return (NULL);
-    }
-    if (FT_New_Face(lib, "fonts/arial.ttf", 0, &face))
-    {
-        ft_printf(ERROR_INIT_FONT"\n");
-        return (NULL);
-    }
     slot = face->glyph;
-    if (FT_Set_Char_Size(face, 0, 16 * 64, 500, 500))
-    {
-        ft_printf(ERROR_INIT_FONT"\n");
-        return (NULL);
-    }
-
-    glGenTextures(128, text);
-
+    glGenTextures(128, g_arial);
     i = 0;
     while (i < 128)
     {
@@ -84,9 +56,9 @@ FT_Library  init_freetype(void)
             ft_printf(ERROR_INIT_FONT"\n");
             return (0);
         }
-        size[0][i] = (float)slot->bitmap.width / (float)WIN_X;
-        size[1][i] = (float)slot->bitmap.rows / (float)WIN_Y;
-        glBindTexture(GL_TEXTURE_2D, text[i]);
+        g_size[0][i] = (float)slot->bitmap.width / (float)WIN_X;
+        g_size[1][i] = (float)slot->bitmap.rows / (float)WIN_Y;
+        glBindTexture(GL_TEXTURE_2D, g_arial[i]);
             glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, slot->bitmap.width, slot->bitmap.rows, 0, GL_RED, GL_UNSIGNED_BYTE, slot->bitmap.buffer);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
@@ -95,28 +67,67 @@ FT_Library  init_freetype(void)
         glBindTexture(GL_TEXTURE_2D, 0);
         i++;
     }
+    return (1);
+}
 
-    char    tmp[] = "salut";
-    float   offset = 0;
-    int     j;
+int         init_freetype(void)
+{
+    FT_Library      lib;
+    FT_Face         face;
 
+    if (!prog_text())
+    {
+        ft_printf("error\n");
+        return (0);
+    }
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+    if (FT_Init_FreeType(&lib))
+    {
+        ft_printf(ERROR_INIT_FREETYPE"\n");
+        return (0);
+    }
+    if (FT_New_Face(lib, "fonts/arial.ttf", 0, &face))
+    {
+        ft_printf(ERROR_INIT_FONT"\n");
+        return (0);
+    }
+    if (FT_Set_Char_Size(face, 0, 16 * 64, 300, 300))
+    {
+        ft_printf(ERROR_INIT_FONT"\n");
+        return (0);
+    }
+    if (!(load_arial(face)))
+    {
+        ft_printf(ERROR_INIT_FONT"\n");
+        return (0);
+    }
+    return (1);
+}
+
+void        put_text(char *str, float x, float y)
+{
+    float   offset;
+    int     i;
+
+    offset = 0;
     glUseProgram(g_prog);
         glBindVertexArray(g_vao);
-            j = 0;
-            while (tmp[j])
+            i = 0;
+            while (str[i])
             {
-                float vertices[8] = {0.f + offset, 0.f, size[0][(int)tmp[j]] + offset, 0.f, 0.f + offset, size[1][(int)tmp[j]], size[0][(int)tmp[j]] + offset, size[1][(int)tmp[j]]};
+                float vertices[8] = {x + offset, y,
+                                    x + g_size[0][(int)str[i]] + offset, y,
+                                    x + offset, y + g_size[1][(int)str[i]],
+                                    x + g_size[0][(int)str[i]] + offset, y + g_size[1][(int)str[i]]};
                 glBindBuffer(GL_ARRAY_BUFFER, g_vbo);
                     glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
                 glBindBuffer(GL_ARRAY_BUFFER, 0);
-                glBindTexture(GL_TEXTURE_2D, text[(int)tmp[j]]);
+                glBindTexture(GL_TEXTURE_2D, g_arial[(int)str[i]]);
                     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
                 glBindTexture(GL_TEXTURE_2D, 0);
-                offset += size[0][(int)tmp[j]] + 0.005;
-                j++;
+                offset += g_size[0][(int)str[i]] + 0.005f;
+                i++;
             }
         glBindVertexArray(0);
     glUseProgram(0);
-
-    return (lib);
 }

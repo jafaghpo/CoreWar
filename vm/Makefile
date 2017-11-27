@@ -42,7 +42,7 @@ SRCS_OP					=	op_live.c op_ld.c op_st.c op_add.c op_sub.c op_and.c \
 SRC_DISPLAY_PATH		=	$(SRC_PATH)/display
 SRCS_DISPLAY			=	display.c init_sdl.c init_gl.c shader_build.c load_image.c \
 							load_police_text.c get_alpha.c event.c create_prog.c \
-							load_screen.c square_texture.c init_freetype.c
+							load_screen.c square_texture.c init_freetype.c put_chat.c
 
 SRC						=	$(addprefix $(SRCS_PATH)/, $(SRCS))
 SRC						+=	$(addprefix $(SRCS_OP_PATH)/, $(SRCS_OP))

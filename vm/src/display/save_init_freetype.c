@@ -105,7 +105,10 @@ FT_Library  init_freetype(void)
             j = 0;
             while (tmp[j])
             {
-                float vertices[8] = {0.f + offset, 0.f, size[0][(int)tmp[j]] + offset, 0.f, 0.f + offset, size[1][(int)tmp[j]], size[0][(int)tmp[j]] + offset, size[1][(int)tmp[j]]};
+                float vertices[8] = {0.f + offset, 0.f,
+                                     size[0][(int)tmp[j]] + offset, 0.f,
+                                     0.f + offset, size[1][(int)tmp[j]],
+                                     size[0][(int)tmp[j]] + offset, size[1][(int)tmp[j]]};
                 glBindBuffer(GL_ARRAY_BUFFER, g_vbo);
                     glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
                 glBindBuffer(GL_ARRAY_BUFFER, 0);

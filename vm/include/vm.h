@@ -94,6 +94,7 @@ struct		s_inst
 extern t_op		op_tab[17];
 extern t_uint8	g_mem[MEM_SIZE];
 extern t_uint8	g_player[MEM_SIZE];
+extern t_int8	g_chat[10][20];
 
 t_uint16	get_uint16(t_uint8 *data);
 t_uint32	get_uint32(t_uint8 *data);

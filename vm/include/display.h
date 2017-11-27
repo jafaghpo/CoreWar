@@ -52,6 +52,7 @@
 
 extern Uint8 g_mem[MEM_SIZE];
 extern Uint8 g_player[MEM_SIZE];
+extern char  g_chat[10][20];
 
 typedef struct s_sdl    t_sdl;
 typedef struct s_gl     t_gl;
@@ -87,6 +88,8 @@ void            display_load(SDL_Window *win, float per);
 int             init_square_texture(void);
 void            display_square(t_vec2 offset, t_vec2 size, GLuint text);
 void            *display(void);
-FT_Library		init_freetype(void);
+int		        init_freetype(void);
+void            put_text(char *str, float x, float y);
+void            put_chat(void);
 
 #endif

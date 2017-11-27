@@ -26,7 +26,6 @@ void	*display(void)
 	GLuint		image_load;
 	GLint		model_location;
 	GLint		proj_location;
-	FT_Library	lib;
 	Uint32		i;
 
 	if (!init_sdl(&sdl))
@@ -37,14 +36,13 @@ void	*display(void)
 		return (NULL);
 	if (!init_square_texture())
 		return (NULL);
-	if (!(lib = init_freetype()))
+	if (!(init_freetype()))
 		return (NULL);
-	SDL_GL_SwapWindow(sdl.win);
-//	SDL_Delay(5000);
 	if ((image_load = load_image("texture/load.jpg")) == UINT_MAX)
 		return (NULL);
 	display_square((t_vec2){-1.f, -1.f}, (t_vec2){2.f, 2.f}, image_load);
 	SDL_GL_SwapWindow(sdl.win);
+	SDL_Delay(1000);
 	if (!load_police_text(police_text, sdl.win))
 		return (NULL);
 	if ((text = load_image("texture/fond_bleu.jpg")) == UINT_MAX)
@@ -96,6 +94,8 @@ void	*display(void)
 				}
 			glBindVertexArray(0);
 		glUseProgram(0);
+		display_square((t_vec2){0.4f, -1.f}, (t_vec2){0.6f, 2.f}, text2);
+		put_chat();
 		SDL_GL_SwapWindow(sdl.win);
 		sdl.time_end = SDL_GetTicks();
 		if (sdl.time_end < sdl.time_start + (1000.f / 60.f))
