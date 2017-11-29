@@ -15,8 +15,8 @@
 
 t_uint8		g_mem[MEM_SIZE] = {0};
 t_uint8		g_player[MEM_SIZE] = {0};
-t_uint8		g_line_chat;
-t_int8		g_chat[10][20];
+t_uint8		g_line_chat = CHAT_SIZE;
+char		g_chat[CHAT_SIZE][CHAT_LINE_SIZE];
 
 int		main(int ac, char **av)
 {
@@ -25,14 +25,8 @@ int		main(int ac, char **av)
 	t_file		*files;
 	t_player	*players;
 
-	ft_memcpy(g_chat[0], "salut", 20);
-	ft_memcpy(g_chat[1], "ca va", 20);
-	ft_memcpy(g_chat[2], "P D", 20);
-	ft_memcpy(g_chat[3], "AAAAAAAH", 20);
-	ft_memcpy(g_chat[4], "pute", 20);
-	ft_memcpy(g_chat[5], "ouais", 20);
-	ft_memcpy(g_chat[6], "super c'est cool", 20);
-	ft_memcpy(g_chat[7], "ok", 20);
+	g_line_chat = (g_line_chat + 1) % CHAT_SIZE;
+	ft_memcpy(g_chat[0], "salut ceci est un long message", CHAT_LINE_SIZE);
 	if (ac < 2)
 	{
 		ft_printf("usage: %s [-d cycles -v] [[-n nbr] champ.cor] ...\n", av[0]);

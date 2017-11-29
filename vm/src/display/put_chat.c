@@ -15,11 +15,21 @@
 void    put_chat(void)
 {
     int     i;
+    int     y;
 
-    i = 0;
-    while (i < 10)
+    y = 0;
+    i = g_line_chat;
+    while (i >= 0)
     {
-        put_text(g_chat[i], 0.5f, -0.9f + (float)i * 0.08f);
-        i++;
+        put_text(g_chat[i], 0.43f, -0.95f + (float)(y) * 0.08f);
+        i--;
+        y++;
+    }
+    i = 9;
+    while (i > g_line_chat)
+    {
+        put_text(g_chat[i], 0.43f, -0.95f + (float)(y) * 0.08f);
+        i--;
+        y++;
     }
 }

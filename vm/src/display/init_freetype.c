@@ -16,7 +16,7 @@ static GLuint   g_prog;
 static GLuint   g_vao;
 static GLuint   g_vbo;
 static GLuint   g_arial[128];
-static float    g_size[2][128];
+static float    g_size[5][128];
 
 static int  prog_text(void)
 {
@@ -58,6 +58,9 @@ static int  load_arial(FT_Face face)
         }
         g_size[0][i] = (float)slot->bitmap.width / (float)WIN_X;
         g_size[1][i] = (float)slot->bitmap.rows / (float)WIN_Y;
+        g_size[2][i] = (float)slot->bitmap_left / (float)WIN_X;
+        g_size[3][i] = (float)slot->bitmap_top / (float)WIN_Y;
+        g_size[4][i] = (float)(slot->advance.x >> 6) / (float)WIN_X;
         glBindTexture(GL_TEXTURE_2D, g_arial[i]);
             glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, slot->bitmap.width, slot->bitmap.rows, 0, GL_RED, GL_UNSIGNED_BYTE, slot->bitmap.buffer);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
@@ -104,6 +107,13 @@ int         init_freetype(void)
     return (1);
 }
 
+#define OUAIS (16.f / (float)WIN_Y)
+#define SIZE_X g_size[0][(int)str[i]]
+#define SIZE_Y g_size[1][(int)str[i]]
+#define CORR_X g_size[2][(int)str[i]]
+#define CORR_Y (-g_size[3][(int)str[i]])
+#define ADVANCE g_size[4][(int)str[i]]
+
 void        put_text(char *str, float x, float y)
 {
     float   offset;
@@ -115,17 +125,21 @@ void        put_text(char *str, float x, float y)
             i = 0;
             while (str[i])
             {
-                float vertices[8] = {x + offset, y,
-                                    x + g_size[0][(int)str[i]] + offset, y,
-                                    x + offset, y + g_size[1][(int)str[i]],
-                                    x + g_size[0][(int)str[i]] + offset, y + g_size[1][(int)str[i]]};
+                /*float vertices[8] = {(x + CORR_X + offset)         , (y + CORR_Y),
+                                     (x + CORR_X + SIZE_X + offset), (y + CORR_Y),
+                                     x + CORR_X + offset         , (y + CORR_Y + SIZE_Y),
+                                     (x + CORR_X + SIZE_X + offset), (y + CORR_Y + SIZE_Y)};*/
+                float vertices[8] = {(x + CORR_X + offset)         , (y + OUAIS - CORR_Y - SIZE_Y),
+                                    (x + CORR_X + SIZE_X + offset), (y + OUAIS - CORR_Y - SIZE_Y),
+                                    x + CORR_X + offset         , (y + OUAIS - CORR_Y),
+                                    (x + CORR_X + SIZE_X + offset), (y + OUAIS - CORR_Y)};
                 glBindBuffer(GL_ARRAY_BUFFER, g_vbo);
                     glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
                 glBindBuffer(GL_ARRAY_BUFFER, 0);
                 glBindTexture(GL_TEXTURE_2D, g_arial[(int)str[i]]);
                     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
                 glBindTexture(GL_TEXTURE_2D, 0);
-                offset += g_size[0][(int)str[i]] + 0.005f;
+                offset += ADVANCE;
                 i++;
             }
         glBindVertexArray(0);

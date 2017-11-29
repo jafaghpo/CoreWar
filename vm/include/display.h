@@ -50,9 +50,13 @@
 # define VERTEX_TEXT            "shader/text.vert"
 # define FRAGMENT_TEXT          "shader/text.frag"
 
-extern Uint8 g_mem[MEM_SIZE];
-extern Uint8 g_player[MEM_SIZE];
-extern char  g_chat[10][20];
+# define CHAT_SIZE				30
+# define CHAT_LINE_SIZE			50
+
+extern Uint8    g_mem[MEM_SIZE];
+extern Uint8    g_player[MEM_SIZE];
+extern char     g_chat[CHAT_SIZE][CHAT_LINE_SIZE];
+extern Uint8    g_line_chat;
 
 typedef struct s_sdl    t_sdl;
 typedef struct s_gl     t_gl;
