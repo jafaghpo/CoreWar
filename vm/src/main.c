@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/09 20:49:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2017/11/23 21:45:33 by iburel           ###   ########.fr       */
+/*   Updated: 2017/11/29 20:27:53 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ t_uint8		g_mem[MEM_SIZE] = {0};
 t_uint8		g_player[MEM_SIZE] = {0};
 t_uint8		g_line_chat = CHAT_SIZE;
 char		g_chat[CHAT_SIZE][CHAT_LINE_SIZE];
+t_uint32	g_id;
 
 int		main(int ac, char **av)
 {
@@ -41,6 +42,7 @@ int		main(int ac, char **av)
 #endif
 
 	fill_pos_players(files, flags.nb_players + 1);
+	g_id = flags.nb_players - 1;
 
 #ifdef DEBUG
 	debug_print_file(files);
@@ -55,9 +57,8 @@ int		main(int ac, char **av)
 	load_players(players, flags.nb_players);
 
 #ifdef DEBUG
-	debug_map();
+	//debug_map();
 #endif
-
 	pthread_create(&tid, NULL, vm, &flags);
 	display();
 }

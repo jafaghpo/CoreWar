@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 11:17:41 by root              #+#    #+#             */
-/*   Updated: 2017/11/21 19:30:40 by niragne          ###   ########.fr       */
+/*   Updated: 2017/11/26 18:06:34 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void 		op_zjmp(t_proc *p, t_inst *args)
 {
     if (p->carry == 1)
     {
-        p->pc += get_mod(args[0].value, IDX_MOD);
+        p->pc += args[0].value % IDX_MOD;
         p->pc -= 3;
     }
 }

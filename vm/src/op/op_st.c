@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 11:14:54 by root              #+#    #+#             */
-/*   Updated: 2017/11/23 14:18:22 by niragne          ###   ########.fr       */
+/*   Updated: 2017/11/25 18:09:08 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,5 @@ void 		op_st(t_proc *p, t_inst *args)
         g_player[tmp + 3] = 1;
     }
     else
-    {
         p->reg[args[1].value - 1] = p->reg[args[0].value - 1];
-    }
 }

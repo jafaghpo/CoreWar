@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 18:31:33 by niragne           #+#    #+#             */
-/*   Updated: 2017/11/23 21:43:55 by iburel           ###   ########.fr       */
+/*   Updated: 2017/11/29 20:29:13 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,11 @@ struct		s_inst
 };
 
 extern t_op		op_tab[17];
+extern t_uint32	g_id;
 
-t_uint16	get_uint16(t_uint8 *data);
+t_uint16	get_uint16(t_uint32 pc);
 t_uint32	get_uint32(t_uint8 *data);
+t_uint32    get_uint32_mem(t_uint32 pc);
 t_player	*get_players(t_file *files, int nb_players);
 void		load_players(t_player *players, int nb_players);
 void		flags_v(t_args *flags);
@@ -115,13 +117,13 @@ t_int32		get_reg(t_uint32 pc, t_inst *args, t_int8 index, t_int8 octal);
 t_int32		get_dir(t_uint32 pc, t_inst *args, t_int8 index, t_int8 octal);
 t_int32		get_void(t_uint32 pc, t_inst *args, t_int8 index, t_int8 octal);
 void   		live(t_int32 value, t_int32 player);
-void	    get_values(t_uint pc, t_inst *args, t_int8 octal);
-void    	get_sizes(t_uint8 op, t_inst *args);
-t_int32		get_mod(t_int32 x, t_int32 mod);
 void   		put_uint32(t_uint32 x, t_uint32 i);
-t_proc      *create_proc(t_proc *p, t_int32 pc);
+t_proc      *create_proc(t_proc *p, t_int32 pc, t_int32 nb_cycle);
 t_int32    	get_real_value(t_inst *args, t_proc *p);
 t_int32 	ft_abs(t_int32 x);
+t_uint8  	check_reg(t_inst *args);
+void 		proc_foreach(t_proc **cycle, t_uint32 nb_cycle);
+void    	exec_proc(t_proc **cycle, t_uint32 nb_cycle, t_proc *tmp);
 
 /*
 ** debug
@@ -142,9 +144,9 @@ void 		op_ld(t_proc *p, t_inst *args);
 void 		op_st(t_proc *p, t_inst *args);
 void 		op_add(t_proc *p, t_inst *args);
 void 		op_sub(t_proc *p, t_inst *args);
-void 		op_and(t_uchar *map, t_proc *p, t_proc **cycle, t_uint32 nb_cycle);
-void 		op_or(t_uchar *map, t_proc *p, t_proc **cycle, t_uint32 nb_cycle);
-void 		op_xor(t_uchar *map, t_proc *p, t_proc **cycle, t_uint32 nb_cycle);
+void 		op_and(t_proc *p, t_inst *args);
+void 		op_or(t_proc *p, t_inst *args);
+void 		op_xor(t_proc *p, t_inst *args);
 void 		op_zjmp(t_proc *p, t_inst *args);
 void 		op_ldi(t_proc *p, t_inst *args);
 void 		op_sti(t_proc *p, t_inst *args);

@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_xor.c                                           :+:      :+:    :+:   */
+/*   check_reg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/26 11:17:08 by root              #+#    #+#             */
-/*   Updated: 2017/11/25 12:07:27 by niragne          ###   ########.fr       */
+/*   Created: 2017/11/24 16:02:03 by niragne           #+#    #+#             */
+/*   Updated: 2017/11/24 16:20:16 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void 		op_xor(t_proc *p, t_inst *args)
+t_uint8  check_reg(t_inst *args)
 {
-    t_int32 a;
-    t_int32 b;
+    t_int32 i;
 
-    a = get_real_value(args, p);
-    b = get_real_value(args + 1, p);
-    p->reg[args[2].value - 1] = a ^ b;
-    p->carry = !p->reg[args[2].value - 1];    
+    i = 0;
+    while (i < 4)
+    {
+        if (args[i].type == T_REG)
+        {
+            if (args[i].value == -1)
+                return (0);
+        }
+        i++;
+    }
+    return (1);
 }

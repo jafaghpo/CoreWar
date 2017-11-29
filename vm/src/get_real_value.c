@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 16:00:26 by niragne           #+#    #+#             */
-/*   Updated: 2017/11/23 12:19:37 by niragne          ###   ########.fr       */
+/*   Updated: 2017/11/26 18:05:23 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static t_int32 get_ind_value(t_int32 ind, t_proc *p)
 {
     t_int32 ret;
 
-    ret = get_uint32(g_mem + p->pc + get_mod(ind, IDX_MOD));
+    ret = get_uint32_mem(p->pc + ind % IDX_MOD);
     return ((t_int32)ret);
 }
 

@@ -3,19 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   op_and.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 11:16:37 by root              #+#    #+#             */
-/*   Updated: 2017/10/26 11:23:01 by root             ###   ########.fr       */
+/*   Updated: 2017/11/25 12:07:34 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void 		op_and(t_uint8 *map, t_proc *p, t_proc **cycle, t_uint32 nb_cycle)
+void 		op_and(t_proc *p, t_inst *args)
 {
-    (void)map;
-    (void)p;
-    (void)cycle;
-    (void)nb_cycle;
+    t_int32 a;
+    t_int32 b;
+
+    a = get_real_value(args, p);
+    b = get_real_value(args + 1, p);
+    p->reg[args[2].value - 1] = a & b;
+    p->carry = !p->reg[args[2].value - 1];    
 }

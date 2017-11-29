@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/09 15:40:44 by ggregoir          #+#    #+#             */
-/*   Updated: 2017/11/11 19:51:57 by niragne          ###   ########.fr       */
+/*   Updated: 2017/11/25 18:07:41 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int		check_type(int op, t_inst *type)
 	while (i < op_tab[op].nb_args)
 	{
 		if (!(tab[type[i].type] & op_tab[op].args[i]))
+			return (0);
+		if (type[i].type == 0)
 			return (0);
 		i++;
 	}
