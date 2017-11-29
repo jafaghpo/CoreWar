@@ -22,10 +22,10 @@ void 		op_st(t_proc *p, t_inst *args)
         while (tmp < 0)
             tmp += MEM_SIZE;
         put_uint32(p->reg[args[0].value - 1], tmp);
-        g_player[tmp + 0] = 1;
-        g_player[tmp + 1] = 1;
-        g_player[tmp + 2] = 1;
-        g_player[tmp + 3] = 1;
+        g_player[(tmp + 0) % MEM_SIZE] = 1;
+        g_player[(tmp + 1) % MEM_SIZE] = 1;
+        g_player[(tmp + 2) % MEM_SIZE] = 1;
+        g_player[(tmp + 3) % MEM_SIZE] = 1;
     }
     else
         p->reg[args[1].value - 1] = p->reg[args[0].value - 1];
