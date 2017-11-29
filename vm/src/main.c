@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/09 20:49:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2017/11/25 17:33:18 by niragne          ###   ########.fr       */
+/*   Updated: 2017/11/29 15:30:21 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 
 t_uint8		g_mem[MEM_SIZE] = {0};
 t_uint8		g_player[MEM_SIZE] = {0};
-t_int8		g_line_chat;
-t_int8		g_chat[50][30];
+t_uint32	g_id;
+/*t_int8		g_line_write = 0;
+t_int8		g_line_read = 50;
+t_int8		g_chat[50][30];*/
 
 int		main(int ac, char **av)
 {
@@ -39,6 +41,7 @@ int		main(int ac, char **av)
 #endif
 
 	fill_pos_players(files, flags.nb_players + 1);
+	g_id = flags.nb_players - 1;
 
 #ifdef DEBUG
 	debug_print_file(files);

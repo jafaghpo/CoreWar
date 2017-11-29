@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 18:31:33 by niragne           #+#    #+#             */
-/*   Updated: 2017/11/26 18:05:54 by niragne          ###   ########.fr       */
+/*   Updated: 2017/11/29 15:29:44 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,10 @@ struct		s_inst
 extern t_op		op_tab[17];
 extern t_uint8	g_mem[MEM_SIZE];
 extern t_uint8	g_player[MEM_SIZE];
+extern t_uint8  g_line_read;
+extern t_uint8  g_line_write;
+extern t_uint8  g_chat[50][30];
+extern t_uint32	g_id;
 
 t_uint16	get_uint16(t_uint32 pc);
 t_uint32	get_uint32(t_uint8 *data);

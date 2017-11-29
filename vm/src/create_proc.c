@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 18:24:54 by niragne           #+#    #+#             */
-/*   Updated: 2017/11/26 17:25:26 by niragne          ###   ########.fr       */
+/*   Updated: 2017/11/29 15:29:20 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_proc      *create_proc(t_proc *p, t_int32 pc, t_int32 nb_cycle)
 {
-    t_proc *ret;
-    int i;
+    t_proc          *ret;
+    int             i;
     
     if (!(ret = malloc(sizeof(*ret))))
         ft_afferror(ERROR_MALLOC);
@@ -30,5 +30,7 @@ t_proc      *create_proc(t_proc *p, t_int32 pc, t_int32 nb_cycle)
         i++;
     }
     ret->next = NULL;
+    ret->id = g_id;
+    g_id++;
     return (ret);
 }

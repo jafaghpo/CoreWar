@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 15:55:44 by niragne           #+#    #+#             */
-/*   Updated: 2017/11/26 18:07:15 by niragne          ###   ########.fr       */
+/*   Updated: 2017/11/29 15:13:42 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void    proc_foreach(t_proc **cycle, t_uint32 nb_cycle)
     {
         tmp2 = tmp->next;
         //debug_cycle(cycle);
-        ft_printf("cycle : %d\n", nb_cycle);
+        //debug_proc(tmp);
         exec_proc(cycle, nb_cycle, tmp);
         cycle[pos] = tmp2;
         tmp = tmp2;

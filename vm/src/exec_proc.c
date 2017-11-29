@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 16:04:48 by niragne           #+#    #+#             */
-/*   Updated: 2017/11/26 17:21:38 by niragne          ###   ########.fr       */
+/*   Updated: 2017/11/29 15:12:18 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,4 @@ void    exec_proc(t_proc **cycle, t_uint32 nb_cycle, t_proc *tmp)
         insert_proc(cycle, tmp, (nb_cycle + 1) % 1001);
     else
         insert_proc(cycle, tmp, (nb_cycle + op_tab[g_mem[tmp->pc]].cycles) % 1001);
-    
 }
