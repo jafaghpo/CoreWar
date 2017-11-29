@@ -6,7 +6,7 @@
 #    By: niragne <niragne@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2017/11/29 20:19:01 by iburel           ###   ########.fr        #
+#    Updated: 2017/11/29 22:27:05 by iburel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,29 +107,29 @@ ft: $(LIB_PATH)/libft
 	cp -R $(LIB_SRC_PATH)/libft/include $(LIB_PATH)/libft
 
 mat: $(LIB_PATH)/libmat
-	make "DEBUG=$(DEBUG)" "TIME=$(TIME)" -C $(LIB_SRC_PATH)/libmat
+	make -j "DEBUG=$(DEBUG)" "TIME=$(TIME)" -C $(LIB_SRC_PATH)/libmat
 	mv $(LIB_SRC_PATH)/libmat/libmat.a $(LIB_PATH)/libmat
 	cp -R $(LIB_SRC_PATH)/libmat/include $(LIB_PATH)/libmat
 
 sdl2: $(LIB_PATH)/SDL2
 	cd $(LIB_SRC_PATH)/SDL2 && \
 	./configure --prefix=$(shell pwd)/$(LIB_PATH)/SDL2 && \
-	make install
+	make -j install
 
 sdl2_image: $(LIB_PATH)/SDL2
 	cd $(LIB_SRC_PATH)/SDL2_image && \
 	./configure --prefix=$(shell pwd)/$(LIB_PATH)/SDL2 && \
-	make install
+	make -j install
 
 sdl2_mixer: $(LIB_PATH)/SDL2
 	cd $(LIB_SRC_PATH)/SDL2_mixer && \
 	./configure --prefix=$(shell pwd)/$(LIB_PATH)/SDL2 && \
-	make install
+	make -j install
 
 freetype: $(LIB_PATH)/freetype
 	cd $(LIB_SRC_PATH)/freetype && \
 	./configure --prefix=$(shell pwd)/$(LIB_PATH)/freetype && \
-	make install
+	make -j install
 
 $(LIB_PATH)/libft:
 	mkdir $(LIB_PATH)/libft
