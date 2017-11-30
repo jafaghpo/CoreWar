@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 21:49:39 by iburel            #+#    #+#             */
-/*   Updated: 2017/11/05 23:04:08 by iburel           ###   ########.fr       */
+/*   Updated: 2017/11/30 02:04:58 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,21 @@ static void     init_tab(float *tab)
     int     i;
 
     i = 0;
-    while (i < 18 * MEM_SIZE)
+    while (i < 12 * MEM_SIZE)
     {
-        tab[i + 0] = -1.f + (float)((i / 18) % 64) * (2.f / 64.f);
-        tab[i + 1] = -1.f + (float)((i / 18) / 64) * (2.f / (MEM_SIZE / 64.f));
+        tab[i + 0] = -1.f + (float)((i / 12) % 64) * (2.f / 64.f);
+        tab[i + 1] = -1.f + (float)((i / 12) / 64) * (2.f / (MEM_SIZE / 64.f));
         tab[i + 2] = 0.f;
-        tab[i + 3] = -1.f + (float)((i / 18) % 64 + 1) * (2.f / 64.f);
-        tab[i + 4] = -1.f + (float)((i / 18) / 64) * (2.f / (MEM_SIZE / 64.f));
+        tab[i + 3] = -1.f + (float)((i / 12) % 64 + 1) * (2.f / 64.f);
+        tab[i + 4] = -1.f + (float)((i / 12) / 64) * (2.f / (MEM_SIZE / 64.f));
         tab[i + 5] = 0.f;
-        tab[i + 6] = -1.f + (float)((i / 18) % 64) * (2.f / 64.f);
-        tab[i + 7] = -1.f + (float)((i / 18) / 64 + 1) * (2.f / (MEM_SIZE / 64.f));
+        tab[i + 6] = -1.f + (float)((i / 12) % 64) * (2.f / 64.f);
+        tab[i + 7] = -1.f + (float)((i / 12) / 64 + 1) * (2.f / (MEM_SIZE / 64.f));
         tab[i + 8] = 0.f;
-        tab[i + 9] = tab[i + 3];
-        tab[i + 10] = tab[i + 4];
+        tab[i + 9] = -1.f + (float)((i / 12) % 64 + 1) * (2.f / 64.f);
+        tab[i + 10] = -1.f + (float)((i / 12) / 64 + 1) * (2.f / (MEM_SIZE / 64.f));
         tab[i + 11] = 0.f;
-        tab[i + 12] = tab[i + 6];
-        tab[i + 13] = tab[i + 7];
-        tab[i + 14] = 0.f;
-        tab[i + 15] = -1.f + (float)((i / 18) % 64 + 1) * (2.f / 64.f);
-        tab[i + 16] = -1.f + (float)((i / 18) / 64 + 1) * (2.f / (MEM_SIZE / 64.f));
-        tab[i + 17] = 0.f;
-        i += 18;
+        i += 12;
     }
 }
 
@@ -46,7 +40,7 @@ static void     init_coord(float *coord)
     int     i;
 
     i = 0;
-    while (i < 12 * MEM_SIZE)
+    while (i < 8 * MEM_SIZE)
     {
         coord[i + 0] = 0.f;
         coord[i + 1] = 0.f;
@@ -55,19 +49,15 @@ static void     init_coord(float *coord)
         coord[i + 4] = 0.f;
         coord[i + 5] = 1.f;
         coord[i + 6] = 1.f;
-        coord[i + 7] = 0.f;
-        coord[i + 8] = 0.f;
-        coord[i + 9] = 1.f;
-        coord[i + 10] = 1.f;
-        coord[i + 11] = 1.f;
-        i += 12;
+        coord[i + 7] = 1.f;
+        i += 8;
     }
 }
 
 static void     init_vram(t_gl *gl)
 {
-    float   tab[18 * MEM_SIZE];
-    float   coord[12 * MEM_SIZE];
+    float   tab[12 * MEM_SIZE];
+    float   coord[8 * MEM_SIZE];
 
     init_tab(tab);
     init_coord(coord);

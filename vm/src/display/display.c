@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:51:33 by iburel            #+#    #+#             */
-/*   Updated: 2017/11/30 00:04:33 by iburel           ###   ########.fr       */
+/*   Updated: 2017/11/30 02:40:56 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	*display(void)
 			else if (sdl.event.key.keysym.sym == SDLK_ESCAPE)
 				done = 1;
 			else if (sdl.event.key.keysym.sym == SDLK_j)
-				add_line_chat("t'as appuyé sur J, t'es vraiment tres fort");
+				add_line_chat("t'as appuye sur J, t'es vraiment tres fort");
 		}
 		event(&projection, &modelview);
 		display_square((t_vec2){-1.f, -1.f}, (t_vec2){2.f, 2.f}, fond);
@@ -86,11 +86,11 @@ void	*display(void)
 						glBindTexture(GL_TEXTURE_2D, text);
 					else
 						glBindTexture(GL_TEXTURE_2D, text2);
-						glDrawArrays(GL_TRIANGLES, i * 6, 6);
+						glDrawArrays(GL_TRIANGLE_STRIP, i * 4, 4);
 					glBindTexture(GL_TEXTURE_2D, police_text[g_mem[i] / 16]);
-						glDrawArrays(GL_TRIANGLES, i * 6, 6);
+						glDrawArrays(GL_TRIANGLE_STRIP, i * 4, 4);
 					glBindTexture(GL_TEXTURE_2D, police_text[g_mem[i] % 16 + 16]);
-						glDrawArrays(GL_TRIANGLES, i * 6, 6);
+						glDrawArrays(GL_TRIANGLE_STRIP, i * 4, 4);
 					glBindTexture(GL_TEXTURE_2D, 0);
 					i++;
 				}
