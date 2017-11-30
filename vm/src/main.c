@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/09 20:49:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2017/11/29 20:27:53 by iburel           ###   ########.fr       */
+/*   Updated: 2017/11/30 00:41:37 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 t_uint8		g_mem[MEM_SIZE] = {0};
 t_uint8		g_player[MEM_SIZE] = {0};
 t_uint8		g_line_chat = CHAT_SIZE;
-char		g_chat[CHAT_SIZE][CHAT_LINE_SIZE];
+char		g_chat[CHAT_SIZE][CHAT_LINE_SIZE] = {};
 t_uint32	g_id;
 
 int		main(int ac, char **av)
@@ -26,8 +26,6 @@ int		main(int ac, char **av)
 	t_file		*files;
 	t_player	*players;
 
-	g_line_chat = (g_line_chat + 1) % CHAT_SIZE;
-	ft_memcpy(g_chat[0], "salut ceci est un long message", CHAT_LINE_SIZE);
 	if (ac < 2)
 	{
 		ft_printf("usage: %s [-d cycles -v] [[-n nbr] champ.cor] ...\n", av[0]);

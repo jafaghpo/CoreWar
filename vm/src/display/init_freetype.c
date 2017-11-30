@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_freetype.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 03:11:16 by iburel            #+#    #+#             */
-/*   Updated: 2017/11/23 00:46:37 by iburel           ###   ########.fr       */
+/*   Updated: 2017/11/30 00:19:50 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int         init_freetype(void)
         ft_printf(ERROR_INIT_FONT"\n");
         return (0);
     }
-    if (FT_Set_Char_Size(face, 0, 16 * 64, 300, 300))
+    if (FT_Set_Char_Size(face, 0, POLICE_SIZE * 64, 100, 100))
     {
         ft_printf(ERROR_INIT_FONT"\n");
         return (0);
@@ -107,7 +107,7 @@ int         init_freetype(void)
     return (1);
 }
 
-#define OUAIS (16.f / (float)WIN_Y)
+#define OUAIS ((float)POLICE_SIZE / (float)WIN_Y)
 #define SIZE_X g_size[0][(int)str[i]]
 #define SIZE_Y g_size[1][(int)str[i]]
 #define CORR_X g_size[2][(int)str[i]]
@@ -125,13 +125,9 @@ void        put_text(char *str, float x, float y)
             i = 0;
             while (str[i])
             {
-                /*float vertices[8] = {(x + CORR_X + offset)         , (y + CORR_Y),
-                                     (x + CORR_X + SIZE_X + offset), (y + CORR_Y),
-                                     x + CORR_X + offset         , (y + CORR_Y + SIZE_Y),
-                                     (x + CORR_X + SIZE_X + offset), (y + CORR_Y + SIZE_Y)};*/
-                float vertices[8] = {(x + CORR_X + offset)         , (y + OUAIS - CORR_Y - SIZE_Y),
+                float vertices[8] = {(x + CORR_X + offset)        , (y + OUAIS - CORR_Y - SIZE_Y),
                                     (x + CORR_X + SIZE_X + offset), (y + OUAIS - CORR_Y - SIZE_Y),
-                                    x + CORR_X + offset         , (y + OUAIS - CORR_Y),
+                                    (x + CORR_X + offset)         , (y + OUAIS - CORR_Y),
                                     (x + CORR_X + SIZE_X + offset), (y + OUAIS - CORR_Y)};
                 glBindBuffer(GL_ARRAY_BUFFER, g_vbo);
                     glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);

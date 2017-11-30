@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: niragne <niragne@student.42.fr>            +#+  +:+       +#+         #
+#    By: iburel <iburel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2017/11/29 22:27:05 by iburel           ###   ########.fr        #
+#    Updated: 2017/11/30 00:15:59 by iburel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,8 @@ SRCS_OP					=	op_live.c op_ld.c op_st.c op_add.c op_sub.c op_and.c \
 SRC_DISPLAY_PATH		=	$(SRC_PATH)/display
 SRCS_DISPLAY			=	display.c init_sdl.c init_gl.c shader_build.c load_image.c \
 							load_police_text.c get_alpha.c event.c create_prog.c \
-							load_screen.c square_texture.c init_freetype.c put_chat.c
+							load_screen.c square_texture.c init_freetype.c put_chat.c \
+							add_line_chat.c
 
 SRC						=	$(addprefix $(SRCS_PATH)/, $(SRCS))
 SRC						+=	$(addprefix $(SRCS_OP_PATH)/, $(SRCS_OP))
@@ -56,7 +57,9 @@ OBJ						+=	$(addprefix $(OBJ_PATH)/, $(SRCS_DISPLAY:.c=.o))
 
 INCL_PATH				=	include
 OP_INC_PATH				=	../include
-INCL					=	$(INCL_PATH)/vm.h $(OP_INC_PATH)/op.h
+INCL_VM					=	$(INCL_PATH)/vm.h
+INCL_DISPLAY			=	$(INCL_PATH)/display.h
+INCL_OP					=	$(OP_INC_PATH)/op.h
 
 LIB_SRC_PATH			=	../lib_src
 LIB_PATH				=	../lib
@@ -87,13 +90,13 @@ $(NAME): obj $(OBJ)
 obj:
 	mkdir obj
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCL)
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCL_OP) $(INCL_VM)
 	gcc -o $@ -c $< $(CFLAGS) -I $(INCL_PATH) -I $(OP_INC_PATH) -I $(LIBFT_INCL) -I $(LIBMAT_INCL) -I $(LIBFREETYPE_INCL) -I $(LIBSDL2_INCL)
 
-$(OBJ_PATH)/%.o: $(SRC_OP_PATH)/%.c $(INCL)
+$(OBJ_PATH)/%.o: $(SRC_OP_PATH)/%.c $(INCL_OP) $(INCL_VM)
 	gcc -o $@ -c $< $(CFLAGS) -I $(INCL_PATH) -I $(OP_INC_PATH) -I $(LIBFT_INCL) -I $(LIBMAT_INCL) -I $(LIBFREETYPE_INCL) -I $(LIBSDL2_INCL)
 
-$(OBJ_PATH)/%.o: $(SRC_DISPLAY_PATH)/%.c $(INCL)
+$(OBJ_PATH)/%.o: $(SRC_DISPLAY_PATH)/%.c $(INCL_OP) $(INCL_VM) $(INCL_DISPLAY)
 	gcc -o $@ -c $< $(CFLAGS) -I $(INCL_PATH) -I $(OP_INC_PATH) -I $(LIBFT_INCL) -I $(LIBMAT_INCL) -I $(LIBFREETYPE_INCL) -I $(LIBSDL2_INCL)
 
 libs: $(LIB_PATH) ft mat sdl2 sdl2_image sdl2_mixer freetype
@@ -116,12 +119,12 @@ sdl2: $(LIB_PATH)/SDL2
 	./configure --prefix=$(shell pwd)/$(LIB_PATH)/SDL2 && \
 	make -j install
 
-sdl2_image: $(LIB_PATH)/SDL2
+sdl2_image: $(LIB_PATH)/SDL2 sdl2
 	cd $(LIB_SRC_PATH)/SDL2_image && \
 	./configure --prefix=$(shell pwd)/$(LIB_PATH)/SDL2 && \
 	make -j install
 
-sdl2_mixer: $(LIB_PATH)/SDL2
+sdl2_mixer: $(LIB_PATH)/SDL2 sdl2
 	cd $(LIB_SRC_PATH)/SDL2_mixer && \
 	./configure --prefix=$(shell pwd)/$(LIB_PATH)/SDL2 && \
 	make -j install

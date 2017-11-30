@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:51:33 by iburel            #+#    #+#             */
-/*   Updated: 2017/11/23 18:30:28 by iburel           ###   ########.fr       */
+/*   Updated: 2017/11/30 00:04:33 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void	*display(void)
 				done = 1;
 			else if (sdl.event.key.keysym.sym == SDLK_ESCAPE)
 				done = 1;
+			else if (sdl.event.key.keysym.sym == SDLK_j)
+				add_line_chat("t'as appuyé sur J, t'es vraiment tres fort");
 		}
 		event(&projection, &modelview);
 		display_square((t_vec2){-1.f, -1.f}, (t_vec2){2.f, 2.f}, fond);

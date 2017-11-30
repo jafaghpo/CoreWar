@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:50:56 by iburel            #+#    #+#             */
-/*   Updated: 2017/11/26 20:14:16 by iburel           ###   ########.fr       */
+/*   Updated: 2017/11/30 00:42:12 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,9 @@
 # define VERTEX_TEXT            "shader/text.vert"
 # define FRAGMENT_TEXT          "shader/text.frag"
 
-# define CHAT_SIZE				30
+# define CHAT_SIZE				60
 # define CHAT_LINE_SIZE			50
+# define POLICE_SIZE            20
 
 extern Uint8    g_mem[MEM_SIZE];
 extern Uint8    g_player[MEM_SIZE];
@@ -95,5 +96,6 @@ void            *display(void);
 int		        init_freetype(void);
 void            put_text(char *str, float x, float y);
 void            put_chat(void);
+void            add_line_chat(char *str);
 
 #endif
