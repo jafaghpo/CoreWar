@@ -6,7 +6,7 @@
 #    By: iburel <iburel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2017/11/30 00:15:59 by iburel           ###   ########.fr        #
+#    Updated: 2017/12/01 18:06:25 by iburel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -105,7 +105,7 @@ $(LIB_PATH):
 	mkdir $(LIB_PATH)
 
 ft: $(LIB_PATH)/libft
-	make "DEBUG=$(DEBUG)" "TIME=$(TIME)" -C $(LIB_SRC_PATH)/libft str printf mem put file char conv
+	make -j "DEBUG=$(DEBUG)" "TIME=$(TIME)" -C $(LIB_SRC_PATH)/libft
 	mv $(LIB_SRC_PATH)/libft/libft.a $(LIB_PATH)/libft
 	cp -R $(LIB_SRC_PATH)/libft/include $(LIB_PATH)/libft
 
@@ -134,16 +134,16 @@ freetype: $(LIB_PATH)/freetype
 	./configure --prefix=$(shell pwd)/$(LIB_PATH)/freetype && \
 	make -j install
 
-$(LIB_PATH)/libft:
+$(LIB_PATH)/libft: $(LIB_PATH)
 	mkdir $(LIB_PATH)/libft
 
-$(LIB_PATH)/libmat:
+$(LIB_PATH)/libmat: $(LIB_PATH)
 	mkdir $(LIB_PATH)/libmat
 
-$(LIB_PATH)/SDL2:
+$(LIB_PATH)/SDL2: $(LIB_PATH)
 	mkdir $(LIB_PATH)/SDL2
 
-$(LIB_PATH)/freetype:
+$(LIB_PATH)/freetype: $(LIB_PATH)
 	mkdir $(LIB_PATH)/freetype
 
 clean:

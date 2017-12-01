@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 10:40:11 by iburel            #+#    #+#             */
-/*   Updated: 2017/09/07 15:30:04 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/01 15:18:02 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,10 @@
 # include "cplx.h"
 # include "file.h"
 # include "lst.h"
-# include "matrix.h"
 # include "mem.h"
 # include "put.h"
 # include "str.h"
 # include "ft_printf.h"
-//# include "ftmlx.h"
 
 # ifndef OPEN_MAX
 #  define OPEN_MAX 1024
