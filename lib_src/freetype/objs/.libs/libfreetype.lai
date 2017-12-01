@@ -38,4 +38,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/Users/iburel/corewar/vm/../lib/freetype/lib'
+libdir='/tmp/corewar/vm/../lib/freetype/lib'
