@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:51:33 by iburel            #+#    #+#             */
-/*   Updated: 2017/11/30 02:40:56 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/01 14:06:07 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ void	*display(void)
 	GLint		model_location;
 	GLint		proj_location;
 	Uint32		i;
+	Uint32		nb_frames;
+	Uint32		fps;
+	char		put_fps[3] = "00";
+	Uint32		tmp;
 
 	if (!init_sdl(&sdl))
 		return (NULL);
@@ -61,6 +65,8 @@ void	*display(void)
 	model_location = glGetUniformLocation(gl.prog, "modelview");
 	proj_location = glGetUniformLocation(gl.prog, "projection");
 	done = 0;
+	fps = 0;
+	nb_frames = 0;
 	while (!done)
 	{
 		sdl.time_start = SDL_GetTicks();
@@ -98,10 +104,20 @@ void	*display(void)
 		glUseProgram(0);
 		display_square((t_vec2){0.4f, -1.f}, (t_vec2){0.6f, 2.f}, text2);
 		put_chat();
+		put_text(put_fps, 0.9, 0.9);
 		SDL_GL_SwapWindow(sdl.win);
 		sdl.time_end = SDL_GetTicks();
-		if (sdl.time_end < sdl.time_start + (1000.f / 60.f))
-			SDL_Delay((1000.f / 60.f) - (sdl.time_end - sdl.time_start));
+		tmp = sdl.time_end - fps;
+		if (tmp > 1000)
+		{
+			fps = sdl.time_end;
+			put_fps[0] = nb_frames / 10 + '0';
+			put_fps[1] = nb_frames % 10 + '0';
+			nb_frames = 0;
+		}
+		if (sdl.time_end < sdl.time_start + (1000.f / 70.f))
+			SDL_Delay((1000.f / 70.f) - (sdl.time_end - sdl.time_start));
+		nb_frames++;
 	}
 	return (NULL);
 }
