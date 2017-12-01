@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   op_lld.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 11:19:30 by root              #+#    #+#             */
-/*   Updated: 2017/10/26 11:23:26 by root             ###   ########.fr       */
+/*   Updated: 2017/12/01 16:41:47 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void 		op_lld(t_uint8 *map, t_proc *p, t_proc **cycle, t_uint32 nb_cycle)
+void 		op_lld(t_proc *p, t_inst *args)
 {
-    (void)map;
-    (void)p;
-    (void)cycle;
-    (void)nb_cycle;
+    t_int32 tmp;
+
+    tmp = get_real_value(args, p, 0);
+    p->reg[args[1].value - 1] = tmp;
+    p->carry = !tmp;
 }

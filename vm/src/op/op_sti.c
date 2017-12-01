@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_sti.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 11:18:48 by root              #+#    #+#             */
-/*   Updated: 2017/11/29 22:45:29 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/01 16:33:16 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void 		op_sti(t_proc *p, t_inst *args)
     t_int32 b;
     t_int32 tmp;
 
-    a = get_real_value(args + 1, p);
-    b = get_real_value(args + 2, p);
+    a = get_real_value(args + 1, p, 1);
+    b = get_real_value(args + 2, p, 1);
     tmp = ((a + b) % IDX_MOD + p->pc) % MEM_SIZE;
     while (tmp < 0)
         tmp += MEM_SIZE;

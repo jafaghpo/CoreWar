@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:50:56 by iburel            #+#    #+#             */
-/*   Updated: 2017/11/30 02:41:03 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/01 18:35:38 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@
 # define FRAGMENT_TEXT          "shader/text.frag"
 
 # define CHAT_SIZE				60
-# define CHAT_LINE_SIZE			50
+# define CHAT_LINE_SIZE			100
 # define POLICE_SIZE            20
 
 extern Uint8    g_mem[MEM_SIZE];

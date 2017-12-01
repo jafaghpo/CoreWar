@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 18:31:33 by niragne           #+#    #+#             */
-/*   Updated: 2017/11/29 20:29:13 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/01 19:19:52 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_args		t_args;
 typedef struct s_file		t_file;
 typedef struct s_proc		t_proc;
 typedef struct s_inst		t_inst;
+typedef struct s_champ		t_champ;
 
 typedef char				t_int8;
 typedef short int			t_int16;
@@ -91,8 +92,17 @@ struct		s_inst
 	t_int32	real;
 };
 
+struct		s_champ
+{
+	char		*name;
+	t_uint32	id;
+	t_uint32	number;
+	t_uint32	live;
+};
+
 extern t_op		op_tab[17];
 extern t_uint32	g_id;
+extern t_champ	g_champs[4];
 
 t_uint16	get_uint16(t_uint32 pc);
 t_uint32	get_uint32(t_uint8 *data);
@@ -119,11 +129,12 @@ t_int32		get_void(t_uint32 pc, t_inst *args, t_int8 index, t_int8 octal);
 void   		live(t_int32 value, t_int32 player);
 void   		put_uint32(t_uint32 x, t_uint32 i);
 t_proc      *create_proc(t_proc *p, t_int32 pc, t_int32 nb_cycle);
-t_int32    	get_real_value(t_inst *args, t_proc *p);
+t_int32    	get_real_value(t_inst *args, t_proc *p, t_uint8 mod);
 t_int32 	ft_abs(t_int32 x);
 t_uint8  	check_reg(t_inst *args);
 void 		proc_foreach(t_proc **cycle, t_uint32 nb_cycle);
 void    	exec_proc(t_proc **cycle, t_uint32 nb_cycle, t_proc *tmp);
+t_int32    get_player_id(t_uint32 octet);
 
 /*
 ** debug
@@ -151,9 +162,9 @@ void 		op_zjmp(t_proc *p, t_inst *args);
 void 		op_ldi(t_proc *p, t_inst *args);
 void 		op_sti(t_proc *p, t_inst *args);
 void 		op_fork(t_proc *p, t_inst *args, t_int32 nb_cycle, t_proc **procs);
-void 		op_lld(t_uchar *map, t_proc *p, t_proc **cycle, t_uint32 nb_cycle);
-void 		op_lldi(t_uchar *map, t_proc *p, t_proc **cycle, t_uint32 nb_cycle);
-void 		op_lfork(t_uchar *map, t_proc *p, t_proc **cycle, t_uint32 nb_cycle);
+void 		op_lld(t_proc *p, t_inst *args);
+void 		op_lldi(t_proc *p, t_inst *args);
+void 		op_lfork(t_proc *p, t_inst *args, t_int32 nb_cycle, t_proc **procs);
 void 		op_aff(t_proc *p, t_inst *args);
 
 /*

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 15:21:22 by niragne           #+#    #+#             */
-/*   Updated: 2017/11/30 01:47:14 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/01 19:21:05 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void        *vm(void *av)
     read(1, &buf, 1);
     while (1)
     {
-    //    usleep(100);
+        usleep(00);
         proc_foreach(cycle, nb_cycle);
         nb_cycle++;
     }

@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_lldi.c                                          :+:      :+:    :+:   */
+/*   get_player_id.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/26 11:19:51 by root              #+#    #+#             */
-/*   Updated: 2017/12/01 16:31:27 by niragne          ###   ########.fr       */
+/*   Created: 2017/12/01 18:50:55 by niragne           #+#    #+#             */
+/*   Updated: 2017/12/01 19:19:11 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void 		op_lldi(t_proc *p, t_inst *args)
+t_int32    get_player_id(t_uint32 octet)
 {
-    p->reg[args[2].value - 1] = get_uint32_mem((t_uint32)((get_real_value(args, p, 0) 
-    + get_real_value(args + 1, p, 0)) + p->pc));
-    p->carry = !p->reg[args[2].value - 1];
+    int i;
+
+    i = 0;
+    while (i < 4)
+    {
+        if (g_champs[i].number == octet)
+            return (i);
+        i++;
+    }
+    return (-1);
 }
