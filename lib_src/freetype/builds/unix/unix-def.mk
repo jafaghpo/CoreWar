@@ -32,7 +32,7 @@ INSTALL         := /usr/bin/install -c
 INSTALL_DATA    := ${INSTALL} -m 644
 INSTALL_PROGRAM := ${INSTALL}
 INSTALL_SCRIPT  := ${INSTALL}
-MKINSTALLDIRS   := /Users/iburel/corewar/lib_src/freetype/builds/unix/./install-sh -c -d
+MKINSTALLDIRS   := /Users/jafaghpo/42/corewar/lib_src/freetype/builds/unix/./install-sh -c -d
 
 CLEAN += $(OBJ_BUILD)/freetype-config \
          $(OBJ_BUILD)/freetype2.pc
@@ -49,7 +49,7 @@ DISTCLEAN += $(OBJ_BUILD)/config.cache  \
 
 # Standard installation variables.
 #
-prefix       := /Users/iburel/corewar/vm/../lib/freetype
+prefix       := /Users/jafaghpo/42/corewar/vm/../lib/freetype
 exec_prefix  := ${prefix}
 libdir       := ${exec_prefix}/lib
 bindir       := ${exec_prefix}/bin

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   atoi_base.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/13 16:16:34 by iburel            #+#    #+#             */
-/*   Updated: 2017/09/18 17:11:02 by iburel           ###   ########.fr       */
+/*   Created: 2017/10/09 17:00:30 by jafaghpo          #+#    #+#             */
+/*   Updated: 2017/11/15 15:04:26 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "ft_bc.h"
 
 static int	isdigitbase(char c, int base)
 {
@@ -20,25 +20,25 @@ static int	isdigitbase(char c, int base)
 			(c >= 'A' && c <= base - 10 + 'A' - 1));
 }
 
-static int	get_base(char **str)
+static int	get_base(char *str, t_token *token)
 {
-	if ((*str)[0] != '0' || (*str)[1] == '\0')
-		return (10);
-	if ((*str)[1] == 'x' || (*str)[1] == 'X')
+	if (str[token->cursor] == '0' && ft_isdigit(str[token->cursor + 1]))
 	{
-		*str += 2;
+		token->cursor += 1;
+		return (8);
+	}
+	else if (str[token->cursor + 1] == 'x' || str[token->cursor + 1] == 'X')
+	{
+		token->cursor += 2;
 		return (16);
 	}
-	if ((*str)[1] == 'b' || (*str)[1] == 'B')
+	else if (str[token->cursor + 1] == 'b' || str[token->cursor + 1] == 'B')
 	{
-		*str += 2;
+		token->cursor += 2;
 		return (2);
 	}
 	else
-	{
-		*str += 1;
-		return (8);
-	}
+		return (10);
 	return (-1);
 }
 
@@ -51,29 +51,27 @@ static int	get_nb(char c)
 	return (c - 'A' + 10);
 }
 
-int			atoi_base(char *str, int *error)
+int			atoi_base(char *str, t_token *token)
 {
 	int		n;
 	int		base;
 	int		sign;
 
-	*error = 0;
 	sign = 1;
-	if (*str == '-')
+	if (str[token->cursor] == '-')
 	{
-		str++;
+		token->cursor++;
 		sign = -1;
 	}
-	base = get_base(&str);
-	if (!isdigitbase(*str, base))
-		*error = 1;
+	base = get_base(str, token);
+	if (!isdigitbase(str[token->cursor], base))
+		token->error = 1;
 	n = 0;
-	while (isdigitbase(*str, base))
+	while (isdigitbase(str[token->cursor], base))
 	{
-		n = n * base + get_nb(*str);
-		str++;
+		n = n * base + get_nb(str[token->cursor]);
+		token->cursor++;
 	}
-	if (*str)
-		*error = 1;
+	token->cursor--;
 	return (n * sign);
 }
