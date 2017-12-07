@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:50:56 by iburel            #+#    #+#             */
-/*   Updated: 2017/11/30 02:41:03 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/03 18:36:40 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,23 @@
 # define CHAT_LINE_SIZE			50
 # define POLICE_SIZE            20
 
+typedef struct s_case   t_case;
+
+struct s_case
+{
+    float   r;
+    float   g;
+    float   b;
+};
+
 extern Uint8    g_mem[MEM_SIZE];
-extern Uint8    g_player[MEM_SIZE];
+extern t_case   g_case[MEM_SIZE];
 extern char     g_chat[CHAT_SIZE][CHAT_LINE_SIZE];
 extern Uint8    g_line_chat;
 
 typedef struct s_sdl    t_sdl;
 typedef struct s_gl     t_gl;
+
 
 struct s_sdl
 {
@@ -93,7 +103,7 @@ void            display_load(SDL_Window *win, float per);
 int             init_square_texture(void);
 void            display_square(t_vec2 offset, t_vec2 size, GLuint text);
 void            *display(void);
-int		        init_freetype(void);
+int		        init_freetype(GLuint *police_text);
 void            put_text(char *str, float x, float y);
 void            put_chat(void);
 void            add_line_chat(char *str);
