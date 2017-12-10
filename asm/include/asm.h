@@ -6,13 +6,14 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 14:38:13 by iburel            #+#    #+#             */
-/*   Updated: 2017/12/01 16:06:40 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2017/12/03 18:42:33 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ASM_H
 # define ASM_H
 
+# include <ncurses.h>
 # include "libft.h"
 # include "op.h"
 # include "ft_bc.h"
@@ -96,6 +97,7 @@ void		buff_header(header_t *header, int name_len, int comment_len);
 void		buff_init(void);
 int			buff_getcursor(void);
 void		buff_put(int fd);
+void		display_buff(void);
 
 /*
 **	label

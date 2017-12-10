@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   disas.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/19 21:38:10 by iburel            #+#    #+#             */
-/*   Updated: 2017/09/20 23:44:04 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/10 18:30:57 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,52 +15,38 @@
 
 # include "libft.h"
 # include "op.h"
+# include <errno.h>
 
-# define HEADER_LENGTH PROG_NAME_LENGTH + COMMENT_LENGTH + 16
+# define DISAS_EXT		".s"
+# define COR_EXT		".cor"
+# define BSIZE			100000
 
-# define ERROR_OPEN_S		"error open s"
-# define ERROR_OPEN_COR		"error open cor"
-# define ERROR_MALLOC		"error malloc"
-# define ERROR_READ			"error read"
-# define ERROR_BAD_FORMAT	"error the file is not a .cor"
-# define ERROR_HEADER		"error no header or bad header"
-# define ERROR_MAGIC		"error corewar exec magic number"
-# define ERROR_INST			"error bad format instruction"
-# define ERROR_PROG_SIZE	"error prog too big"
-# define ERROR_BAD_INST		"error bad instruction"
+# define USAGE			"usage: %s [-v] <filename>.cor\n"
+# define EXEC_NAME		"disas"
 
-typedef struct s_buf	t_buf;
+# define HEADER_SIZE	(8 + (PROG_NAME_LENGTH + 4) + (COMMENT_LENGTH + 4))
 
-struct s_buf
+typedef unsigned char		t_uint8;
+typedef struct	s_file		t_file;
+typedef struct	s_buffer	t_buffer;
+
+struct	s_file
 {
-	char	*buf;
-	int		size;
-	int		i;
+	char	*path;
+	char	*prog;
+	char	name[PROG_NAME_LENGTH + 4];
+	char	comment[COMMENT_LENGTH + 4];
 };
 
-extern t_op op_tab[17];
+struct	s_buffer
+{
+	char	*content;
+	int		size;
+	int		cursor;
+};
 
-/*
-** buff
-*/
-void	buff(char *str, int len);
-void	buff_init(void);
-void	buff_put(int fd);
-
-/*
-** file
-*/
-char	*get_name(char *file);
-
-/*
-** error
-*/
-int		puterror(char *str, int ret);
-
-/*
-** put
-*/
-int		disas(int fd);
-int		putheader(int fd);
+int			print_error(int errnum, const char function[], char *file, int line);
+int			get_binary(t_file *file, char *path);
+int			build_file(t_file *file);
 
 #endif

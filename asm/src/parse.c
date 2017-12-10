@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/07 20:50:28 by niragne           #+#    #+#             */
-/*   Updated: 2017/11/21 21:56:55 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2017/12/03 18:30:27 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int		parse(int fd)
 #ifdef DEBUG
 			exit(0);
 #else
-			ft_printf("%s\n", line);
 			return (0);
 #endif
 		}

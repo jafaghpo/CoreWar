@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   puterror.c                                         :+:      :+:    :+:   */
+/*   visual.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/09 12:15:37 by iburel            #+#    #+#             */
-/*   Updated: 2017/09/19 22:02:35 by iburel           ###   ########.fr       */
+/*   Created: 2017/12/03 16:10:06 by jafaghpo          #+#    #+#             */
+/*   Updated: 2017/12/03 18:43:45 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "disas.h"
+#include "asm.h"
 
-int		puterror(char *str, int error)
+int         setup_win()
 {
-	ft_printf("%s\n", str);
-	return (error);
+    WINDOW  *win;
 }

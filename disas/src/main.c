@@ -3,45 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/07 15:18:19 by iburel            #+#    #+#             */
-/*   Updated: 2017/09/20 17:49:22 by iburel           ###   ########.fr       */
+/*   Created: 2017/12/06 17:06:51 by jafaghpo          #+#    #+#             */
+/*   Updated: 2017/12/10 17:58:10 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "disas.h"
-#include <fcntl.h>
-#include <signal.h>
 
-int		main(int ac, char **av)
+static void	delete_file(t_file *file)
 {
-	int		fd;
-	char	*name;
+	free(file->path);
+	free(file->prog);
+}
+
+int			print_error(int errnum, const char function[], char *file, int line)
+{
+	ft_printf("%fd%s: %s in %s (%s:%d)\n", 2, EXEC_NAME, strerror(errnum),
+	function, file, line);
+	return (0);
+}
+
+int			main(int ac, char **av)
+{
+	t_file	file;
 	int		i;
 
 	if (ac < 2)
-	{
-		ft_printf("usage: %s file1 [file2 ...]\n", av[0]);
-		return (0);
-	}
+		return (!ft_printf(USAGE, av[0]));
 	i = 1;
-	while (i < ac)
+	while (av[i])
 	{
-		ft_printf("disassembling of %s\n", av[i]);
-		if (!(name = get_name(av[i])))
-			return (0);
-		if ((fd = open(av[i], O_RDONLY)) == -1)
-			return (puterror(ERROR_OPEN_COR, 0));
-		if (disas(fd))
-		{
-			close(fd);
-			if ((fd = open(name, O_WRONLY | O_CREAT | O_TRUNC, 0644)) == -1)
-				return (puterror(ERROR_OPEN_S, 0));
-			buff_put(fd);
-			ft_printf("done in %s\n", name);
-		}
-		close(fd);
+		if (!get_binary(&file, av[i]))
+			;
+		//else if (!build_file(&file))
+		//	;
+		else
+			delete_file(&file);
 		i++;
 	}
 	return (0);

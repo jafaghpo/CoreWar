@@ -1,5 +1,5 @@
-.name "nicv khfgik o g"
-.comment "mprevo enkuler"
+.name "salut"
+.comment "bonjour"
 
-live	%42
-st	r16, 10
+sti r1, %:salut, %-4
+salut:

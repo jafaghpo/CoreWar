@@ -1,6 +1,12 @@
 {
-    "files.associations": {
-        "*.o": "c",
-        "vm.h": "c"
-    }
+	"files.associations": {
+		"typeinfo": "cpp",
+		"algorithm": "c",
+		"fstream": "c",
+		"locale": "c",
+		"__locale": "c",
+		"ios": "c",
+		"istream": "c",
+		"sstream": "c"
+	}
 }

@@ -1,184 +1,187 @@
-.name "MatlooE LDEge V4.2e v0.99pl42Bouh!Bouh!(bruits d'anti-jeu)"
-.comment "Mattipass forker !g prog'avant et se protege avec des barrieres a l'avant et a l'arriere"
+.name "Mat"
+.comment "Mat"
 
-xor	r0, r0, r0
-zjmp	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-zjmp	%513
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-live	%1
-fork	%12
-ld	%1879048196, r0
-ld	%134414339, r0
-live	%1
-st	r0, 4
+	xor r0,r0,r0
+	zjmp %:deb1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+deb1:	zjmp %:deb
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+	live %1
+deb:	fork %12
+	ld %0x70000004,r0
+.code 03 FF FF
+	ld %0x08030003,r0
+	live %1
+	st r0,4
+	
+

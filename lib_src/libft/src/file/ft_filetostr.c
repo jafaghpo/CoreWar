@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_filetostr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 16:00:19 by iburel            #+#    #+#             */
-/*   Updated: 2017/03/16 16:00:20 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/09 16:09:36 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ char	*ft_filetostr(char *file)
 {
 	int		fd;
 	int		ret;
-	char	buf[BUFF_SIZE + 1];
+	char	buf[100001];
 	char	*str;
 
 	str = NULL;
 	if ((fd = open(file, O_RDONLY)) == -1)
 		ft_afferror("error open in ft_filetostr");
-	while ((ret = read(fd, buf, BUFF_SIZE)))
+	while ((ret = read(fd, buf, 100001)))
 	{
 		if (ret == -1)
 			ft_afferror("error read in ft_filetostr");
