@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 11:54:03 by root              #+#    #+#             */
-/*   Updated: 2017/12/01 19:16:14 by niragne          ###   ########.fr       */
+/*   Updated: 2017/12/06 16:33:13 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static t_proc   *new_proc(t_uint32 player, t_uint32 pc)
     new->reg[0] = g_champs[player].number;
 	new->player = player;
     new->live = 0;
-	new->id = player;
+	new->id = player + 1;
 	return (new);
 }
 

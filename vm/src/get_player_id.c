@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 18:50:55 by niragne           #+#    #+#             */
-/*   Updated: 2017/12/01 19:19:11 by niragne          ###   ########.fr       */
+/*   Updated: 2017/12/11 18:46:11 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 t_int32    get_player_id(t_uint32 octet)
 {
-    int i;
+    t_uint32 i;
 
     i = 0;
-    while (i < 4)
+    while (i < g_nb_player)
     {
         if (g_champs[i].number == octet)
             return (i);

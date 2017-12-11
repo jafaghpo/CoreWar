@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_freetype.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 03:11:16 by iburel            #+#    #+#             */
-/*   Updated: 2017/11/30 02:40:50 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/08 19:07:39 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ void        put_text(char *str, float x, float y)
             i = 0;
             while (str[i])
             {
-                float vertices[8] = {(x + CORR_X + offset)        , (y + OUAIS - CORR_Y - SIZE_Y),
+                float vertices[] = {(x + CORR_X + offset)         , (y + OUAIS - CORR_Y - SIZE_Y),
                                     (x + CORR_X + SIZE_X + offset), (y + OUAIS - CORR_Y - SIZE_Y),
                                     (x + CORR_X + offset)         , (y + OUAIS - CORR_Y),
                                     (x + CORR_X + SIZE_X + offset), (y + OUAIS - CORR_Y)};

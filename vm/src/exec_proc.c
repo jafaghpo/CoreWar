@@ -6,13 +6,11 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 16:04:48 by niragne           #+#    #+#             */
-/*   Updated: 2017/11/29 15:12:18 by niragne          ###   ########.fr       */
+/*   Updated: 2017/12/08 18:48:46 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
-
-static t_uint32     g_cycle_to_die = CYCLE_TO_DIE;
 
 void    exec_proc(t_proc **cycle, t_uint32 nb_cycle, t_proc *tmp)
 {
@@ -23,15 +21,16 @@ void    exec_proc(t_proc **cycle, t_uint32 nb_cycle, t_proc *tmp)
     t_uint8         op;
     t_int32         size;
     t_inst          args[4];
-    
-    if (nb_cycle - tmp->live > g_cycle_to_die)
+
+    if ((t_int32)(nb_cycle - tmp->live) > g_cycle_to_die)
     {
         ft_printf("t mor %d %d\n", nb_cycle , tmp->live);
         free(tmp);
+        g_id--;
         return ;
     }
     op = g_mem[tmp->pc];
-    if (op - 1 >= 16)
+    if (op == 0 || op > 16)
     {
         tmp->pc = (tmp->pc + 1) % MEM_SIZE;
         insert_proc(cycle, tmp, (nb_cycle + 1) % 1001);
@@ -41,7 +40,10 @@ void    exec_proc(t_proc **cycle, t_uint32 nb_cycle, t_proc *tmp)
     if (size <= 0)
     {
         tmp->pc = (tmp->pc + -size + 1 + op_tab[op].octal) % MEM_SIZE;
-        insert_proc(cycle, tmp, (nb_cycle + op_tab[g_mem[tmp->pc]].cycles) % 1001);
+        if (g_mem[tmp->pc] == 0 || g_mem[tmp->pc] > 16)
+            insert_proc(cycle, tmp, (nb_cycle + 1) % 1001);
+        else
+            insert_proc(cycle, tmp, (nb_cycle + op_tab[g_mem[tmp->pc]].cycles) % 1001);
         return ;
     }
     f[op](tmp, args, nb_cycle, cycle);

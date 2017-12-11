@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 18:24:54 by niragne           #+#    #+#             */
-/*   Updated: 2017/11/29 15:29:20 by niragne          ###   ########.fr       */
+/*   Updated: 2017/12/06 18:07:20 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_proc      *create_proc(t_proc *p, t_int32 pc, t_int32 nb_cycle)
         i++;
     }
     ret->next = NULL;
-    ret->id = g_id;
     g_id++;
+    ret->id = g_id;
     return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 18:31:33 by niragne           #+#    #+#             */
-/*   Updated: 2017/12/01 19:19:52 by niragne          ###   ########.fr       */
+/*   Updated: 2017/12/08 18:12:23 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,9 @@ struct		s_champ
 extern t_op		op_tab[17];
 extern t_uint32	g_id;
 extern t_champ	g_champs[4];
+extern t_uint32 g_nb_live;
+extern t_int32 g_cycle_to_die;
+extern t_uint32 g_nb_player;
 
 t_uint16	get_uint16(t_uint32 pc);
 t_uint32	get_uint32(t_uint8 *data);

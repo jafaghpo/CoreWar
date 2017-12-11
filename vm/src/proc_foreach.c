@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 15:55:44 by niragne           #+#    #+#             */
-/*   Updated: 2017/11/29 15:13:42 by niragne          ###   ########.fr       */
+/*   Updated: 2017/12/08 17:37:17 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void    proc_foreach(t_proc **cycle, t_uint32 nb_cycle)
     pos = nb_cycle % 1001;
     tmp = cycle[pos];
     while (tmp)
+
     {
         tmp2 = tmp->next;
         //debug_cycle(cycle);

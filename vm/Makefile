@@ -6,7 +6,7 @@
 #    By: niragne <niragne@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2017/12/01 18:54:10 by niragne          ###   ########.fr        #
+#    Updated: 2017/12/08 19:12:21 by niragne          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CFLAGS					=	-Wall -Wextra -Werror
 ifeq ($(DEBUG), yes)
 	CFLAGS				+=	-g -D DEBUG
 else
-	CFLAGS				+=	-Ofast -g
+	CFLAGS				+=	-g
 endif
 
 ifeq ($(TIME), yes)
