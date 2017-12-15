@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_fork.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 11:19:08 by root              #+#    #+#             */
-/*   Updated: 2017/11/26 16:45:48 by niragne          ###   ########.fr       */
+/*   Updated: 2017/12/15 18:38:43 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ void 		op_fork(t_proc *p, t_inst *args, t_int32 nb_cycle, t_proc **procs)
     if (g_mem[new->pc] == 0 || g_mem[new->pc] > 16)
         insert_proc(procs, new, (nb_cycle + 1) % 1001);    
     else
-        insert_proc(procs, new, (nb_cycle + op_tab[g_mem[new->pc]].cycles) % 1001);
+        insert_proc(procs, new, (nb_cycle + g_optab[g_mem[new->pc]].cycles) % 1001);
 }

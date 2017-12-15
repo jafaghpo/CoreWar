@@ -6,7 +6,7 @@
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2017/12/10 17:23:06 by jafaghpo         ###   ########.fr        #
+#    Updated: 2017/12/15 18:03:26 by jafaghpo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CC					=	gcc
 CFLAGS				=	-Werror -Wextra -Wall
 
 SRC_PATH			=	src
-SRCS				=	main.c binary.c
+SRCS				=	main.c binary.c build_file.c
 SRC					=	$(addprefix $(SRC_PATH)/, $(SRCS))
 
 OBJ_PATH			=	obj
@@ -34,7 +34,7 @@ INCL_PATH			=	include
 OP_INC_PATH			=	../include
 INCL				=	$(INCL_PATH)/disas.h $(OP_INC_PATH)/op.h
 
-LIB_PATH			=	../lib
+LIB_PATH			=	../lib_src
 
 LIBFT_PATH			=	$(LIB_PATH)/libft
 LIBFT				=	$(LIBFT_PATH)/libft.a

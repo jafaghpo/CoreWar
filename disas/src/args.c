@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_opcode.c                                       :+:      :+:    :+:   */
+/*   args.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/11 15:16:11 by iburel            #+#    #+#             */
-/*   Updated: 2017/12/15 18:38:36 by jafaghpo         ###   ########.fr       */
+/*   Created: 2017/12/15 22:00:51 by jafaghpo          #+#    #+#             */
+/*   Updated: 2017/12/15 22:09:28 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "disas.h"
 
-int		get_opcode(char *inst)
+int			parse_arg(t_file *file, int i)
 {
-	int i;
+	int		size;
+	int		nb_args;
 
-	i = 0;
-	while (g_optab[i].opcode)
-	{
-		if (ft_strequ(inst, g_optab[i].inst))
-			return (g_optab[i].opcode);
-		i++;
-	}
-	return (-1);
+	size = g_optab[file->prog[i]].size;
+	nb_args = g_optab[file->prog[i]].nb_args;
+	
+	return (i);
 }

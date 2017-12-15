@@ -6,7 +6,7 @@
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2017/12/07 14:22:35 by jafaghpo         ###   ########.fr        #
+#    Updated: 2017/12/15 21:35:18 by jafaghpo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,13 +27,10 @@ SRCS				=	op.c buff.c parse.c main.c get_name.c puterror.c \
 						labeldup.c
 SRC					=	$(addprefix $(SRC_PATH)/, $(SRCS))
 
-SRC_BC_PATH			=	$(SRC_PATH)/ft_bc
 OBJ_PATH			=	obj
+OBJ					=	$(addprefix $(OBJ_PATH)/, $(SRCS:.c=.o))
 
 include $(SRC_BC_PATH)/ft_bc.mk
-
-OBJ					=	$(addprefix $(OBJ_PATH)/, $(SRCS:.c=.o))
-OBJ					+=	$(addprefix $(OBJ_PATH)/, $(SRCS_BC:.c=.o))
 
 ifeq ($(DEBUG), yes)
 	CFLAGS			+=	-g -D DEBUG
@@ -49,7 +46,7 @@ INCL_PATH			=	include
 OP_INC_PATH			=	../include
 INCL				=	$(INCL_PATH)/asm.h $(OP_INC_PATH)/op.h $(INCL_PATH)/ft_bc.h
 
-LIB_PATH			=	../lib
+LIB_PATH			=	../lib_src
 
 LIBFT_PATH			=	$(LIB_PATH)/libft
 LIBFT				=	$(LIBFT_PATH)/libft.a

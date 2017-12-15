@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_type.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/09 15:40:44 by ggregoir          #+#    #+#             */
-/*   Updated: 2017/11/25 18:07:41 by niragne          ###   ########.fr       */
+/*   Updated: 2017/12/15 18:38:43 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int		check_type(int op, t_inst *type)
 	int			i;
 
 	i = 0;
-	while (i < op_tab[op].nb_args)
+	while (i < g_optab[op].nb_args)
 	{
-		if (!(tab[type[i].type] & op_tab[op].args[i]))
+		if (!(tab[type[i].type] & g_optab[op].args[i]))
 			return (0);
 		if (type[i].type == 0)
 			return (0);

@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.c                                            :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/06 21:02:05 by jafaghpo          #+#    #+#             */
-/*   Updated: 2017/12/10 16:22:28 by jafaghpo         ###   ########.fr       */
+/*   Created: 2017/12/15 18:32:35 by jafaghpo          #+#    #+#             */
+/*   Updated: 2017/12/15 18:39:42 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "disas.h"
 
-int			check_file_ext(char *filename, t_file *file)
+int			print_error(char *msg, const char function[], char *file, int line)
 {
-	size_t	len;
-
-	len = ft_strlen(filename);
-	if (!(file->path = malloc(sizeof(char) * len - 1)))
-		return (print_error(errno, __func__, __FILE__, __LINE__));
-	if (ft_strcmp(filename + len - 4, COR_EXT))
-		return (print_error(EINVAL, __func__, __FILE__, __LINE__));
-	ft_memcpy(file->path, filename, len - 4);
-	ft_memcpy(file->path + len - 4 , DISAS_EXT, 3);
-	return (1);
+	if (!msg)
+	{
+		ft_printf("%fd%s: %s in %s (%s:%d)\n", 2, EXEC_NAME, strerror(errno),
+		function, file, line);
+	}
+	else
+	{
+		ft_printf("%fd%s: %s in %s (%s:%d)\n", 2, EXEC_NAME, msg,
+		function, file, line);
+	}
+	return (0);
 }

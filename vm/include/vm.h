@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 18:31:33 by niragne           #+#    #+#             */
-/*   Updated: 2017/11/29 20:29:13 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/15 18:38:43 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ struct		s_inst
 	t_int32	real;
 };
 
-extern t_op		op_tab[17];
+extern t_op		g_optab[17];
 extern t_uint32	g_id;
 
 t_uint16	get_uint16(t_uint32 pc);

@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/19 21:38:10 by iburel            #+#    #+#             */
-/*   Updated: 2017/12/10 18:30:57 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2017/12/15 19:08:07 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,12 @@
 # define USAGE			"usage: %s [-v] <filename>.cor\n"
 # define EXEC_NAME		"disas"
 
-# define HEADER_SIZE	(8 + (PROG_NAME_LENGTH + 4) + (COMMENT_LENGTH + 4))
+# define E_EXT			"Invalid file extension"
+# define E_LEN			"Invalid file size"
+# define E_MGC			"Invalid magic number"
+# define E_INST			"Invalid instruction"
+
+# define HEADER_SIZE	(PROG_NAME_LENGTH + COMMENT_LENGTH + 12)
 
 typedef unsigned char		t_uint8;
 typedef struct	s_file		t_file;
@@ -34,18 +39,14 @@ struct	s_file
 {
 	char	*path;
 	char	*prog;
+	int		prog_size;
 	char	name[PROG_NAME_LENGTH + 4];
 	char	comment[COMMENT_LENGTH + 4];
 };
 
-struct	s_buffer
-{
-	char	*content;
-	int		size;
-	int		cursor;
-};
+extern t_op	g_optab[17];
 
-int			print_error(int errnum, const char function[], char *file, int line);
+int			print_error(char *msg, const char function[], char *file, int line);
 int			get_binary(t_file *file, char *path);
 int			build_file(t_file *file);
 

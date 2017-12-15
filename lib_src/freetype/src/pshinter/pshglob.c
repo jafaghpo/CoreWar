@@ -140,10 +140,10 @@
                          FT_Bool         is_others,
                          FT_UInt         read_count,
                          FT_Short*       read,
-                         PSH_Blue_Table  top_table,
+                         PSH_Blue_Table  tg_optable,
                          PSH_Blue_Table  bot_table )
   {
-    FT_UInt  count_top = top_table->count;
+    FT_UInt  count_top = tg_optable->count;
     FT_UInt  count_bot = bot_table->count;
     FT_Bool  first     = 1;
 
@@ -174,7 +174,7 @@
         reference = read[0];
         delta     = read[1] - reference;
 
-        zones = top_table->zones;
+        zones = tg_optable->zones;
         count = count_top;
         top   = 1;
       }
@@ -222,7 +222,7 @@
       read += 2;
     }
 
-    top_table->count = count_top;
+    tg_optable->count = count_top;
     bot_table->count = count_bot;
   }
 
@@ -239,39 +239,39 @@
                        FT_Int     fuzz,
                        FT_Int     family )
   {
-    PSH_Blue_Table  top_table, bot_table;
+    PSH_Blue_Table  tg_optable, bot_table;
     FT_UInt         count_top, count_bot;
 
 
     if ( family )
     {
-      top_table = &target->family_top;
+      tg_optable = &target->family_top;
       bot_table = &target->family_bottom;
     }
     else
     {
-      top_table = &target->normal_top;
+      tg_optable = &target->normal_top;
       bot_table = &target->normal_bottom;
     }
 
     /* read the input blue zones, and build two sorted tables  */
     /* (one for the top zones, the other for the bottom zones) */
-    top_table->count = 0;
+    tg_optable->count = 0;
     bot_table->count = 0;
 
     /* first, the blues */
     psh_blues_set_zones_0( target, 0,
-                           count, blues, top_table, bot_table );
+                           count, blues, tg_optable, bot_table );
     psh_blues_set_zones_0( target, 1,
-                           count_others, other_blues, top_table, bot_table );
+                           count_others, other_blues, tg_optable, bot_table );
 
-    count_top = top_table->count;
+    count_top = tg_optable->count;
     count_bot = bot_table->count;
 
     /* sanitize top table */
     if ( count_top > 0 )
     {
-      PSH_Blue_Zone  zone = top_table->zones;
+      PSH_Blue_Zone  zone = tg_optable->zones;
 
 
       for ( count = count_top; count > 0; count--, zone++ )
@@ -320,7 +320,7 @@
       PSH_Blue_Zone  zone;
 
 
-      zone  = top_table->zones;
+      zone  = tg_optable->zones;
       count = count_top;
 
       for ( dim = 1; dim >= 0; dim-- )

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   op.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:43:01 by zaz               #+#    #+#             */
-/*   Updated: 2017/10/21 22:01:17 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/15 18:38:43 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "op.h"
 #include <unistd.h>
 
-t_op    op_tab[17] =
+t_op    g_optab[17] =
 {
 	{"live",  1, {T_DIR},                                               1,  10,   "alive",                                0, 0},
 	{"ld",    2, {T_DIR | T_IND, T_REG},                                2,  5,    "load",                                 1, 0},

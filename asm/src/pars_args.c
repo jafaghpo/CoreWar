@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/10 09:04:18 by iburel            #+#    #+#             */
-/*   Updated: 2017/11/29 17:06:50 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2017/12/15 18:38:43 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	get_register(t_parse *parse, char *inst, int *len, int i, int op)
 	int		j;
 	int		n;
 
-	if (op_tab[op - 1].octal)
+	if (g_optab[op - 1].octal)
 		inst[1] |= REG_CODE << (6 - 2 * i);
 	n = 0;
 	j = 1;
@@ -43,18 +43,18 @@ static int	get_direct(t_parse *parse, char *inst, int *len, int i, t_label *labe
 	int		error;
 
 	error = 0;
-	if (op_tab[op - 1].octal)
+	if (g_optab[op - 1].octal)
 		inst[1] |= DIR_CODE << (6 - 2 * i);
 	n = ft_bc(parse->ptr[i] + 1, labels, &error, size);
 	if (error == 1)
 		return (puterror(ERROR_SYNTAX_DIR, 0));
 	else if (error == 2)
 	{
-		labels->tmp = add_tmplb(labels->tmp, parse->ptr[i] + 1, buff_getcursor() + *len, op_tab[op - 1].size, size);
-		*len += 2 + (!op_tab[op - 1].size);
+		labels->tmp = add_tmplb(labels->tmp, parse->ptr[i] + 1, buff_getcursor() + *len, g_optab[op - 1].size, size);
+		*len += 2 + (!g_optab[op - 1].size);
 		return (1);
 	}
-	if (op_tab[op - 1].size)
+	if (g_optab[op - 1].size)
 	{
 		inst[*len + 0] = (char)(n >> 8);
 		inst[*len + 1] = (char)(n >> 0);
@@ -79,7 +79,7 @@ static int	get_indirect(t_parse *parse, char *inst, int *len, int i, t_label *la
 	int		j;
 
 	error = 0;
-	if (op_tab[op - 1].octal)
+	if (g_optab[op - 1].octal)
 		inst[1] |= IND_CODE << (6 - 2 * i);
 	n = ft_bc(parse->ptr[i], labels, &error, size);
 	if (error == 1)
@@ -102,27 +102,27 @@ int			pars_args(t_parse *parse, t_label *labels, char *inst, int op, int size)
 	int		i;
 	int		len;
 
-	len = 1 + op_tab[op - 1].octal;
+	len = 1 + g_optab[op - 1].octal;
 	i = 0;
 	while (i < parse->nb)
 	{
 		if (parse->ptr[i][0] == 'r')
 		{
-			if (!(op_tab[op - 1].args[i] & T_REG))
+			if (!(g_optab[op - 1].args[i] & T_REG))
 				return (puterror(ERROR_BAD_TYPE_ARG, 0));
 			if (!(get_register(parse, inst, &len, i, op)))
 				return (0);
 		}
 		else if (parse->ptr[i][0] == DIRECT_CHAR)
 		{
-			if (!(op_tab[op - 1].args[i] & T_DIR))
+			if (!(g_optab[op - 1].args[i] & T_DIR))
 				return (puterror(ERROR_BAD_TYPE_ARG, 0));
 			if (!get_direct(parse, inst, &len, i, labels, op, size))
 				return (0);
 		}
 		else
 		{
-			if (!(op_tab[op - 1].args[i] & T_IND))
+			if (!(g_optab[op - 1].args[i] & T_IND))
 				return (puterror(ERROR_BAD_TYPE_ARG, 0));
 			if (!(get_indirect(parse, inst, &len, i, labels, op, size)))
 				return (0);
