@@ -24,12 +24,14 @@ void    exec_proc(t_proc **cycle, t_uint32 nb_cycle, t_proc *tmp)
 
     if ((t_int32)(nb_cycle - tmp->live) > g_cycle_to_die)
     {
-        ft_printf("t mor %d %d\n", nb_cycle , tmp->live);
+        ft_printf("AVANT FREE %d\n", g_id);
+        //ft_printf("t mor %d %d\n", nb_cycle , tmp->live);
         free(tmp);
         g_id--;
+        ft_printf("APRES FREE %d\n" ,g_id);
         return ;
     }
-    op = g_mem[tmp->pc];
+    op = tmp->op;
     if (op == 0 || op > 16)
     {
         tmp->pc = (tmp->pc + 1) % MEM_SIZE;
@@ -40,6 +42,7 @@ void    exec_proc(t_proc **cycle, t_uint32 nb_cycle, t_proc *tmp)
     if (size <= 0)
     {
         tmp->pc = (tmp->pc + -size + 1 + op_tab[op].octal) % MEM_SIZE;
+        tmp->op = g_mem[tmp->pc];
         if (g_mem[tmp->pc] == 0 || g_mem[tmp->pc] > 16)
             insert_proc(cycle, tmp, (nb_cycle + 1) % 1001);
         else
@@ -48,6 +51,8 @@ void    exec_proc(t_proc **cycle, t_uint32 nb_cycle, t_proc *tmp)
     }
     f[op](tmp, args, nb_cycle, cycle);
     tmp->pc = (tmp->pc + size + 1 + op_tab[op].octal) % MEM_SIZE;
+    tmp->op = g_mem[tmp->pc];
+    //ft_printf("pc %d op %d\n", tmp->pc, tmp->op);
     if (g_mem[tmp->pc] == 0 || g_mem[tmp->pc] > 16)
         insert_proc(cycle, tmp, (nb_cycle + 1) % 1001);
     else

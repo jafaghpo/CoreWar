@@ -29,6 +29,7 @@ t_proc      *create_proc(t_proc *p, t_int32 pc, t_int32 nb_cycle)
         ret->reg[i] = p->reg[i];
         i++;
     }
+    ret->op = g_mem[ret->pc];
     ret->next = NULL;
     g_id++;
     ret->id = g_id;

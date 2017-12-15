@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 15:21:22 by niragne           #+#    #+#             */
-/*   Updated: 2017/12/11 19:32:06 by niragne          ###   ########.fr       */
+/*   Updated: 2017/12/15 14:10:54 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ void        *vm(void *av)
     t_uint32        checks;
     t_uint32        last_check;
     t_uint32        nb_cycle;
+    char            str[CHAT_LINE_SIZE];
 
+    ft_bzero(str, sizeof(str));
     init_proc(cycle, ((t_args*)av)->nb_players);
     nb_cycle = 0;
     checks = 0;
@@ -33,7 +35,7 @@ void        *vm(void *av)
             if (g_nb_live > NBR_LIVE) 
             {
                 g_cycle_to_die -= CYCLE_DELTA;
-                checks = 0;               
+                checks = 0;           
             }
             else if (checks == MAX_CHECKS)
             {
@@ -44,7 +46,7 @@ void        *vm(void *av)
             checks++;
             last_check += g_cycle_to_die;
         }
-        usleep(00);
+        usleep(700);
         proc_foreach(cycle, nb_cycle);
         nb_cycle++;
     }

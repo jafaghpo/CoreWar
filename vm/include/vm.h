@@ -67,6 +67,7 @@ struct		s_proc
 	t_uint32	live;
 	t_uint32	id;
 	t_proc		*next;
+	t_uint8		op;
 };
 
 struct		s_args

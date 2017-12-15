@@ -21,7 +21,6 @@ void    proc_foreach(t_proc **cycle, t_uint32 nb_cycle)
     pos = nb_cycle % 1001;
     tmp = cycle[pos];
     while (tmp)
-
     {
         tmp2 = tmp->next;
         //debug_cycle(cycle);

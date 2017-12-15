@@ -42,6 +42,7 @@ void    init_proc(t_proc **cycle, int nb)
         proc = new_proc(i, i * step);
         tmp = op_tab[g_mem[proc->pc]].cycles;
         proc->next = cycle[tmp];
+        proc->op = g_mem[proc->pc];
         cycle[tmp] = proc;
         i++;
     }
