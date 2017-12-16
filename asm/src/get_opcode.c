@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/11 15:16:11 by iburel            #+#    #+#             */
-/*   Updated: 2017/12/15 18:38:36 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2017/12/16 20:46:19 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int		get_opcode(char *inst)
 	int i;
 
 	i = 0;
-	while (g_optab[i].opcode)
+	while (op_tab[i].opcode)
 	{
-		if (ft_strequ(inst, g_optab[i].inst))
-			return (g_optab[i].opcode);
+		if (ft_strequ(inst, op_tab[i].inst))
+			return (op_tab[i].opcode);
 		i++;
 	}
 	return (-1);

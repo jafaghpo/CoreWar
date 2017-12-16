@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:29:50 by niragne           #+#    #+#             */
-/*   Updated: 2017/12/15 18:38:43 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2017/12/16 20:46:19 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	get_types(t_uchar mem, t_inst *args, t_uint8 op)
 {
-    if (g_optab[(int)op].octal)
+    if (op_tab[(int)op].octal)
     {
 	    args[3].type = mem & 0b11;
 	    args[2].type = (mem & (0b11 << 2)) >> 2;
@@ -23,16 +23,16 @@ static void	get_types(t_uchar mem, t_inst *args, t_uint8 op)
     }
     else
     {
-        args[0].type = g_optab[op].args[0]; 
-        args[1].type = g_optab[op].args[1]; 
-        args[2].type = g_optab[op].args[2]; 
-        args[3].type = g_optab[op].args[3]; 
+        args[0].type = op_tab[op].args[0]; 
+        args[1].type = op_tab[op].args[1]; 
+        args[2].type = op_tab[op].args[2]; 
+        args[3].type = op_tab[op].args[3]; 
     }
 }
 
 static void    get_sizes(t_uint8 op, t_inst *args)
 {
-    t_uint8 sizes[4] = {0, 1, 2 + 2 * !g_optab[op].size, 2};
+    t_uint8 sizes[4] = {0, 1, 2 + 2 * !op_tab[op].size, 2};
     args[0].size = sizes[args[0].type];
     args[1].size = sizes[args[1].type];
     args[2].size = sizes[args[2].type];
@@ -44,7 +44,7 @@ static void    get_values(t_uint pc, t_inst *args, t_int8 op)
     static t_int32      (*f[4])(t_uint32, t_inst*, t_int8, t_int8) = {get_void, get_reg, get_dir, get_ind};
     t_uint8             octal;
 
-    octal = g_optab[(int)op].octal;
+    octal = op_tab[(int)op].octal;
     args[0].value = f[args[0].type](pc, args, 0, octal);
     args[1].value = f[args[1].type](pc, args, 1, octal);
     args[2].value = f[args[2].type](pc, args, 2, octal);

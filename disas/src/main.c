@@ -6,11 +6,20 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 17:06:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2017/12/15 18:39:46 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2017/12/16 23:31:51 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "disas.h"
+
+int			print_error(char *msg)
+{
+	if (!msg)
+		ft_printf("%fd%s: %s\n", 2, EXEC_NAME, strerror(errno));
+	else
+		ft_printf("%fd%s: %s\n", 2, EXEC_NAME, msg);
+	return (0);
+}
 
 int			main(int ac, char **av)
 {
@@ -18,20 +27,21 @@ int			main(int ac, char **av)
 	int		i;
 
 	if (ac < 2)
-		return (!ft_printf(USAGE, av[0]));
+	{
+		ft_printf(USAGE, av[0]);
+		return (0);
+	}
 	i = 1;
 	while (av[i])
 	{
 		if (!get_binary(&file, av[i]))
+			continue ;
+		if (!parse_file(&file))
 			;
-		else if (!build_file(&file))
-			;
-		else
-		{
-			free(file.path);
-			free(file.prog);
-		}
+		free(file.path);
+		free(file.prog);
 		i++;
 	}
+	ft_strdel(&g_buf);
 	return (0);
 }

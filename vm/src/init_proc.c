@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 11:54:03 by root              #+#    #+#             */
-/*   Updated: 2017/12/15 18:38:43 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2017/12/16 20:46:19 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void    init_proc(t_proc **cycle, int nb)
     while (i < nb)
     {
         proc = new_proc(i, i * step);
-        tmp = g_optab[g_mem[proc->pc]].cycles;
+        tmp = op_tab[g_mem[proc->pc]].cycles;
         proc->next = cycle[tmp];
         cycle[tmp] = proc;
         i++;

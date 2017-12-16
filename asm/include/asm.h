@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 14:38:13 by iburel            #+#    #+#             */
-/*   Updated: 2017/12/15 18:38:43 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2017/12/16 20:46:19 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ struct	s_parse
 	int		nb;
 };
 
-extern	t_op			g_optab[17];
+extern	t_op			op_tab[17];
 
 /*
 **	debug

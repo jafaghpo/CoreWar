@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/09 13:21:49 by iburel            #+#    #+#             */
-/*   Updated: 2017/12/15 18:38:43 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2017/12/16 20:46:19 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		pars_inst(char *line, int *size, t_label *labels)
 #ifdef DEBUG
 	putparse(&parse);
 #endif
-	if (parse.nb != g_optab[op - 1].nb_args)
+	if (parse.nb != op_tab[op - 1].nb_args)
 		return (puterror(ERROR_NB_ARGS, 0));
 	if (!(len = pars_args(&parse, labels, inst, op, *size)))
 		return (0);

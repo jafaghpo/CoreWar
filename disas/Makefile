@@ -6,7 +6,7 @@
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2017/12/15 18:03:26 by jafaghpo         ###   ########.fr        #
+#    Updated: 2017/12/16 23:37:20 by jafaghpo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CC					=	gcc
 CFLAGS				=	-Werror -Wextra -Wall
 
 SRC_PATH			=	src
-SRCS				=	main.c binary.c build_file.c
+SRCS				=	op.c main.c get_binary.c parse_file.c parse_args.c
 SRC					=	$(addprefix $(SRC_PATH)/, $(SRCS))
 
 OBJ_PATH			=	obj

@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 15:21:22 by niragne           #+#    #+#             */
-/*   Updated: 2017/12/15 18:38:43 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2017/12/16 20:46:19 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ void        *vm(void *av)
                 size = get_args(tmp->pc, args, op);
                 if (size <= 0)
                 {
-                    tmp->pc += -size + 1 + g_optab[op].octal;
+                    tmp->pc += -size + 1 + op_tab[op].octal;
                     tmp->pc %= MEM_SIZE;
-                    insert_proc(cycle, tmp, (nb_cycle + g_optab[g_mem[tmp->pc]].cycles) % 1001);
+                    insert_proc(cycle, tmp, (nb_cycle + op_tab[g_mem[tmp->pc]].cycles) % 1001);
                 }
                 else
                 {
@@ -76,15 +76,15 @@ void        *vm(void *av)
                     #endif
                     f[op](tmp, args, nb_cycle, cycle);
                     //ft_printf("cycle %d\n", nb_cycle);                    
-                    //ft_printf("increment %d %d\n", size, g_optab[op].octal);
-                    //ft_printf("INST: %s\n", g_optab[op].inst);
-                    tmp->pc += size + 1 + g_optab[op].octal;
+                    //ft_printf("increment %d %d\n", size, op_tab[op].octal);
+                    //ft_printf("INST: %s\n", op_tab[op].inst);
+                    tmp->pc += size + 1 + op_tab[op].octal;
                     tmp->pc %= MEM_SIZE;
                     //debug_proc(tmp);
                     if (g_mem[tmp->pc] == 0 || g_mem[tmp->pc] > 16)
                         insert_proc(cycle, tmp, (nb_cycle + 1) % 1001);
                     else
-                        insert_proc(cycle, tmp, (nb_cycle + g_optab[g_mem[tmp->pc]].cycles) % 1001);
+                        insert_proc(cycle, tmp, (nb_cycle + op_tab[g_mem[tmp->pc]].cycles) % 1001);
                     //system("clear");
                     //debug_map();
                 }
