@@ -6,7 +6,7 @@
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2017/12/16 23:37:20 by jafaghpo         ###   ########.fr        #
+#    Updated: 2017/12/17 16:17:25 by jafaghpo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,8 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re: fclean all
+re:
+	make fclean
+	make all
 
 .PHONY: all clean fclean re

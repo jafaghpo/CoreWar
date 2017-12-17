@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 17:06:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2017/12/16 23:31:51 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2017/12/17 16:51:09 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,13 @@ int			main(int ac, char **av)
 	while (av[i])
 	{
 		if (!get_binary(&file, av[i]))
-			continue ;
-		if (!parse_file(&file))
 			;
-		free(file.path);
-		free(file.prog);
+		else if (!parse_file(&file))
+			;
+		else
+			ft_printf("Creation of %s done\n", file.path);
+		ft_strdel((char**)&file.path);
+		ft_strdel((char**)&file.prog);
 		i++;
 	}
 	ft_strdel(&g_buf);

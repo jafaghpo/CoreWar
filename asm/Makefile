@@ -6,7 +6,7 @@
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2017/12/15 21:35:18 by jafaghpo         ###   ########.fr        #
+#    Updated: 2017/12/17 16:56:30 by jafaghpo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,8 @@ SRC					=	$(addprefix $(SRC_PATH)/, $(SRCS))
 
 OBJ_PATH			=	obj
 OBJ					=	$(addprefix $(OBJ_PATH)/, $(SRCS:.c=.o))
+
+SRC_BC_PATH			=	$(SRC_PATH)/ft_bc
 
 include $(SRC_BC_PATH)/ft_bc.mk
 

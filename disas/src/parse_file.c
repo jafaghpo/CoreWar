@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 21:50:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2017/12/16 23:33:13 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2017/12/17 17:00:18 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		g_i = 0;
 
 static int		octal_args(t_file *file, t_uint8 octal, int size, int nb_args)
 {
-	if (!first_arg(file, size, nb_args))
+	if (!first_arg(file, octal, size))
 		return (0);
 	if (nb_args > 1)
 	{
@@ -54,6 +54,7 @@ static void		no_octal_args(t_file *file, t_uint8 opcode)
 			g_i += sprintf(g_buf + g_i, ",");
 		i++;
 	}
+	g_i += sprintf(g_buf + g_i, "\n");
 }
 
 static int		parse_inst(t_file *file)
@@ -64,7 +65,6 @@ static int		parse_inst(t_file *file)
 	while (file->cursor < file->prog_size)
 	{
 		opcode = file->prog[file->cursor];
-		ft_printf("opcode = %d\n", opcode);
 		if (opcode > 0 && opcode < 17)
 			g_i += sprintf(g_buf + g_i, "%s\t", op_tab[opcode].inst);
 		else
@@ -77,6 +77,7 @@ static int		parse_inst(t_file *file)
 		}
 		else
 			no_octal_args(file, opcode);
+		file->cursor++;
 	}
 	return (1);
 }

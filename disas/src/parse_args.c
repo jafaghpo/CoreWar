@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 22:00:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2017/12/16 23:54:24 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2017/12/17 16:26:01 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int				first_arg(t_file *file, t_uint8 octal, int size)
 {
 	int		bitwise;
 
-	ft_printf("first arg\n");
 	bitwise = octal & 0b11000000;
 	if (bitwise == 0b01000000)
 		g_i += sprintf(g_buf + g_i, "r%d", file->prog[++file->cursor]);

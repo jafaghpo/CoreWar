@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/10 17:22:46 by jafaghpo          #+#    #+#             */
-/*   Updated: 2017/12/16 23:49:53 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2017/12/17 16:43:21 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,6 @@ int				get_binary(t_file *file, char *path)
 	if (!(file->prog = malloc(sizeof(char) * file->prog_size)))
 		return (print_error(NULL));
 	ft_memcpy(file->prog, str + HEADER_SIZE, file->prog_size);
+	ft_strdel((char**)&str);
 	return (1);
 }
