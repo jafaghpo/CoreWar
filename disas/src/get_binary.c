@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/10 17:22:46 by jafaghpo          #+#    #+#             */
-/*   Updated: 2017/12/17 16:43:21 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2017/12/26 16:42:27 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int		check_binary_extension(char *filename, t_file *file)
 	if (ft_strcmp(filename + len - 4, COR_EXT))
 		return (print_error(ERROR_EXT));
 	ft_memcpy(file->path, filename, len - 4);
-	ft_memcpy(file->path + len - 4 , DISAS_EXT, 3);
+	ft_memcpy(file->path + len - 4, DISAS_EXT, 3);
 	return (1);
 }
 
@@ -73,12 +73,7 @@ int				get_binary(t_file *file, char *path)
 		return (0);
 	if (!check_magic(str))
 		return (0);
-	ft_memcpy(file->name, str + 4, PROG_NAME_LENGTH);
-	ft_memcpy(file->comment, str + PROG_NAME_LENGTH + 12, COMMENT_LENGTH);
-	file->prog_size = ret - HEADER_SIZE;
-	if (!(file->prog = malloc(sizeof(char) * file->prog_size)))
-		return (print_error(NULL));
-	ft_memcpy(file->prog, str + HEADER_SIZE, file->prog_size);
-	ft_strdel((char**)&str);
+	file->prog_size = ret;
+	file->prog = str;
 	return (1);
 }

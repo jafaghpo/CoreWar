@@ -1,5 +1,5 @@
 .name "42"
-.comment "Just a basic Winner Program"
+.comment "42"
 
 live	%42
 ld	%0,	r5
@@ -179,7 +179,7 @@ zjmp	%0
 zjmp	%0
 ld	%10,	r8
 sub	r6,	r8,	r6
-and	r6,	%-2147483648,	r8
+and	r6,	%0,	r8
 zjmp	%15
 ld	%118,	r8
 add	r6,	r8,	r6

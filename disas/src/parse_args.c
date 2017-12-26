@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 22:00:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2017/12/17 16:26:01 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2017/12/26 15:26:07 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void			short_arg(t_file *file, int isdir)
 	arg |= file->prog[++file->cursor] << 8;
 	arg |= file->prog[++file->cursor];
 	if (!isdir)
-		g_i += sprintf(g_buf + g_i, "%hd", arg);
+		display_integer(file, "%hd", arg);
 	else
-		g_i += sprintf(g_buf + g_i, "%%%hd", arg);
+		display_integer(file, "%%%hd", arg);
 }
 
 void			int_arg(t_file *file)
@@ -34,7 +34,7 @@ void			int_arg(t_file *file)
 	arg |= file->prog[++file->cursor] << 16;
 	arg |= file->prog[++file->cursor] << 8;
 	arg |= file->prog[++file->cursor];
-	g_i += sprintf(g_buf + g_i, "%%%d", arg);
+	display_integer(file, "%%%hd", arg);
 }
 
 int				first_arg(t_file *file, t_uint8 octal, int size)
@@ -43,7 +43,7 @@ int				first_arg(t_file *file, t_uint8 octal, int size)
 
 	bitwise = octal & 0b11000000;
 	if (bitwise == 0b01000000)
-		g_i += sprintf(g_buf + g_i, "r%d", file->prog[++file->cursor]);
+		display_integer(file, "r%d", file->prog[++file->cursor]);
 	else if (bitwise == 0b10000000)
 	{
 		if (size)
@@ -64,7 +64,7 @@ int				second_arg(t_file *file, t_uint8 octal, int size)
 
 	bitwise = octal & 0b00110000;
 	if (bitwise == 0b00010000)
-		g_i += sprintf(g_buf + g_i, "r%d", file->prog[++file->cursor]);
+		display_integer(file, "r%d", file->prog[++file->cursor]);
 	else if (bitwise == 0b00100000)
 	{
 		if (size)
@@ -85,7 +85,7 @@ int				third_arg(t_file *file, t_uint8 octal, int size)
 
 	bitwise = octal & 0b00001100;
 	if (bitwise == 0b00000100)
-		g_i += sprintf(g_buf + g_i, "r%d", file->prog[++file->cursor]);
+		display_integer(file, "r%d", file->prog[++file->cursor]);
 	else if (bitwise == 0b00001000)
 	{
 		if (size)
