@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 17:06:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2017/12/26 21:22:20 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2017/12/27 14:52:06 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ static void		reset_file(t_file *file, int is_flag)
 		return ;
 	if (file->win.flag)
 	{
+		wattroff(file->win.bin, COLOR_PAIR(1));
+		box(file->win.bin, ACS_VLINE, ACS_HLINE);
+		wrefresh(file->win.bin);
+		wrefresh(file->win.as);
+		file->win.delay = 0;
+		win_key_hook(file);
 		werase(file->win.as);
 		werase(file->win.bin);
 		erase();
@@ -53,10 +59,8 @@ static void		delete_file(t_file *file)
 {
 	ft_strdel(&g_buf);
 	if (file->win.flag)
-	{
-		win_key_hook(file);
 		endwin();
-	}
+	exit(0);
 }
 
 int				main(int ac, char **av)
@@ -76,9 +80,9 @@ int				main(int ac, char **av)
 			;
 		else if (!parse_file(&file))
 			;
-		reset_file(&file, *av[i] == '-');
+		else
+			reset_file(&file, *av[i] == '-');
 		i++;
 	}
 	delete_file(&file);
-	return (0);
 }
