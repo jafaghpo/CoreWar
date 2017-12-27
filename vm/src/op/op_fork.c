@@ -21,9 +21,7 @@ void 		op_fork(t_proc *p, t_inst *args, t_int32 nb_cycle, t_proc **procs)
     ft_bzero(str, sizeof(str));
     tmp = (args[0].value % IDX_MOD + p->pc);
     tmp = tmp % MEM_SIZE + MEM_SIZE * (tmp < 0);
-    ft_printf("AVANT CREATE PROC %d\n", g_id);
     new = create_proc(p, tmp, nb_cycle);
-    ft_printf("APRES CREATE PROC %d\n", g_id);    
     if (g_mem[new->pc] == 0 || g_mem[new->pc] > 16)
         insert_proc(procs, new, (nb_cycle + 1) % 1001);
     else

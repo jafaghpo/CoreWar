@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_proc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 16:04:48 by niragne           #+#    #+#             */
-/*   Updated: 2017/12/08 18:48:46 by niragne          ###   ########.fr       */
+/*   Updated: 2017/12/16 11:51:12 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,6 @@ void    exec_proc(t_proc **cycle, t_uint32 nb_cycle, t_proc *tmp)
     t_int32         size;
     t_inst          args[4];
 
-    if ((t_int32)(nb_cycle - tmp->live) > g_cycle_to_die)
-    {
-        ft_printf("AVANT FREE %d\n", g_id);
-        //ft_printf("t mor %d %d\n", nb_cycle , tmp->live);
-        free(tmp);
-        g_id--;
-        ft_printf("APRES FREE %d\n" ,g_id);
-        return ;
-    }
     op = tmp->op;
     if (op == 0 || op > 16)
     {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_proc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 18:24:54 by niragne           #+#    #+#             */
-/*   Updated: 2017/12/06 18:07:20 by niragne          ###   ########.fr       */
+/*   Updated: 2017/12/16 12:08:52 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@ t_proc      *create_proc(t_proc *p, t_int32 pc, t_int32 nb_cycle)
     t_proc          *ret;
     int             i;
     
+    (void)nb_cycle;
     if (!(ret = malloc(sizeof(*ret))))
         ft_afferror(ERROR_MALLOC);
     ret->pc = pc;
     ret->carry = p->carry;
     ret->player = p->player;
-    ret->live = nb_cycle;
+    ret->live = 0;
     i = 0;
     while (i < REG_NUMBER)
     {

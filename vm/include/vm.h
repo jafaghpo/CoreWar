@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 18:31:33 by niragne           #+#    #+#             */
-/*   Updated: 2017/12/08 18:12:23 by niragne          ###   ########.fr       */
+/*   Updated: 2017/12/16 17:06:35 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,8 @@ t_int32 	ft_abs(t_int32 x);
 t_uint8  	check_reg(t_inst *args);
 void 		proc_foreach(t_proc **cycle, t_uint32 nb_cycle);
 void    	exec_proc(t_proc **cycle, t_uint32 nb_cycle, t_proc *tmp);
-t_int32    get_player_id(t_uint32 octet);
+t_int32    	get_player_id(t_uint32 octet);
+void 		purge(t_proc **cycle);
 
 /*
 ** debug

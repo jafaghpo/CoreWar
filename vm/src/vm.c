@@ -6,12 +6,11 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 15:21:22 by niragne           #+#    #+#             */
-/*   Updated: 2017/12/15 14:10:54 by niragne          ###   ########.fr       */
+/*   Updated: 2017/12/16 17:05:14 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
-
 
 void        *vm(void *av)
 {
@@ -32,12 +31,13 @@ void        *vm(void *av)
     {
         if (nb_cycle == last_check)
         {
+            purge(cycle);
             if (g_nb_live > NBR_LIVE) 
             {
                 g_cycle_to_die -= CYCLE_DELTA;
                 checks = 0;           
             }
-            else if (checks == MAX_CHECKS)
+            else if (checks >= MAX_CHECKS)
             {
                 g_cycle_to_die -= CYCLE_DELTA;
                 checks = 0;
