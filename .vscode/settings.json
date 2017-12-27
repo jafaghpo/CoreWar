@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "*.o": "c",
-        "vm.h": "c"
+        "vm.h": "c",
+        "typeinfo": "c"
     }
 }

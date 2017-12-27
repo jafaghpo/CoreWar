@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 18:31:33 by niragne           #+#    #+#             */
-/*   Updated: 2017/12/16 17:06:35 by niragne          ###   ########.fr       */
+/*   Updated: 2017/12/27 16:02:54 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ t_int32		get_ind(t_uint32 pc, t_inst *args, t_int8 index, t_int8 octal);
 t_int32		get_reg(t_uint32 pc, t_inst *args, t_int8 index, t_int8 octal);
 t_int32		get_dir(t_uint32 pc, t_inst *args, t_int8 index, t_int8 octal);
 t_int32		get_void(t_uint32 pc, t_inst *args, t_int8 index, t_int8 octal);
-void   		live(t_int32 value, t_int32 player);
+void   		live(t_uint32 value, t_int32 player);
 void   		put_uint32(t_uint32 x, t_uint32 i);
 t_proc      *create_proc(t_proc *p, t_int32 pc, t_int32 nb_cycle);
 t_int32    	get_real_value(t_inst *args, t_proc *p, t_uint8 mod);
@@ -140,6 +140,7 @@ void 		proc_foreach(t_proc **cycle, t_uint32 nb_cycle);
 void    	exec_proc(t_proc **cycle, t_uint32 nb_cycle, t_proc *tmp);
 t_int32    	get_player_id(t_uint32 octet);
 void 		purge(t_proc **cycle);
+int    		pick_winner(void);
 
 /*
 ** debug

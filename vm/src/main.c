@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/09 20:49:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2017/12/08 18:34:36 by niragne          ###   ########.fr       */
+/*   Updated: 2017/12/27 15:48:29 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char		g_chat[CHAT_SIZE][CHAT_LINE_SIZE] = {};
 t_uint32	g_id;
 t_champ		g_champs[4];
 t_uint32	g_nb_live = 0;
-t_int32    g_cycle_to_die = CYCLE_TO_DIE;
+t_int32   	g_cycle_to_die = CYCLE_TO_DIE;
 
 
 int		main(int ac, char **av)
@@ -65,5 +65,8 @@ int		main(int ac, char **av)
 	//debug_map();
 #endif
 	pthread_create(&tid, NULL, vm, &flags);
-	display();
+	if (flags.visu)
+		display();
+	else
+		while (g_id);
 }
