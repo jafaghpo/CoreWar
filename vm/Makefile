@@ -6,7 +6,7 @@
 #    By: niragne <niragne@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2017/12/27 16:03:16 by niragne          ###   ########.fr        #
+#    Updated: 2017/12/27 18:36:28 by niragne          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,9 @@ NAME					=	corewar
 CFLAGS					=	-Wall -Wextra -Werror
 
 ifeq ($(DEBUG), yes)
-	CFLAGS				+=	-g -D DEBUG
+	CFLAGS				+=	-D DEBUG
 else
-	CFLAGS				+=	-g
+	CFLAGS				+=
 endif
 
 ifeq ($(TIME), yes)
@@ -106,7 +106,7 @@ $(LIB_PATH):
 	mkdir $(LIB_PATH)
 
 ft: $(LIB_PATH)/libft
-	make "DEBUG=$(DEBUG)" "TIME=$(TIME)" -C $(LIB_SRC_PATH)/libft str printf mem put file char conv
+	make "DEBUG=$(DEBUG)" "TIME=$(TIME)" -C $(LIB_SRC_PATH)/libft
 	mv $(LIB_SRC_PATH)/libft/libft.a $(LIB_PATH)/libft
 	cp -R $(LIB_SRC_PATH)/libft/include $(LIB_PATH)/libft
 

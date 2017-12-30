@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/09 14:46:06 by iburel            #+#    #+#             */
-/*   Updated: 2017/06/08 14:57:07 by iburel           ###   ########.fr       */
+/*   Created: 2017/12/17 19:44:59 by root              #+#    #+#             */
+/*   Updated: 2017/12/17 19:56:23 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # define FILE_H
 
 # define BUFF_SIZE 60000
+
+# ifndef OPEN_MAX
+#  define OPEN_MAX 1024
+# endif
+
+typedef struct s_gnl    t_gnl;
 
 struct	s_gnl
 {

@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 15:21:22 by niragne           #+#    #+#             */
-/*   Updated: 2017/12/27 17:47:02 by niragne          ###   ########.fr       */
+/*   Updated: 2017/12/30 15:38:11 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,17 @@ void        *vm(void *av)
     nb_cycle = 0;
     checks = 0;
     last_check = CYCLE_TO_DIE;
-    //char buf;
-    //read(1, &buf, 1);
+    char buf;
+    read(1, &buf, 1);
     while (g_id)
     {
         if (nb_cycle == last_check)
         {
             purge(cycle);
-            if (g_nb_live > NBR_LIVE) 
+            if (g_nb_live >= NBR_LIVE)
             {
                 g_cycle_to_die -= CYCLE_DELTA;
-                checks = 0;           
+                checks = 0;
             }
             else if (checks >= MAX_CHECKS)
             {
@@ -44,13 +44,13 @@ void        *vm(void *av)
             }
             g_nb_live = 0;
             checks++;
-            last_check += g_cycle_to_die;
+            last_check += (g_cycle_to_die - 1) * (g_cycle_to_die >= 0) + 1;
         }
 //      usleep(700);
         proc_foreach(cycle, nb_cycle);
         nb_cycle++;
     }
     ft_printf("LA C FINI MDR\nwinner = %s\n", g_champs[pick_winner()].name);
-    printf("fdjkfngiuerhoure");
+    ft_printf("fdjkfngiuerhoure");
    return (NULL);
 }

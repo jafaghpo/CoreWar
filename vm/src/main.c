@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/09 20:49:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2017/12/27 15:48:29 by niragne          ###   ########.fr       */
+/*   Updated: 2017/12/30 14:05:58 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,11 @@ int		main(int ac, char **av)
 #ifdef DEBUG
 	//debug_map();
 #endif
-	pthread_create(&tid, NULL, vm, &flags);
 	if (flags.visu)
+	{
+		pthread_create(&tid, NULL, vm, &flags);
 		display();
+	}
 	else
-		while (g_id);
+		vm(&flags);
 }

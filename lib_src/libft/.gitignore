@@ -1,0 +1,4 @@
+*.o
+*.a
+iwan/
+.vscode/

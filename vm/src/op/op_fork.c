@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 11:19:08 by root              #+#    #+#             */
-/*   Updated: 2017/12/08 16:24:41 by niragne          ###   ########.fr       */
+/*   Updated: 2017/12/30 14:09:59 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ void 		op_fork(t_proc *p, t_inst *args, t_int32 nb_cycle, t_proc **procs)
         insert_proc(procs, new, (nb_cycle + 1) % 1001);
     else
         insert_proc(procs, new, (nb_cycle + op_tab[g_mem[new->pc]].cycles) % 1001);
-    sprintf(str, "Process %4d created by player %.15s at index %4d", new->id, g_champs[p->player].name, new->pc);
+    ft_sprintf(str, "Process %4d created by player %.15s at index %4d", new->id, g_champs[p->player].name, new->pc);
     add_line_chat(str);
 }

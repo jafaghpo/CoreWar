@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 11:12:19 by root              #+#    #+#             */
-/*   Updated: 2017/12/27 15:58:35 by niragne          ###   ########.fr       */
+/*   Updated: 2017/12/30 14:52:42 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void 		op_live(t_proc *p, t_inst *args, t_uint32 nb_cycle)
         tmp = err;
     else
         tmp = g_champs[player].name;
-    sprintf(str, "Process %4d (from player %.15s) says that %.15s is alive !", p->id, g_champs[p->player].name, tmp);
+    ft_sprintf(str, "Process %4d (from player %.15s) says that %.15s is alive !", p->id, g_champs[p->player].name, tmp);
     live(args[0].value, nb_cycle);
     p->live = 1;
     g_nb_live++;

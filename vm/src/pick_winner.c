@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/27 15:42:15 by niragne           #+#    #+#             */
-/*   Updated: 2017/12/27 17:45:48 by niragne          ###   ########.fr       */
+/*   Updated: 2017/12/30 12:58:00 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,12 @@ int    pick_winner(void)
     {
         if ((int)g_champs[i].live > max)
         {
-            max = g_champs[i].live;
+            max = (int)g_champs[i].live;
             j = i;
         }
         i++;
     }
-    ft_printf("PICK WINNER %d\n",j );
+    printf("PICK WINNER %d\n",j );
+    printf("bite");
     return (j);
 }

@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 11:18:48 by root              #+#    #+#             */
-/*   Updated: 2017/12/01 16:33:16 by niragne          ###   ########.fr       */
+/*   Updated: 2017/12/30 15:38:04 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ void 		op_sti(t_proc *p, t_inst *args)
     t_int32 a;
     t_int32 b;
     t_int32 tmp;
+    char    str[CHAT_LINE_SIZE];
 
+    ft_bzero(str, sizeof(str));
     a = get_real_value(args + 1, p, 1);
     b = get_real_value(args + 2, p, 1);
     tmp = ((a + b) % IDX_MOD + p->pc) % MEM_SIZE;
@@ -28,4 +30,6 @@ void 		op_sti(t_proc *p, t_inst *args)
     g_player[(tmp + 1) % MEM_SIZE] = 1;
     g_player[(tmp + 2) % MEM_SIZE] = 1;
     g_player[(tmp + 3) % MEM_SIZE] = 1;
+    ft_sprintf(str, "bite");
+    add_line_chat(str);
 }
