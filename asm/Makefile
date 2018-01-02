@@ -6,7 +6,7 @@
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2017/12/17 16:56:30 by jafaghpo         ###   ########.fr        #
+#    Updated: 2018/01/02 20:37:16 by jafaghpo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,9 @@ SRC					=	$(addprefix $(SRC_PATH)/, $(SRCS))
 OBJ_PATH			=	obj
 OBJ					=	$(addprefix $(OBJ_PATH)/, $(SRCS:.c=.o))
 
-SRC_BC_PATH			=	$(SRC_PATH)/ft_bc
+SRC_BC_PATH			=	$(SRC_PATH)/eval_expr
 
-include $(SRC_BC_PATH)/ft_bc.mk
+include $(SRC_BC_PATH)/eval_expr.mk
 
 ifeq ($(DEBUG), yes)
 	CFLAGS			+=	-g -D DEBUG
@@ -46,7 +46,7 @@ endif
 
 INCL_PATH			=	include
 OP_INC_PATH			=	../include
-INCL				=	$(INCL_PATH)/asm.h $(OP_INC_PATH)/op.h $(INCL_PATH)/ft_bc.h
+INCL				=	$(INCL_PATH)/asm.h $(OP_INC_PATH)/op.h $(INCL_PATH)/eval_expr.h
 
 LIB_PATH			=	../lib_src
 

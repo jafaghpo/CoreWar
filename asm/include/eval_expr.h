@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bc.h                                            :+:      :+:    :+:   */
+/*   eval_expr.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/16 18:10:12 by jafaghpo          #+#    #+#             */
-/*   Updated: 2017/12/01 16:24:27 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/02 20:40:18 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_BC_H
-# define FT_BC_H
+#ifndef EVAL_EXPR_H
+# define EVAL_EXPR_H
 
 # include "asm.h"
 
@@ -72,7 +72,7 @@ struct	s_token
 	int		size;
 };
 
-int		ft_bc(char *expr, t_label *labels, int *error, int size);
+int		eval_expr(char *expr, t_label *labels, int *error, int size);
 
 int		lexer(char *expr, t_token *token, t_heap *stack, t_label *labels);
 

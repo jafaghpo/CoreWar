@@ -1,17 +1,17 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ft_bc.mk                                           :+:      :+:    :+:    #
+#    eval_expr.mk                                       :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/12/01 21:19:28 by jafaghpo          #+#    #+#              #
-#    Updated: 2017/12/17 16:56:19 by jafaghpo         ###   ########.fr        #
+#    Created: 2018/01/02 20:37:31 by jafaghpo          #+#    #+#              #
+#    Updated: 2018/01/02 20:37:33 by jafaghpo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS_BC				=	atoi_base.c bitwise_op.c eval_stack.c eval_token.c \
-						ft_bc.c lexer.c bc_op.c stack.c
+						eval_expr.c lexer.c bc_op.c stack.c
 SRC_BC				=	$(addprefix $(SRC_BC_PATH)/, $(SRCS_BC))
 
 OBJ					+=	$(addprefix $(OBJ_PATH)/, $(SRCS_BC:.c=.o))

@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/10 09:04:18 by iburel            #+#    #+#             */
-/*   Updated: 2017/12/16 20:46:19 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/02 20:37:16 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	get_direct(t_parse *parse, char *inst, int *len, int i, t_label *labe
 	error = 0;
 	if (op_tab[op - 1].octal)
 		inst[1] |= DIR_CODE << (6 - 2 * i);
-	n = ft_bc(parse->ptr[i] + 1, labels, &error, size);
+	n = eval_expr(parse->ptr[i] + 1, labels, &error, size);
 	if (error == 1)
 		return (puterror(ERROR_SYNTAX_DIR, 0));
 	else if (error == 2)
@@ -81,7 +81,7 @@ static int	get_indirect(t_parse *parse, char *inst, int *len, int i, t_label *la
 	error = 0;
 	if (op_tab[op - 1].octal)
 		inst[1] |= IND_CODE << (6 - 2 * i);
-	n = ft_bc(parse->ptr[i], labels, &error, size);
+	n = eval_expr(parse->ptr[i], labels, &error, size);
 	if (error == 1)
 		return (puterror(ERROR_SYNTAX_IND, 0));
 	else if (error == 2)

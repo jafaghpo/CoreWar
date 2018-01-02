@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 14:38:13 by iburel            #+#    #+#             */
-/*   Updated: 2017/12/16 20:46:19 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/02 20:37:16 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <ncurses.h>
 # include "libft.h"
 # include "op.h"
-# include "ft_bc.h"
+# include "eval_expr.h"
 
 # define ERROR_OPEN_S				"error open s"
 # define ERROR_OPEN_COR				"error open cor"

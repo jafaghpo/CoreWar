@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bc.c                                            :+:      :+:    :+:   */
+/*   eval_expr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/06 16:21:32 by jafaghpo          #+#    #+#             */
-/*   Updated: 2017/11/29 14:15:50 by jafaghpo         ###   ########.fr       */
+/*   Created: 2018/01/02 20:38:04 by jafaghpo          #+#    #+#             */
+/*   Updated: 2018/01/02 20:38:05 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_bc.h"
+#include "eval_expr.h"
 
 static void		init_next(t_type *type)
 {
@@ -84,7 +84,7 @@ void			free_stack(t_heap *stack)
 	}
 }
 
-int				ft_bc(char *expr, t_label *labels, int *error, int size)
+int				eval_expr(char *expr, t_label *labels, int *error, int size)
 {
 	t_token			token;
 	t_heap			stack;
