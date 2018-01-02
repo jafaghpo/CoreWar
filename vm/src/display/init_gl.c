@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 21:49:39 by iburel            #+#    #+#             */
-/*   Updated: 2017/12/07 03:42:47 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/02 22:34:30 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,18 +64,38 @@ static void     init_coord(float *coord)
     }
 }
 
+static void     init_mem(Uint32 *mem)
+{
+    Uint32  i;
+
+    i = 0;
+    while (i < 6 * MEM_SIZE)
+    {
+        mem[i] = i / 6;
+        mem[i + 1] = mem[i];
+        mem[i + 2] = mem[i];
+        mem[i + 3] = mem[i];
+        mem[i + 4] = mem[i];
+        mem[i + 5] = mem[i];
+        i += 6;
+    }
+}
+
 static void     init_vram(t_gl *gl)
 {
     float   tab[18 * MEM_SIZE];
     float   coord[12 * MEM_SIZE];
+    Uint32  mem[6 * MEM_SIZE];
 
     init_tab(tab);
     init_coord(coord);
+    init_mem(mem);
     glGenBuffers(1, &gl->vbo);
     glBindBuffer(GL_ARRAY_BUFFER, gl->vbo);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(tab) + sizeof(coord) + sizeof(g_mem), 0, GL_DYNAMIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(tab) + sizeof(coord) + sizeof(g_mem), 0, GL_STATIC_DRAW);
         glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(tab), tab);
         glBufferSubData(GL_ARRAY_BUFFER, sizeof(tab), sizeof(coord), coord);
+	    glBufferSubData(GL_ARRAY_BUFFER, sizeof(tab) + sizeof(coord), sizeof(mem), mem);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glGenVertexArrays(1, &gl->vao);
     glBindVertexArray(gl->vao);
@@ -84,7 +104,7 @@ static void     init_vram(t_gl *gl)
             glEnableVertexAttribArray(0);
             glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, (GLvoid *)sizeof(tab));
             glEnableVertexAttribArray(1);
-            glVertexAttribPointer(2, 1, GL_UNSIGNED_BYTE, GL_FALSE, 0, (GLvoid *)(sizeof(tab) + sizeof(coord)));
+            glVertexAttribPointer(2, 1, GL_UNSIGNED_INT, GL_FALSE, 0, (GLvoid *)(sizeof(tab) + sizeof(coord)));
             glEnableVertexAttribArray(2);
         glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);

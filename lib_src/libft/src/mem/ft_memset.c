@@ -3,40 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 10:19:15 by iburel            #+#    #+#             */
-/*   Updated: 2016/11/03 10:19:16 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/17 20:09:26 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "mem.h"
+#include "type.h"
 
-void	*ft_memset(void *ptr, int c, size_t n)
+void    ft_memset(void *data, int octet, size_t len)
 {
-	t_ulint	*tmp1;
-	t_uchar	*tmp2;
-	t_ulint	lc;
+    t_int64     octet64;
 
-	if ((lc = (t_uchar)c))
-	{
-		lc = (lc << 8) | lc;
-		lc = (lc << 16) | lc;
-		lc = (lc << 32) | lc;
-	}
-	tmp1 = (t_ulint *)ptr;
-	while (n > 7)
-	{
-		*tmp1 = lc;
-		tmp1++;
-		n -= 8;
-	}
-	tmp2 = (t_uchar *)tmp1;
-	while (n > 0)
-	{
-		*tmp2 = (t_uchar)c;
-		tmp2++;
-		n--;
-	}
-	return (ptr);
+    octet64 = octet | (octet << 8);
+    octet64 |= (octet64 << 16);
+    octet64 |= (octet64 << 32);
+    while (len >= 8)
+    {
+        *((t_uint64 *)data) = octet64;
+        data = (void *)((t_uint64 *)data + 1);
+        len -= 8;
+    }
+    while (len > 0)
+    {
+        *((t_uint8 *)data) = octet;
+        data = (void *)((t_uint8 *)data + 1);
+        len -= 1;
+    }
 }

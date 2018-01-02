@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cplxpow.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 15:18:08 by iburel            #+#    #+#             */
-/*   Updated: 2017/06/08 15:18:10 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/17 19:24:43 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "cplx.h"
 
 t_cplx	ft_cplxpow(t_cplx z, int pow)
 {

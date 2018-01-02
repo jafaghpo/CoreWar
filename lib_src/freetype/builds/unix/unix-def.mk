@@ -32,7 +32,7 @@ INSTALL         := /usr/bin/install -c
 INSTALL_DATA    := ${INSTALL} -m 644
 INSTALL_PROGRAM := ${INSTALL}
 INSTALL_SCRIPT  := ${INSTALL}
-MKINSTALLDIRS   := /Users/iburel/corewar/lib_src/freetype/builds/unix/./install-sh -c -d
+MKINSTALLDIRS   := /Users/iburel/Desktop/corewar/lib_src/freetype/builds/unix/./install-sh -c -d
 
 CLEAN += $(OBJ_BUILD)/freetype-config \
          $(OBJ_BUILD)/freetype2.pc
@@ -49,7 +49,7 @@ DISTCLEAN += $(OBJ_BUILD)/config.cache  \
 
 # Standard installation variables.
 #
-prefix       := /Users/iburel/corewar/vm/../lib/freetype
+prefix       := /Users/iburel/Desktop/corewar/vm/../lib/freetype
 exec_prefix  := ${prefix}
 libdir       := ${exec_prefix}/lib
 bindir       := ${exec_prefix}/bin
@@ -62,9 +62,9 @@ version_info := 21:0:15
 
 # Variables needed for `freetype-config' and `freetype.pc'.
 #
-PKG_CONFIG         := 
-REQUIRES_PRIVATE   := 
-LIBS_PRIVATE       := -lz -lbz2
+PKG_CONFIG         := /Users/iburel/.brew/bin/pkg-config
+REQUIRES_PRIVATE   := zlib
+LIBS_PRIVATE       := -lbz2
 LIBSSTATIC_CONFIG  := -lfreetype -lz -lbz2
 build_libtool_libs := 
 ft_version         := 21.0.15

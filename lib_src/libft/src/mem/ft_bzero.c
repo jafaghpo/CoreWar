@@ -3,26 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 10:14:28 by iburel            #+#    #+#             */
-/*   Updated: 2017/06/09 16:25:59 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/17 20:07:42 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "mem.h"
+#include "type.h"
 
 void	ft_bzero(void *s, size_t n)
 {
 	while (n > 8)
 	{
-		*(t_ulint *)s = 0;
+		*(t_uint64 *)s = 0;
 		s += 8;
 		n -= 8;
 	}
 	while (n > 0)
 	{
-		*(t_uchar *)s = 0;
+		*(t_uint8 *)s = 0;
 		s++;
 		n--;
 	}

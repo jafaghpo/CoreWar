@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:50:56 by iburel            #+#    #+#             */
-/*   Updated: 2017/12/03 18:36:40 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/02 20:40:43 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@
 # include <limits.h>
 # include <ft2build.h>
 # include FT_FREETYPE_H
+
+typedef unsigned char t_uchar;
+typedef unsigned int  t_uint;
 
 # define ERROR_INIT_SDL         "error: initialisation of sdl failed"
 # define ERROR_CREAT_WIN        "error: creation of the window failed"

@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:51:33 by iburel            #+#    #+#             */
-/*   Updated: 2017/12/07 03:27:25 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/02 22:44:58 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,25 +73,20 @@ void	*display(void)
 	nb_frames = 0;
 	GLint back_ground_location = glGetUniformLocation(gl.prog, "back_ground");
 	GLint first_number_location = glGetUniformLocation(gl.prog, "first_number");
-	GLint second_number_location = glGetUniformLocation(gl.prog, "second_number");
+	GLint mem_location = glGetUniformLocation(gl.prog, "mem");
 //	GLint color_location = glGetUniformLocation(gl.prog, "color");
 	GLint number_one[16];
-	GLint number_two[16];
 	i = 0;
 	while (i < 16)
 	{
 		number_one[i] = i + 1;
-		number_two[i] = i + 17;
 		glActiveTexture(GL_TEXTURE0 + i + 1);
 		glBindTexture(GL_TEXTURE_2D, police_text[i]);
-		glActiveTexture(GL_TEXTURE0 + i + 17);
-		glBindTexture(GL_TEXTURE_2D, police_text[i + 16]);
 		i++;
 	}
 	glUseProgram(gl.prog);
 		glUniform1i(back_ground_location, 0);
 		glUniform1iv(first_number_location, 16, number_one);
-		glUniform1iv(second_number_location, 16, number_two);
 	glUseProgram(0);
 	while (!done)
 	{
@@ -112,25 +107,8 @@ void	*display(void)
 			glBindVertexArray(gl.vao);
 				glUniformMatrix4fv(model_location, 1, GL_FALSE, modelview);
 				glUniformMatrix4fv(proj_location, 1, GL_FALSE, projection);
-//				glUniform1iv(back_ground_location, 2, test);
-/*				glUniform1i(back_ground_location, 0);
-				glUniform1i(first_number_location, 1);
-				glUniform1i(second_number_location, 2);*/
+				glUniform1iv(mem_location, 1000, (int *)g_mem);
 				glDrawArrays(GL_TRIANGLES, 0, 6 * MEM_SIZE);
-/*				i = 0;
-				while (i < MEM_SIZE)
-				{
-					glUniform3f(color_location, g_case[i].r, g_case[i].g, g_case[i].b);
-					glActiveTexture(GL_TEXTURE0);
-					if (g_player[i] == 1)
-						glBindTexture(GL_TEXTURE_2D, text);
-					else
-						glBindTexture(GL_TEXTURE_2D, text2);
-
-
-					glDrawArrays(GL_TRIANGLE_STRIP, i * 4, 4);
-					i++;
-				}*/
 			glBindVertexArray(0);
 		glUseProgram(0);
 		display_square((t_vec2){0.4f, -1.f}, (t_vec2){0.6f, 2.f}, text2);

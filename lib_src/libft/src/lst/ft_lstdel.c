@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 10:16:45 by iburel            #+#    #+#             */
-/*   Updated: 2016/11/03 10:16:46 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/17 19:25:23 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "lst.h"
 
 void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {

@@ -3,19 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   mem.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/09 14:51:54 by iburel            #+#    #+#             */
-/*   Updated: 2017/12/03 17:57:01 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/17 20:04:38 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MEM_H
 # define MEM_H
 
+#include <string.h>
+
 void	*ft_realloc(void *data, size_t size);
 int		ft_nbbits(unsigned long long int nb);
-void	*ft_memset(void *str, int c, size_t n);
+void	ft_memset(void *str, int c, size_t n);
 void	ft_bzero(void *str, size_t n);
 void	ft_memcpy(void *dest, void *src, int n);
 void	*ft_memccpy(void *dest, const void *src, int c, size_t n);

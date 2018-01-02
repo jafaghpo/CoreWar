@@ -1,13 +1,13 @@
 IMG_png.lo: IMG_png.c SDL_image.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_main.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_stdinc.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_config.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_platform.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_main.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_stdinc.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_config.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_platform.h \
   /usr/include/AvailabilityMacros.h /usr/include/Availability.h \
   /usr/include/AvailabilityInternal.h /usr/include/TargetConditionals.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/begin_code.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/close_code.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/begin_code.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/close_code.h \
   /usr/include/sys/types.h /usr/include/sys/appleapiopts.h \
   /usr/include/sys/cdefs.h /usr/include/sys/_symbol_aliasing.h \
   /usr/include/sys/_posix_availability.h /usr/include/machine/types.h \
@@ -84,62 +84,62 @@ IMG_png.lo: IMG_png.c SDL_image.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include/inttypes.h \
   /usr/include/inttypes.h /usr/include/math.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include/float.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_assert.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_atomic.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_audio.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_error.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_endian.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_mutex.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_thread.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_rwops.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_clipboard.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_cpuinfo.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_assert.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_atomic.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_audio.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_error.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_endian.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_mutex.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_thread.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_rwops.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_clipboard.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_cpuinfo.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include/mmintrin.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include/xmmintrin.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include/mm_malloc.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include/emmintrin.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include/f16cintrin.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include/pmmintrin.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_events.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_video.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_pixels.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_rect.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_surface.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_blendmode.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_keyboard.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_keycode.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_scancode.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_mouse.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_joystick.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_gamecontroller.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_quit.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_gesture.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_touch.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_filesystem.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_haptic.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_hints.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_loadso.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_log.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_messagebox.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_power.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_render.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_shape.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_system.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_timer.h \
-  /Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_version.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_events.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_video.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_pixels.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_rect.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_surface.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_blendmode.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_keyboard.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_keycode.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_scancode.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_mouse.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_joystick.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_gamecontroller.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_quit.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_gesture.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_touch.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_filesystem.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_haptic.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_hints.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_loadso.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_log.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_messagebox.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_power.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_render.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_shape.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_system.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_timer.h \
+  /Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_version.h \
   miniz.h /usr/include/assert.h
 
 SDL_image.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_main.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_main.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_stdinc.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_stdinc.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_config.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_config.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_platform.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_platform.h:
 
 /usr/include/AvailabilityMacros.h:
 
@@ -149,9 +149,9 @@ SDL_image.h:
 
 /usr/include/TargetConditionals.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/begin_code.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/begin_code.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/close_code.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/close_code.h:
 
 /usr/include/sys/types.h:
 
@@ -391,25 +391,25 @@ SDL_image.h:
 
 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include/float.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_assert.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_assert.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_atomic.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_atomic.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_audio.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_audio.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_error.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_error.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_endian.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_endian.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_mutex.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_mutex.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_thread.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_thread.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_rwops.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_rwops.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_clipboard.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_clipboard.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_cpuinfo.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_cpuinfo.h:
 
 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include/mmintrin.h:
 
@@ -423,59 +423,59 @@ SDL_image.h:
 
 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include/pmmintrin.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_events.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_events.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_video.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_video.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_pixels.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_pixels.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_rect.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_rect.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_surface.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_surface.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_blendmode.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_blendmode.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_keyboard.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_keyboard.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_keycode.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_keycode.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_scancode.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_scancode.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_mouse.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_mouse.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_joystick.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_joystick.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_gamecontroller.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_gamecontroller.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_quit.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_quit.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_gesture.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_gesture.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_touch.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_touch.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_filesystem.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_filesystem.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_haptic.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_haptic.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_hints.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_hints.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_loadso.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_loadso.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_log.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_log.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_messagebox.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_messagebox.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_power.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_power.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_render.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_render.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_shape.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_shape.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_system.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_system.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_timer.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_timer.h:
 
-/Users/iburel/corewar/vm/../lib/SDL2/include/SDL2/SDL_version.h:
+/Users/iburel/Desktop/corewar/vm/../lib/SDL2/include/SDL2/SDL_version.h:
 
 miniz.h:
 

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_delspace.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/15 16:46:34 by iburel            #+#    #+#             */
-/*   Updated: 2017/06/15 16:48:26 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/17 19:27:49 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "str.h"
 
 void	ft_delspace(char **str)
 {

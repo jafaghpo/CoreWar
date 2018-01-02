@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_filetostr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 16:00:19 by iburel            #+#    #+#             */
-/*   Updated: 2017/03/16 16:00:20 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/17 19:53:48 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "file.h"
+#include "str.h"
+#include "put.h"
+#include <unistd.h>
+#include <fcntl.h>
 
 char	*ft_filetostr(char *file)
 {
