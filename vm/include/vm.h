@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 18:31:33 by niragne           #+#    #+#             */
-/*   Updated: 2017/12/16 20:46:19 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/02 20:09:39 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,6 @@ typedef struct s_args		t_args;
 typedef struct s_file		t_file;
 typedef struct s_proc		t_proc;
 typedef struct s_inst		t_inst;
-
-typedef char				t_int8;
-typedef short int			t_int16;
-typedef int					t_int32;
-typedef long int			t_int64;
-typedef unsigned char		t_uint8;
-typedef unsigned short int	t_uint16;
-typedef unsigned int		t_uint32;
-typedef unsigned long int	t_uint64;
 
 struct		s_player
 {

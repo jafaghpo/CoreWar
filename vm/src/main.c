@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/09 20:49:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2017/11/30 00:41:37 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/03 18:42:13 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 #include <pthread.h>
 
 t_uint8		g_mem[MEM_SIZE] = {0};
-t_uint8		g_player[MEM_SIZE] = {0};
-t_uint8		g_line_chat = CHAT_SIZE;
-char		g_chat[CHAT_SIZE][CHAT_LINE_SIZE] = {};
 t_uint32	g_id;
 
 int		main(int ac, char **av)
@@ -52,6 +49,14 @@ int		main(int ac, char **av)
 	debug_players(players, flags.nb_players);
 #endif
 
+	int	i;
+
+	i = 0;
+	while (i < MEM_SIZE)
+	{
+		g_case[i] = (t_case){1.f, 1.f, 1.f};
+		i++;
+	}
 	load_players(players, flags.nb_players);
 
 #ifdef DEBUG

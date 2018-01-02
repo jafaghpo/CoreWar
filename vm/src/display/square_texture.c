@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   square_texture.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/19 18:51:02 by iburel            #+#    #+#             */
-/*   Updated: 2017/11/19 18:51:03 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/03 15:15:13 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 static GLuint   g_prog;
 static GLuint   g_vao;
+static GLuint   offset_location;
+static GLuint   size_location;
+static GLuint   text_location;
 
 int     init_square_texture(void)
 {
@@ -23,6 +26,9 @@ int     init_square_texture(void)
 
     if (!(g_prog = create_prog(VERTEX_SQUARE, FRAGMENT_SQUARE)))
         return (0);
+    offset_location = glGetUniformLocation(g_prog, "offset");
+    size_location = glGetUniformLocation(g_prog, "size");
+    text_location = glGetUniformLocation(g_prog, "text");
     glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
         glBufferData(GL_ARRAY_BUFFER, sizeof(vertices) + sizeof(coord_text), 0, GL_STATIC_DRAW);
@@ -45,11 +51,12 @@ void    display_square(t_vec2 offset, t_vec2 size, GLuint text)
 {
     glUseProgram(g_prog);
         glBindVertexArray(g_vao);
-            glUniform2f(glGetUniformLocation(g_prog, "offset"), offset.x, offset.y);
-            glUniform2f(glGetUniformLocation(g_prog, "size"), size.x, size.y);
+            glUniform2f(offset_location, offset.x, offset.y);
+            glUniform2f(size_location, size.x, size.y);
+			glUniform1i(text_location, 0);
+			glActiveTexture(GL_TEXTURE0);
             glBindTexture(GL_TEXTURE_2D, text);
                 glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-            glBindTexture(GL_TEXTURE_2D, 0);
         glBindVertexArray(0);
     glUseProgram(0);
 }

@@ -6,7 +6,7 @@
 #    By: iburel <iburel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2017/12/01 18:06:25 by iburel           ###   ########.fr        #
+#    Updated: 2017/12/03 22:53:58 by iburel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ SRCS_DISPLAY			=	display.c init_sdl.c init_gl.c shader_build.c load_image.c \
 
 SRC						=	$(addprefix $(SRCS_PATH)/, $(SRCS))
 SRC						+=	$(addprefix $(SRCS_OP_PATH)/, $(SRCS_OP))
-SRC						+=	$(addprefix $(SRCS__DISPLAY_PATH)/, $(SRCS_DISPLAY))
+SRC						+=	$(addprefix $(SRCS_DISPLAY_PATH)/, $(SRCS_DISPLAY))
 
 OBJ_PATH				=	obj
 OBJ						=	$(addprefix $(OBJ_PATH)/, $(SRCS:.c=.o))
@@ -84,11 +84,8 @@ all:
 
 build: $(NAME)
 
-$(NAME): obj $(OBJ)
+$(NAME): $(OBJ)
 	gcc -o $(NAME) $(OBJ) -L $(LIBFT) -L $(LIBMAT) -L $(LIBSDL2) -L $(LIBFREETYPE) $(LIBOPENGL)
-
-obj:
-	mkdir obj
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCL_OP) $(INCL_VM)
 	gcc -o $@ -c $< $(CFLAGS) -I $(INCL_PATH) -I $(OP_INC_PATH) -I $(LIBFT_INCL) -I $(LIBMAT_INCL) -I $(LIBFREETYPE_INCL) -I $(LIBSDL2_INCL)
@@ -106,12 +103,12 @@ $(LIB_PATH):
 
 ft: $(LIB_PATH)/libft
 	make -j "DEBUG=$(DEBUG)" "TIME=$(TIME)" -C $(LIB_SRC_PATH)/libft
-	mv $(LIB_SRC_PATH)/libft/libft.a $(LIB_PATH)/libft
+	cp $(LIB_SRC_PATH)/libft/libft.a $(LIB_PATH)/libft
 	cp -R $(LIB_SRC_PATH)/libft/include $(LIB_PATH)/libft
 
 mat: $(LIB_PATH)/libmat
 	make -j "DEBUG=$(DEBUG)" "TIME=$(TIME)" -C $(LIB_SRC_PATH)/libmat
-	mv $(LIB_SRC_PATH)/libmat/libmat.a $(LIB_PATH)/libmat
+	cp $(LIB_SRC_PATH)/libmat/libmat.a $(LIB_PATH)/libmat
 	cp -R $(LIB_SRC_PATH)/libmat/include $(LIB_PATH)/libmat
 
 sdl2: $(LIB_PATH)/SDL2

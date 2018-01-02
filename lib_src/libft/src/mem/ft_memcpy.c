@@ -3,39 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 10:18:41 by iburel            #+#    #+#             */
-/*   Updated: 2017/09/21 00:02:11 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/03 17:51:41 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void    ft_memcpy(void *dest, void *src, int len)
 {
-	t_ulint	*ulsrc;
-	t_ulint	*uldest;
-	t_uchar	*ucsrc;
-	t_uchar	*ucdest;
-
-	ulsrc = (t_ulint *)src;
-	uldest = (t_ulint *)dest;
-	while (n > 7)
-	{
-		*uldest = *ulsrc;
-		ulsrc++;
-		uldest++;
-		n -= 8;
-	}
-	ucsrc = (t_uchar *)ulsrc;
-	ucdest = (t_uchar *)uldest;
-	while (n > 0)
-	{
-		*ucdest = *ucsrc;
-		ucsrc++;
-		ucdest++;
-		n--;
-	}
-	return (dest);
+    while (len >= 8)
+    {
+        *((t_uint64 *)dest) = *((t_uint64 *)src);
+        dest = (void *)((t_uint64 *)dest + 1);
+        src = (void *)((t_uint64 *)src + 1);
+        len -= 8;
+    }
+    while (len > 0)
+    {
+        *((t_uint8 *)dest) = *((t_uint8 *)src);
+        dest = (void *)((t_uint8 *)dest + 1);
+        src = (void *)((t_uint8 *)src + 1);
+        len -= 1;
+    }
 }
