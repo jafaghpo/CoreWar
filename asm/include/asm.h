@@ -3,18 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   asm.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 14:38:13 by iburel            #+#    #+#             */
-/*   Updated: 2017/10/14 23:09:33 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/16 20:46:19 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ASM_H
 # define ASM_H
 
+# include <ncurses.h>
 # include "libft.h"
 # include "op.h"
+# include "ft_bc.h"
 
 # define ERROR_OPEN_S				"error open s"
 # define ERROR_OPEN_COR				"error open cor"
@@ -40,15 +42,16 @@ typedef struct s_label	t_label;
 typedef struct s_lstlb	t_lstlb;
 typedef struct s_tmplb	t_tmplb;
 typedef struct s_parse	t_parse;
+typedef struct s_token	t_token;
 
-struct s_buf
+struct	s_buf
 {
 	t_uchar	*buf;
 	int		size;
 	int		i;
 };
 
-struct s_tmplb
+struct	s_tmplb
 {
 	char	*name;
 	int		cursor;
@@ -57,27 +60,27 @@ struct s_tmplb
 	t_tmplb	*next;
 };
 
-struct s_lstlb
+struct	s_lstlb
 {
 	char	*name;
 	int		addr;
 	t_lstlb	*next;
 };
 
-struct s_label
+struct	s_label
 {
 	t_tmplb	*tmp;
 	t_lstlb	*lst;
 };
 
-struct s_parse
+struct	s_parse
 {
 	char	**ptr;
 	int		*size;
 	int		nb;
 };
 
-extern t_op op_tab[17];
+extern	t_op			op_tab[17];
 
 /*
 **	debug
@@ -94,15 +97,17 @@ void		buff_header(header_t *header, int name_len, int comment_len);
 void		buff_init(void);
 int			buff_getcursor(void);
 void		buff_put(int fd);
+void		display_buff(void);
 
 /*
 **	label
 */
 t_lstlb		*add_label(t_lstlb *label, char *name, int addr);
-t_tmplb		*add_tmplb(t_tmplb *label, char *name, int cursor, int size, int rel);
+t_tmplb		*add_tmplb(t_tmplb *label, char *name, int cursor,
+			int size, int rel);
 int			check_label(char *str);
 int			check_tmplb(t_label *labels);
-int			get_label_addr(char *str, t_label *labels);
+int			get_label_addr(char *str, t_label *labels, t_token *token);
 int			verif_tmp(t_tmplb *tmp);
 int			labelcmp(char *labe1, char *label2);
 char		*labeldup(char *label);
@@ -114,20 +119,19 @@ int			split_spe(t_parse *parse, char *line);
 int			fill_size(t_parse *parse);
 int			wordlen(char *line);
 int			arglen(char *str);
-int			atoi_base(char *str, int *error);
-char		*rmspace(char *str);
 
 /*
 **	resolve
 */
 char		*get_name(char *file);
 int			parse(int fd);
-int			analyze_line(char *line, t_label *labels, header_t *header, int *size);
+int			analyze_line(char *line, t_label *labels,
+			header_t *header, int *size);
 int			pars_inst(char *line, int *size, t_label *labels);
-int			pars_args(t_parse *parse, t_label *labels, char *inst, int op, int size);
+int			pars_args(t_parse *parse, t_label *labels, char *inst,
+			int op, int size);
 int			point(char *line, header_t *header);
 int			get_opcode(char *inst);
-int			eval_expr(char *str, t_label *labels, int *error, int size);
 
 /*
 **	error

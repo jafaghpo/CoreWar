@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/07 20:50:28 by niragne           #+#    #+#             */
-/*   Updated: 2017/10/14 23:07:56 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/03 18:30:27 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,13 @@ int		parse(int fd)
 		ft_printf("%s\n", line);
 #endif
 		if (!analyze_line(line, &labels, &header, &size))
+		{
 #ifdef DEBUG
 			exit(0);
 #else
 			return (0);
 #endif
+		}
 		free(line);
 	}
 #ifdef DEBUG

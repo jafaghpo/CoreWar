@@ -1,6 +1,25 @@
 {
-    "files.associations": {
-        "*.o": "c",
-        "vm.h": "c"
-    }
+	"files.associations": {
+		"typeinfo": "cpp",
+		"algorithm": "c",
+		"fstream": "c",
+		"locale": "c",
+		"__locale": "c",
+		"ios": "c",
+		"istream": "c",
+		"sstream": "c",
+		"disas.h": "c",
+		"__hash_table": "c",
+		"__split_buffer": "c",
+		"bitset": "c",
+		"initializer_list": "c",
+		"iterator": "c",
+		"memory": "c",
+		"string": "c",
+		"string_view": "c",
+		"unordered_map": "c",
+		"utility": "c",
+		"vector": "c",
+		"__bit_reference": "c"
+	}
 }
