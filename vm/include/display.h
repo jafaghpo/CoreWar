@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:50:56 by iburel            #+#    #+#             */
-/*   Updated: 2017/12/01 18:35:38 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/02 15:44:36 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ extern Uint8    g_mem[MEM_SIZE];
 extern Uint8    g_player[MEM_SIZE];
 extern char     g_chat[CHAT_SIZE][CHAT_LINE_SIZE];
 extern Uint8    g_line_chat;
+extern t_uint32 g_pause;
+extern t_uint32 g_key;
 
 typedef struct s_sdl    t_sdl;
 typedef struct s_gl     t_gl;

@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:51:33 by iburel            #+#    #+#             */
-/*   Updated: 2017/12/08 17:10:40 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/02 16:02:59 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,10 @@ void	*display(void)
 				done = 1;
 			else if (sdl.event.key.keysym.sym == SDLK_j)
 				add_line_chat("t'as appuye sur J, t'es vraiment tres fort");
+			else if (sdl.event.key.keysym.sym == SDLK_SPACE && sdl.event.key.type == SDL_KEYDOWN)
+				g_key = SDLK_SPACE;
+			while (g_key)
+				;
 		}
 		event(&projection, &modelview);
 		display_square((t_vec2){-1.f, -1.f}, (t_vec2){2.f, 2.f}, fond);

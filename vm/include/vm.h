@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 18:31:33 by niragne           #+#    #+#             */
-/*   Updated: 2017/12/27 16:02:54 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/02 15:42:56 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,7 @@ void    	exec_proc(t_proc **cycle, t_uint32 nb_cycle, t_proc *tmp);
 t_int32    	get_player_id(t_uint32 octet);
 void 		purge(t_proc **cycle);
 int    		pick_winner(void);
+void 		*keyhook(void *av);
 
 /*
 ** debug
