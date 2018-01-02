@@ -6,7 +6,7 @@
 #    By: niragne <niragne@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/01/02 15:20:10 by niragne          ###   ########.fr        #
+#    Updated: 2018/01/02 18:38:28 by niragne          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,9 @@ NAME					=	corewar
 CFLAGS					=	-Wall -Wextra -Werror
 
 ifeq ($(DEBUG), yes)
-	CFLAGS				+=	-D DEBUG
+	CFLAGS				+= -g -D DEBUG
 else
-	CFLAGS				+=
+	CFLAGS				+= -g
 endif
 
 ifeq ($(TIME), yes)

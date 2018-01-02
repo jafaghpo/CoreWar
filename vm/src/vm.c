@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 15:21:22 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/02 16:43:57 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/02 18:11:35 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void        *vm(void *av)
     t_uint32        last_check;
     t_uint32        nb_cycle;
     char            str[CHAT_LINE_SIZE];
-    t_uint32        sleep = 500;
 
     ft_bzero(str, sizeof(str));
     init_proc(cycle, ((t_args*)av)->nb_players);
@@ -28,6 +27,11 @@ void        *vm(void *av)
     last_check = CYCLE_TO_DIE;
     while (g_id)
     {
+        if (nb_cycle == ((t_args*)av)->dumps)
+        {
+            debug_map();
+            return (NULL);
+        }
         if (nb_cycle == last_check)
         {
             purge(cycle);
@@ -45,13 +49,12 @@ void        *vm(void *av)
             checks++;
             last_check += (g_cycle_to_die - 1) * (g_cycle_to_die >= 0) + 1;
         }
-        usleep(sleep);
+        usleep((int)g_sleep);
         while (g_pause)
             ;
         proc_foreach(cycle, nb_cycle);
         nb_cycle++;
     }
     ft_printf("LA C FINI MDR\nwinner = %s\n", g_champs[pick_winner()].name);
-    ft_printf("fdjkfngiuerhoure");
    return (NULL);
 }

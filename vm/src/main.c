@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/09 20:49:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/02 15:36:08 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/02 18:47:20 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_uint32	g_id;
 t_champ		g_champs[4];
 t_uint32	g_nb_live = 0;
 t_int32   	g_cycle_to_die = CYCLE_TO_DIE;
+float		g_sleep = 500;
 
 
 int		main(int ac, char **av)
@@ -38,6 +39,8 @@ int		main(int ac, char **av)
 	}
 	
 	ft_bzero(&flags, sizeof(flags));
+	flags.dumps = UINT_MAX;
+	ft_memset(flags.breakpoints, -1, sizeof(flags.breakpoints));
 	files = parse_flags(&flags, av, ac);
 
 #ifdef DEBUG

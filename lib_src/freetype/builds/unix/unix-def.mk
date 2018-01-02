@@ -62,9 +62,9 @@ version_info := 21:0:15
 
 # Variables needed for `freetype-config' and `freetype.pc'.
 #
-PKG_CONFIG         := 
-REQUIRES_PRIVATE   := 
-LIBS_PRIVATE       := -lz -lbz2
+PKG_CONFIG         := /Users/niragne/.brew/bin/pkg-config
+REQUIRES_PRIVATE   := zlib
+LIBS_PRIVATE       := -lbz2
 LIBSSTATIC_CONFIG  := -lfreetype -lz -lbz2
 build_libtool_libs := 
 ft_version         := 21.0.15

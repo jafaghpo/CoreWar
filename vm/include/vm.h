@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 18:31:33 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/02 15:42:56 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/02 18:32:10 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@
 
 # define READ_MAX				CHAMP_MAX_SIZE + PROG_NAME_LENGTH + COMMENT_LENGTH + 16
 # define HEADER_SIZE			PROG_NAME_LENGTH + COMMENT_LENGTH + 16
+
+# define MAX_BREAKPOINTS		10
 
 typedef struct s_player		t_player;
 typedef struct s_args		t_args;
@@ -72,10 +74,11 @@ struct		s_proc
 
 struct		s_args
 {
-	t_uint8	dump : 1;
-	t_uint8	visu : 1;
-	int		dumps;
-	int		nb_players;
+	t_uint8		dump : 1;
+	t_uint8		visu : 1;
+	t_uint32	dumps;
+	int			nb_players;
+	int			breakpoints[MAX_BREAKPOINTS];
 };
 
 struct		s_file

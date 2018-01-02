@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:51:33 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/02 16:02:59 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/02 17:42:46 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ void	*display(void)
 				done = 1;
 			else if (sdl.event.key.keysym.sym == SDLK_j)
 				add_line_chat("t'as appuye sur J, t'es vraiment tres fort");
-			else if (sdl.event.key.keysym.sym == SDLK_SPACE && sdl.event.key.type == SDL_KEYDOWN)
-				g_key = SDLK_SPACE;
+			if (sdl.event.key.type == SDL_KEYDOWN)
+				g_key = sdl.event.key.keysym.sym;
 			while (g_key)
 				;
 		}
