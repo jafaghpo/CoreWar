@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   puterror.c                                         :+:      :+:    :+:   */
+/*   run_visual.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/09 12:15:37 by iburel            #+#    #+#             */
-/*   Updated: 2017/09/09 13:37:50 by iburel           ###   ########.fr       */
+/*   Created: 2018/01/03 22:09:40 by jafaghpo          #+#    #+#             */
+/*   Updated: 2018/01/03 22:17:21 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int		puterror(char *str, int error)
+void		run_visual(t_tab *tab)
 {
-	ft_printf("%s\n", str);
-	return (error);
+	(void)tab;
 }

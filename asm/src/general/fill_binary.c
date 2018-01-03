@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   putpars.c                                          :+:      :+:    :+:   */
+/*   fill_binary.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/09 12:30:36 by iburel            #+#    #+#             */
-/*   Updated: 2017/09/10 18:01:10 by iburel           ###   ########.fr       */
+/*   Created: 2018/01/03 18:03:45 by jafaghpo          #+#    #+#             */
+/*   Updated: 2018/01/03 18:04:43 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	putparse(t_parse *parse)
+int			fill_binary(char *name)
 {
-	int		i;
-
-	ft_printf("nb args : %d\n", parse->nb);
-	i = 0;
-	while (i < parse->nb)
-	{
-		ft_printf("%d\t", parse->size[i]);
-		ft_printf("%s\n", parse->ptr[i]);
-		i++;
-	}
-	ft_printf("\n");
+	(void)name;
+	return (0);
 }

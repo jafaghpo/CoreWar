@@ -1,23 +1,22 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    eval_expr.mk                                       :+:      :+:    :+:    #
+#    general.mk                                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/01/02 20:37:31 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/01/03 22:50:35 by jafaghpo         ###   ########.fr        #
+#    Created: 2018/01/03 23:04:30 by jafaghpo          #+#    #+#              #
+#    Updated: 2018/01/03 23:08:12 by jafaghpo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC_EVAL_PATH		=	src/eval_expr
+SRC_GEN_PATH		=	src/general
 
-SRCS_EVAL			=	atoi_base.c bitwise_op.c eval_stack.c eval_token.c \
-						eval_expr.c lexer.c reg_op.c stack.c
+SRCS_GEN			=	get_name.c op.c print_error.c fill_binary.c
 
-SRC_EVAL			=	$(addprefix $(SRC_EVAL_PATH)/, $(SRCS_EVAL))
+SRC_GEN				=	$(addprefix $(SRC_GEN_PATH)/, $(SRCS_GEN))
 
-OBJ					+=	$(addprefix $(OBJ_PATH)/, $(SRCS_EVAL:.c=.o))
+OBJ					+=	$(addprefix $(OBJ_PATH)/, $(SRCS_GEN:.c=.o))
 
-$(OBJ_PATH)/%.o: $(SRC_EVAL_PATH)/%.c $(INCL)
+$(OBJ_PATH)/%.o: $(SRC_GEN_PATH)/%.c $(INCL)
 	$(CC) -o $@ -c $< $(CFLAGS) -I $(INCL_PATH) -I $(OP_INC_PATH) -I $(LIBFT_INCL_PATH)

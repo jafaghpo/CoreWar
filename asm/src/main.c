@@ -3,46 +3,65 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/07 15:18:19 by iburel            #+#    #+#             */
-/*   Updated: 2017/09/19 19:21:09 by iburel           ###   ########.fr       */
+/*   Created: 2017/12/29 15:19:44 by jafaghpo          #+#    #+#             */
+/*   Updated: 2018/01/03 22:34:47 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-#include <fcntl.h>
-#include <signal.h>
 
-int		main(int ac, char **av)
+static int		print_usage(char *exec_name)
 {
-	int		fd;
-	char	*name;
-	int		i;
+	ft_printf("usage: %s [-wv] file ...\n", exec_name);
+	return (0);
+}
+
+static int		get_option(char **av)
+{
+	int			option;
+	int			i;
+	int			j;
+
+	i = 0;
+	option = 0;
+	while (av[i])
+	{
+		if (av[i][0] == '-')
+		{
+			j = 0;
+			while (av[i][j])
+			{
+				if (av[i][j] == 'v')
+					option |= VISUAL_FLAG;
+				else if (av[i][j] == 'w')
+					option |= WARNING_FLAG;
+				j++;
+			}
+		}
+		i++;
+	}
+	return (option);
+}
+
+int				main(int ac, char **av)
+{
+	char		*bin_name;
+	int			option;
+	int			i;
 
 	if (ac < 2)
-	{
-		ft_printf("usage: %s file1 [file2 ...]\n", av[0]);
-		return (0);
-	}
+		return (print_usage(av[0]));
 	i = 1;
+	option = get_option(av);
 	while (i < ac)
 	{
-		ft_printf("compilation of %s\n", av[i]);
-		if (!(name = get_name(av[i])))
-			return (0);
-		if ((fd = open(av[i], O_RDONLY)) == -1)
-			return (puterror(ERROR_OPEN_S, 0));
-		if (parse(fd))
+		if (av[i][0] != '-' && (bin_name = get_name(av[i])))
 		{
-			close(fd);
-			if ((fd = open(name, O_TRUNC | O_CREAT | O_WRONLY, 0644)) == -1)
-				return (puterror(ERROR_OPEN_COR, 0));
-			buff_put(fd);
-			ft_printf("done in %s\n", name);
+			if (parse_file(av[i], option))
+				fill_binary(bin_name);
 		}
-		get_next_line(-fd, NULL);
-		close(fd);
 		i++;
 	}
 	return (0);

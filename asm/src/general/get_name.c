@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wordlen.c                                          :+:      :+:    :+:   */
+/*   get_name.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/08 12:40:24 by niragne           #+#    #+#             */
-/*   Updated: 2017/09/11 15:49:10 by iburel           ###   ########.fr       */
+/*   Created: 2018/01/03 17:08:42 by jafaghpo          #+#    #+#             */
+/*   Updated: 2018/01/03 17:08:54 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int		wordlen(char *str)
+char	*get_name(char *file)
 {
-	int i;
+	char	*name;
+	size_t	len;
 
-	i = 0;
-	while (str[i] != '\t' && str[i] != ' ' &&
-			str[i] != SEPARATOR_CHAR && str[i])
-		i++;
-	return (i);
+	len = ft_strlen(file);
+	if (len < 3 || !ft_strequ(file + len - 2, ".s"))
+	{
+		print_error(ERROR_EXT);
+		return (NULL);
+	}
+	if (!(name = malloc(sizeof(*name) * (len + 3))))
+	{
+		print_error(NULL);
+		return (NULL);
+	}
+	ft_strncpy(name, file, len - 2);
+	ft_strcpy(name + len - 2, ".cor");
+	return (name);
 }

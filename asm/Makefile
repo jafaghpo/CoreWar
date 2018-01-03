@@ -6,7 +6,7 @@
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/01/02 20:37:16 by jafaghpo         ###   ########.fr        #
+#    Updated: 2018/01/03 23:07:45 by jafaghpo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,20 +19,16 @@ CC					=	gcc
 CFLAGS				=	-Werror -Wextra -Wextra
 
 SRC_PATH			=	src
-SRCS				=	op.c buff.c parse.c main.c get_name.c puterror.c \
-						analyze_line.c split_spe.c putpars.c pars_inst.c \
-						point.c wordlen.c add_label.c check_label.c fill_size.c \
-						pars_args.c get_label_addr.c get_opcode.c putlabels.c \
-						add_tmplb.c check_tmplb.c verif_tmp.c arglen.c labelcmp.c \
-						labeldup.c
+SRCS				=	main.c
 SRC					=	$(addprefix $(SRC_PATH)/, $(SRCS))
 
 OBJ_PATH			=	obj
 OBJ					=	$(addprefix $(OBJ_PATH)/, $(SRCS:.c=.o))
 
-SRC_BC_PATH			=	$(SRC_PATH)/eval_expr
-
-include $(SRC_BC_PATH)/eval_expr.mk
+include src/general/general.mk
+include src/parsing/parse.mk
+include src/visual/visual.mk
+#include src/eval_expr/eval_expr.mk
 
 ifeq ($(DEBUG), yes)
 	CFLAGS			+=	-g -D DEBUG
