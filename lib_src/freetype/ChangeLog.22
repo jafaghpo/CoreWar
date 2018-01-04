@@ -1807,7 +1807,7 @@
 	* include/freetype/config/ftoption.h (TT_CONFIG_OPTION_BDF): New
 	macro.
 
-	* include/freetype/config/ftstdlib.h (ft_memchr): New macro.
+	* include/freetype/config/ftstdlib.h (memchr): New macro.
 
 	* include/freetype/internal/tttypes.h (TT_BDFRec, TT_BDF)
 	[TT_CONFIG_OPTION_BDF]: New structure.

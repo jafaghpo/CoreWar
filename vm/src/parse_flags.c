@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_flags.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/11 14:20:31 by jafaghpo          #+#    #+#             */
-/*   Updated: 2017/11/20 18:14:14 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/04 14:20:54 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ static void	parse_noargs(t_args *flags, char *str)
 	}
 }
 
-static int	parse_args(t_args *flags, char **av)
+static int	parse_args(t_args *flags, char **av, int *i)
 {
-	static int	(*f[256])(t_args *, char *) = {['d'] = get_dumps, ['n'] = get_nums};
+	static int	(*f[256])() = {['d'] = get_dumps, ['n'] = get_nums, ['b'] = get_breakpoints};
 	int			tmp;
 
 	if (!f[(int)av[0][1]] || av[0][2])
 		ft_afferror("invalid argument");
-	tmp = f[(int)av[0][1]](flags, av[1]);
+	tmp = f[(int)av[0][1]](flags, av[1], av, i);
 	return (tmp);
 }
 
@@ -55,7 +55,7 @@ t_file		*parse_flags(t_args *flags, char **av, int ac)
 			{
 				if (i + 1 >= ac)
 					ft_afferror("bad args");
-				tmp = parse_args(flags, av + i);
+				tmp = parse_args(flags, av + i, &i);
 				i++;
 			}
 			else

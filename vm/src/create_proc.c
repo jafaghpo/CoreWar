@@ -6,18 +6,18 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 18:24:54 by niragne           #+#    #+#             */
-/*   Updated: 2017/12/30 14:53:23 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/03 14:37:49 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-t_proc      *create_proc(t_proc *p, t_int32 pc, t_int32 nb_cycle)
+t_proc      *create_proc(t_proc *p, t_int32 pc, t_int32 g_nb_cycle)
 {
     t_proc          *ret;
     int             i;
     
-    (void)nb_cycle;
+    (void)g_nb_cycle;
     if (!(ret = malloc(sizeof(*ret))))
         ft_afferror(ERROR_MALLOC);
     ret->pc = pc;

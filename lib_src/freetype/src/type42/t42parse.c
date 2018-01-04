@@ -167,7 +167,7 @@
          FT_FRAME_ENTER( 17 ) )
       goto Exit;
 
-    if ( ft_memcmp( stream->cursor, "%!PS-TrueTypeFont", 17 ) != 0 )
+    if ( memcmp( stream->cursor, "%!PS-TrueTypeFont", 17 ) != 0 )
     {
       FT_TRACE2(( "  not a Type42 font\n" ));
       error = FT_THROW( Unknown_File_Format );
@@ -499,15 +499,15 @@
     else
     {
       if ( cur + 17 < limit                                            &&
-           ft_strncmp( (const char*)cur, "StandardEncoding", 16 ) == 0 )
+           strncmp( (const char*)cur, "StandardEncoding", 16 ) == 0 )
         face->type1.encoding_type = T1_ENCODING_TYPE_STANDARD;
 
       else if ( cur + 15 < limit                                          &&
-                ft_strncmp( (const char*)cur, "ExpertEncoding", 14 ) == 0 )
+                strncmp( (const char*)cur, "ExpertEncoding", 14 ) == 0 )
         face->type1.encoding_type = T1_ENCODING_TYPE_EXPERT;
 
       else if ( cur + 18 < limit                                             &&
-                ft_strncmp( (const char*)cur, "ISOLatin1Encoding", 17 ) == 0 )
+                strncmp( (const char*)cur, "ISOLatin1Encoding", 17 ) == 0 )
         face->type1.encoding_type = T1_ENCODING_TYPE_ISOLATIN1;
 
       else
@@ -960,7 +960,7 @@
 
         /* record index of /.notdef */
         if ( *cur == '.'                                              &&
-             ft_strcmp( ".notdef",
+             strcmp( ".notdef",
                         (const char*)(name_table->elements[n]) ) == 0 )
         {
           notdef_index = n;
@@ -1006,7 +1006,7 @@
     }
 
     /* if /.notdef does not occupy index 0, do our magic. */
-    if ( ft_strcmp( (const char*)".notdef",
+    if ( strcmp( (const char*)".notdef",
                     (const char*)name_table->elements[0] ) )
     {
       /* Swap glyph in index 0 with /.notdef glyph.  First, add index 0  */
@@ -1160,7 +1160,7 @@
 
       /* look for `FontDirectory' which causes problems for some fonts */
       if ( *cur == 'F' && cur + 25 < limit                    &&
-           ft_strncmp( (char*)cur, "FontDirectory", 13 ) == 0 )
+           strncmp( (char*)cur, "FontDirectory", 13 ) == 0 )
       {
         FT_Byte*  cur2;
 
@@ -1174,7 +1174,7 @@
         while ( cur < limit )
         {
           if ( *cur == 'k' && cur + 5 < limit             &&
-                ft_strncmp( (char*)cur, "known", 5 ) == 0 )
+                strncmp( (char*)cur, "known", 5 ) == 0 )
             break;
 
           T1_Skip_PS_Token( parser );
@@ -1233,8 +1233,8 @@
               continue;
 
             if ( cur[0] == name[0]                      &&
-                 len == ft_strlen( (const char *)name ) &&
-                 ft_memcmp( cur, name, len ) == 0       )
+                 len == strlen( (const char *)name ) &&
+                 memcmp( cur, name, len ) == 0       )
             {
               /* we found it -- run the parsing callback! */
               parser->root.error = t42_load_keyword( face,

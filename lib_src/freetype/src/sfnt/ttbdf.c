@@ -168,7 +168,7 @@
     if ( !size || !property_name )
       goto Exit;
 
-    property_len = ft_strlen( property_name );
+    property_len = strlen( property_name );
     if ( property_len == 0 )
       goto Exit;
 
@@ -203,7 +203,7 @@
         /* be a bit paranoid for invalid entries here */
         if ( name_offset < bdf->strings_size                    &&
              property_len < bdf->strings_size - name_offset     &&
-             ft_strncmp( property_name,
+             strncmp( property_name,
                          (const char*)bdf->strings + name_offset,
                          bdf->strings_size - name_offset ) == 0 )
         {
@@ -213,7 +213,7 @@
           case 0x01:  /* atoms */
             /* check that the content is really 0-terminated */
             if ( value < bdf->strings_size &&
-                 ft_memchr( bdf->strings + value, 0, bdf->strings_size ) )
+                 memchr( bdf->strings + value, 0, bdf->strings_size ) )
             {
               aprop->type   = BDF_PROPERTY_TYPE_ATOM;
               aprop->u.atom = (const char*)bdf->strings + value;

@@ -76,21 +76,21 @@
 
 
 #include <string.h>
-
-#define ft_memchr   memchr
-#define ft_memcmp   memcmp
-#define ft_memcpy   memcpy
-#define ft_memmove  memmove
-#define ft_memset   memset
-#define ft_strcat   strcat
-#define ft_strcmp   strcmp
-#define ft_strcpy   strcpy
-#define ft_strlen   strlen
-#define ft_strncmp  strncmp
-#define ft_strncpy  strncpy
-#define ft_strrchr  strrchr
-#define ft_strstr   strstr
-
+/*
+#define memchr   memchr
+#define memcmp   memcmp
+#define memcpy   memcpy
+#define memmove  memmove
+#define memset   memset
+#define strcat   strcat
+#define strcmp   strcmp
+#define strcpy   strcpy
+#define strlen   strlen
+#define strncmp  strncmp
+#define strncpy  strncpy
+#define strrchr  strrchr
+#define strstr   strstr
+*/
 
   /**********************************************************************/
   /*                                                                    */
@@ -107,7 +107,7 @@
 #define ft_fread    fread
 #define ft_fseek    fseek
 #define ft_ftell    ftell
-#define ft_sprintf  sprintf
+#define sprintf  sprintf
 
 
   /**********************************************************************/

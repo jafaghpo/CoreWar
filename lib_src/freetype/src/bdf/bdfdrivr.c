@@ -248,7 +248,7 @@ THE SOFTWARE.
       lengths[nn] = 0;
       if ( strings[nn] )
       {
-        lengths[nn] = ft_strlen( strings[nn] );
+        lengths[nn] = strlen( strings[nn] );
         len        += lengths[nn] + 1;
       }
     }
@@ -256,7 +256,7 @@ THE SOFTWARE.
     if ( len == 0 )
     {
       strings[0] = (char *)"Regular";
-      lengths[0] = ft_strlen( strings[0] );
+      lengths[0] = strlen( strings[0] );
       len        = lengths[0] + 1;
     }
 
@@ -283,7 +283,7 @@ THE SOFTWARE.
         if ( s != face->style_name )
           *s++ = ' ';
 
-        ft_memcpy( s, src, len );
+        memcpy( s, src, len );
 
         /* need to convert spaces to dashes for */
         /* add_style_name and setwidth_name     */
@@ -652,13 +652,13 @@ THE SOFTWARE.
                  ( s[2] == 'o' || s[2] == 'O' ) )
             {
               s += 3;
-              if ( !ft_strcmp( s, "10646" )                      ||
-                   ( !ft_strcmp( s, "8859" ) &&
-                     !ft_strcmp( face->charset_encoding, "1" ) ) )
+              if ( !strcmp( s, "10646" )                      ||
+                   ( !strcmp( s, "8859" ) &&
+                     !strcmp( face->charset_encoding, "1" ) ) )
                 unicode_charmap = 1;
               /* another name for ASCII */
-              else if ( !ft_strcmp( s, "646.1991" )                 &&
-                        !ft_strcmp( face->charset_encoding, "IRV" ) )
+              else if ( !strcmp( s, "646.1991" )                 &&
+                        !strcmp( face->charset_encoding, "IRV" ) )
                 unicode_charmap = 1;
             }
 

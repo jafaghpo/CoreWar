@@ -77,19 +77,19 @@
 
 #include <string.h>
 
-#define ft_memchr   memchr
-#define ft_memcmp   memcmp
-#define ft_memcpy   memcpy
-#define ft_memmove  memmove
-#define ft_memset   memset
-#define ft_strcat   strcat
-#define ft_strcmp   strcmp
-#define ft_strcpy   strcpy
-#define ft_strlen   strlen
-#define ft_strncmp  strncmp
-#define ft_strncpy  strncpy
-#define ft_strrchr  strrchr
-#define ft_strstr   strstr
+//#define ft_memchr   memchr
+//#define ft_memcmp   memcmp
+//#define ft_memcpy   memcpy
+//#define ft_memmove  memmove
+//#define ft_memset   memset
+//#define ft_strcat   strcat
+//#define ft_strcmp   strcmp
+//#define ft_strcpy   strcpy
+//#define ft_strlen   strlen
+//#define ft_strncmp  strncmp
+//#define ft_strncpy  strncpy
+//#define ft_strrchr  strrchr
+//#define ft_strstr   strstr
 
 
   /**********************************************************************/
@@ -101,13 +101,13 @@
 
 #include <stdio.h>
 
-#define FT_FILE     FILE
-#define ft_fclose   fclose
-#define ft_fopen    fopen
-#define ft_fread    fread
-#define ft_fseek    fseek
-#define ft_ftell    ftell
-#define ft_sprintf  sprintf
+//#define FT_FILE     FILE
+//#define ft_fclose   fclose
+//#define ft_fopen    fopen
+//#define ft_fread    fread
+//#define ft_fseek    fseek
+//#define ft_ftell    ftell
+//#define ft_sprintf  sprintf
 
 
   /**********************************************************************/

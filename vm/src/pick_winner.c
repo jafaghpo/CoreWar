@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/27 15:42:15 by niragne           #+#    #+#             */
-/*   Updated: 2017/12/30 12:58:00 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/04 15:31:49 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,5 @@ int    pick_winner(void)
         }
         i++;
     }
-    printf("PICK WINNER %d\n",j );
-    printf("bite");
     return (j);
 }

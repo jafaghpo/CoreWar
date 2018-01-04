@@ -2,6 +2,7 @@
     "files.associations": {
         "*.o": "c",
         "vm.h": "c",
-        "typeinfo": "c"
+        "typeinfo": "c",
+        "sstream": "c"
     }
 }

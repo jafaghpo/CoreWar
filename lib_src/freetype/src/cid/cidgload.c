@@ -82,7 +82,7 @@
         glyph_length = (FT_ULong)( glyph_data.length - cid->fd_bytes );
         (void)FT_ALLOC( charstring, glyph_length );
         if ( !error )
-          ft_memcpy( charstring, glyph_data.pointer + cid->fd_bytes,
+          memcpy( charstring, glyph_data.pointer + cid->fd_bytes,
                      glyph_length );
       }
 

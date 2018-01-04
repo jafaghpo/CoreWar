@@ -26,7 +26,7 @@
 #include "ttgload.h"
 #include "ttpload.h"
 
-#include "tterrors.h"
+#include "tterrors.h"ß
 
 #ifdef TT_USE_BYTECODE_INTERPRETER
 #include "ttinterp.h"
@@ -190,7 +190,7 @@
 
 
     for ( nn = 0; nn < TRICK_NAMES_COUNT; nn++ )
-      if ( ft_strstr( name, trick_names[nn] ) )
+      if ( strstr( name, trick_names[nn] ) )
         return TRUE;
 
     return FALSE;
@@ -499,7 +499,7 @@
 
         error = FT_Get_Glyph_Name( ttface, glyph_index, buf, 8 );
         if ( !error                                            &&
-             buf[0] == '.' && !ft_strncmp( buf, ".notdef", 8 ) )
+             buf[0] == '.' && !strncmp( buf, ".notdef", 8 ) )
           result = TRUE;
       }
     }

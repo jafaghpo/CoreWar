@@ -896,7 +896,7 @@
 
       if ( FT_REALLOC( font->family_name,
                        family_size,
-                       ft_strlen( font->family_name ) + 1 ) )
+                       strlen( font->family_name ) + 1 ) )
         goto Fail;
 
       root->family_name = font->family_name;

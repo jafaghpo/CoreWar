@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/11 14:40:43 by jafaghpo          #+#    #+#             */
-/*   Updated: 2017/10/21 18:06:09 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/04 14:49:47 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	    get_dumps(t_args *flags, char *str)
 {
-    flags->dump = 1;
     int     n;
 
     n = 0;
+    flags->dump = 1;
     if (!ft_isdigit(*str))
         ft_afferror("t con");
     while (ft_isdigit(*str))

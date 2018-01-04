@@ -125,7 +125,7 @@
           for ( idx = 0; idx < type1->num_glyphs; idx++ )
           {
             glyph_name = (FT_Byte*)type1->glyph_names[idx];
-            if ( ft_strcmp( (const char*)char_name,
+            if ( strcmp( (const char*)char_name,
                             (const char*)glyph_name ) == 0 )
             {
               type1->encoding.char_index[charcode] = (FT_UShort)idx;
@@ -133,7 +133,7 @@
 
               /* Change min/max encoded char only if glyph name is */
               /* not /.notdef                                      */
-              if ( ft_strcmp( (const char*)".notdef",
+              if ( strcmp( (const char*)".notdef",
                               (const char*)glyph_name ) != 0 )
               {
                 if ( charcode < min_char )

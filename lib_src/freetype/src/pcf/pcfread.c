@@ -465,7 +465,7 @@ THE SOFTWARE.
 
     for ( i = 0; i < face->nprops && !found; i++ )
     {
-      if ( !ft_strcmp( properties[i].name, prop ) )
+      if ( !strcmp( properties[i].name, prop ) )
         found = 1;
     }
 
@@ -1269,7 +1269,7 @@ THE SOFTWARE.
       lengths[nn] = 0;
       if ( strings[nn] )
       {
-        lengths[nn] = ft_strlen( strings[nn] );
+        lengths[nn] = strlen( strings[nn] );
         len        += lengths[nn] + 1;
       }
     }
@@ -1277,7 +1277,7 @@ THE SOFTWARE.
     if ( len == 0 )
     {
       strings[0] = (char*)"Regular";
-      lengths[0] = ft_strlen( strings[0] );
+      lengths[0] = strlen( strings[0] );
       len        = lengths[0] + 1;
     }
 
@@ -1304,7 +1304,7 @@ THE SOFTWARE.
         if ( s != face->style_name )
           *s++ = ' ';
 
-        ft_memcpy( s, src, len );
+        memcpy( s, src, len );
 
         /* need to convert spaces to dashes for */
         /* add_style_name and setwidth_name     */
@@ -1428,7 +1428,7 @@ THE SOFTWARE.
 
           PCF_Property  foundry_prop, point_size_prop, average_width_prop;
 
-          int  l    = ft_strlen( prop->value.atom ) + 1;
+          int  l    = strlen( prop->value.atom ) + 1;
           int  wide = 0;
 
 
@@ -1442,31 +1442,31 @@ THE SOFTWARE.
             {
               /* This font is at least square shaped or even wider */
               wide = 1;
-              l   += ft_strlen( " Wide" );
+              l   += strlen( " Wide" );
             }
           }
 
           if ( foundry_prop && foundry_prop->isString )
           {
-            l += ft_strlen( foundry_prop->value.atom ) + 1;
+            l += strlen( foundry_prop->value.atom ) + 1;
 
             if ( FT_NEW_ARRAY( root->family_name, l ) )
               goto Exit;
 
-            ft_strcpy( root->family_name, foundry_prop->value.atom );
-            ft_strcat( root->family_name, " " );
-            ft_strcat( root->family_name, prop->value.atom );
+            strcpy( root->family_name, foundry_prop->value.atom );
+            strcat( root->family_name, " " );
+            strcat( root->family_name, prop->value.atom );
           }
           else
           {
             if ( FT_NEW_ARRAY( root->family_name, l ) )
               goto Exit;
 
-            ft_strcpy( root->family_name, prop->value.atom );
+            strcpy( root->family_name, prop->value.atom );
           }
 
           if ( wide )
-            ft_strcat( root->family_name, " Wide" );
+            strcat( root->family_name, " Wide" );
         }
         else
 

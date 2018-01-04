@@ -6,22 +6,22 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 11:20:08 by root              #+#    #+#             */
-/*   Updated: 2017/12/08 16:14:09 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/03 14:37:49 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void 		op_lfork(t_proc *p, t_inst *args, t_int32 nb_cycle, t_proc **procs)
+void 		op_lfork(t_proc *p, t_inst *args, t_int32 g_nb_cycle, t_proc **procs)
 {
     t_proc  *new;
     t_int32 tmp;
     
     tmp = args[0].value + p->pc;
     tmp = tmp % MEM_SIZE + MEM_SIZE * (tmp < 0);
-    new = create_proc(p, tmp, nb_cycle);
+    new = create_proc(p, tmp, g_nb_cycle);
     if (g_mem[new->pc] == 0 || g_mem[new->pc] > 16)
-        insert_proc(procs, new, (nb_cycle + 1) % 1001);    
+        insert_proc(procs, new, (g_nb_cycle + 1) % 1001);    
     else
-        insert_proc(procs, new, (nb_cycle + op_tab[g_mem[new->pc]].cycles) % 1001);
+        insert_proc(procs, new, (g_nb_cycle + op_tab[g_mem[new->pc]].cycles) % 1001);
 }

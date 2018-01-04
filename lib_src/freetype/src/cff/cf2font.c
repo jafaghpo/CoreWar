@@ -330,7 +330,7 @@
 
     /* determine if transform has changed;       */
     /* include Fontmatrix but ignore translation */
-    if ( ft_memcmp( transform,
+    if ( memcmp( transform,
                     &font->currentTransform,
                     4 * sizeof ( CF2_Fixed ) ) != 0 )
     {

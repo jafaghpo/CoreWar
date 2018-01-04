@@ -131,7 +131,7 @@
 #endif
 
 
-    if ( !ft_strcmp( property_name, "fallback-script" ) )
+    if ( !strcmp( property_name, "fallback-script" ) )
     {
       FT_UInt*  fallback_script;
       FT_UInt   ss;
@@ -169,7 +169,7 @@
 
       return error;
     }
-    else if ( !ft_strcmp( property_name, "default-script" ) )
+    else if ( !strcmp( property_name, "default-script" ) )
     {
       FT_UInt*  default_script;
 
@@ -185,7 +185,7 @@
 
       return error;
     }
-    else if ( !ft_strcmp( property_name, "increase-x-height" ) )
+    else if ( !strcmp( property_name, "increase-x-height" ) )
     {
       FT_Prop_IncreaseXHeight*  prop;
       AF_FaceGlobals            globals;
@@ -205,7 +205,7 @@
       return error;
     }
 #ifdef AF_CONFIG_OPTION_USE_WARPER
-    else if ( !ft_strcmp( property_name, "warping" ) )
+    else if ( !strcmp( property_name, "warping" ) )
     {
 #ifdef FT_CONFIG_OPTION_ENVIRONMENT_PROPERTIES
       if ( value_is_string )
@@ -233,7 +233,7 @@
       return error;
     }
 #endif /* AF_CONFIG_OPTION_USE_WARPER */
-    else if ( !ft_strcmp( property_name, "darkening-parameters" ) )
+    else if ( !strcmp( property_name, "darkening-parameters" ) )
     {
       FT_Int*  darken_params;
       FT_Int   x1, y1, x2, y2, x3, y3, x4, y4;
@@ -295,7 +295,7 @@
 
       return error;
     }
-    else if ( !ft_strcmp( property_name, "no-stem-darkening" ) )
+    else if ( !strcmp( property_name, "no-stem-darkening" ) )
     {
 #ifdef FT_CONFIG_OPTION_ENVIRONMENT_PROPERTIES
       if ( value_is_string )
@@ -341,7 +341,7 @@
 #endif
 
 
-    if ( !ft_strcmp( property_name, "glyph-to-script-map" ) )
+    if ( !strcmp( property_name, "glyph-to-script-map" ) )
     {
       FT_Prop_GlyphToScriptMap*  prop = (FT_Prop_GlyphToScriptMap*)value;
       AF_FaceGlobals             globals;
@@ -353,7 +353,7 @@
 
       return error;
     }
-    else if ( !ft_strcmp( property_name, "fallback-script" ) )
+    else if ( !strcmp( property_name, "fallback-script" ) )
     {
       FT_UInt*  val = (FT_UInt*)value;
 
@@ -364,7 +364,7 @@
 
       return error;
     }
-    else if ( !ft_strcmp( property_name, "default-script" ) )
+    else if ( !strcmp( property_name, "default-script" ) )
     {
       FT_UInt*  val = (FT_UInt*)value;
 
@@ -373,7 +373,7 @@
 
       return error;
     }
-    else if ( !ft_strcmp( property_name, "increase-x-height" ) )
+    else if ( !strcmp( property_name, "increase-x-height" ) )
     {
       FT_Prop_IncreaseXHeight*  prop = (FT_Prop_IncreaseXHeight*)value;
       AF_FaceGlobals            globals;
@@ -386,7 +386,7 @@
       return error;
     }
 #ifdef AF_CONFIG_OPTION_USE_WARPER
-    else if ( !ft_strcmp( property_name, "warping" ) )
+    else if ( !strcmp( property_name, "warping" ) )
     {
       FT_Bool*  val = (FT_Bool*)value;
 
@@ -396,7 +396,7 @@
       return error;
     }
 #endif /* AF_CONFIG_OPTION_USE_WARPER */
-    else if ( !ft_strcmp( property_name, "darkening-parameters" ) )
+    else if ( !strcmp( property_name, "darkening-parameters" ) )
     {
       FT_Int*  darken_params = module->darken_params;
       FT_Int*  val           = (FT_Int*)value;
@@ -413,7 +413,7 @@
 
       return error;
     }
-    else if ( !ft_strcmp( property_name, "no-stem-darkening" ) )
+    else if ( !strcmp( property_name, "no-stem-darkening" ) )
     {
       FT_Bool   no_stem_darkening = module->no_stem_darkening;
       FT_Bool*  val               = (FT_Bool*)value;

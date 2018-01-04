@@ -6,13 +6,13 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/12 17:58:12 by niragne           #+#    #+#             */
-/*   Updated: 2017/12/27 16:01:34 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/03 14:37:49 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void    live(t_uint32 value, t_int32 nb_cycle)
+void    live(t_uint32 value, t_int32 g_nb_cycle)
 {
     t_uint32 i;
 
@@ -21,7 +21,7 @@ void    live(t_uint32 value, t_int32 nb_cycle)
     {
         if (g_champs[i].number == value)
         {
-            g_champs[i].live = nb_cycle;
+            g_champs[i].live = g_nb_cycle;
             return ;
         }
         i++;

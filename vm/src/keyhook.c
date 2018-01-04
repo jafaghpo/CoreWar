@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 15:03:53 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/02 18:24:17 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/04 18:12:44 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,26 @@
 t_uint32    g_pause = 1;
 t_uint32    g_key = 0;
 
-void    check_breakpoints()
+void    check_breakpoints(void)
+{
+    static int i = 0;
+    char    str[CHAT_LINE_SIZE];
+
+    if (g_flags.breakpoints[i] == g_nb_cycle && g_nb_cycle)
+    {
+        ft_sprintf(str, "[%6d] Game paused (breakpoint %d)", g_nb_cycle, i);
+        g_flags.breakpoints[i] = 0;
+        g_pause = 1;
+        add_line_chat(str);
+        i++;
+    }
+}
 
 void    *keyhook(void *av)
 {
     t_uint8 *key;
     (void)av;
+    char    str[CHAT_LINE_SIZE];
 
     key = (Uint8 *)SDL_GetKeyboardState(NULL);
     while (1)
@@ -31,10 +45,17 @@ void    *keyhook(void *av)
                 g_sleep *= 1.000001;
             if (key[SDL_SCANCODE_Z])
                 g_sleep *= 0.999999;
-            usleep(3);
+            check_breakpoints();
         }
         if (g_key == SDLK_SPACE)
-           g_pause = !g_pause;
+        {
+            if (!g_pause)
+            {
+                ft_sprintf(str, "[%6d] Game paused by user.", g_nb_cycle);
+                add_line_chat(str);            
+            }                
+            g_pause = !g_pause;
+        }
         if (g_key == SDLK_c)
             g_sleep = 500;
         g_key = 0;
