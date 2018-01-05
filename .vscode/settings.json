@@ -3,6 +3,21 @@
         "*.o": "c",
         "vm.h": "c",
         "typeinfo": "c",
-        "sstream": "c"
+        "sstream": "c",
+        "__bit_reference": "c",
+        "__functional_base": "c",
+        "algorithm": "c",
+        "atomic": "c",
+        "bitset": "c",
+        "chrono": "c",
+        "functional": "c",
+        "iterator": "c",
+        "limits": "c",
+        "memory": "c",
+        "ratio": "c",
+        "system_error": "c",
+        "tuple": "c",
+        "type_traits": "c",
+        "vector": "c"
     }
 }

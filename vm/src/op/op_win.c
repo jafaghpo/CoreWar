@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pick_winner.c                                      :+:      :+:    :+:   */
+/*   op_win.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/27 15:42:15 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/05 18:47:59 by niragne          ###   ########.fr       */
+/*   Created: 2018/01/05 18:20:01 by niragne           #+#    #+#             */
+/*   Updated: 2018/01/05 18:50:58 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int    pick_winner(void)
+void 		op_win(t_proc *p, t_inst *args)
 {
-    int max;
     t_uint32 i;
-    t_uint32 j;
+    t_uint32 a;
+    t_int32 b;
+    t_int32 c;
 
-    max = -1;
+    a = get_real_value(args, p, 1);
+    b = get_real_value(args + 1, p, 1);
+    c = get_real_value(args + 2, p, 1);
     i = 0;
-    while (i < g_nb_player)
+    if (b == 0xde && c == 0xad)
     {
-        if ((int)g_champs[i].live > max)
+        while (i < g_nb_player)
         {
-            max = (int)g_champs[i].live;
-            j = i;
+            if (g_champs[i].number == a)
+            {
+                g_champs[i].live = UINT_MAX;
+                g_id = 0;
+            }
+            i++;
         }
-        i++;
     }
-    return (j);
 }

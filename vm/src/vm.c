@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 15:21:22 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/04 18:21:39 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/05 17:55:49 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void        *vm(void *av)
         proc_foreach(cycle, g_nb_cycle);
         g_nb_cycle++;
     }
-    ft_sprintf(str, "[%6d] %20s won the game.", g_champs[pick_winner()].name);
+    ft_sprintf(str, "[%6d] %20s won the game.", g_nb_cycle, g_champs[pick_winner()].name);
+    add_line_chat(str);
    return (NULL);
 }

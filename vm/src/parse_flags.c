@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/11 14:20:31 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/04 14:20:54 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/05 18:03:34 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	parse_noargs(t_args *flags, char *str)
 
 static int	parse_args(t_args *flags, char **av, int *i)
 {
-	static int	(*f[256])() = {['d'] = get_dumps, ['n'] = get_nums, ['b'] = get_breakpoints};
+	static int	(*f[256])() = {['d'] = get_dumps, ['n'] = get_nums, ['b'] = get_breakpoints, ['s'] = get_sleep};
 	int			tmp;
 
 	if (!f[(int)av[0][1]] || av[0][2])

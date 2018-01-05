@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 16:04:48 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/03 14:37:49 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/05 18:45:42 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void    exec_proc(t_proc **cycle, t_uint32 g_nb_cycle, t_proc *tmp)
     f[op](tmp, args, g_nb_cycle, cycle);
     tmp->pc = (tmp->pc + size + 1 + op_tab[op].octal) % MEM_SIZE;
     tmp->op = g_mem[tmp->pc];
-    //ft_printf("pc %d op %d\n", tmp->pc, tmp->op);
     if (g_mem[tmp->pc] == 0 || g_mem[tmp->pc] > 16)
         insert_proc(cycle, tmp, (g_nb_cycle + 1) % 1001);
     else

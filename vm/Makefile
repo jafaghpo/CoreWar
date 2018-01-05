@@ -6,7 +6,7 @@
 #    By: niragne <niragne@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/01/04 12:50:17 by niragne          ###   ########.fr        #
+#    Updated: 2018/01/05 18:50:09 by niragne          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ TIME					=	no
 
 NAME					=	corewar
 CFLAGS					=	-Wall -Wextra -Werror
+#CFLAGS					+= -fsanitize=address
 
 ifeq ($(DEBUG), yes)
 	CFLAGS				+= -g -D DEBUG
@@ -34,12 +35,13 @@ SRCS					=	parse_flags.c flags_v.c add_file.c get_nums.c get_dumps.c \
 							get_ind.c get_void.c live.c get_mod.c put_uint32.c \
 							create_proc.c get_real_value.c ft_abs.c check_reg.c \
 							proc_foreach.c exec_proc.c get_player_id.c purge.c \
-							pick_winner.c keyhook.c get_breakpoints.c main.c
+							pick_winner.c keyhook.c get_breakpoints.c \
+							bubble_tab.c get_sleep.c main.c
 
 SRC_OP_PATH				=	$(SRC_PATH)/op
 SRCS_OP					=	op_live.c op_ld.c op_st.c op_add.c op_sub.c op_and.c \
 							op_or.c op_xor.c op_zjmp.c op_ldi.c op_sti.c op_fork.c \
-							op_lld.c op_lldi.c op_lfork.c op_aff.c
+							op_lld.c op_lldi.c op_lfork.c op_aff.c op_win.c
 
 SRC_DISPLAY_PATH		=	$(SRC_PATH)/display
 SRCS_DISPLAY			=	display.c init_sdl.c init_gl.c shader_build.c load_image.c \
@@ -86,7 +88,7 @@ all:
 build: $(NAME)
 
 $(NAME): obj $(OBJ)
-	gcc -o $(NAME) $(OBJ) -L $(LIBFT) -L $(LIBMAT) -L $(LIBSDL2) -L $(LIBFREETYPE) $(LIBOPENGL)
+	gcc -o $(NAME) $(OBJ) -L $(LIBFT) -L $(LIBMAT) -L $(LIBSDL2) -L $(LIBFREETYPE) $(LIBOPENGL) $(CFLAGS)
 
 obj:
 	mkdir obj

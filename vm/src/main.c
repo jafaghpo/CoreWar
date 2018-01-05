@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/09 20:49:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/04 18:44:56 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/05 18:16:43 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int		main(int ac, char **av)
 	g_flags.dumps = UINT_MAX;
 	files = parse_flags(&g_flags, av, ac);
 	//g_flags.breakpoints[0] = 200;
-	av[ac] = NULL;
+	//av[ac] = NULL;
+	bubble_tab(g_flags.breakpoints, g_flags.nb_breakpoints);
 #ifdef DEBUG
 	debug_flags(&g_flags);
 	debug_print_file(files);
@@ -63,15 +64,14 @@ int		main(int ac, char **av)
 #endif
 
 	load_players(players, g_flags.nb_players);
-
 #ifdef DEBUG
 	//debug_map();
 #endif
 	if (g_flags.visu)
 	{
-		display();
 		pthread_create(&tid, NULL, keyhook, NULL);
 		pthread_create(&tid, NULL, vm, &g_flags);
+		display();
 	}
 	else
 	{

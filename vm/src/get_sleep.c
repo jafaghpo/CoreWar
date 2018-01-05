@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pick_winner.c                                      :+:      :+:    :+:   */
+/*   get_sleep.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/27 15:42:15 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/05 18:47:59 by niragne          ###   ########.fr       */
+/*   Created: 2018/01/05 17:59:42 by niragne           #+#    #+#             */
+/*   Updated: 2018/01/05 18:02:08 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int    pick_winner(void)
+int	    get_sleep(t_args *flags, char *str)
 {
-    int max;
-    t_uint32 i;
-    t_uint32 j;
+    t_uint32     n;
 
-    max = -1;
-    i = 0;
-    while (i < g_nb_player)
+    n = 0;
+    flags->dump = 1;
+    if (!ft_isdigit(*str))
+        ft_afferror("t con");
+    while (ft_isdigit(*str))
     {
-        if ((int)g_champs[i].live > max)
-        {
-            max = (int)g_champs[i].live;
-            j = i;
-        }
-        i++;
+        n = n * 10 + *str - '0';
+        str++;
     }
-    return (j);
+    if (*str)
+        ft_afferror("t con");
+    g_sleep = n;
+    return (-1);
 }

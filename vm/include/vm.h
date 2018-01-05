@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 18:31:33 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/04 14:43:02 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/05 18:50:21 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # define ERROR_BREAKPOINT		"error: wrong breakpoint\n"
 
 # define LIST_FLAGS				"v"
-# define LIST_ARGS				"bdn"
+# define LIST_ARGS				"bdsn"
 # define MAX_BREAKPOINTS		10
 
 # define READ_MAX				CHAMP_MAX_SIZE + PROG_NAME_LENGTH + COMMENT_LENGTH + 16
@@ -107,7 +107,7 @@ struct		s_champ
 	t_uint32	live;
 };
 
-extern t_op		op_tab[17];
+extern t_op		op_tab[OP_NB];
 extern t_uint32	g_id;
 extern t_champ	g_champs[4];
 extern t_uint32 g_nb_live;
@@ -115,6 +115,7 @@ extern t_int32 g_cycle_to_die;
 extern t_uint32 g_nb_player;
 extern t_uint32 g_nb_cycle;
 extern t_args	g_flags;
+
 
 t_uint16	get_uint16(t_uint32 pc);
 t_uint32	get_uint32(t_uint8 *data);
@@ -139,7 +140,7 @@ t_int32		get_ind(t_uint32 pc, t_inst *args, t_int8 index, t_int8 octal);
 t_int32		get_reg(t_uint32 pc, t_inst *args, t_int8 index, t_int8 octal);
 t_int32		get_dir(t_uint32 pc, t_inst *args, t_int8 index, t_int8 octal);
 t_int32		get_void(t_uint32 pc, t_inst *args, t_int8 index, t_int8 octal);
-void   		live(t_uint32 value, t_int32 player);
+void   		live(t_uint32 value);
 void   		put_uint32(t_uint32 x, t_uint32 i);
 t_proc      *create_proc(t_proc *p, t_int32 pc, t_int32 g_nb_cycle);
 t_int32    	get_real_value(t_inst *args, t_proc *p, t_uint8 mod);
@@ -151,6 +152,8 @@ t_int32    	get_player_id(t_uint32 octet);
 void 		purge(t_proc **cycle);
 int    		pick_winner(void);
 void 		*keyhook(void *av);
+void    	bubble_tab(t_uint32 *tab, t_uint32 size);
+int	    	get_sleep(t_args *flags, char *str);
 
 /*
 ** debug
@@ -182,6 +185,7 @@ void 		op_lld(t_proc *p, t_inst *args);
 void 		op_lldi(t_proc *p, t_inst *args);
 void 		op_lfork(t_proc *p, t_inst *args, t_int32 g_nb_cycle, t_proc **procs);
 void 		op_aff(t_proc *p, t_inst *args);
+void 		op_win(t_proc *p, t_inst *args);
 
 /*
 ** vm

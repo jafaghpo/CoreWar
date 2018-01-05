@@ -77,6 +77,10 @@
 
 #include <string.h>
 
+/*
+**  tin serieux freetype la les gars
+*/
+
 //#define ft_memchr   memchr
 //#define ft_memcmp   memcmp
 //#define ft_memcpy   memcpy
