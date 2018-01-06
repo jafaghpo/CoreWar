@@ -6,12 +6,11 @@
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/01/03 23:07:45 by jafaghpo         ###   ########.fr        #
+#    Updated: 2018/01/06 16:38:26 by jafaghpo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 DEBUG				=	no
-TIME				=	no
 
 NAME				=	asm
 
@@ -28,16 +27,13 @@ OBJ					=	$(addprefix $(OBJ_PATH)/, $(SRCS:.c=.o))
 include src/general/general.mk
 include src/parsing/parse.mk
 include src/visual/visual.mk
+include src/label/label.mk
 #include src/eval_expr/eval_expr.mk
 
 ifeq ($(DEBUG), yes)
 	CFLAGS			+=	-g -D DEBUG
 else
 	CFLAGS			+=	-Ofast
-endif
-
-ifeq ($(TIME), yes)
-	CFLAGS			+=	-pg
 endif
 
 INCL_PATH			=	include

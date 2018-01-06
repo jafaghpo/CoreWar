@@ -1,23 +1,22 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    parse.mk                                           :+:      :+:    :+:    #
+#    label.mk                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/01/03 22:39:09 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/01/06 16:45:23 by jafaghpo         ###   ########.fr        #
+#    Created: 2018/01/06 16:08:00 by jafaghpo          #+#    #+#              #
+#    Updated: 2018/01/06 16:15:39 by jafaghpo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC_PARSE_PATH		=	src/parsing
+SRC_LABEL_PATH		=	src/label
 
-SRCS_PARSE			=	parse_file.c parse_header.c parse_core.c tokenize_file.c \
-						tokenize_line.c store_bin_line.c
+SRCS_LABEL			=	check_labels.c
 
-SRC_PARSE			=	$(addprefix $(SRC_PARSE_PATH)/, $(SRCS_PARSE))
+SRC_LABEL			=	$(addprefix $(SRC_LABEL_PATH)/, $(SRCS_LABEL))
 
-OBJ					+=	$(addprefix $(OBJ_PATH)/, $(SRCS_PARSE:.c=.o))
+OBJ					+=	$(addprefix $(OBJ_PATH)/, $(SRCS_LABEL:.c=.o))
 
-$(OBJ_PATH)/%.o: $(SRC_PARSE_PATH)/%.c $(INCL)
+$(OBJ_PATH)/%.o: $(SRC_LABEL_PATH)/%.c $(INCL)
 	$(CC) -o $@ -c $< $(CFLAGS) -I $(INCL_PATH) -I $(OP_INC_PATH) -I $(LIBFT_INCL_PATH)

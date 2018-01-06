@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_core.c                                       :+:      :+:    :+:   */
+/*   check_labels.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/03 22:08:24 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/03 22:09:10 by jafaghpo         ###   ########.fr       */
+/*   Created: 2018/01/06 16:15:45 by jafaghpo          #+#    #+#             */
+/*   Updated: 2018/01/06 16:34:34 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int			parse_core(t_tab *tab)
+int			check_tmp_labels(t_label *label)
 {
-	(void)tab;
+	(void)label;
 	return (1);
 }

@@ -6,60 +6,53 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/29 15:19:44 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/03 22:34:47 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/06 15:00:40 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static int		print_usage(char *exec_name)
-{
-	ft_printf("usage: %s [-wv] file ...\n", exec_name);
-	return (0);
-}
+int				g_option = 0;
 
 static int		get_option(char **av)
 {
-	int			option;
 	int			i;
 	int			j;
 
-	i = 0;
-	option = 0;
+	i = 1;
 	while (av[i])
 	{
-		if (av[i][0] == '-')
+		j = 0;
+		while (*av[i] == '-' && av[i][j])
 		{
-			j = 0;
-			while (av[i][j])
-			{
-				if (av[i][j] == 'v')
-					option |= VISUAL_FLAG;
-				else if (av[i][j] == 'w')
-					option |= WARNING_FLAG;
-				j++;
-			}
+			if (av[i][j] == 'v')
+				g_option |= VISUAL_FLAG;
+			else if (av[i][j] == 'w')
+				g_option |= WARNING_FLAG;
+			else
+				return (print_error(1, ERROR_OPTION, av[i][j]));
+			j++;
 		}
 		i++;
 	}
-	return (option);
+	return (1);
 }
 
 int				main(int ac, char **av)
 {
 	char		*bin_name;
-	int			option;
 	int			i;
 
 	if (ac < 2)
-		return (print_usage(av[0]));
+		return (print_error(1, NULL));
 	i = 1;
-	option = get_option(av);
+	if (!get_option(av))
+		return (0);
 	while (i < ac)
 	{
-		if (av[i][0] != '-' && (bin_name = get_name(av[i])))
+		if (*av[i] != '-' && (bin_name = get_name(av[i])))
 		{
-			if (parse_file(av[i], option))
+			if (parse_file(av[i]))
 				fill_binary(bin_name);
 		}
 		i++;
