@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:51:33 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/02 22:44:58 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/07 19:22:13 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ void	*display(void)
 	t_mat4		projection;
 	t_mat4		modelview;
 	int			done;
-	GLuint		text;
-	GLuint		text2;
+	GLuint		hud;
 	GLuint		police_text[64];
 	GLuint		fond;
 	GLuint		image_load;
@@ -50,14 +49,9 @@ void	*display(void)
 		return (NULL);
 	display_square((t_vec2){-1.f, -1.f}, (t_vec2){2.f, 2.f}, image_load);
 	SDL_GL_SwapWindow(sdl.win);
-	SDL_Delay(1000);
-	if (!load_police_text(police_text, sdl.win))
-		return (NULL);
-	if ((text = load_image("texture/fond_bleu.jpg")) == UINT_MAX)
-		return (NULL);
-	if ((text2 = load_image("texture/blanc.jpg")) == UINT_MAX)
-		return (NULL);
 	if ((fond = load_image("texture/fond.jpg")) == UINT_MAX)
+		return (NULL);
+	if ((hud = load_image("texture/blanc.jpg")) == UINT_MAX)
 		return (NULL);
 	projection = mat4_unit();
 	projection[0] = ((float)WIN_Y / (float)WIN_X) * 0.9f;
@@ -73,8 +67,8 @@ void	*display(void)
 	nb_frames = 0;
 	GLint back_ground_location = glGetUniformLocation(gl.prog, "back_ground");
 	GLint first_number_location = glGetUniformLocation(gl.prog, "first_number");
-	GLint mem_location = glGetUniformLocation(gl.prog, "mem");
-//	GLint color_location = glGetUniformLocation(gl.prog, "color");
+	GLint second_number_location = glGetUniformLocation(gl.prog, "second_number");
+	GLint color_location = glGetUniformLocation(gl.prog, "color");
 	GLint number_one[16];
 	i = 0;
 	while (i < 16)
@@ -86,7 +80,6 @@ void	*display(void)
 	}
 	glUseProgram(gl.prog);
 		glUniform1i(back_ground_location, 0);
-		glUniform1iv(first_number_location, 16, number_one);
 	glUseProgram(0);
 	while (!done)
 	{
@@ -95,10 +88,10 @@ void	*display(void)
 		{
 			if (sdl.event.window.event == SDL_WINDOWEVENT_CLOSE)
 				done = 1;
-			else if (sdl.event.key.keysym.sym == SDLK_ESCAPE)
+			else if (sdl.event.key.keysym.sym == SDLK_ESCAPE && sdl.event.type == SDL_KEYDOWN)
 				done = 1;
 			else if (sdl.event.key.keysym.sym == SDLK_j)
-				add_line_chat("t'as appuye sur J, t'es vraiment tres fort");
+				add_line_chat("t'as appuye sur j,  t'es vraiment tres fort");
 		}
 		event(&projection, &modelview);
 
@@ -107,11 +100,18 @@ void	*display(void)
 			glBindVertexArray(gl.vao);
 				glUniformMatrix4fv(model_location, 1, GL_FALSE, modelview);
 				glUniformMatrix4fv(proj_location, 1, GL_FALSE, projection);
-				glUniform1iv(mem_location, 1000, (int *)g_mem);
-				glDrawArrays(GL_TRIANGLES, 0, 6 * MEM_SIZE);
+				i = 0;
+				while (i < MEM_SIZE)
+				{
+					glUniform3f(color_location, 0.4f, 0.4f, 1.0f);
+					glUniform1i(first_number_location, (g_mem[i] >> 4) + 1);
+					glUniform1i(second_number_location, (g_mem[i] & 0x0f) + 1);
+					glDrawArrays(GL_TRIANGLE_STRIP, i * 4, 4);
+					i++;
+				};
 			glBindVertexArray(0);
 		glUseProgram(0);
-		display_square((t_vec2){0.4f, -1.f}, (t_vec2){0.6f, 2.f}, text2);
+		display_square((t_vec2){0.4f, -1.f}, (t_vec2){0.6f, 2.f}, hud);
 		put_chat();
 		put_text(put_fps, 0.9, 0.9);
 		SDL_GL_SwapWindow(sdl.win);

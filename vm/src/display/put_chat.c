@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 02:28:24 by iburel            #+#    #+#             */
-/*   Updated: 2017/11/30 00:36:59 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/07 18:22:58 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 # define DIFF_Y (((float)POLICE_SIZE / (float)WIN_Y) * 1.5f)
 
-void    put_chat(void)
+void    *put_chat(void *arg)
 {
     int     i;
     int     tmp;
     float   y;
 
+    (void)arg;
     tmp = g_line_chat;
     y = 0;
     i = tmp;

@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 03:11:16 by iburel            #+#    #+#             */
-/*   Updated: 2017/12/07 03:33:24 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/07 17:53:25 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ int         init_freetype(GLuint *police_text)
         ft_printf(ERROR_INIT_FREETYPE"\n");
         return (0);
     }
-    if (FT_New_Face(lib, "fonts/arial.ttf", 0, &face))
+    if (FT_New_Face(lib, "fonts/monaco.ttf", 0, &face))
     {
         ft_printf(ERROR_INIT_FONT"\n");
         return (0);
@@ -177,10 +177,10 @@ void        put_text(char *str, float x, float y)
     offset = 0;
     glUseProgram(g_prog);
         glBindVertexArray(g_vao);
+            glUniform1i(text_location, 0);
             i = 0;
             while (str[i])
             {
-                glUniform1i(text_location, 0);
                 float vertices[8] = {(x + CORR_X + offset)        , (y + OUAIS - CORR_Y - SIZE_Y),
                                     (x + CORR_X + SIZE_X + offset), (y + OUAIS - CORR_Y - SIZE_Y),
                                     (x + CORR_X + offset)         , (y + OUAIS - CORR_Y),

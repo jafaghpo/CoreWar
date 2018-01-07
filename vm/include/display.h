@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:50:56 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/02 20:40:43 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/07 16:42:22 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ typedef unsigned int  t_uint;
 # define VERTEX_TEXT            "shader/text.vert"
 # define FRAGMENT_TEXT          "shader/text.frag"
 
-# define CHAT_SIZE				60
+# define CHAT_SIZE				100
 # define CHAT_LINE_SIZE			50
-# define POLICE_SIZE            20
+# define POLICE_SIZE            16
 
 typedef struct s_case   t_case;
 
