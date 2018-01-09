@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 11:54:03 by root              #+#    #+#             */
-/*   Updated: 2017/12/06 16:33:13 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/09 18:28:52 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static t_proc   *new_proc(t_uint32 player, t_uint32 pc)
 	new->pc = pc;
 	new->carry = 0;
     ft_bzero(new->reg, REG_NUMBER * 4);
-    new->reg[0] = g_champs[player].number;
+    new->reg[0] = /*g_champs[player].number*/ -1;
 	new->player = player;
     new->live = 0;
 	new->id = player + 1;

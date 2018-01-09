@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:50:56 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/02 17:37:07 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/09 17:12:09 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@
 # define ERROR_INIT_FREETYPE    "error: initialisation of freetype failed"
 # define ERROR_INIT_FONT        "error: initialisation of the font failed"
 
-# define WIN_X  1920
-# define WIN_Y  1080
+# define WIN_X  2480
+# define WIN_Y  800
 
 # define VERTEX_DISPLAY         "shader/display.vert"
 # define FRAGMENT_DISPLAY       "shader/display.frag"
@@ -52,7 +52,7 @@
 
 # define CHAT_SIZE				60
 # define CHAT_LINE_SIZE			100
-# define POLICE_SIZE            20
+# define POLICE_SIZE            30
 
 extern Uint8    g_mem[MEM_SIZE];
 extern Uint8    g_player[MEM_SIZE];

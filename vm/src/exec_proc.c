@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 16:04:48 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/09 16:17:50 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/09 18:06:41 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void    exec_proc(t_proc **cycle, t_uint32 g_nb_cycle, t_proc *tmp)
     char            str[CHAT_LINE_SIZE];
 
     op = tmp->op;
+    g_player[tmp->pc] = 0;    
     if (op == 0 || op > 16)
     {
         tmp->pc = (tmp->pc + 1) % MEM_SIZE;
@@ -43,14 +44,15 @@ void    exec_proc(t_proc **cycle, t_uint32 g_nb_cycle, t_proc *tmp)
     }
 
     f[op](tmp, args, g_nb_cycle, cycle);
+    tmp->pc = (tmp->pc + size + 1 + op_tab[op].octal) % MEM_SIZE;
     if (g_step)
     {
-        ft_sprintf(str, "Step by step: instruction = %s", op_tab[op].inst);
+        ft_sprintf(str, "cycle %d [%d] %s %d %d %d", g_nb_cycle, tmp->pc, op_tab[op].inst, args[0].value, args[1].value, args[2].value);
         add_line_chat(str);
         g_pause = 1;
         g_step = 0;
     }
-    tmp->pc = (tmp->pc + size + 1 + op_tab[op].octal) % MEM_SIZE;
+    g_player[tmp->pc] = 1;
     tmp->op = g_mem[tmp->pc];
     if (g_mem[tmp->pc] == 0 || g_mem[tmp->pc] > 16)
         insert_proc(cycle, tmp, (g_nb_cycle + 1) % 1001);
