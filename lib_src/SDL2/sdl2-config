@@ -1,6 +1,6 @@
 #!/bin/sh
 
-prefix=/Users/niragne/projects/corewar/vm/../lib/SDL2
+prefix=/Users/iburel/Desktop/corewar/vm/../lib/SDL2
 exec_prefix=${prefix}
 exec_prefix_set=no
 libdir=${exec_prefix}/lib

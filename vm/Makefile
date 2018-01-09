@@ -6,7 +6,7 @@
 #    By: niragne <niragne@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/01/07 13:20:01 by niragne          ###   ########.fr        #
+#    Updated: 2018/01/09 22:31:10 by iburel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -109,12 +109,12 @@ $(LIB_PATH):
 
 ft: $(LIB_PATH)/libft
 	make "DEBUG=$(DEBUG)" "TIME=$(TIME)" -C $(LIB_SRC_PATH)/libft
-	mv $(LIB_SRC_PATH)/libft/libft.a $(LIB_PATH)/libft
+	cp $(LIB_SRC_PATH)/libft/libft.a $(LIB_PATH)/libft
 	cp -R $(LIB_SRC_PATH)/libft/include $(LIB_PATH)/libft
 
 mat: $(LIB_PATH)/libmat
 	make -j "DEBUG=$(DEBUG)" "TIME=$(TIME)" -C $(LIB_SRC_PATH)/libmat
-	mv $(LIB_SRC_PATH)/libmat/libmat.a $(LIB_PATH)/libmat
+	cp $(LIB_SRC_PATH)/libmat/libmat.a $(LIB_PATH)/libmat
 	cp -R $(LIB_SRC_PATH)/libmat/include $(LIB_PATH)/libmat
 
 sdl2: $(LIB_PATH)/SDL2

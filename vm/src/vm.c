@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 15:21:22 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/09 19:29:22 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/09 22:25:06 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,14 @@ void        *vm(void *av)
     g_nb_cycle = 0;
     checks = 0;
     last_check = CYCLE_TO_DIE;
+    if (((t_args*)av)->dumps == 0)
+    {
+        debug_map();
+        return (NULL);
+    }
     while (g_id)
     {
-        if (g_nb_cycle == ((t_args*)av)->dumps)
+        if (g_nb_cycle == ((t_args*)av)->dumps + 1)
         {
             debug_map();
             return (NULL);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_vprintf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 15:03:49 by root              #+#    #+#             */
-/*   Updated: 2018/01/03 14:36:11 by niragne          ###   ########.fr       */
+/*   Updated: 2017/12/16 18:00:15 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,5 @@ int     ft_vprintf(char *format, va_list arg)
     }
     g_pf_buff(tmp, format - tmp);
     done += format - tmp;
-    pf_putbuff();
     return (done);
 }
