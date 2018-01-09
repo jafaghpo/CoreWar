@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 18:31:33 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/05 18:50:21 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/09 15:38:08 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ struct		s_champ
 
 extern t_op		op_tab[OP_NB];
 extern t_uint32	g_id;
+extern t_uint32	g_step;
 extern t_champ	g_champs[4];
 extern t_uint32 g_nb_live;
 extern t_int32 g_cycle_to_die;
@@ -154,6 +155,7 @@ int    		pick_winner(void);
 void 		*keyhook(void *av);
 void    	bubble_tab(t_uint32 *tab, t_uint32 size);
 int	    	get_sleep(t_args *flags, char *str);
+void    	end_game(void);
 
 /*
 ** debug

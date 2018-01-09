@@ -6,13 +6,14 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 15:03:53 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/05 17:55:30 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/09 16:18:35 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
 t_uint32    g_pause = 1;
+t_uint32    g_step = 0;
 t_uint32    g_key = 0;
 
 void    check_breakpoints(void)
@@ -22,7 +23,7 @@ void    check_breakpoints(void)
 
     if (g_flags.breakpoints[i] == g_nb_cycle && g_nb_cycle)
     {
-        ft_sprintf(str, "[%6d] Game paused (breakpoint %d)", g_nb_cycle, i);
+        ft_sprintf(str, "[%6d] Game paused (breakpoint %d / %d)", g_nb_cycle, i + 1, g_flags.nb_breakpoints);
         g_flags.breakpoints[i] = 0;
         g_pause = 1;
         add_line_chat(str);
@@ -58,6 +59,11 @@ void    *keyhook(void *av)
         }
         if (g_key == SDLK_c)
             g_sleep = 500;
+        if (g_key == SDLK_n)
+        {
+            g_step = !g_step;
+            g_pause = 0;
+        }
         g_key = 0;
     }
     return (NULL);

@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/05 17:29:27 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/05 17:53:06 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/06 15:26:33 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void    bubble_tab(t_uint32 *tab, t_uint32 size)
 	t_uint32	i;
 
 	flag = 1;
+	if (!size)
+		return ;
 	while (flag)
 	{
 		flag = 0;

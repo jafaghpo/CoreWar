@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 16:04:48 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/05 18:45:42 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/09 16:17:50 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void    exec_proc(t_proc **cycle, t_uint32 g_nb_cycle, t_proc *tmp)
     t_uint8         op;
     t_int32         size;
     t_inst          args[4];
+    char            str[CHAT_LINE_SIZE];
 
     op = tmp->op;
     if (op == 0 || op > 16)
@@ -40,11 +41,20 @@ void    exec_proc(t_proc **cycle, t_uint32 g_nb_cycle, t_proc *tmp)
             insert_proc(cycle, tmp, (g_nb_cycle + op_tab[g_mem[tmp->pc]].cycles) % 1001);
         return ;
     }
+
     f[op](tmp, args, g_nb_cycle, cycle);
+    if (g_step)
+    {
+        ft_sprintf(str, "Step by step: instruction = %s", op_tab[op].inst);
+        add_line_chat(str);
+        g_pause = 1;
+        g_step = 0;
+    }
     tmp->pc = (tmp->pc + size + 1 + op_tab[op].octal) % MEM_SIZE;
     tmp->op = g_mem[tmp->pc];
     if (g_mem[tmp->pc] == 0 || g_mem[tmp->pc] > 16)
         insert_proc(cycle, tmp, (g_nb_cycle + 1) % 1001);
     else
         insert_proc(cycle, tmp, (g_nb_cycle + op_tab[g_mem[tmp->pc]].cycles) % 1001);
+
 }
