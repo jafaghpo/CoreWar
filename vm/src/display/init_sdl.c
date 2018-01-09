@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 18:15:15 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/02 22:44:11 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/09 22:13:57 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int     init_sdl(t_sdl *sdl)
     SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
     SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 8);
     if (!(sdl->win = SDL_CreateWindow("corewar", SDL_WINDOWPOS_CENTERED,
-    SDL_WINDOWPOS_CENTERED, WIN_X, WIN_Y, SDL_WINDOW_OPENGL)))
+    SDL_WINDOWPOS_CENTERED, WIN_X, WIN_Y, SDL_WINDOW_OPENGL/* | SDL_WINDOW_FULLSCREEN*/)))
     {
         ft_printf(ERROR_CREAT_WIN"\n");
         return (0);

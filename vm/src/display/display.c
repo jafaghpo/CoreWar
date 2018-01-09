@@ -6,15 +6,15 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:51:33 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/07 19:22:13 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/09 16:39:58 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "display.h"
 
-t_case		g_case[MEM_SIZE] = {};
+t_case		g_case[MEM_SIZE];
 t_uint8		g_line_chat = CHAT_SIZE;
-char		g_chat[CHAT_SIZE][CHAT_LINE_SIZE] = {};
+char		g_chat[CHAT_SIZE][CHAT_LINE_SIZE];
 
 void	*display(void)
 {
