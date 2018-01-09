@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:51:33 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/09 16:39:58 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/09 22:54:09 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,11 @@ void	*display(void)
 			else if (sdl.event.key.keysym.sym == SDLK_ESCAPE && sdl.event.type == SDL_KEYDOWN)
 				done = 1;
 			else if (sdl.event.key.keysym.sym == SDLK_j)
-				add_line_chat("t'as appuye sur j,  t'es vraiment tres fort");
+				add_line_chat("t'as appuye sur J, t'es vraiment tres fort");
+			if (sdl.event.key.type == SDL_KEYDOWN)
+				g_key = sdl.event.key.keysym.sym;
+			while (g_key)
+				;
 		}
 		event(&projection, &modelview);
 

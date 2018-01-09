@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_args.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:29:50 by niragne           #+#    #+#             */
-/*   Updated: 2017/12/16 20:46:19 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/09 22:55:57 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-static void	get_types(t_uchar mem, t_inst *args, t_uint8 op)
+static void	get_types(t_uint8 mem, t_inst *args, t_uint8 op)
 {
     if (op_tab[(int)op].octal)
     {
@@ -39,7 +39,7 @@ static void    get_sizes(t_uint8 op, t_inst *args)
     args[3].size = sizes[args[3].type];
 }
 
-static void    get_values(t_uint pc, t_inst *args, t_int8 op)
+static void    get_values(t_uint32 pc, t_inst *args, t_int8 op)
 {
     static t_int32      (*f[4])(t_uint32, t_inst*, t_int8, t_int8) = {get_void, get_reg, get_dir, get_ind};
     t_uint8             octal;

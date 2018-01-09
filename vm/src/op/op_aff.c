@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_aff.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 11:20:24 by root              #+#    #+#             */
-/*   Updated: 2017/11/21 16:57:40 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/09 22:35:28 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 void 		op_aff(t_proc *p, t_inst *args)
 {
-    ft_printf("aff: %c\n", p->reg[args[0].value - 1]);
+    (void)p;
+    (void)args;
+//    ft_printf("%d aff: %c\n", g_nb_cycle, p->reg[args[0].value - 1]);
 }

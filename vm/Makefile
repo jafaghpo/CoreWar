@@ -6,7 +6,7 @@
 #    By: iburel <iburel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/01/09 22:41:32 by iburel           ###   ########.fr        #
+#    Updated: 2018/01/09 22:58:09 by iburel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,12 @@ TIME					=	no
 
 NAME					=	corewar
 CFLAGS					=	-Wall -Wextra -Werror
+#CFLAGS					+= -fsanitize=address
 
 ifeq ($(DEBUG), yes)
-	CFLAGS				+=	-g -D DEBUG
+	CFLAGS				+= -g -D DEBUG
 else
-	CFLAGS				+=	-Ofast
+	CFLAGS				+= -g
 endif
 
 ifeq ($(TIME), yes)
@@ -33,12 +34,14 @@ SRCS					=	parse_flags.c flags_v.c add_file.c get_nums.c get_dumps.c \
 							get_args.c check_type.c get_reg.c get_dir.c \
 							get_ind.c get_void.c live.c get_mod.c put_uint32.c \
 							create_proc.c get_real_value.c ft_abs.c check_reg.c \
-							proc_foreach.c exec_proc.c main.c
+							proc_foreach.c exec_proc.c get_player_id.c purge.c \
+							pick_winner.c keyhook.c get_breakpoints.c \
+							bubble_tab.c get_sleep.c end_game.c main.c
 
 SRC_OP_PATH				=	$(SRC_PATH)/op
 SRCS_OP					=	op_live.c op_ld.c op_st.c op_add.c op_sub.c op_and.c \
 							op_or.c op_xor.c op_zjmp.c op_ldi.c op_sti.c op_fork.c \
-							op_lld.c op_lldi.c op_lfork.c op_aff.c
+							op_lld.c op_lldi.c op_lfork.c op_aff.c op_win.c
 
 SRC_DISPLAY_PATH		=	$(SRC_PATH)/display
 SRCS_DISPLAY			=	display.c init_sdl.c init_gl.c shader_build.c load_image.c \
@@ -84,8 +87,8 @@ all:
 
 build: $(NAME)
 
-$(NAME): $(OBJ)
-	gcc -o $(NAME) $(OBJ) -L $(LIBFT) -L $(LIBMAT) -L $(LIBSDL2) -L $(LIBFREETYPE) $(LIBOPENGL)
+$(NAME): obj $(OBJ)
+	gcc -o $(NAME) $(OBJ) -L $(LIBFT) -L $(LIBMAT) -L $(LIBSDL2) -L $(LIBFREETYPE) $(LIBOPENGL) $(CFLAGS)
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCL_OP) $(INCL_VM)
 	gcc -o $@ -c $< $(CFLAGS) -I $(INCL_PATH) -I $(OP_INC_PATH) -I $(LIBFT_INCL) -I $(LIBMAT_INCL) -I $(LIBFREETYPE_INCL) -I $(LIBSDL2_INCL)

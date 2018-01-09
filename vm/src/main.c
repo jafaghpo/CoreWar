@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/09 20:49:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2017/12/03 18:42:13 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/09 22:57:23 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,20 @@
 #include <pthread.h>
 
 t_uint8		g_mem[MEM_SIZE] = {0};
+t_uint8		g_player[MEM_SIZE] = {0};
+t_uint8		g_line_chat = CHAT_SIZE - 1;
+t_uint32	g_nb_player;
 t_uint32	g_id;
+t_champ		g_champs[4];
+t_uint32	g_nb_live = 0;
+t_int32   	g_cycle_to_die = CYCLE_TO_DIE;
+float		g_sleep = 500;
+t_uint32    g_nb_cycle;
+t_args		g_flags;
 
 int		main(int ac, char **av)
 {
 	pthread_t	tid;
-	t_args		flags;
 	t_file		*files;
 	t_player	*players;
 
@@ -28,40 +36,46 @@ int		main(int ac, char **av)
 		ft_printf("usage: %s [-d cycles -v] [[-n nbr] champ.cor] ...\n", av[0]);
 		return (2);
 	}
-	ft_bzero(&flags, sizeof(flags));
-	files = parse_flags(&flags, av, ac);
-
+	
+	ft_bzero(&g_flags, sizeof(g_flags));
+	g_flags.dumps = UINT_MAX;
+	files = parse_flags(&g_flags, av, ac);
+	//g_flags.breakpoints[0] = 200;
+	//av[ac] = NULL;
+	bubble_tab(g_flags.breakpoints, g_flags.nb_breakpoints);
 #ifdef DEBUG
-	debug_flags(&flags);
+	debug_flags(&g_flags);
 	debug_print_file(files);
 #endif
 
-	fill_pos_players(files, flags.nb_players + 1);
-	g_id = flags.nb_players - 1;
+	fill_pos_players(files, g_flags.nb_players + 1);
+	g_id = g_flags.nb_players;
+	g_nb_player = g_flags.nb_players;
 
 #ifdef DEBUG
 	debug_print_file(files);
 #endif
 
-	players = get_players(files, flags.nb_players);
+	players = get_players(files, g_flags.nb_players);
 
 #ifdef DEBUG
-	debug_players(players, flags.nb_players);
+	debug_players(players, g_flags.nb_players);
 #endif
 
-	int	i;
-
-	i = 0;
-	while (i < MEM_SIZE)
-	{
-		g_case[i] = (t_case){1.f, 1.f, 1.f};
-		i++;
-	}
-	load_players(players, flags.nb_players);
-
+	load_players(players, g_flags.nb_players);
 #ifdef DEBUG
 	//debug_map();
 #endif
-	pthread_create(&tid, NULL, vm, &flags);
-	display();
+	if (g_flags.visu)
+	{
+		pthread_create(&tid, NULL, keyhook, NULL);
+		pthread_create(&tid, NULL, vm, &g_flags);
+		display();
+	}
+	else
+	{
+		g_sleep = 0;
+		g_pause = 0;
+		vm(&g_flags);
+	}
 }

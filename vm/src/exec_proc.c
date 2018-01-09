@@ -3,18 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   exec_proc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 16:04:48 by niragne           #+#    #+#             */
-/*   Updated: 2017/12/16 20:46:19 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/09 22:55:57 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-static t_uint32     g_cycle_to_die = CYCLE_TO_DIE;
-
-void    exec_proc(t_proc **cycle, t_uint32 nb_cycle, t_proc *tmp)
+void    exec_proc(t_proc **cycle, t_uint32 g_nb_cycle, t_proc *tmp)
 {
     static void     (*f[17])() =
                     {NULL, op_live, op_ld, op_st, op_add, op_sub, op_and, op_or,
@@ -23,31 +21,42 @@ void    exec_proc(t_proc **cycle, t_uint32 nb_cycle, t_proc *tmp)
     t_uint8         op;
     t_int32         size;
     t_inst          args[4];
-    
-    if (nb_cycle - tmp->live > g_cycle_to_die)
-    {
-        ft_printf("t mor %d %d\n", nb_cycle , tmp->live);
-        free(tmp);
-        return ;
-    }
-    op = g_mem[tmp->pc];
-    if (op - 1 >= 16)
+    char            str[CHAT_LINE_SIZE];
+
+    op = tmp->op;
+    g_player[tmp->pc] = 0;    
+    if (op == 0 || op > 16)
     {
         tmp->pc = (tmp->pc + 1) % MEM_SIZE;
-        insert_proc(cycle, tmp, (nb_cycle + 1) % 1001);
+        insert_proc(cycle, tmp, (g_nb_cycle + 1) % 1001);
         return ;
     }
     size = get_args(tmp->pc, args, op);
     if (size <= 0)
     {
         tmp->pc = (tmp->pc + -size + 1 + op_tab[op].octal) % MEM_SIZE;
-        insert_proc(cycle, tmp, (nb_cycle + op_tab[g_mem[tmp->pc]].cycles) % 1001);
+        tmp->op = g_mem[tmp->pc];
+        if (g_mem[tmp->pc] == 0 || g_mem[tmp->pc] > 16)
+            insert_proc(cycle, tmp, (g_nb_cycle + 1) % 1001);
+        else
+            insert_proc(cycle, tmp, (g_nb_cycle + op_tab[g_mem[tmp->pc]].cycles) % 1001);
         return ;
     }
-    f[op](tmp, args, nb_cycle, cycle);
+
+    f[op](tmp, args, g_nb_cycle, cycle);
     tmp->pc = (tmp->pc + size + 1 + op_tab[op].octal) % MEM_SIZE;
+    if (g_step)
+    {
+        ft_sprintf(str, "cycle %d [%d] %s %d %d %d", g_nb_cycle, tmp->pc, op_tab[op].inst, args[0].value, args[1].value, args[2].value);
+        add_line_chat(str);
+        g_pause = 1;
+        g_step = 0;
+    }
+    g_player[tmp->pc] = 1;
+    tmp->op = g_mem[tmp->pc];
     if (g_mem[tmp->pc] == 0 || g_mem[tmp->pc] > 16)
-        insert_proc(cycle, tmp, (nb_cycle + 1) % 1001);
+        insert_proc(cycle, tmp, (g_nb_cycle + 1) % 1001);
     else
-        insert_proc(cycle, tmp, (nb_cycle + op_tab[g_mem[tmp->pc]].cycles) % 1001);
+        insert_proc(cycle, tmp, (g_nb_cycle + op_tab[g_mem[tmp->pc]].cycles) % 1001);
+
 }

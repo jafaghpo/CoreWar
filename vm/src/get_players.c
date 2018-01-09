@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_players.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 11:29:50 by root              #+#    #+#             */
-/*   Updated: 2017/10/27 16:04:16 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/05 15:21:51 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ t_player        *get_players(t_file *files, int nb_players)
     {
         binary = get_binary(files->name, &(players[files->pos].size));
         fill_player(players + files->pos, binary);
+        g_champs[files->pos].name = players[files->pos].name;
+        g_champs[files->pos].number = rand();
         files = files->next;
     }
     return (players);
