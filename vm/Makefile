@@ -6,7 +6,7 @@
 #    By: iburel <iburel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2017/12/03 22:53:58 by iburel           ###   ########.fr        #
+#    Updated: 2018/01/09 22:41:32 by iburel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -149,6 +149,7 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re: fclean build
+re: fclean
+	make -j build
 
 .PHONY: all build libs ft mat sdl2 sdl2_image sdl2_mixer freetype clean fclean re

@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi_split.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 03:34:49 by iburel            #+#    #+#             */
-/*   Updated: 2017/06/15 16:50:20 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/17 19:32:10 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "conv.h"
+#include <stdlib.h>
+#include "put.h"
 
 static void	ft_delchar(char **str, char c)
 {

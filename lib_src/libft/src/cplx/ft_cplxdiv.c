@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cplxdiv.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 21:43:37 by iburel            #+#    #+#             */
-/*   Updated: 2017/03/08 21:48:20 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/17 19:24:36 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "cplx.h"
 
 t_cplx	ft_cplxdiv(t_cplx z1, t_cplx z2)
 {

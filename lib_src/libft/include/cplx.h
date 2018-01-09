@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cplx.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 16:09:29 by iburel            #+#    #+#             */
-/*   Updated: 2017/06/08 14:57:17 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/17 19:37:34 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CPLX_H
 # define CPLX_H
+
+typedef struct s_cplx	t_cplx;
 
 struct	s_cplx
 {

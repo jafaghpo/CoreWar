@@ -3,39 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_wstrlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 01:23:21 by iburel            #+#    #+#             */
-/*   Updated: 2017/03/25 14:17:16 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/17 20:19:47 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "str.h"
 
 static int	ft_sizechar(wchar_t c)
 {
-	if (!(c >> (7 + (MB_CUR_MAX == 1))))
+	if (!(c >> 7))
 		return (1);
-	else if (!(c >> 11))
+	if (!(c >> 11))
 		return (2);
-	else if (!(c >> 16))
+	if (!(c >> 16))
 		return (3);
-	else if (!(c >> 21))
-		return (4);
-	return (-1);
+	return (4);
 }
 
-size_t		ft_wstrlen(const wchar_t *str)
+size_t		ft_wstrlen(wchar_t *str)
 {
-	size_t		i;
 	size_t		size;
 
 	size = 0;
-	i = 0;
-	while (str[i])
+	while (*str)
 	{
-		size += ft_sizechar(str[i]);
-		i++;
+		size += ft_sizechar(*str);
+		str++;
 	}
 	return (size);
 }

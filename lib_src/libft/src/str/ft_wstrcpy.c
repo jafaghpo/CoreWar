@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_wstrcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/05 17:08:38 by iburel            #+#    #+#             */
-/*   Updated: 2017/04/05 17:08:40 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/17 19:29:32 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "str.h"
 
 wchar_t	*ft_wstrcpy(wchar_t *dest, const wchar_t *src)
 {

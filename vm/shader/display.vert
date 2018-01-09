@@ -2,7 +2,6 @@
 
 in vec3 in_Vertex;
 in vec2 in_Texture;
-in int in_Mem;
 
 uniform mat4 projection;
 uniform mat4 modelview;

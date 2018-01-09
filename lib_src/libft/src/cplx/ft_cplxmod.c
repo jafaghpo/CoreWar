@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cplxmod.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/02 18:11:17 by iburel            #+#    #+#             */
-/*   Updated: 2017/04/09 15:23:42 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/17 19:37:56 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "cplx.h"
+#include <math.h>
 
 double	ft_cplxmod(t_cplx z)
 {

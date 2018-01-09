@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_nbbits.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 20:00:38 by iburel            #+#    #+#             */
-/*   Updated: 2017/01/12 20:01:46 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/17 19:26:29 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "mem.h"
 
 int		ft_nbbits(unsigned long long int nb)
 {

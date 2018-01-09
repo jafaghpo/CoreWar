@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/18 23:06:46 by iburel            #+#    #+#             */
-/*   Updated: 2017/12/07 03:35:35 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/02 22:20:41 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	check_prog(GLuint prog)
             ft_printf(ERROR_MALLOC);
             return (0);
         }
-        glGetShaderInfoLog(prog, size, &size, str);
+        glGetProgramInfoLog(prog, size, &size, str);
         str[size] = 0;
         ft_printf("error: %s\n", str);
         free(str);

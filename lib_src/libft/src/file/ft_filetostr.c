@@ -3,26 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_filetostr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 16:00:19 by iburel            #+#    #+#             */
-/*   Updated: 2017/12/09 16:09:36 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2017/12/17 19:53:48 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "file.h"
+#include "str.h"
+#include "put.h"
+#include <unistd.h>
+#include <fcntl.h>
 
 char	*ft_filetostr(char *file)
 {
 	int		fd;
 	int		ret;
-	char	buf[100001];
+	char	buf[BUFF_SIZE + 1];
 	char	*str;
 
 	str = NULL;
 	if ((fd = open(file, O_RDONLY)) == -1)
 		ft_afferror("error open in ft_filetostr");
-	while ((ret = read(fd, buf, 100001)))
+	while ((ret = read(fd, buf, BUFF_SIZE)))
 	{
 		if (ret == -1)
 			ft_afferror("error read in ft_filetostr");

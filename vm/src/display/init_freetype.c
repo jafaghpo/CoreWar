@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 03:11:16 by iburel            #+#    #+#             */
-/*   Updated: 2017/12/07 03:33:24 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/09 16:39:19 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,29 @@ static GLuint   g_vbo;
 static GLuint   g_arial[128];
 static float    g_size[5][128];
 static GLuint   text_location;
+static GLuint   pos_location;
+
+#define OUAIS ((float)POLICE_SIZE / (float)WIN_Y)
+#define SIZE_X g_size[0][(int)str[i]]
+#define SIZE_Y g_size[1][(int)str[i]]
+#define CORR_X g_size[2][(int)str[i]]
+#define CORR_Y (-g_size[3][(int)str[i]])
+#define ADVANCE g_size[4][(int)str[i]]
 
 static int  prog_text(void)
 {
+    static float    vertices[8] = {0.f, 0.f, OUAIS, 0.f, 0.f, OUAIS, OUAIS, OUAIS};
     static float    coord_text[8] = {0.f, 1.f, 1.f, 1.f, 0.f, 0.f, 1.f, 0.f};
 
     if (!(g_prog = create_prog(VERTEX_TEXT, FRAGMENT_TEXT)))
         return (0);
     text_location = glGetUniformLocation(g_prog, "text");
+    pos_location = glGetUniformLocation(g_prog, "pos");
     glGenBuffers(1, &g_vbo);
     glBindBuffer(GL_ARRAY_BUFFER, g_vbo);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 8 + sizeof(coord_text), 0, GL_DYNAMIC_DRAW);
-        glBufferSubData(GL_ARRAY_BUFFER, sizeof(float) * 8, sizeof(coord_text), coord_text);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(vertices) + sizeof(coord_text), 0, GL_STATIC_DRAW);
+        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
+        glBufferSubData(GL_ARRAY_BUFFER, sizeof(vertices), sizeof(coord_text), coord_text);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glGenVertexArrays(1, &g_vao);
     glBindVertexArray(g_vao);
@@ -139,7 +150,7 @@ int         init_freetype(GLuint *police_text)
         ft_printf(ERROR_INIT_FREETYPE"\n");
         return (0);
     }
-    if (FT_New_Face(lib, "fonts/arial.ttf", 0, &face))
+    if (FT_New_Face(lib, "fonts/monaco.ttf", 0, &face))
     {
         ft_printf(ERROR_INIT_FONT"\n");
         return (0);
@@ -162,12 +173,6 @@ int         init_freetype(GLuint *police_text)
     return (1);
 }
 
-#define OUAIS ((float)POLICE_SIZE / (float)WIN_Y)
-#define SIZE_X g_size[0][(int)str[i]]
-#define SIZE_Y g_size[1][(int)str[i]]
-#define CORR_X g_size[2][(int)str[i]]
-#define CORR_Y (-g_size[3][(int)str[i]])
-#define ADVANCE g_size[4][(int)str[i]]
 
 void        put_text(char *str, float x, float y)
 {
@@ -177,21 +182,15 @@ void        put_text(char *str, float x, float y)
     offset = 0;
     glUseProgram(g_prog);
         glBindVertexArray(g_vao);
+            glUniform1i(text_location, 0);
             i = 0;
             while (str[i])
             {
-                glUniform1i(text_location, 0);
-                float vertices[8] = {(x + CORR_X + offset)        , (y + OUAIS - CORR_Y - SIZE_Y),
-                                    (x + CORR_X + SIZE_X + offset), (y + OUAIS - CORR_Y - SIZE_Y),
-                                    (x + CORR_X + offset)         , (y + OUAIS - CORR_Y),
-                                    (x + CORR_X + SIZE_X + offset), (y + OUAIS - CORR_Y)};
-                glBindBuffer(GL_ARRAY_BUFFER, g_vbo);
-                    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
-                glBindBuffer(GL_ARRAY_BUFFER, 0);
+                glUniform2f(pos_location, x + offset, y);
 			    glActiveTexture(GL_TEXTURE0);
                 glBindTexture(GL_TEXTURE_2D, g_arial[(int)str[i]]);
                     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-                offset += ADVANCE;
+                offset += OUAIS;
                 i++;
             }
         glBindVertexArray(0);

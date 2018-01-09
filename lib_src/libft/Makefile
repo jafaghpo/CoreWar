@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: iburel <iburel@student.42.fr>              +#+  +:+       +#+         #
+#    By: root <root@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/24 22:12:15 by iburel            #+#    #+#              #
-#    Updated: 2017/12/01 18:42:09 by iburel           ###   ########.fr        #
+#    Updated: 2017/12/17 23:06:35 by root             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,16 +33,17 @@ SRC_LST_PATH	=	$(SRC_PATH)/lst
 SRC_MEM_PATH	=	$(SRC_PATH)/mem
 SRC_PUT_PATH	=	$(SRC_PATH)/put
 SRC_STR_PATH	=	$(SRC_PATH)/str
+SRC_PRINTF_PATH	=	$(SRC_PATH)/printf
 
 include $(SRC_CHAR_PATH)/char.mk
 include $(SRC_CONV_PATH)/conv.mk
 include $(SRC_CPLX_PATH)/cplx.mk
 include $(SRC_FILE_PATH)/file.mk
-include $(SRC_PRINTF_PATH)/ft_printf.mk
 include $(SRC_LST_PATH)/lst.mk
 include $(SRC_MEM_PATH)/mem.mk
 include $(SRC_PUT_PATH)/put.mk
 include $(SRC_STR_PATH)/str.mk
+include $(SRC_PRINTF_PATH)/printf.mk
 
 OBJS			=	$(OBJS_CONV) $(OBJS_CPLX) $(OBJS_FILE) $(OBJS_CHAR) $(OBJS_LST) \
 					$(OBJS_MEM) $(OBJS_PUT) $(OBJS_STR) $(OBJS_PRINTF)

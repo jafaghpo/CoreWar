@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:50:56 by iburel            #+#    #+#             */
-/*   Updated: 2017/12/03 18:36:40 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/09 15:38:25 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
 # include <ft2build.h>
 # include FT_FREETYPE_H
 
+typedef unsigned char t_uchar;
+typedef unsigned int  t_uint;
+
 # define ERROR_INIT_SDL         "error: initialisation of sdl failed"
 # define ERROR_CREAT_WIN        "error: creation of the window failed"
 # define ERROR_CREAT_CONTEXT_GL "error: creation of the context gl failed"
@@ -38,8 +41,8 @@
 # define ERROR_INIT_FREETYPE    "error: initialisation of freetype failed"
 # define ERROR_INIT_FONT        "error: initialisation of the font failed"
 
-# define WIN_X  1920
-# define WIN_Y  1080
+# define WIN_X  2560
+# define WIN_Y  1440
 
 # define VERTEX_DISPLAY         "shader/display.vert"
 # define FRAGMENT_DISPLAY       "shader/display.frag"
@@ -50,9 +53,9 @@
 # define VERTEX_TEXT            "shader/text.vert"
 # define FRAGMENT_TEXT          "shader/text.frag"
 
-# define CHAT_SIZE				60
+# define CHAT_SIZE				100
 # define CHAT_LINE_SIZE			50
-# define POLICE_SIZE            20
+# define POLICE_SIZE            16
 
 typedef struct s_case   t_case;
 

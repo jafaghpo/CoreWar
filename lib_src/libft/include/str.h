@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   str.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/09 14:53:00 by iburel            #+#    #+#             */
-/*   Updated: 2017/06/19 13:23:15 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/17 19:53:03 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STR_H
 # define STR_H
+
+#include <wchar.h>
+
+typedef unsigned long int size_t;
 
 void	ft_delspace(char **str);
 int		ft_strcmp_space(char *s1, char *s2);
@@ -25,7 +29,7 @@ char	*ft_strjoin_free(char *s1, char *s2, unsigned short int c);
 char	*ft_strtrim(const char *s);
 char	**ft_strsplit(const char *s, char c);
 size_t	ft_strlen(const char *str);
-size_t	ft_wstrlen(const wchar_t *str);
+size_t	ft_wstrlen(wchar_t *str);
 char	*ft_strdup(const char *str);
 char	*ft_strcpy(char *dest, const char *src);
 wchar_t	*ft_wstrcpy(wchar_t *dest, const wchar_t *src);

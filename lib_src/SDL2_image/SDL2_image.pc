@@ -1,4 +1,4 @@
-prefix=/Users/jafaghpo/42/corewar/vm/../lib/SDL2
+prefix=/Users/iburel/Desktop/corewar/vm/../lib/SDL2
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include

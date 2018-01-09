@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 20:39:44 by iburel            #+#    #+#             */
-/*   Updated: 2017/09/14 01:18:45 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/17 19:59:27 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "file.h"
+#include "str.h"
+#include "put.h"
+#include "mem.h"
+#include <unistd.h>
+#include <stdlib.h>
 
 static char		*ft_strjoin_gnl(char *s1, char *s2)
 {
@@ -59,7 +64,7 @@ int				get_next_line(const int fd, char **line)
 		}
 		if ((ret = read(fd, gnl.buf, BUFF_SIZE)) == -1)
 			ft_afferror("error read file in GNL");
-		gnl.buf[ret] = '\0';
+		gnl.buf[(unsigned)ret] = '\0';
 		rest[fd] = ft_strjoin_gnl(rest[fd], gnl.buf);
 	}
 	return (-1);

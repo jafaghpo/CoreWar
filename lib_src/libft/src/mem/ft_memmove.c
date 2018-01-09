@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 10:19:04 by iburel            #+#    #+#             */
-/*   Updated: 2017/12/03 17:57:43 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/17 19:26:22 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "mem.h"
 
 void	*ft_memmove(void *dest, void *src, size_t n)
 {

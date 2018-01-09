@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 10:17:36 by iburel            #+#    #+#             */
-/*   Updated: 2016/11/10 12:08:30 by iburel           ###   ########.fr       */
+/*   Updated: 2017/12/17 20:04:11 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "lst.h"
+#include "mem.h"
+#include <stdlib.h>
 
-t_list	*ft_lstnew(const void *content, size_t content_size)
+t_list	*ft_lstnew(void *content, size_t content_size)
 {
 	t_list	*tmp;
 
