@@ -1006,15 +1006,15 @@
 
 
           if ( weight )
-            if ( !ft_strcmp( weight, "Bold"  ) ||
-                 !ft_strcmp( weight, "Black" ) )
+            if ( !strcmp( weight, "Bold"  ) ||
+                 !strcmp( weight, "Black" ) )
               flags |= FT_STYLE_FLAG_BOLD;
         }
 
         /* double check */
         if ( !(flags & FT_STYLE_FLAG_BOLD) && cffface->style_name )
-          if ( !ft_strncmp( cffface->style_name, "Bold", 4 )  ||
-               !ft_strncmp( cffface->style_name, "Black", 5 ) )
+          if ( !strncmp( cffface->style_name, "Bold", 4 )  ||
+               !strncmp( cffface->style_name, "Black", 5 ) )
             flags |= FT_STYLE_FLAG_BOLD;
 
         cffface->style_flags = flags;

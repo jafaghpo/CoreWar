@@ -6,14 +6,13 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:51:33 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/09 22:54:09 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/09 23:46:54 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "display.h"
 
-t_case		g_case[MEM_SIZE];
-t_uint8		g_line_chat = CHAT_SIZE;
+t_uint8		g_line_chat = CHAT_SIZE - 1;
 char		g_chat[CHAT_SIZE][CHAT_LINE_SIZE];
 
 void	*display(void)
@@ -107,7 +106,7 @@ void	*display(void)
 				i = 0;
 				while (i < MEM_SIZE)
 				{
-					glUniform3f(color_location, 0.4f, 0.4f, 1.0f);
+					glUniform3f(color_location, g_color[i].r, g_color[i].g, g_color[i].b);
 					glUniform1i(first_number_location, (g_mem[i] >> 4) + 1);
 					glUniform1i(second_number_location, (g_mem[i] & 0x0f) + 1);
 					glDrawArrays(GL_TRIANGLE_STRIP, i * 4, 4);

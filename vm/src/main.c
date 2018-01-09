@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/09 20:49:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/09 22:57:23 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/09 23:15:45 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 #include <pthread.h>
 
 t_uint8		g_mem[MEM_SIZE] = {0};
-t_uint8		g_player[MEM_SIZE] = {0};
-t_uint8		g_line_chat = CHAT_SIZE - 1;
+t_case		g_color[MEM_SIZE];
 t_uint32	g_nb_player;
 t_uint32	g_id;
 t_champ		g_champs[4];
@@ -38,6 +37,16 @@ int		main(int ac, char **av)
 	}
 	
 	ft_bzero(&g_flags, sizeof(g_flags));
+	
+	int		i;
+
+	i = 0;
+	while (i < MEM_SIZE)
+	{
+		g_color[i] = (t_case){1.0, 1.0, 1.0};
+		i++;
+	}
+
 	g_flags.dumps = UINT_MAX;
 	files = parse_flags(&g_flags, av, ac);
 	//g_flags.breakpoints[0] = 200;

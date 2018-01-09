@@ -6,7 +6,7 @@
 #    By: iburel <iburel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/01/09 22:58:09 by iburel           ###   ########.fr        #
+#    Updated: 2018/01/09 23:31:56 by iburel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,9 +81,9 @@ LIBFT_INCL				=	$(LIB_PATH)/libft/include
 LIBMAT					=	$(LIB_PATH)/libmat -lmat
 LIBMAT_INCL				=	$(LIB_PATH)/libmat/include
 
-all:
-	@echo "make libs for compile libs"
-	@echo "make build for compile the vm"
+all: $(NAME)
+#	@echo "make libs for compile libs"
+#	@echo "make build for compile the vm"
 
 build: $(NAME)
 

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   op_live.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 11:12:19 by root              #+#    #+#             */
-/*   Updated: 2018/01/05 18:39:09 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/09 23:39:38 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void 		op_live(t_proc *p, t_inst *args, t_uint32 g_nb_cycle)
+void 		op_live(t_proc *p, t_inst *args)
 {
     char    str[CHAT_LINE_SIZE];
     char    *tmp;
@@ -27,7 +27,5 @@ void 		op_live(t_proc *p, t_inst *args, t_uint32 g_nb_cycle)
     live(args[0].value);
     p->live = 1;
     g_nb_live++;
-    (void)str;
-    (void)g_nb_cycle;
     add_line_chat(str);
 }

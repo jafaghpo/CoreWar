@@ -256,7 +256,7 @@
 	s/FT_CONFIG_OPTION_STATIC_RASTER/FT_STATIC_RASTER/.
 	s/TT_STATIC_RASTER/FT_STATIC_RASTER/.
 	[_STANDALONE_]: Include ftimage.h and ftmisc.h.
-	(FT_TRACE1, FT_TRACE6, ft_memset, FT_MEM_ZERO): Define
+	(FT_TRACE1, FT_TRACE6, memset, FT_MEM_ZERO): Define
 	conditionally.
 	(Render_Glyph, Render_Gray_Glyph): Return Raster_Err_None (or
 	Raster_Err_Unsupported).
@@ -2619,7 +2619,7 @@
 	* src/sfnt/ttload.c (tt_face_load_sfnt_header): Really fix change
 	from 2004-03-19.
 
-	* src/bdf/bdfdrivr.c (BDF_Face_Init): Use `ft_strlen'.
+	* src/bdf/bdfdrivr.c (BDF_Face_Init): Use `strlen'.
 
 	* src/pcf/pcfutil.c, src/pcf/pcfutil.h: Decorate functions with
 	`static'.
@@ -2989,7 +2989,7 @@
 	* include/freetype/config/ftoption.h, devel/ftoption.h
 	(FT_CONFIG_OPTION_GUESSING_EMBEDDED_RFORK): New option.
 
-	* include/freetype/config/ftstdlib.h (ft_strrchr): New macro.
+	* include/freetype/config/ftstdlib.h (strrchr): New macro.
 
 2004-02-23  Werner Lemberg  <wl@gnu.org>
 
@@ -4131,7 +4131,7 @@
 	handled elsewhere.
 	Improve boundary checking while parsing.
 	(parse_dict): Improve boundary checking while parsing.
-	Use ft_memcmp to simplify code.
+	Use memcmp to simplify code.
 
 2003-10-07  Werner Lemberg  <wl@gnu.org>
 
@@ -5552,18 +5552,18 @@
 
 2003-05-21  Werner Lemberg  <wl@gnu.org>
 
-	* include/freetype/config/ftstdlib.h (ft_strcat): New wrapper macro
+	* include/freetype/config/ftstdlib.h (strcat): New wrapper macro
 	for strcat.
 
 	* src/base/ftmac.c (create_lwfn_name): s/isupper/ft_isupper/.
-	(parse_font): s/memcpy/ft_memcpy/.
-	(is_dfont) [TARGET_API_MAC_CARBON]: s/memcmp/ft_memcmp/.
+	(parse_font): s/memcpy/memcpy/.
+	(is_dfont) [TARGET_API_MAC_CARBON]: s/memcmp/memcmp/.
 	* src/base/ftobjs.c (load_mac_face) [FT_MACINTOSH]:
-	s/strlen/ft_strlen/.
-	s/strcat/ft_strcat/.
-	s/strcpy/ft_strcpy/.
-	* src/gzip/zutil.h: s/memset/ft_memset/.
-	s/memcmp/ft_memcmp/.
+	s/strlen/strlen/.
+	s/strcat/strcat/.
+	s/strcpy/strcpy/.
+	* src/gzip/zutil.h: s/memset/memset/.
+	s/memcmp/memcmp/.
 
 	* src/bdf/bdfdrivr.c (BDF_Face_Init), src/pcf/pcfdriver.c
 	(PCF_Face_Init): Test for charset registry case-insensitively.
@@ -6813,7 +6813,7 @@
 2002-09-26  Wolfgang Domröse  <porthos.domroese@harz.de>
 
 	* src/cff/cffdrivr.c (Get_Kerning): Use FT_Long for `middle'.
-	(cff_get_glyph_name): Use cast for result of ft_strlen.
+	(cff_get_glyph_name): Use cast for result of strlen.
 	* src/cff/cffparse.c (cff_parse_real): User cast for assigning
 	`exp'.
 	* src/cff/cffload.c (cff_index_get_pointers): Use FT_ULong for
@@ -6947,7 +6947,7 @@
 
 	* include/freetype/ftimage.h: Include ft2build.h only if _STANDALONE_
 	isn't defined.
-	* src/smooth/ftgrays.c [_STANDALONE_]: Define ft_memset,
+	* src/smooth/ftgrays.c [_STANDALONE_]: Define memset,
 	FT_BEGIN_HEADER, FT_END_HEADER.
 	(FT_MEM_ZERO): Define.
 	(TRaster) [GRAYS_USE_GAMMA]: Use `unsigned char' instead of FT_Byte.
@@ -7483,7 +7483,7 @@
 
 2002-07-28  Werner Lemberg  <wl@gnu.org>
 
-	s/ft_memset/FT_MEM_SET/.
+	s/memset/FT_MEM_SET/.
 	s/FT_MEM_SET/FT_MEM_ZERO/ where appropriate.
 
 2002-07-27  Werner Lemberg  <wl@gnu.org>
@@ -7493,7 +7493,7 @@
 2002-07-26  Werner Lemberg  <wl@gnu.org>
 
 	* src/truetype/ttgload.c (load_truetype_glyph)
-	[FT_CONFIG_OPTION_INCREMENTAL]: s/memset/ft_memset/.
+	[FT_CONFIG_OPTION_INCREMENTAL]: s/memset/memset/.
 
 	* src/autohint/ahhint.c (ah_hint_edges_3): Fix compiler warning.
 	* src/cff/cffload.c (cff_encoding_load): Remove `memory' variable.
@@ -8374,7 +8374,7 @@
 	* include/freetype/internal/internal.h (FT_INTERNAL_BDF_TYPES_H):
 	New macro.
 
-	* include/freetype/config/ftstdlib.h (ft_sprintf): New alias for
+	* include/freetype/config/ftstdlib.h (sprintf): New alias for
 	sprintf.
 
 2002-05-18  Werner Lemberg  <wl@gnu.org>
@@ -8397,7 +8397,7 @@
 
 	* src/type42/*: New driver.
 	* include/freetype/config/ftmodule.h, src/Jamfile: Updated.
-	* include/freetype/config/ftstdlib.h (ft_xdigit, ft_memcmp,
+	* include/freetype/config/ftstdlib.h (ft_xdigit, memcmp,
 	ft_atoi): New aliases for xdigit, memcmp, and atoi, respectively.
 
 2002-05-12  Owen Taylor  <otaylor@redhat.com>

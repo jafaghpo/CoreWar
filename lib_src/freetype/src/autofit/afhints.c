@@ -72,7 +72,7 @@
       {
         if ( FT_NEW_ARRAY( axis->segments, new_max ) )
           goto Exit;
-        ft_memcpy( axis->segments, axis->embedded.segments,
+        memcpy( axis->segments, axis->embedded.segments,
                    sizeof ( axis->embedded.segments ) );
       }
       else
@@ -137,7 +137,7 @@
       {
         if ( FT_NEW_ARRAY( axis->edges, new_max ) )
           goto Exit;
-        ft_memcpy( axis->edges, axis->embedded.edges,
+        memcpy( axis->edges, axis->embedded.edges,
                    sizeof ( axis->embedded.edges ) );
       }
       else
@@ -232,7 +232,7 @@
       p[2] = '\0';
     }
     else
-      ft_sprintf( p, "%d", idx );
+      sprintf( p, "%d", idx );
 
     return p;
   }
@@ -373,14 +373,14 @@
 
     if ( flags & AF_EDGE_ROUND )
     {
-      ft_memcpy( temp + pos, "round", 5 );
+      memcpy( temp + pos, "round", 5 );
       pos += 5;
     }
     if ( flags & AF_EDGE_SERIF )
     {
       if ( pos > 0 )
         temp[pos++] = ' ';
-      ft_memcpy( temp + pos, "serif", 5 );
+      memcpy( temp + pos, "serif", 5 );
       pos += 5;
     }
     if ( pos == 0 )

@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 15:21:22 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/09 22:57:38 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/09 23:22:34 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ void        *vm(void *av)
     g_nb_cycle = 0;
     checks = 0;
     last_check = CYCLE_TO_DIE;
-    if (((t_args*)av)->dumps == 0)
+    if (((t_args*)av)->dump && ((t_args*)av)->dumps == 0)
     {
         debug_map();
         return (NULL);
     }
     while (g_id)
     {
-        if (g_nb_cycle == ((t_args*)av)->dumps + 1)
+        if (((t_args*)av)->dump && g_nb_cycle == ((t_args*)av)->dumps + 1)
         {
             debug_map();
             return (NULL);

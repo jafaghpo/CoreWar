@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 16:04:48 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/09 22:55:57 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/09 23:51:56 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ void    exec_proc(t_proc **cycle, t_uint32 g_nb_cycle, t_proc *tmp)
     t_int32         size;
     t_inst          args[4];
     char            str[CHAT_LINE_SIZE];
+    t_case          save = {1.f / 255.f, 223.f / 255.f, 215.f / 255.f};
 
     op = tmp->op;
-    g_player[tmp->pc] = 0;    
+    g_color[tmp->pc] = save;
     if (op == 0 || op > 16)
     {
         tmp->pc = (tmp->pc + 1) % MEM_SIZE;
@@ -43,7 +44,7 @@ void    exec_proc(t_proc **cycle, t_uint32 g_nb_cycle, t_proc *tmp)
         return ;
     }
 
-    f[op](tmp, args, g_nb_cycle, cycle);
+    f[op](tmp, args, cycle);
     tmp->pc = (tmp->pc + size + 1 + op_tab[op].octal) % MEM_SIZE;
     if (g_step)
     {
@@ -52,7 +53,8 @@ void    exec_proc(t_proc **cycle, t_uint32 g_nb_cycle, t_proc *tmp)
         g_pause = 1;
         g_step = 0;
     }
-    g_player[tmp->pc] = 1;
+    save = g_color[tmp->pc];
+    g_color[tmp->pc] = (t_case){0.4f, 0.4f, 1.0f};
     tmp->op = g_mem[tmp->pc];
     if (g_mem[tmp->pc] == 0 || g_mem[tmp->pc] > 16)
         insert_proc(cycle, tmp, (g_nb_cycle + 1) % 1001);

@@ -340,11 +340,11 @@
       if ( !mmvar->axis[i].name )
         continue;
 
-      if ( ft_strcmp( mmvar->axis[i].name, "Weight" ) == 0 )
+      if ( strcmp( mmvar->axis[i].name, "Weight" ) == 0 )
         mmvar->axis[i].tag = FT_MAKE_TAG( 'w', 'g', 'h', 't' );
-      else if ( ft_strcmp( mmvar->axis[i].name, "Width" ) == 0 )
+      else if ( strcmp( mmvar->axis[i].name, "Width" ) == 0 )
         mmvar->axis[i].tag = FT_MAKE_TAG( 'w', 'd', 't', 'h' );
-      else if ( ft_strcmp( mmvar->axis[i].name, "OpticalSize" ) == 0 )
+      else if ( strcmp( mmvar->axis[i].name, "OpticalSize" ) == 0 )
         mmvar->axis[i].tag = FT_MAKE_TAG( 'o', 'p', 's', 'z' );
     }
 
@@ -1450,15 +1450,15 @@
     else
     {
       if ( cur + 17 < limit                                            &&
-           ft_strncmp( (const char*)cur, "StandardEncoding", 16 ) == 0 )
+           strncmp( (const char*)cur, "StandardEncoding", 16 ) == 0 )
         face->type1.encoding_type = T1_ENCODING_TYPE_STANDARD;
 
       else if ( cur + 15 < limit                                          &&
-                ft_strncmp( (const char*)cur, "ExpertEncoding", 14 ) == 0 )
+                strncmp( (const char*)cur, "ExpertEncoding", 14 ) == 0 )
         face->type1.encoding_type = T1_ENCODING_TYPE_EXPERT;
 
       else if ( cur + 18 < limit                                             &&
-                ft_strncmp( (const char*)cur, "ISOLatin1Encoding", 17 ) == 0 )
+                strncmp( (const char*)cur, "ISOLatin1Encoding", 17 ) == 0 )
         face->type1.encoding_type = T1_ENCODING_TYPE_ISOLATIN1;
 
       else
@@ -1567,7 +1567,7 @@
       /* If we are out of data, or if the next token isn't `dup', */
       /* we are done.                                             */
       if ( parser->root.cursor + 4 >= parser->root.limit          ||
-          ft_strncmp( (char*)parser->root.cursor, "dup", 3 ) != 0 )
+          strncmp( (char*)parser->root.cursor, "dup", 3 ) != 0 )
         break;
 
       T1_Skip_PS_Token( parser );       /* `dup' */
@@ -1587,7 +1587,7 @@
       T1_Skip_Spaces  ( parser );
 
       if ( parser->root.cursor + 4 < parser->root.limit            &&
-           ft_strncmp( (char*)parser->root.cursor, "put", 3 ) == 0 )
+           strncmp( (char*)parser->root.cursor, "put", 3 ) == 0 )
       {
         T1_Skip_PS_Token( parser ); /* skip `put' */
         T1_Skip_Spaces  ( parser );
@@ -1806,7 +1806,7 @@
 
         /* record index of /.notdef */
         if ( *cur == '.'                                              &&
-             ft_strcmp( ".notdef",
+             strcmp( ".notdef",
                         (const char*)(name_table->elements[n]) ) == 0 )
         {
           notdef_index = n;
@@ -1854,7 +1854,7 @@
 
     /* if /.notdef is found but does not occupy index 0, do our magic. */
     if ( notdef_found                                                 &&
-         ft_strcmp( ".notdef", (const char*)name_table->elements[0] ) )
+         strcmp( ".notdef", (const char*)name_table->elements[0] ) )
     {
       /* Swap glyph in index 0 with /.notdef glyph.  First, add index 0  */
       /* name and code entries to swap_table.  Then place notdef_index   */
@@ -2128,8 +2128,8 @@
               break;
 
             if ( cur[0] == name[0]                      &&
-                 len == ft_strlen( (const char *)name ) &&
-                 ft_memcmp( cur, name, len ) == 0       )
+                 len == strlen( (const char *)name ) &&
+                 memcmp( cur, name, len ) == 0       )
             {
               /* We found it -- run the parsing callback!     */
               /* We record every instance of every field      */
@@ -2173,7 +2173,7 @@
 
               if ( !( loader->keywords_encountered &
                       T1_FONTDIR_AFTER_PRIVATE     )                  ||
-                   ft_strcmp( (const char*)name, "CharStrings" ) == 0 )
+                   strcmp( (const char*)name, "CharStrings" ) == 0 )
               {
                 parser->root.error = t1_load_keyword( face,
                                                       loader,
@@ -2414,7 +2414,7 @@
           for ( idx = 0; idx < type1->num_glyphs; idx++ )
           {
             glyph_name = (FT_Byte*)type1->glyph_names[idx];
-            if ( ft_strcmp( (const char*)char_name,
+            if ( strcmp( (const char*)char_name,
                             (const char*)glyph_name ) == 0 )
             {
               type1->encoding.char_index[charcode] = (FT_UShort)idx;
@@ -2422,7 +2422,7 @@
 
               /* Change min/max encoded char only if glyph name is */
               /* not /.notdef                                      */
-              if ( ft_strcmp( (const char*)".notdef",
+              if ( strcmp( (const char*)".notdef",
                               (const char*)glyph_name ) != 0 )
               {
                 if ( charcode < min_char )

@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 11:18:48 by root              #+#    #+#             */
-/*   Updated: 2018/01/09 22:55:12 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/09 23:49:49 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void 		op_sti(t_proc *p, t_inst *args)
     while (tmp < 0)
         tmp += MEM_SIZE;
     put_uint32(p->reg[args[0].value - 1], tmp);
-    g_case[(tmp + 0) % MEM_SIZE] = (t_case){121.f / 255.f, 240.f / 255.f, 248.f / 255.f};
-    g_case[(tmp + 1) % MEM_SIZE] = (t_case){121.f / 255.f, 240.f / 255.f, 248.f / 255.f};
-    g_case[(tmp + 2) % MEM_SIZE] = (t_case){121.f / 255.f, 240.f / 255.f, 248.f / 255.f};
-    g_case[(tmp + 3) % MEM_SIZE] = (t_case){121.f / 255.f, 240.f / 255.f, 248.f / 255.f};
+    g_color[(tmp + 0) % MEM_SIZE] = (t_case){1.f / 255.f, 223.f / 255.f, 215.f / 255.f};
+    g_color[(tmp + 1) % MEM_SIZE] = (t_case){1.f / 255.f, 223.f / 255.f, 215.f / 255.f};
+    g_color[(tmp + 2) % MEM_SIZE] = (t_case){1.f / 255.f, 223.f / 255.f, 215.f / 255.f};
+    g_color[(tmp + 3) % MEM_SIZE] = (t_case){1.f / 255.f, 223.f / 255.f, 215.f / 255.f};
 }

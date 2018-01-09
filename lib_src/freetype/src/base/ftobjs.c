@@ -103,7 +103,7 @@
     {
       for ( ; desc->serv_id != NULL; desc++ )
       {
-        if ( ft_strcmp( desc->serv_id, service_id ) == 0 )
+        if ( strcmp( desc->serv_id, service_id ) == 0 )
         {
           result = (FT_Pointer)desc->serv_data;
           break;
@@ -1882,7 +1882,7 @@
       goto Exit;
     }
 
-    is_cff = rlen > 4 && !ft_memcmp( sfnt_data, "OTTO", 4 );
+    is_cff = rlen > 4 && !memcmp( sfnt_data, "OTTO", 4 );
     error = open_face_from_buffer( library,
                                    sfnt_data,
                                    (FT_ULong)rlen,
@@ -2279,7 +2279,7 @@
 
 #ifdef FT_CONFIG_OPTION_MAC_FONTS
           if ( test_mac_fonts                                           &&
-               ft_strcmp( cur[0]->clazz->module_name, "truetype" ) == 0 &&
+               strcmp( cur[0]->clazz->module_name, "truetype" ) == 0 &&
                FT_ERR_EQ( error, Table_Missing )                        )
           {
             /* TrueType but essential tables are missing */
@@ -2441,7 +2441,7 @@
       internal->no_stem_darkening = -1;
 
 #ifdef FT_CONFIG_OPTION_SUBPIXEL_RENDERING
-      ft_memset( internal->lcd_weights, 0, FT_LCD_FILTER_FIVE_TAPS );
+      memset( internal->lcd_weights, 0, FT_LCD_FILTER_FIVE_TAPS );
 #endif
     }
 
@@ -3653,14 +3653,14 @@
       {
 #ifdef FT_CONFIG_OPTION_SUBPIXEL_RENDERING
         if ( properties->data )
-          ft_memcpy( face->internal->lcd_weights,
+          memcpy( face->internal->lcd_weights,
                      properties->data,
                      FT_LCD_FILTER_FIVE_TAPS );
         else
         {
           /* Value NULL indicates `no custom weights, use library        */
           /* defaults', signaled by filling the weight field with zeros. */
-          ft_memset( face->internal->lcd_weights,
+          memset( face->internal->lcd_weights,
                      0,
                      FT_LCD_FILTER_FIVE_TAPS );
         }
@@ -4565,7 +4565,7 @@
     for ( nn = 0; nn < library->num_modules; nn++ )
     {
       module = library->modules[nn];
-      if ( ft_strcmp( module->clazz->module_name, clazz->module_name ) == 0 )
+      if ( strcmp( module->clazz->module_name, clazz->module_name ) == 0 )
       {
         /* this installed module has the same name, compare their versions */
         if ( clazz->module_version <= module->clazz->module_version )
@@ -4667,7 +4667,7 @@
     limit = cur + library->num_modules;
 
     for ( ; cur < limit; cur++ )
-      if ( ft_strcmp( cur[0]->clazz->module_name, module_name ) == 0 )
+      if ( strcmp( cur[0]->clazz->module_name, module_name ) == 0 )
       {
         result = cur[0];
         break;
@@ -4815,7 +4815,7 @@
 
     /* search module */
     for ( ; cur < limit; cur++ )
-      if ( !ft_strcmp( cur[0]->clazz->module_name, module_name ) )
+      if ( !strcmp( cur[0]->clazz->module_name, module_name ) )
         break;
 
     if ( cur == limit )
@@ -5082,7 +5082,7 @@
 
 
           if ( driver_name[m]                                &&
-               ft_strcmp( module_name, driver_name[m] ) != 0 )
+               strcmp( module_name, driver_name[m] ) != 0 )
             continue;
 
           if ( ( module->clazz->module_flags & FT_MODULE_FONT_DRIVER ) == 0 )

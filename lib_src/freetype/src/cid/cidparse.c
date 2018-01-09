@@ -76,7 +76,7 @@
     if ( FT_FRAME_ENTER( 31 ) )
       goto Exit;
 
-    if ( ft_strncmp( (char *)stream->cursor,
+    if ( strncmp( (char *)stream->cursor,
                      "%!PS-Adobe-3.0 Resource-CIDFont", 31 ) )
     {
       FT_TRACE2(( "  not a CID-keyed font\n" ));
@@ -135,14 +135,14 @@
         for ( p = buffer; p < limit; p++ )
         {
           if ( p[0] == 'S'                                           &&
-               ft_strncmp( (char*)p, STARTDATA, STARTDATA_LEN ) == 0 )
+               strncmp( (char*)p, STARTDATA, STARTDATA_LEN ) == 0 )
           {
             /* save offset of binary data after `StartData' */
             offset += (FT_ULong)( p - buffer ) + STARTDATA_LEN + 1;
             goto Found;
           }
           else if ( p[1] == 's'                                   &&
-                    ft_strncmp( (char*)p, SFNTS, SFNTS_LEN ) == 0 )
+                    strncmp( (char*)p, SFNTS, SFNTS_LEN ) == 0 )
           {
             offset += (FT_ULong)( p - buffer ) + SFNTS_LEN + 1;
             goto Found;
@@ -209,9 +209,9 @@
 
       if ( cur[0] == 'S'                                           &&
            cur <= limit - STARTDATA_LEN                            &&
-           ft_strncmp( (char*)cur, STARTDATA, STARTDATA_LEN ) == 0 )
+           strncmp( (char*)cur, STARTDATA, STARTDATA_LEN ) == 0 )
       {
-        if ( ft_strncmp( (char*)arg1, "(Hex)", 5 ) == 0 )
+        if ( strncmp( (char*)arg1, "(Hex)", 5 ) == 0 )
         {
           FT_Long  tmp = ft_strtol( (const char *)arg2, NULL, 10 );
 
@@ -228,7 +228,7 @@
         goto Exit;
       }
       else if ( cur[1] == 's'                                   &&
-                ft_strncmp( (char*)cur, SFNTS, SFNTS_LEN ) == 0 )
+                strncmp( (char*)cur, SFNTS, SFNTS_LEN ) == 0 )
       {
         FT_TRACE2(( "cid_parser_new: cannot handle Type 11 fonts\n" ));
         error = FT_THROW( Unknown_File_Format );

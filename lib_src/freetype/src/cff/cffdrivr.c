@@ -356,7 +356,7 @@
     gname = cff_index_get_sid_string( font, sid );
 
     if ( gname )
-      FT_STRCPYN( buffer, gname, buffer_max );
+      strcpyN( buffer, gname, buffer_max );
 
     error = FT_Err_Ok;
 
@@ -421,7 +421,7 @@
       if ( !name )
         continue;
 
-      if ( !ft_strcmp( glyph_name, name ) )
+      if ( !strcmp( glyph_name, name ) )
         return i;
     }
 
@@ -749,7 +749,7 @@
 #endif
 
 
-    if ( !ft_strcmp( property_name, "darkening-parameters" ) )
+    if ( !strcmp( property_name, "darkening-parameters" ) )
     {
       FT_Int*  darken_params;
       FT_Int   x1, y1, x2, y2, x3, y3, x4, y4;
@@ -811,7 +811,7 @@
 
       return error;
     }
-    else if ( !ft_strcmp( property_name, "hinting-engine" ) )
+    else if ( !strcmp( property_name, "hinting-engine" ) )
     {
 #ifdef FT_CONFIG_OPTION_ENVIRONMENT_PROPERTIES
       if ( value_is_string )
@@ -819,10 +819,10 @@
         const char*  s = (const char*)value;
 
 
-        if ( !ft_strcmp( s, "adobe" ) )
+        if ( !strcmp( s, "adobe" ) )
           driver->hinting_engine = FT_CFF_HINTING_ADOBE;
 #ifdef CFF_CONFIG_OPTION_OLD_ENGINE
-        else if ( !ft_strcmp( s, "freetype" ) )
+        else if ( !strcmp( s, "freetype" ) )
           driver->hinting_engine = FT_CFF_HINTING_FREETYPE;
 #endif
         else
@@ -846,7 +846,7 @@
         return error;
       }
     }
-    else if ( !ft_strcmp( property_name, "no-stem-darkening" ) )
+    else if ( !strcmp( property_name, "no-stem-darkening" ) )
     {
 #ifdef FT_CONFIG_OPTION_ENVIRONMENT_PROPERTIES
       if ( value_is_string )
@@ -871,7 +871,7 @@
 
       return error;
     }
-    else if ( !ft_strcmp( property_name, "random-seed" ) )
+    else if ( !strcmp( property_name, "random-seed" ) )
     {
       FT_Int32  random_seed;
 
@@ -911,7 +911,7 @@
     CFF_Driver  driver = (CFF_Driver)module;
 
 
-    if ( !ft_strcmp( property_name, "darkening-parameters" ) )
+    if ( !strcmp( property_name, "darkening-parameters" ) )
     {
       FT_Int*  darken_params = driver->darken_params;
       FT_Int*  val           = (FT_Int*)value;
@@ -928,7 +928,7 @@
 
       return error;
     }
-    else if ( !ft_strcmp( property_name, "hinting-engine" ) )
+    else if ( !strcmp( property_name, "hinting-engine" ) )
     {
       FT_UInt   hinting_engine    = driver->hinting_engine;
       FT_UInt*  val               = (FT_UInt*)value;
@@ -938,7 +938,7 @@
 
       return error;
     }
-    else if ( !ft_strcmp( property_name, "no-stem-darkening" ) )
+    else if ( !strcmp( property_name, "no-stem-darkening" ) )
     {
       FT_Bool   no_stem_darkening = driver->no_stem_darkening;
       FT_Bool*  val               = (FT_Bool*)value;

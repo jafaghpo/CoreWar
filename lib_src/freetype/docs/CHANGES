@@ -3289,7 +3289,7 @@ CHANGES BETWEEN 2.1.0 and 2.0.9
           to `include/freetype/config'.  It  is used to define aliases
           for  _every_ routine  of the  ISO  C library  that the  font
           engine   uses.    Each    aliases   has   a   `ft_'   prefix
-          (e.g. `ft_strlen' is an alias for `strlen').
+          (e.g. `strlen' is an alias for `strlen').
 
           This is  used to  ease the porting  of FreeType 2  to exotic
           runtime environments where the ISO C Library isn't available

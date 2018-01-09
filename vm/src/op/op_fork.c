@@ -6,13 +6,13 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 11:19:08 by root              #+#    #+#             */
-/*   Updated: 2018/01/09 22:55:01 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/09 23:35:26 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void 		op_fork(t_proc *p, t_inst *args, t_int32 g_nb_cycle, t_proc **procs)
+void 		op_fork(t_proc *p, t_inst *args, t_proc **procs)
 {
     t_proc  *new;
     t_int32 tmp;

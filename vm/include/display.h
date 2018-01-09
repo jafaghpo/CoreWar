@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:50:56 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/09 22:53:36 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/09 23:46:43 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ typedef unsigned int  t_uint;
 # define ERROR_INIT_FREETYPE    "error: initialisation of freetype failed"
 # define ERROR_INIT_FONT        "error: initialisation of the font failed"
 
-# define WIN_X  2560
-# define WIN_Y  1440
+# define WIN_X  1920
+# define WIN_Y  1080
 
 # define VERTEX_DISPLAY         "shader/display.vert"
 # define FRAGMENT_DISPLAY       "shader/display.frag"
@@ -54,7 +54,7 @@ typedef unsigned int  t_uint;
 # define FRAGMENT_TEXT          "shader/text.frag"
 
 # define CHAT_SIZE				100
-# define CHAT_LINE_SIZE			50
+# define CHAT_LINE_SIZE			100
 # define POLICE_SIZE            16
 
 typedef struct s_case   t_case;
@@ -67,12 +67,12 @@ struct s_case
 };
 
 extern Uint8    g_mem[MEM_SIZE];
-extern t_case   g_case[MEM_SIZE];
 extern char     g_chat[CHAT_SIZE][CHAT_LINE_SIZE];
 extern Uint8    g_line_chat;
 extern t_uint32 g_pause;
 extern t_uint32 g_key;
-extern float     g_sleep;
+extern float    g_sleep;
+extern t_case   g_color[MEM_SIZE];
 
 typedef struct s_sdl    t_sdl;
 typedef struct s_gl     t_gl;

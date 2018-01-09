@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 18:31:33 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/09 22:53:43 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/09 23:35:14 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ void		debug_inst(t_inst *args, int pc, int op);
 /*
 ** op
 */
-void 		op_live(t_proc *p, t_inst *args, t_uint32 g_nb_cycle);
+void 		op_live(t_proc *p, t_inst *args);
 void 		op_ld(t_proc *p, t_inst *args);
 void 		op_st(t_proc *p, t_inst *args);
 void 		op_add(t_proc *p, t_inst *args);
@@ -173,10 +173,10 @@ void 		op_xor(t_proc *p, t_inst *args);
 void 		op_zjmp(t_proc *p, t_inst *args);
 void 		op_ldi(t_proc *p, t_inst *args);
 void 		op_sti(t_proc *p, t_inst *args);
-void 		op_fork(t_proc *p, t_inst *args, t_int32 g_nb_cycle, t_proc **procs);
+void 		op_fork(t_proc *p, t_inst *args, t_proc **procs);
 void 		op_lld(t_proc *p, t_inst *args);
 void 		op_lldi(t_proc *p, t_inst *args);
-void 		op_lfork(t_proc *p, t_inst *args, t_int32 g_nb_cycle, t_proc **procs);
+void 		op_lfork(t_proc *p, t_inst *args, t_proc **procs);
 void 		op_aff(t_proc *p, t_inst *args);
 void 		op_win(t_proc *p, t_inst *args);
 

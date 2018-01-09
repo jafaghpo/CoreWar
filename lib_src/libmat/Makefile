@@ -6,7 +6,7 @@
 #    By: iburel <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/26 16:25:27 by iburel            #+#    #+#              #
-#    Updated: 2017/12/01 18:56:05 by iburel           ###   ########.fr        #
+#    Updated: 2017/11/23 21:12:34 by iburel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,12 @@ INCL			=	$(INCL_PATH)/libmat.h
 
 all: $(NAME) $(NAME_AFF)
 
-$(NAME):$(OBJ)
+$(NAME): obj $(OBJ)
 	ar rc $@ $(OBJ)
 	ranlib $@
+
+obj:
+	mkdir obj
 
 obj/%.o: src/%.c $(INCL)
 	$(CC) -c -o $@ $< $(CFLAGS) -I $(INCL_PATH)
