@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 14:38:13 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/06 17:40:46 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/10 21:14:16 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,21 @@
 # include "op.h"
 # include "eval_expr.h"
 
-# define ERROR_USAGE	"usage: ./asm [-wv] file ...\n"
-# define ERROR_EXT		"%s: Invalid file extension\n"
-# define ERROR_OPTION	"illegal option -- %c\n"
-# define ERROR_DIR		"%s: %s\n"
-# define ERROR_MEM		"%s for %s\n"
+# define ERROR_USAGE			"usage: ./asm [-wv] file ...\n"
+# define ERROR_EXTENSION		"%s: invalid file extension"
+# define ERROR_OPTION			"illegal option -- %c"
+# define ERROR_OPEN				"%s: %s"
+# define ERROR_NAME				"missing champion name"
+# define ERROR_COM				"missing champion comment"
+# define ERROR_NAME_SYNTAX		"invalid syntax in champion name"
+# define ERROR_COM_SYNTAX		"invalid syntax in champion comment"
+# define ERROR_HEADER_LINE		"invalid line in champion header"
 
-# define WARNING_FLAG	0x01
-# define VISUAL_FLAG	0x02
-# define BSIZE			10000
+# define WARNING_FLAG			0x01
+# define VISUAL_FLAG			0x02
+# define TAB_SIZE				1000
+# define NAME_LEN				PROG_NAME_LENGTH
+# define COM_LEN				COMMENT_LENGTH
 
 typedef uint8_t			t_uint8;
 typedef struct s_tab	t_tab;
@@ -39,9 +45,9 @@ typedef struct s_label	t_label;
 struct		s_tab
 {
 	char	*line;
-	int		len;
 	t_uint8	*ptr;
 	int		size;
+	int		new_line;
 };
 
 struct		s_buf
@@ -86,17 +92,18 @@ extern	t_op	g_op[17];
 int			print_error(int usage, const char *msg, ...);
 char		*get_name(char *file);
 int			fill_binary(char *name);
+int			word_equal(char *s1, char *s2);
 /*
 **	-- Parsing --
 */
 int			parse_file(char *name);
-int			tokenize_file(t_tab *tab, t_label *label, int fd);
-int			tokenize_line(char *line, t_tab *cur, t_label *label);
-int			store_bin_line(t_tab *tab, t_tab *current, int nb_lines);
+int			get_header(t_tab *tab, int fd);
+int			get_instructions(t_tab *tab, t_label *label, int fd);
+int			store_line(t_tab *tab, t_tab *current);
 /*
 **	-- Labels --
 */
-int			check_tmp_labels(t_label *label);
+int			check_labels(t_label *label);
 /*
 **	-- Visual --
 */

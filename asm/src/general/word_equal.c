@@ -1,21 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokenize_line.c                                    :+:      :+:    :+:   */
+/*   word_equal.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/06 15:07:01 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/06 17:51:11 by jafaghpo         ###   ########.fr       */
+/*   Created: 2018/01/10 16:10:37 by jafaghpo          #+#    #+#             */
+/*   Updated: 2018/01/10 20:08:07 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int			tokenize_line(char *line, t_tab *cur, t_label *label)
+int			word_equal(char *s1, char *s2)
 {
-	(void)line;
-	(void)cur;
-	(void)label;
-	return (1);
+	int		i;
+
+	i = 0;
+	while (s2[i])
+	{
+		if (s1[i] != s2[i])
+			return (0);
+		i++;
+	}
+	if (!s1[i])
+		return (i);
+	if (s1[i] != ' ' && s1[i] != '\t' && s1[i] != SEPARATOR_CHAR)
+		return (0);
+	if (s1[i] == SEPARATOR_CHAR)
+		i++;
+	while (s1[i] == ' ' || s1[i] == '\t')
+		i++;
+	return (i);
 }

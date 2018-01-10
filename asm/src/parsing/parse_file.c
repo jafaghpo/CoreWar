@@ -6,15 +6,16 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 17:54:54 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/06 16:58:55 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/10 21:31:10 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_buf		g_bin = {NULL, BSIZE, 0};
+t_buf			g_bin = {NULL, BUFF_SIZE, 0};
+int				g_lines = 0;
 
-static	void	release_memory(t_tab *tab)
+static void		release_memory(t_tab *tab)
 {
 	int		i;
 
@@ -28,6 +29,21 @@ static	void	release_memory(t_tab *tab)
 	ft_memdel((void**)&g_bin.data);
 }
 
+static void		debug_bin(void)
+{
+	int		i;
+
+	i = 0;
+	while (i < 320)
+	{
+		if (!(i % 32))
+			printf("\n");
+		printf("%.2X ", g_bin.data[i]);
+		i++;
+	}
+	printf("\n");
+}
+
 int				parse_file(char *name)
 {
 	t_tab		*tab;
@@ -35,17 +51,20 @@ int				parse_file(char *name)
 	int			fd;
 
 	if ((fd = open(name, O_RDONLY)) == -1)
-		return (print_error(0, ERROR_DIR, name, strerror(errno)));
-	if (!(tab = ft_memalloc(sizeof(*tab) * BSIZE)))
-		return (print_error(0, ERROR_MEM, strerror(errno), "str"));
-	if (!(g_bin.data = ft_memalloc(sizeof(*g_bin.data) * BSIZE)))
-		return (print_error(0, ERROR_MEM, strerror(errno), "g_bin.data"));
-	if (!tokenize_file(tab, &label, fd))
+		return (print_error(0, ERROR_OPEN, name, strerror(errno)));
+	if (!(tab = ft_memalloc(sizeof(*tab) * TAB_SIZE)))
+		return (print_error(0, strerror(errno)));
+	if (!(g_bin.data = ft_memalloc(sizeof(*g_bin.data) * BUFF_SIZE)))
+		return (print_error(0, strerror(errno)));
+	if (!get_header(tab, fd))
 		return (0);
-	if (!check_tmp_labels(&label))
+	if (!get_instructions(tab, &label, fd))
+		return (0);
+	if (!check_labels(&label))
 		return (0);
 	if (g_option & VISUAL_FLAG)
 		run_visual(tab);
+	//debug_bin();
 	release_memory(tab);
 	close(fd);
 	return (1);

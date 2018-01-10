@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_labels.c                                     :+:      :+:    :+:   */
+/*   get_instructions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/06 16:15:45 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/10 21:18:20 by jafaghpo         ###   ########.fr       */
+/*   Created: 2018/01/10 21:16:35 by jafaghpo          #+#    #+#             */
+/*   Updated: 2018/01/10 21:17:38 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int			check_labels(t_label *label)
+int			get_instructions(t_tab *tab, t_label *label, int fd)
 {
+	(void)tab;
 	(void)label;
+	(void)fd;
 	return (1);
 }
