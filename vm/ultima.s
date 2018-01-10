@@ -99,7 +99,6 @@ part2:
 	fork	%:part4
 	ld		%84149761, r5
 	ld		%151259145, r10
-	aff		r1
 	st		r5, r9
 	ld		%12, r4
 	sub		r16, r16, r16
@@ -109,6 +108,7 @@ part3:
 	ld		%0000, r7
 	st		r5, r9
 	ld		%32768000, r10
+	aff		r1
 	ld		%16, r4
 	sub		r16, r16, r16
 	zjmp	%:end

@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 16:04:48 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/10 13:12:24 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/10 13:52:29 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void    exec_proc(t_proc **cycle, t_uint32 g_nb_cycle, t_proc *tmp)
     tmp->pc = (tmp->pc + size + 1 + op_tab[op].octal) % MEM_SIZE;
     if (g_step)
     {
-        ft_sprintf(str, "cycle %d [%d] %s %d %d %d", g_nb_cycle, tmp->pc, op_tab[op].inst, args[0].value, args[1].value, args[2].value);
+        ft_sprintf(str, "c %d p %d %s", g_nb_cycle, tmp->id, op_tab[op].inst);
         add_line_chat(str);
         g_pause = 1;
         g_step = 0;
