@@ -6,7 +6,7 @@
 #    By: iburel <iburel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/01/09 23:31:56 by iburel           ###   ########.fr        #
+#    Updated: 2018/01/11 11:01:51 by iburel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,9 +34,10 @@ SRCS					=	parse_flags.c flags_v.c add_file.c get_nums.c get_dumps.c \
 							get_args.c check_type.c get_reg.c get_dir.c \
 							get_ind.c get_void.c live.c get_mod.c put_uint32.c \
 							create_proc.c get_real_value.c ft_abs.c check_reg.c \
-							proc_foreach.c exec_proc.c get_player_id.c purge.c \
+							exec_procs_foreach.c exec_proc.c get_player_id.c purge.c \
 							pick_winner.c keyhook.c get_breakpoints.c \
-							bubble_tab.c get_sleep.c end_game.c main.c
+							bubble_tab.c get_sleep.c end_game.c move_procs_foreach.c \
+							move_proc.c main.c
 
 SRC_OP_PATH				=	$(SRC_PATH)/op
 SRCS_OP					=	op_live.c op_ld.c op_st.c op_add.c op_sub.c op_and.c \

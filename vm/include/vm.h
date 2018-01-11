@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 18:31:33 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/09 23:35:14 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/11 11:00:41 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,8 +138,10 @@ t_proc      *create_proc(t_proc *p, t_int32 pc, t_int32 g_nb_cycle);
 t_int32    	get_real_value(t_inst *args, t_proc *p, t_uint8 mod);
 t_int32 	ft_abs(t_int32 x);
 t_uint8  	check_reg(t_inst *args);
-void 		proc_foreach(t_proc **cycle, t_uint32 g_nb_cycle);
-void    	exec_proc(t_proc **cycle, t_uint32 g_nb_cycle, t_proc *tmp);
+void 		exec_procs_foreach(t_proc **cycle);
+void		move_procs_foreach(t_proc **cycle);
+void    	exec_proc(t_proc **cycle, t_proc *tmp);
+void    	move_proc(t_proc **cycle, t_proc *tmp);
 t_int32    	get_player_id(t_uint32 octet);
 void 		purge(t_proc **cycle);
 int    		pick_winner(void);
@@ -147,6 +149,7 @@ void 		*keyhook(void *av);
 void    	bubble_tab(t_uint32 *tab, t_uint32 size);
 int	    	get_sleep(t_args *flags, char *str);
 void    	end_game(void);
+
 
 /*
 ** debug

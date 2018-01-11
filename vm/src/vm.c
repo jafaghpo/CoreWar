@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 15:21:22 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/09 23:22:34 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/11 11:01:56 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ void        *vm(void *av)
             last_check += (g_cycle_to_die - 1) * (g_cycle_to_die >= 0) + 1;
         }
         usleep((int)g_sleep);
-        proc_foreach(cycle, g_nb_cycle);
+        exec_procs_foreach(cycle);
+        move_procs_foreach(cycle);
         g_nb_cycle++;
     }
     end_game();

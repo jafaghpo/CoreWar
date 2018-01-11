@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_ld.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 11:14:25 by root              #+#    #+#             */
-/*   Updated: 2017/12/01 16:31:04 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/11 11:22:00 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void 		op_ld(t_proc *p, t_inst *args)
 {
-    t_int32 tmp;
-
-    tmp = get_real_value(args, p, 1);
-    p->reg[args[1].value - 1] = tmp;
-    p->carry = !tmp;
+    p->reg[args[1].value - 1] = get_real_value(args, p, 1);
+    p->carry = !p->reg[args[1].value - 1];
 }
