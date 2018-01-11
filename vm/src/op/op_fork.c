@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_fork.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 11:19:08 by root              #+#    #+#             */
-/*   Updated: 2018/01/11 11:33:40 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/11 14:50:13 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ void 		op_fork(t_proc *p, t_inst *args, t_proc **procs)
     char    str[CHAT_LINE_SIZE];
     int     pos;
     
-    tmp = (args[0].value % IDX_MOD + p->pc);
+    tmp = args[0].value % IDX_MOD + p->pc;
     tmp = tmp % MEM_SIZE + MEM_SIZE * (tmp < 0);
+    g_color[tmp] = (t_case){0.3f, 0.1f, 1.0f};
     new = create_proc(p, tmp, g_nb_cycle);
     pos = g_nb_cycle % 1001;
     new->next = procs[pos];

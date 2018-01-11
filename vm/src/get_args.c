@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_args.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:29:50 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/09 22:55:57 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/11 16:08:26 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ static void    get_values(t_uint32 pc, t_inst *args, t_int8 op)
     static t_int32      (*f[4])(t_uint32, t_inst*, t_int8, t_int8) = {get_void, get_reg, get_dir, get_ind};
     t_uint8             octal;
 
+
     octal = op_tab[(int)op].octal;
+
     args[0].value = f[args[0].type](pc, args, 0, octal);
     args[1].value = f[args[1].type](pc, args, 1, octal);
     args[2].value = f[args[2].type](pc, args, 2, octal);
@@ -52,15 +54,25 @@ static void    get_values(t_uint32 pc, t_inst *args, t_int8 op)
 }
 
 t_int32     get_args(t_uint32 pc, t_inst *args, t_uint8 op)
-{   
+{
+    int      i;
+    int      size;
+
     get_types(g_mem[(pc + 1) % MEM_SIZE], args, op);
     get_sizes(g_mem[pc], args);
+    size = 0;
     if (check_type(g_mem[pc], args))
     {
         get_values(pc, args, op);
+        i = 0;
+        while (i < op_tab[op].nb_args)
+        {
+            size += args[i].size;
+            i++;
+        }
         if (check_reg(args))
-            return (args[0].size + args[1].size + args[2].size + args[3].size);
-        return (-(args[0].size + args[1].size + args[2].size + args[3].size));
+            return (size);
+        return (-size);
     }
-    return (-(args[0].size + args[1].size + args[2].size + args[3].size));
+    return (-size);
 }

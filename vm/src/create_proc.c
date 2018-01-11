@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 18:24:54 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/03 14:37:49 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/11 14:45:17 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ t_proc      *create_proc(t_proc *p, t_int32 pc, t_int32 g_nb_cycle)
         ret->reg[i] = p->reg[i];
         i++;
     }
-    ret->op = g_mem[ret->pc];
     ret->next = NULL;
     g_id++;
     ret->id = g_id;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:51:33 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/09 23:46:54 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/11 14:51:54 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ void	*display(void)
 	if ((hud = load_image("texture/blanc.jpg")) == UINT_MAX)
 		return (NULL);
 	projection = mat4_unit();
-	projection[0] = ((float)WIN_Y / (float)WIN_X) * 0.9f;
-	projection[5] = 0.9f;
-	projection[10] = 0.1f;
+	projection[0] = ((float)WIN_Y / (float)WIN_X);
+	projection[5] = 1.f;
+	projection[10] = 1.f;
 	projection[12] = -0.4f;
 	modelview = mat4_unit();
 	rotate(&modelview, norme(1.f, 0.f, 0.f), M_PI);
