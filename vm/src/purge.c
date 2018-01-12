@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 17:03:21 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/11 12:42:13 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/12 16:53:13 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,14 @@ void purge(t_proc **cycle)
                 if (!tmp2)
                 {
                     cycle[i] = tmp->next;
+                    g_color[tmp->pc] = (t_case){1.f / 255.f, 223.f / 255.f, 215.f / 255.f};
                     free(tmp);
                     g_id--;
                     tmp = cycle[i];
                     continue ;
                 }
                 tmp2->next = tmp->next;
+                g_color[tmp->pc] = (t_case){1.f / 255.f, 223.f / 255.f, 215.f / 255.f};
                 free(tmp);
                 g_id--;
                 tmp = tmp2->next;

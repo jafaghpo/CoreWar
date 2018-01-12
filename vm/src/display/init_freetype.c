@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 03:11:16 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/09 22:54:34 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/12 17:13:03 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,12 +173,12 @@ int         init_freetype(GLuint *police_text)
     return (1);
 }
 
-
 void        put_text(char *str, float x, float y)
 {
     float   offset;
     int     i;
 
+    (void)str;(void)x;(void)y;(void)offset;(void)i;
     offset = 0;
     glUseProgram(g_prog);
         glBindVertexArray(g_vao);
@@ -186,6 +186,11 @@ void        put_text(char *str, float x, float y)
             i = 0;
             while (str[i])
             {
+                if (str[i] < 0)
+                {
+                    i++;
+                    continue ;
+                }
                 glUniform2f(pos_location, x + offset, y);
 			    glActiveTexture(GL_TEXTURE0);
                 glBindTexture(GL_TEXTURE_2D, g_arial[(int)str[i]]);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_args.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:29:50 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/11 16:08:26 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/12 16:21:09 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ t_int32     get_args(t_uint32 pc, t_inst *args, t_uint8 op)
 {
     int      i;
     int      size;
-
+	
     get_types(g_mem[(pc + 1) % MEM_SIZE], args, op);
-    get_sizes(g_mem[pc], args);
+    get_sizes(op, args);
     size = 0;
-    if (check_type(g_mem[pc], args))
+    if (check_type(op, args))
     {
         get_values(pc, args, op);
         i = 0;

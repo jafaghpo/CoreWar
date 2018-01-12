@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 16:00:26 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/11 11:09:50 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/12 13:18:39 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ static t_int32  get_ind_value(t_int32 ind, t_proc *p, t_uint8 mod)
     t_int32 ret;
     t_int32 tmp;
 
-    tmp = p->pc + ind;
     if (mod)
-        tmp %= IDX_MOD;
+        ind %= IDX_MOD;
+    tmp = p->pc + ind;
     ret = get_uint32_mem(tmp % MEM_SIZE + MEM_SIZE * (tmp < 0));
     return ((t_int32)ret);
 }

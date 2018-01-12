@@ -6,7 +6,7 @@
 #    By: niragne <niragne@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/01/11 15:32:45 by niragne          ###   ########.fr        #
+#    Updated: 2018/01/12 15:13:39 by iburel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ TIME					=	no
 
 NAME					=	corewar
 CFLAGS					=	-Wall -Wextra -Werror
-#CFLAGS					+= -fsanitize=address
+CFLAGS					+= -fsanitize=address
 
 ifeq ($(DEBUG), yes)
 	CFLAGS				+= -g -D DEBUG

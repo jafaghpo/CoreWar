@@ -5,40 +5,4 @@
 
 boucle:
 	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
-	live	%1100
 	zjmp	%:boucle

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_zjmp.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 11:17:41 by root              #+#    #+#             */
-/*   Updated: 2018/01/11 14:57:33 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/12 12:30:43 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void 		op_zjmp(t_proc *p, t_inst *args)
     if (p->carry == 1)
     {
         p->pc += args[0].value % IDX_MOD;
-        g_color[p->pc] = (t_case){0.0f, 1.0f, 0.0f};
+        g_color[p->pc % MEM_SIZE] = (t_case){0.0f, 1.0f, 0.0f};
         p->pc -= 3;
     }
 }

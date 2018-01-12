@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_proc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 18:24:54 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/11 14:45:17 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/12 16:58:57 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_proc      *create_proc(t_proc *p, t_int32 pc, t_int32 g_nb_cycle)
     ret->pc = pc;
     ret->carry = p->carry;
     ret->player = p->player;
-    ret->live = 0;
+    ret->live = p->live;
     i = 0;
     while (i < REG_NUMBER)
     {
