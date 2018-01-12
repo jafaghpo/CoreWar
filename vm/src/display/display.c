@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:51:33 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/12 15:19:43 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/12 17:17:36 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	*display(void)
 	projection = mat4_unit();
 	projection[0] = ((float)WIN_Y / (float)WIN_X);
 	projection[5] = 1.f;
-	projection[10] = 1.f;
+	projection[10] = 0.1f;
 	projection[12] = -0.4f;
 	modelview = mat4_unit();
 	rotate(&modelview, norme(1.f, 0.f, 0.f), M_PI);
