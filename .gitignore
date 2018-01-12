@@ -1,6 +1,7 @@
 vm/corewar
 asm/asm
 lib/
+lib_src/
 
 # Prerequisites
 *.d
