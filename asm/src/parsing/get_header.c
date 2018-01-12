@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 16:05:11 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/10 21:25:08 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/11 23:51:24 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int		check_syntax(t_uint8 *dest, char *line, int len)
 		return (0);
 	line++;
 	ft_delspace(&line);
-	return (!*line || *line == COMMENT_CHAR);
+	return ((!*line || *line == COMMENT_CHAR) ? i : 0);
 }
 
 static int		analize_header(char *line, t_tab *current, int *state)
@@ -57,9 +57,9 @@ static int		analize_header(char *line, t_tab *current, int *state)
 	if ((len = word_equal(line, NAME_CMD_STRING)))
 	{
 		if (*state != 0)
-			return (print_error(0, ERROR_NAME));
+			return (print_error(NO_NAME));
 		if (!(len = check_syntax(g_bin.data + g_bin.i, line + len, NAME_LEN)))
-			return (print_error(0, ERROR_NAME_SYNTAX));
+			return (print_error(SYNTAX, line + len));
 		current->size = len;
 		g_bin.i = NAME_LEN + 12;
 		(*state)++;
@@ -67,11 +67,11 @@ static int		analize_header(char *line, t_tab *current, int *state)
 	else if ((len = word_equal(line, COMMENT_CMD_STRING)))
 	{
 		if (*state != 1)
-			return (print_error(0, ERROR_COM));
+			return (print_error(NO_COMMENT));
 		if (!(len = check_syntax(g_bin.data + g_bin.i, line + len, COM_LEN)))
-			return (print_error(0, ERROR_COM_SYNTAX));
+			return (print_error(SYNTAX, line + len));
 		current->size = len;
-		g_bin.i = NAME_LEN + COM_LEN + 16;
+		g_bin.i = HEADER_LEN;
 		(*state)++;
 	}
 	return (1);
@@ -100,7 +100,7 @@ int				get_header(t_tab *tab, int fd)
 				return (1);
 		}
 		else
-			return (print_error(0, ERROR_HEADER_LINE));
+			return (print_error(HEADER_LINE, line));
 	}
-	return (print_error(0, !state ? ERROR_NAME : ERROR_COM));
+	return (print_error(!state ? NO_NAME : NO_COMMENT));
 }

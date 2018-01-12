@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/29 15:19:44 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/06 15:00:40 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/12 00:26:03 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ static int		get_option(char **av)
 		{
 			if (av[i][j] == 'v')
 				g_option |= VISUAL_FLAG;
-			else if (av[i][j] == 'w')
-				g_option |= WARNING_FLAG;
+			else if (av[i][j] == 's')
+				g_option |= SIZE_FLAG;
 			else
-				return (print_error(1, ERROR_OPTION, av[i][j]));
+				return (print_error(OPTION, av[i][j], USAGE));
 			j++;
 		}
 		i++;
@@ -44,7 +44,7 @@ int				main(int ac, char **av)
 	int			i;
 
 	if (ac < 2)
-		return (print_error(1, NULL));
+		return (print_error(NO_PARAMETER, USAGE));
 	i = 1;
 	if (!get_option(av))
 		return (0);

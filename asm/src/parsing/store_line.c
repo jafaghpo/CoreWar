@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 16:42:50 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/10 21:15:06 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/11 20:33:29 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ static int	realloc_tab(t_tab *tab)
 
 int			store_line(t_tab *tab, t_tab *current)
 {
+	if (!(g_option & VISUAL_FLAG))
+	{
+		free(current->line);
+		return (1);
+	}
 	if (!(g_lines % (sizeof(*tab) * TAB_SIZE)))
 	{
 		if (!realloc_tab(tab))

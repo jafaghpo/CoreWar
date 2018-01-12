@@ -6,42 +6,59 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 14:38:13 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/10 21:14:16 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/12 00:25:15 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ASM_H
 # define ASM_H
 
+/*
+**	-- Includes --
+*/
 # include <ncurses.h>
 # include <errno.h>
 # include "libft.h"
 # include "op.h"
 # include "eval_expr.h"
-
-# define ERROR_USAGE			"usage: ./asm [-wv] file ...\n"
-# define ERROR_EXTENSION		"%s: invalid file extension"
-# define ERROR_OPTION			"illegal option -- %c"
-# define ERROR_OPEN				"%s: %s"
-# define ERROR_NAME				"missing champion name"
-# define ERROR_COM				"missing champion comment"
-# define ERROR_NAME_SYNTAX		"invalid syntax in champion name"
-# define ERROR_COM_SYNTAX		"invalid syntax in champion comment"
-# define ERROR_HEADER_LINE		"invalid line in champion header"
-
-# define WARNING_FLAG			0x01
-# define VISUAL_FLAG			0x02
+/*
+**	-- Error messages --
+*/
+# define NO_PARAMETER			"missing parameters\n%s"	
+# define USAGE					"usage: ./asm [-wv] file ..."
+# define EXTENSION				"invalid file extension: \033[31m%s"
+# define OPTION					"illegal option -- \033[31m%c\033[0m\n%s"
+# define UNKNOWN_FILE			"\033[31m%s: \033[0m%s"
+# define NO_NAME				"missing champion name"
+# define NO_COMMENT				"missing champion comment"
+# define SYNTAX					"invalid syntax: \033[31m%s\033[0m"
+# define HEADER_LINE			"invalid line in champion header: \033[31m%s\033[0m"
+# define LABEL_SYNTAX			"invalid label syntax: \033[31m%s\033[0m"
+# define UNKNOWN_INST			"unknown instruction: \033[31m%s\033[0m"
+/*
+**	-- Option masks --
+*/
+# define VISUAL_FLAG			0x01
+# define SIZE_FLAG				0x02
+/*
+**	-- Length macros --
+*/
 # define TAB_SIZE				1000
 # define NAME_LEN				PROG_NAME_LENGTH
 # define COM_LEN				COMMENT_LENGTH
-
+# define HEADER_LEN				(NAME_LEN + COM_LEN + 16)
+/*
+**	-- Typedefs --
+*/
 typedef uint8_t			t_uint8;
 typedef struct s_tab	t_tab;
 typedef struct s_buf	t_buf;
 typedef struct s_tmplb	t_tmplb;
 typedef struct s_lstlb	t_lstlb;
 typedef struct s_label	t_label;
-
+/*
+**	-- Structures --
+*/
 struct		s_tab
 {
 	char	*line;
@@ -78,7 +95,6 @@ struct		s_label
 	t_tmplb	*tmp;
 	t_lstlb	*lst;
 };
-
 /*
 **	-- Global variables --
 */
@@ -87,12 +103,13 @@ extern	int		g_option;
 extern	t_buf	g_bin;
 extern	t_op	g_op[17];
 /*
-**	-- Common --
+**	-- General --
 */
-int			print_error(int usage, const char *msg, ...);
+int			print_error(const char *msg, ...);
 char		*get_name(char *file);
 int			fill_binary(char *name);
 int			word_equal(char *s1, char *s2);
+int			word_len(char *str);
 /*
 **	-- Parsing --
 */
