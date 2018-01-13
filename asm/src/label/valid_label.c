@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 21:56:26 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/11 23:09:39 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/12 16:38:44 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ int					valid_label(char *str)
 		setup_token(token, LABEL_CHARS);
 	i = 0;
 	valid = 1;
-	while (token[(int)str[i])
+	while (token[(int)str[i]])
 		i++;
 	if (str[i] == LABEL_CHAR)
-		return (i + 1);
+		return (i);
 	while (str[i] != ' ' && str[i] != '\t' && str[i])
 		i++;
 	if (str[i - 1] == LABEL_CHAR)

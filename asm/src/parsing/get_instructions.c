@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 21:16:35 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/11 23:50:38 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/12 21:19:44 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,16 @@ static int	parse_instruction(char *line, t_label *label, t_tab *current)
 	if (!*line || *line == COMMENT_CHAR)
 		return (1);
 	if (!(len = get_opcode(line, &op)))
-		return (print_error(0, INSTRUCTION));
+		return (print_error(UNKNOWN_INST, line));
 	inst[0] = (char)op;
 	inst[1] = 0;
+	line += len + 1;
+	ft_delspace(&line);
+	if (!(len = parse_arguments(line, label, inst)))
+		return (0);
+	current->size = len;
+	add_instruction(inst, len);
+	return (1);
 }
 
 static int	analize_line(char *line, t_label *label, t_tab *current)
@@ -32,16 +39,16 @@ static int	analize_line(char *line, t_label *label, t_tab *current)
 
 	label_size = valid_label(line);
 	if (label_size == -1)
-		return (print_error(0, LABEL_SYNTAX));
+		return (print_error(LABEL_SYNTAX, line));
 	else if (label_size)
 	{
-		label->lst = add_label(label->lst, line);
+		label->lst = add_label(label->lst, line, label_size);
 		current->new_line = 1;
-		line += label_size;
+		line += label_size + 1;
 		ft_delspace(&line);
 		return (parse_instruction(line, label, current));
 	}
-	else if (!parse_instruction(line), label, current)
+	else if (!parse_instruction(line, label, current))
 		return (0);
 	return (1);
 }
@@ -55,7 +62,7 @@ int			get_instructions(t_tab *tab, t_label *label, int fd)
 	while ((ret = get_next_line(fd, &line)))
 	{
 		if (ret == -1)
-			return (print_error(0, strerror(errno)));
+			return (print_error(strerror(errno)));
 		current = (t_tab){line, g_bin.data + g_bin.i, 0, 0};
 		ft_delspace(&line);
 		if (!*line || *line == COMMENT_CHAR)

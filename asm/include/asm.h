@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 14:38:13 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/12 00:25:15 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/13 01:13:30 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,8 @@ char		*get_name(char *file);
 int			fill_binary(char *name);
 int			word_equal(char *s1, char *s2);
 int			word_len(char *str);
+int			get_opcode(char *line, int *op);
+void		add_instruction(char *inst, int len);
 /*
 **	-- Parsing --
 */
@@ -117,10 +119,14 @@ int			parse_file(char *name);
 int			get_header(t_tab *tab, int fd);
 int			get_instructions(t_tab *tab, t_label *label, int fd);
 int			store_line(t_tab *tab, t_tab *current);
+int			parse_arguments(char *line, t_label *label, char *inst);
 /*
 **	-- Labels --
 */
+int			valid_label(char *str);
 int			check_labels(t_label *label);
+t_lstlb		*add_label(t_lstlb *label, char *name, int size);
+char		*duplicate_label(char *name, int size);
 /*
 **	-- Visual --
 */
