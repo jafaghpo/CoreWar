@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 14:38:13 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/13 01:13:30 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/14 15:41:35 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_buf	t_buf;
 typedef struct s_tmplb	t_tmplb;
 typedef struct s_lstlb	t_lstlb;
 typedef struct s_label	t_label;
+typedef struct s_inst	t_inst;
 /*
 **	-- Structures --
 */
@@ -94,6 +95,13 @@ struct		s_label
 {
 	t_tmplb	*tmp;
 	t_lstlb	*lst;
+};
+
+struct		s_inst
+{
+	char	data[20];
+	int		size;
+	int		args;
 };
 /*
 **	-- Global variables --
