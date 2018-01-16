@@ -6,14 +6,14 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:51:33 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/12 17:17:36 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/16 01:15:37 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "display.h"
 
 t_uint8		g_line_chat = CHAT_SIZE - 1;
-char		g_chat[CHAT_SIZE][CHAT_LINE_SIZE];
+GLuint		g_chat[CHAT_SIZE];
 
 void	*display(void)
 {
@@ -42,12 +42,12 @@ void	*display(void)
 		return (NULL);
 	if (!init_square_texture())
 		return (NULL);
-	if (!(init_freetype(police_text)))
-		return (NULL);
 	if ((image_load = load_image("texture/load.jpg")) == UINT_MAX)
 		return (NULL);
 	display_square((t_vec2){-1.f, -1.f}, (t_vec2){2.f, 2.f}, image_load);
 	SDL_GL_SwapWindow(sdl.win);
+	if (!(init_freetype()))
+		return (NULL);
 	if ((fond = load_image("texture/fond.jpg")) == UINT_MAX)
 		return (NULL);
 	if ((hud = load_image("texture/blanc.jpg")) == UINT_MAX)
@@ -91,6 +91,8 @@ void	*display(void)
 				done = 1;
 			else if (sdl.event.key.keysym.sym == SDLK_j)
 				add_line_chat("t'as appuye sur J, t'es vraiment tres fort");
+			else if (sdl.event.key.keysym.sym == SDLK_k)
+				add_line_chat("t'as appuye sur K, t'es vraiment tres fort");
 			if (sdl.event.key.type == SDL_KEYDOWN)
 				g_key = sdl.event.key.keysym.sym;
 			while (g_key)
@@ -116,7 +118,7 @@ void	*display(void)
 		glUseProgram(0);
 		display_square((t_vec2){0.4f, -1.f}, (t_vec2){0.6f, 2.f}, hud);
 		put_chat();
-		put_text(put_fps, 0.9, 0.9);
+//		put_text(put_fps, 0.9, 0.9);
 		SDL_GL_SwapWindow(sdl.win);
 		sdl.time_end = SDL_GetTicks();
 		tmp = sdl.time_end - fps;

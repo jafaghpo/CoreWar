@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:50:56 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/10 14:40:16 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/15 23:59:54 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ typedef unsigned int  t_uint;
 # define FRAGMENT_SQUARE        "shader/square.frag"
 # define VERTEX_TEXT            "shader/text.vert"
 # define FRAGMENT_TEXT          "shader/text.frag"
+# define VERTEX_CHAT            "shader/chat.vert"
+# define FRAGMENT_CHAT          "shader/chat.frag"
 
 # define CHAT_SIZE				50
 # define CHAT_LINE_SIZE			100
@@ -67,7 +69,7 @@ struct s_case
 };
 
 extern Uint8    g_mem[MEM_SIZE];
-extern char     g_chat[CHAT_SIZE][CHAT_LINE_SIZE];
+extern GLuint   g_chat[CHAT_SIZE];
 extern Uint8    g_line_chat;
 extern t_uint32 g_pause;
 extern t_uint32 g_key;
@@ -109,7 +111,7 @@ void            display_load(SDL_Window *win, float per);
 int             init_square_texture(void);
 void            display_square(t_vec2 offset, t_vec2 size, GLuint text);
 void            *display(void);
-int		        init_freetype(GLuint *police_text);
+int		        init_freetype(void);
 void            put_text(char *str, float x, float y);
 void            put_chat(void);
 void            add_line_chat(char *str);

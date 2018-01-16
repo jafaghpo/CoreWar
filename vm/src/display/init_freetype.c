@@ -6,145 +6,134 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 03:11:16 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/12 17:13:03 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/16 01:20:11 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "display.h"
 
+static Uint8    g_font[128][30][16];
+static int      g_font_size[128];
 static GLuint   g_prog;
 static GLuint   g_vao;
-static GLuint   g_vbo;
-static GLuint   g_arial[128];
-static float    g_size[5][128];
 static GLuint   text_location;
 static GLuint   pos_location;
 
-#define OUAIS ((float)POLICE_SIZE / (float)WIN_Y)
-#define SIZE_X g_size[0][(int)str[i]]
-#define SIZE_Y g_size[1][(int)str[i]]
-#define CORR_X g_size[2][(int)str[i]]
-#define CORR_Y (-g_size[3][(int)str[i]])
-#define ADVANCE g_size[4][(int)str[i]]
-
-static int  prog_text(void)
+static void resize(int i, FT_GlyphSlot slot)
 {
-    static float    vertices[8] = {0.f, 0.f, OUAIS, 0.f, 0.f, OUAIS, OUAIS, OUAIS};
-    static float    coord_text[8] = {0.f, 1.f, 1.f, 1.f, 0.f, 0.f, 1.f, 0.f};
+    Uint32     y;
 
-    if (!(g_prog = create_prog(VERTEX_TEXT, FRAGMENT_TEXT)))
+    y = 0;
+    while (y < slot->bitmap.rows)
+    {
+        ft_memcpy(g_font[i][20 - slot->bitmap_top + y] + slot->bitmap_left,
+                  slot->bitmap.buffer + y * slot->bitmap.width,
+                  slot->bitmap.width);
+        y++;
+    }
+}
+
+static int  load_font(FT_Face face)
+{
+    FT_GlyphSlot    slot;
+    int             i;
+
+    slot = face->glyph;
+    i = 0;
+    while (i < 128)
+    {       
+        if (FT_Load_Char(face, i, FT_LOAD_RENDER))
+        {
+            ft_printf(ERROR_INIT_FONT"\n");
+            return (0);
+        }
+        g_font_size[i] = slot->bitmap.width + (slot->advance.x >> 6);
+        resize(i, slot);
+        i++;
+    }
+    return (1);
+}
+
+static void init_array(float *vertices, float *coord_text)
+{
+    int     i;
+
+    i = 0;
+    while (i < 8 * CHAT_SIZE)
+    {
+        vertices[i + 0] = 0.41f;
+        vertices[i + 1] = -0.9f + (float)30 / (float)WIN_Y * (float)(i / 8 + 1);
+        vertices[i + 2] = 0.41f + (float)(16 * CHAT_LINE_SIZE) / (float)WIN_Y;
+        vertices[i + 3] = -0.9f + (float)30 / (float)WIN_Y * (float)(i / 8 + 1);
+        vertices[i + 4] = 0.41f;
+        vertices[i + 5] = -0.9f + (float)30 / (float)WIN_Y * (float)(i / 8);
+        vertices[i + 6] = 0.41f + (float)(16 * CHAT_LINE_SIZE) / (float)WIN_Y;
+        vertices[i + 7] = -0.9f + (float)30 / (float)WIN_Y * (float)(i / 8);
+        coord_text[i + 0] = 0.f;
+        coord_text[i + 1] = 0.f;
+        coord_text[i + 2] = 1.f;
+        coord_text[i + 3] = 0.f;
+        coord_text[i + 4] = 0.f;
+        coord_text[i + 5] = 1.f;
+        coord_text[i + 6] = 1.f;
+        coord_text[i + 7] = 1.f;
+        i += 8;
+    }
+}
+
+static int  prog_chat(void)
+{
+    static float    vertices[8 * CHAT_SIZE];
+    static float    coord_text[8 * CHAT_SIZE];
+    GLuint          vbo;
+
+    init_array(vertices, coord_text);
+    if (!(g_prog = create_prog(VERTEX_CHAT, FRAGMENT_CHAT)))
         return (0);
     text_location = glGetUniformLocation(g_prog, "text");
     pos_location = glGetUniformLocation(g_prog, "pos");
-    glGenBuffers(1, &g_vbo);
-    glBindBuffer(GL_ARRAY_BUFFER, g_vbo);
+    glGenBuffers(1, &vbo);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
         glBufferData(GL_ARRAY_BUFFER, sizeof(vertices) + sizeof(coord_text), 0, GL_STATIC_DRAW);
         glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
         glBufferSubData(GL_ARRAY_BUFFER, sizeof(vertices), sizeof(coord_text), coord_text);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glGenVertexArrays(1, &g_vao);
     glBindVertexArray(g_vao);
-        glBindBuffer(GL_ARRAY_BUFFER, g_vbo);
+        glBindBuffer(GL_ARRAY_BUFFER, vbo);
             glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0);
             glEnableVertexAttribArray(0);
-            glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, (GLvoid *)(sizeof(float) * 8));
+            glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, (GLvoid *)(sizeof(vertices)));
             glEnableVertexAttribArray(1);
         glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
     return (1);
 }
 
-static int  load_arial(FT_Face face)
+void        put_chat(void)
 {
-    FT_GlyphSlot    slot;
-    int             i;
+    int     i;
 
-    slot = face->glyph;
-    glGenTextures(128, g_arial);
-    i = 0;
-    while (i < 128)
-    {
-        if (FT_Load_Char(face, i, FT_LOAD_RENDER))
-        {
-            ft_printf(ERROR_INIT_FONT"\n");
-            return (0);
-        }
-        g_size[0][i] = (float)slot->bitmap.width / (float)WIN_X;
-        g_size[1][i] = (float)slot->bitmap.rows / (float)WIN_Y;
-        g_size[2][i] = (float)slot->bitmap_left / (float)WIN_X;
-        g_size[3][i] = (float)slot->bitmap_top / (float)WIN_Y;
-        g_size[4][i] = (float)(slot->advance.x >> 6) / (float)WIN_X;
-        glBindTexture(GL_TEXTURE_2D, g_arial[i]);
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, slot->bitmap.width, slot->bitmap.rows, 0, GL_RED, GL_UNSIGNED_BYTE, slot->bitmap.buffer);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        glBindTexture(GL_TEXTURE_2D, 0);
-        i++;
-    }
-    return (1);
+    glUseProgram(g_prog);
+        glBindVertexArray(g_vao);
+            glUniform1i(text_location, 0);
+            i = 0;
+            while (i < CHAT_SIZE)
+            {
+                glActiveTexture(GL_TEXTURE0);
+                glBindTexture(GL_TEXTURE_2D, g_chat[i]);
+                    glDrawArrays(GL_TRIANGLE_STRIP, i * 4, 4);
+                i++;
+            }
+        glBindVertexArray(0);
+    glUseProgram(0);
 }
 
-static void redim_text(Uint8 data[50][50], FT_GlyphSlot slot, Uint32 x, Uint32 y)
-{
-    Uint32      i;
-
-    ft_bzero(data, 50 * 50);
-    i = 0;
-    while (i < slot->bitmap.rows)
-    {
-        ft_memcpy(data[y + i] + x, slot->bitmap.buffer + i * slot->bitmap.width, slot->bitmap.width);
-        i++;
-    }
-}
-
-static int  fill_police_text(FT_Face face, GLuint *police_text)
-{
-    static Uint8    data[50][50];
-    int             i;
-
-    glGenTextures(32, police_text);
-    i = 0;
-    while (i < 16)
-    {
-        if (FT_Load_Char(face, (i + '0') + ((i >= 10) * ('A' - '0' - 10)), FT_LOAD_RENDER))
-        {
-            ft_printf(ERROR_INIT_FONT"\n");
-            return (0);
-        }
-        redim_text(data, face->glyph, 10, 15);
-        glBindTexture(GL_TEXTURE_2D, police_text[i]);
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, 50, 50, 0, GL_RED, GL_UNSIGNED_BYTE, data);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        glBindTexture(GL_TEXTURE_2D, 0);
-        redim_text(data, face->glyph, 30, 15);
-        glBindTexture(GL_TEXTURE_2D, police_text[i + 16]);
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, 50, 50, 0, GL_RED, GL_UNSIGNED_BYTE, data);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        glBindTexture(GL_TEXTURE_2D, 0);
-        i++;
-    }
-    return (1);
-}
-
-int         init_freetype(GLuint *police_text)
+int         init_freetype(void)
 {
     FT_Library      lib;
     FT_Face         face;
 
-    if (!prog_text())
-    {
-        ft_printf("error\n");
-        return (0);
-    }
-    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
     if (FT_Init_FreeType(&lib))
     {
         ft_printf(ERROR_INIT_FREETYPE"\n");
@@ -160,44 +149,53 @@ int         init_freetype(GLuint *police_text)
         ft_printf(ERROR_INIT_FONT"\n");
         return (0);
     }
-    if (!(load_arial(face)))
+    if (!load_font(face))
     {
         ft_printf(ERROR_INIT_FONT"\n");
         return (0);
     }
-    if (!(fill_police_text(face, police_text)))
+    glGenTextures(CHAT_SIZE, g_chat);
+    if (!prog_chat())
     {
-        ft_printf(ERROR_INIT_FONT"\n");
+        ft_printf("error\n");
         return (0);
     }
     return (1);
 }
 
-void        put_text(char *str, float x, float y)
+void        add_line_chat(char *str)
 {
-    float   offset;
-    int     i;
+    static Uint8   buf[30][16 * CHAT_LINE_SIZE];
+    int     tmp;
+    int     x;
+    int     y;
 
-    (void)str;(void)x;(void)y;(void)offset;(void)i;
-    offset = 0;
-    glUseProgram(g_prog);
-        glBindVertexArray(g_vao);
-            glUniform1i(text_location, 0);
-            i = 0;
-            while (str[i])
-            {
-                if (str[i] < 0)
-                {
-                    i++;
-                    continue ;
-                }
-                glUniform2f(pos_location, x + offset, y);
-			    glActiveTexture(GL_TEXTURE0);
-                glBindTexture(GL_TEXTURE_2D, g_arial[(int)str[i]]);
-                    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-                offset += OUAIS;
-                i++;
-            }
-        glBindVertexArray(0);
-    glUseProgram(0);
+    ft_bzero(buf, sizeof(buf));
+    tmp = (g_line_chat + 1) % CHAT_SIZE;
+    x = 0;
+    while (*str)
+    {                
+        if (*str < 0)
+        {
+            str++;
+            continue ;
+        }
+        y = 0;
+        while (y < 30)
+        {
+            ft_memcpy(buf[y] + x, g_font[(int)*str][y], 16);
+            y++;
+        }
+        x += 13;
+//        x += (int)g_font_size[(int)*str];
+        str++;
+    }
+    glBindTexture(GL_TEXTURE_2D, g_chat[tmp]);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, 16 * CHAT_LINE_SIZE, 30, 0, GL_RED, GL_UNSIGNED_BYTE, buf);
+//        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+//        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glBindTexture(GL_TEXTURE_2D, 0);
+    g_line_chat = tmp;
 }

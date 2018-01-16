@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 02:28:24 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/12 15:31:41 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/15 21:09:37 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ void    put_chat(void)
     i = tmp;
     while (i >= 0)
     {
-        put_text(g_chat[i], 0.43f, -0.95f + y * DIFF_Y);
+//        put_text(g_chat[i], 0.43f, -0.95f + y * DIFF_Y);
         i--;
         y++;
     }
     i = CHAT_SIZE - 1;
     while (i > tmp)
     {
-        put_text(g_chat[i], 0.43f, -0.95f + y * DIFF_Y);
+//        put_text(g_chat[i], 0.43f, -0.95f + y * DIFF_Y);
         i--;
         y++;
     }
