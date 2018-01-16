@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_instruction.c                                  :+:      :+:    :+:   */
+/*   store_argument.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/12 21:10:50 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/13 01:10:28 by jafaghpo         ###   ########.fr       */
+/*   Created: 2018/01/14 18:21:03 by jafaghpo          #+#    #+#             */
+/*   Updated: 2018/01/16 16:28:40 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void			add_instruction(char *inst, int len)
+void		store_argument(t_inst *inst, int n, int size)
 {
-	if (g_bin.i + len > g_bin.size)
+	if (size)
 	{
-		g_bin.size += BUFF_SIZE;
-		g_bin.data = ft_realloc(g_bin.data, g_bin.size);
+		inst->data[inst->size + 0] = (char)(n >> 8);
+		inst->data[inst->size + 1] = (char)(n >> 0);
+		inst->size += 2;
 	}
-	ft_memcpy(g_bin.data, inst, len);
+	else
+	{
+		inst->data[inst->size + 0] = (char)(n >> 24);
+		inst->data[inst->size + 1] = (char)(n >> 16);
+		inst->data[inst->size + 2] = (char)(n >> 8);
+		inst->data[inst->size + 3] = (char)(n >> 0);
+		inst->size += 4;
+	}
 }

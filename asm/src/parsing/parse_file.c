@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 17:54:54 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/13 01:57:07 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/16 18:20:19 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,35 @@
 t_buf			g_bin = {NULL, BUFF_SIZE, 0};
 int				g_lines = 0;
 
-static void		release_memory(t_tab *tab)
+static void		delete_label(t_label *label)
+{
+	t_tmplb		*tmp;
+	t_lstlb		*lst;
+
+	while (label->lst)
+	{
+		lst = label->lst->next;
+		if (!(g_option & VISUAL_FLAG))
+			free(label->lst->name);
+		free(label->lst);
+		label->lst = lst;
+	}
+	while (label->tmp)
+	{
+		tmp = label->tmp->next;
+		if (!(g_option & VISUAL_FLAG))
+			free(label->tmp->name);
+		free(label->tmp);
+		label->tmp = tmp;
+	}
+}
+
+static void		release_memory(t_tab *tab, t_label *label)
 {
 	int		i;
 
 	i = 0;
+	delete_label(label);
 	if (!(g_option & VISUAL_FLAG))
 		return ;
 	while (tab[i].line)
@@ -28,62 +52,7 @@ static void		release_memory(t_tab *tab)
 		i++;
 	}
 	ft_memdel((void**)&tab);
-	ft_memdel((void**)&g_bin.data);
 }
-
-/*
-**	DEBUG FUNCTIONS
-*/
-
-static void		debug_bin(void)
-{
-	int		i;
-
-	i = 0;
-	while (i < 3000)
-	{
-		if (!(i % 32))
-			printf("\n");
-		printf("%.2X ", g_bin.data[i]);
-		i++;
-	}
-	printf("\n\n");
-}
-
-static void		debug_label(t_label *label)
-{
-	t_lstlb		*tmp;
-
-	tmp = label->lst;
-	printf("list of declared labels:\n");
-	while (tmp)
-	{
-		printf("name: %s addr: %d\n", tmp->name, tmp->addr);
-		tmp = tmp->next;
-	}
-}
-
-static void		debug_tab(t_tab *tab)
-{
-	int		i;
-
-	if (!(g_option & VISUAL_FLAG))
-		return ;
-	i = 0;
-	while (tab[i].line)
-	{
-		printf("line: %s\n", tab[i].line);
-		printf("ptr: %s\n", tab[i].ptr);
-		printf("size: %d\n", tab[i].size);
-		printf("new_line: %d\n", tab[i].new_line);
-		printf("\n");
-		i++;
-	}
-}
-
-/*
-**	END OF DEBUG
-*/
 
 int				parse_file(char *name)
 {
@@ -107,10 +76,8 @@ int				parse_file(char *name)
 		return (0);
 	if (g_option & VISUAL_FLAG)
 		run_visual(tab);
-	debug_bin();
 	debug_tab(tab);
-	debug_label(&label);
-	release_memory(tab);
+	release_memory(tab, &label);
 	close(fd);
 	return (1);
 }

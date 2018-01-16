@@ -6,13 +6,14 @@
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/06 16:08:00 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/01/12 16:38:01 by jafaghpo         ###   ########.fr        #
+#    Updated: 2018/01/14 21:04:13 by jafaghpo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC_LABEL_PATH		=	src/label
 
-SRCS_LABEL			=	check_labels.c valid_label.c add_label.c duplicate_label.c
+SRCS_LABEL			=	check_labels.c valid_label.c add_label.c duplicate_label.c \
+						add_tmp_label.c
 
 SRC_LABEL			=	$(addprefix $(SRC_LABEL_PATH)/, $(SRCS_LABEL))
 

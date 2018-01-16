@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 16:05:11 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/11 23:51:24 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/16 17:16:38 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,7 @@ static int		check_syntax(t_uint8 *dest, char *line, int len)
 			esc = 1;
 		else
 		{
-			dest[i] = *line;
-			i++;
+			dest[i++] = *line;
 			esc = 0;
 		}
 		line++;
@@ -47,7 +46,7 @@ static int		check_syntax(t_uint8 *dest, char *line, int len)
 		return (0);
 	line++;
 	ft_delspace(&line);
-	return ((!*line || *line == COMMENT_CHAR) ? i : 0);
+	return ((!*line || *line == COMMENT_CHAR) ? i + 1 : 0);
 }
 
 static int		analize_header(char *line, t_tab *current, int *state)
@@ -60,7 +59,7 @@ static int		analize_header(char *line, t_tab *current, int *state)
 			return (print_error(NO_NAME));
 		if (!(len = check_syntax(g_bin.data + g_bin.i, line + len, NAME_LEN)))
 			return (print_error(SYNTAX, line + len));
-		current->size = len;
+		current->size = len - 1;
 		g_bin.i = NAME_LEN + 12;
 		(*state)++;
 	}
@@ -70,7 +69,7 @@ static int		analize_header(char *line, t_tab *current, int *state)
 			return (print_error(NO_COMMENT));
 		if (!(len = check_syntax(g_bin.data + g_bin.i, line + len, COM_LEN)))
 			return (print_error(SYNTAX, line + len));
-		current->size = len;
+		current->size = len - 1;
 		g_bin.i = HEADER_LEN;
 		(*state)++;
 	}

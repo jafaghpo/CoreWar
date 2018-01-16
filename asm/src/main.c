@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/29 15:19:44 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/12 00:26:03 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/16 16:36:47 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int		get_option(char **av)
 	i = 1;
 	while (av[i])
 	{
-		j = 0;
+		j = 1;
 		while (*av[i] == '-' && av[i][j])
 		{
 			if (av[i][j] == 'v')
@@ -52,8 +52,12 @@ int				main(int ac, char **av)
 	{
 		if (*av[i] != '-' && (bin_name = get_name(av[i])))
 		{
+			ft_printf("Compilation of %s\n", av[i]);
 			if (parse_file(av[i]))
+			{
 				fill_binary(bin_name);
+				ft_printf("Done in %s\n", bin_name);
+			}
 		}
 		i++;
 	}

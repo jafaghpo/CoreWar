@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 16:42:50 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/11 20:33:29 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/16 18:10:15 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int			store_line(t_tab *tab, t_tab *current)
 	tab[g_lines].line = current->line;
 	tab[g_lines].ptr = current->ptr;
 	tab[g_lines].size = current->size;
+	tab[g_lines].new_line = current->new_line;
 	g_lines++;
 	return (1);
 }
