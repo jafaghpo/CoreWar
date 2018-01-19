@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_players.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 11:29:50 by root              #+#    #+#             */
-/*   Updated: 2017/12/05 15:21:51 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/20 00:49:33 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ t_player        *get_players(t_file *files, int nb_players)
 {
     t_player    *players;
     t_uint8     *binary;
+    int         i = 0;
 
     if (!(players = malloc(sizeof(*players) * nb_players)))
         ft_afferror("error malloc");
@@ -68,7 +69,12 @@ t_player        *get_players(t_file *files, int nb_players)
         fill_player(players + files->pos, binary);
         g_champs[files->pos].name = players[files->pos].name;
         g_champs[files->pos].number = rand();
+		if (i == 0)
+			g_champs[files->pos].color = (t_case){1.f / 255.f, 223.f / 255.f, 215.f / 255.f};
+		else
+			g_champs[files->pos].color = (t_case){233.f / 255.f, 70.f / 255.f, 70.f / 255.f};
         files = files->next;
+        i++;
     }
     return (players);
 }

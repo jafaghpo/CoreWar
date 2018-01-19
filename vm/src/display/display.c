@@ -6,14 +6,15 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:51:33 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/16 01:15:37 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/19 23:54:00 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "display.h"
 
 t_uint8		g_line_chat = CHAT_SIZE - 1;
-GLuint		g_chat[CHAT_SIZE];
+GLuint		g_chat[CHAT_SIZE] = {};
+t_uint8		g_chat_buffer[128][30][16 * CHAT_LINE_SIZE] = {};
 
 void	*display(void)
 {
@@ -23,7 +24,7 @@ void	*display(void)
 	t_mat4		modelview;
 	int			done;
 	GLuint		hud;
-	GLuint		police_text[64];
+	GLuint		police_text[16];
 	GLuint		fond;
 	GLuint		image_load;
 	GLint		model_location;
@@ -31,8 +32,10 @@ void	*display(void)
 	Uint32		i;
 	Uint32		nb_frames;
 	Uint32		fps;
-	char		put_fps[4] = "000";
+	int			put_fps = 60;
 	Uint32		tmp;
+	int			right_mouse = 0;
+	int			left_mouse = 0;
 
 	if (!init_sdl(&sdl))
 		return (NULL);
@@ -48,6 +51,7 @@ void	*display(void)
 	SDL_GL_SwapWindow(sdl.win);
 	if (!(init_freetype()))
 		return (NULL);
+	load_numbers(police_text);
 	if ((fond = load_image("texture/fond.jpg")) == UINT_MAX)
 		return (NULL);
 	if ((hud = load_image("texture/blanc.jpg")) == UINT_MAX)
@@ -85,18 +89,41 @@ void	*display(void)
 		sdl.time_start = SDL_GetTicks();
 		while (SDL_PollEvent(&sdl.event))
 		{
-			if (sdl.event.window.event == SDL_WINDOWEVENT_CLOSE)
+			if (sdl.event.type == SDL_QUIT)
 				done = 1;
-			else if (sdl.event.key.keysym.sym == SDLK_ESCAPE && sdl.event.type == SDL_KEYDOWN)
-				done = 1;
-			else if (sdl.event.key.keysym.sym == SDLK_j)
-				add_line_chat("t'as appuye sur J, t'es vraiment tres fort");
-			else if (sdl.event.key.keysym.sym == SDLK_k)
-				add_line_chat("t'as appuye sur K, t'es vraiment tres fort");
-			if (sdl.event.key.type == SDL_KEYDOWN)
+			else if (sdl.event.type == SDL_KEYDOWN)
+			{
+				if (sdl.event.key.keysym.sym == SDLK_ESCAPE)
+					done = 1;
+				else if (sdl.event.key.keysym.sym == SDLK_j)
+					add_line_chat("t'as appuye sur J, t'es vraiment tres fort");
+				else if (sdl.event.key.keysym.sym == SDLK_k)
+					add_line_chat("t'as appuye sur K, t'es vraiment tres fort");
 				g_key = sdl.event.key.keysym.sym;
-			while (g_key)
-				;
+				while (g_key)
+					;
+			}
+			else if (sdl.event.type == SDL_MOUSEBUTTONDOWN)
+			{
+    			if (sdl.event.button.button == SDL_BUTTON_LEFT)
+					left_mouse = 1;
+    			else if (sdl.event.button.button == SDL_BUTTON_RIGHT)
+					right_mouse = 1;
+			}
+			else if (sdl.event.type == SDL_MOUSEBUTTONUP)
+			{
+    			if (sdl.event.button.button == SDL_BUTTON_LEFT)
+					left_mouse = 0;
+    			else if (sdl.event.button.button == SDL_BUTTON_RIGHT)
+					right_mouse = 0;
+			}
+			else if (sdl.event.type == SDL_MOUSEMOTION)
+			{
+				if (left_mouse)
+        			rotate(&modelview, norme((float)sdl.event.motion.yrel, (float)sdl.event.motion.xrel, 0.f), (M_PI / 512.f) * sqrt(sdl.event.motion.yrel * sdl.event.motion.yrel + sdl.event.motion.xrel * sdl.event.motion.xrel));
+				if (right_mouse)
+        			translation(&projection, (t_vec3){(float)sdl.event.motion.xrel / (float)WIN_X, -(float)sdl.event.motion.yrel / (float)WIN_Y, 0.f});
+			}
 		}
 		event(&projection, &modelview);
 
@@ -118,16 +145,15 @@ void	*display(void)
 		glUseProgram(0);
 		display_square((t_vec2){0.4f, -1.f}, (t_vec2){0.6f, 2.f}, hud);
 		put_chat();
-//		put_text(put_fps, 0.9, 0.9);
+		put_numbers();
 		SDL_GL_SwapWindow(sdl.win);
 		sdl.time_end = SDL_GetTicks();
 		tmp = sdl.time_end - fps;
 		if (tmp > 1000)
 		{
 			fps = sdl.time_end;
-			put_fps[0] = nb_frames / 100 + '0';
-			put_fps[1] = (nb_frames % 100) / 10 + '0';
-			put_fps[2] = nb_frames % 10 + '0';
+			put_fps = nb_frames;
+			update_numbers(&put_fps);
 			nb_frames = 0;
 		}
 //		if (sdl.time_end < sdl.time_start + (1000.f / 60.f))

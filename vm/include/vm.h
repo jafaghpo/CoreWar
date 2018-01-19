@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 18:31:33 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/11 11:00:41 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/20 00:28:59 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ struct		s_champ
 	t_uint32	id;
 	t_uint32	number;
 	t_uint32	live;
+	t_case		color;
 };
 
 extern t_op		op_tab[OP_NB];

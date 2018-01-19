@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 16:04:48 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/12 13:37:44 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/20 00:46:27 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void    exec_proc(t_proc **cycle, t_proc *tmp)
     char            str[CHAT_LINE_SIZE];
 
     op = tmp->op;
-    g_color[tmp->pc] = (t_case){1.f / 255.f, 223.f / 255.f, 215.f / 255.f};
+    g_color[tmp->pc] = g_champs[tmp->player].color;
     if (op == 0 || op > 16)
     {
         tmp->pc = (tmp->pc + 1) % MEM_SIZE;

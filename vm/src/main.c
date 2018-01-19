@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/09 20:49:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/16 01:17:25 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/19 19:36:50 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int		main(int ac, char **av)
 #endif
 	if (g_flags.visu)
 	{
-		pthread_create(&tid, NULL, keyhook, NULL);
+		pthread_create(&tid, NULL, keyhook, NULL);		
 		pthread_create(&tid, NULL, vm, &g_flags);
 		display();
 	}

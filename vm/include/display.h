@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:50:56 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/15 23:59:54 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/19 22:55:14 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ typedef unsigned int  t_uint;
 # define FRAGMENT_TEXT          "shader/text.frag"
 # define VERTEX_CHAT            "shader/chat.vert"
 # define FRAGMENT_CHAT          "shader/chat.frag"
+# define VERTEX_NUMBERS         "shader/numbers.vert"
+# define FRAGMENT_NUMBERS       "shader/numbers.frag"
 
 # define CHAT_SIZE				50
 # define CHAT_LINE_SIZE			100
@@ -71,10 +73,13 @@ struct s_case
 extern Uint8    g_mem[MEM_SIZE];
 extern GLuint   g_chat[CHAT_SIZE];
 extern Uint8    g_line_chat;
+extern Uint8    g_chat_buffer[128][30][16 * CHAT_LINE_SIZE];
 extern t_uint32 g_pause;
 extern t_uint32 g_key;
 extern float    g_sleep;
 extern t_case   g_color[MEM_SIZE];
+extern Uint8    g_font[128][30][16];
+extern int      g_font_size[128];
 
 typedef struct s_sdl    t_sdl;
 typedef struct s_gl     t_gl;
@@ -115,5 +120,10 @@ int		        init_freetype(void);
 void            put_text(char *str, float x, float y);
 void            put_chat(void);
 void            add_line_chat(char *str);
+void            load_numbers(GLuint *police_text);
+int             prog_chat(void);
+int             prog_numbers(void);
+void            update_numbers(int *numbers);
+void            put_numbers(void);
 
 #endif
