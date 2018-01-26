@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 18:31:33 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/26 01:33:41 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/26 21:52:17 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # define ERROR_BREAKPOINT		"error: wrong breakpoint\n"
 
 # define LIST_FLAGS				"v"
-# define LIST_ARGS				"bdsn"
+# define LIST_ARGS				"bdsnt"
 # define MAX_BREAKPOINTS		10
 
 # define READ_MAX				CHAMP_MAX_SIZE + PROG_NAME_LENGTH + COMMENT_LENGTH + 16
@@ -109,6 +109,7 @@ void		init_proc(t_proc **cycle, int nb);
 t_file		*add_file(t_args *flags, t_file *files, char *name, int *pos);
 int			get_dumps(t_args *flags, char *str);
 int			get_nums(t_args *flags, char *str);
+int    		get_theme(t_args *flags, char *str);
 int	    	get_breakpoints(t_args *flags, char *str, char **av, int *i);
 void		get_name(char *file);
 void    	fill_pos_players(t_file *files, int nb_players);

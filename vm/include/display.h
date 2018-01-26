@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:50:56 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/25 22:35:42 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/26 21:24:08 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,9 @@ typedef unsigned int  t_uint;
 # define POLICE_SIZE            16
 
 typedef struct s_case   t_case;
-typedef struct s_infos   t_infos;
-typedef struct s_champ		t_champ;
+typedef struct s_infos  t_infos;
+typedef struct s_champ  t_champ;
+typedef struct s_theme  t_theme;
 
 struct s_case
 {
@@ -88,6 +89,19 @@ struct		s_champ
 	t_case		color;
 };
 
+struct s_theme
+{
+    char    *background_file;
+    char    *hud_file;
+    char    *music_file;
+    char    *police_file;
+    t_case  color_empty;
+    t_case  color_players[4];
+    t_case  color_numbers;
+    t_case  color_chat;
+    t_case  color_fps;
+};
+
 extern Uint8    g_mem[MEM_SIZE];
 extern GLuint   g_chat[CHAT_SIZE];
 extern Uint8    g_line_chat;
@@ -99,6 +113,7 @@ extern t_infos  g_infos[MEM_SIZE];
 extern Uint8    g_font[128][30][16];
 extern int      g_font_size[128];
 extern t_champ	*g_champs;
+extern t_theme  g_theme;
 
 typedef struct s_sdl    t_sdl;
 typedef struct s_gl     t_gl;

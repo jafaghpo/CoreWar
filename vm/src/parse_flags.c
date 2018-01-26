@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_flags.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/11 14:20:31 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/11 15:27:19 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/26 21:51:48 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	parse_noargs(t_args *flags, char *str)
 
 static int	parse_args(t_args *flags, char **av, int *i)
 {
-	static int	(*f[256])() = {['d'] = get_dumps, ['n'] = get_nums, ['b'] = get_breakpoints, ['s'] = get_sleep};
+	static int	(*f[256])() = {['d'] = get_dumps, ['n'] = get_nums, ['b'] = get_breakpoints, ['s'] = get_sleep, ['t'] = get_theme};
 	int			tmp;
 
 	if (!f[(int)av[0][1]] || av[0][2])

@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:51:33 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/26 00:21:31 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/26 21:49:47 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	*display(void)
 	t_gl		gl;
 	t_mat4		projection;
 	t_mat4		modelview;
+	t_mat4		all_trans;
 	int			done;
 	GLuint		hud;
 	GLuint		police_text[16];
@@ -51,9 +52,9 @@ void	*display(void)
 	if (!(init_freetype()))
 		return (NULL);
 	load_numbers(police_text);
-	if ((fond = load_image("texture/fond.jpg")) == UINT_MAX)
+	if ((fond = load_image(g_theme.background_file)) == UINT_MAX)
 		return (NULL);
-	if ((hud = load_image("texture/blanc.jpg")) == UINT_MAX)
+	if ((hud = load_image(g_theme.hud_file)) == UINT_MAX)
 		return (NULL);
 	projection = mat4_unit();
 	projection[0] = ((float)WIN_Y / (float)WIN_X);
@@ -129,8 +130,9 @@ void	*display(void)
 		display_square((t_vec2){-1.f, -1.f}, (t_vec2){2.f, 2.f}, fond);
 		glUseProgram(gl.prog);
 			glBindVertexArray(gl.vao);
-				glUniformMatrix4fv(model_location, 1, GL_FALSE, modelview);
-				glUniformMatrix4fv(proj_location, 1, GL_FALSE, projection);
+				all_trans = mat4_mult(projection, modelview);
+				glUniformMatrix4fv(model_location, 1, GL_FALSE, all_trans);
+				free(all_trans);
 				i = 0;
 				while (i < MEM_SIZE)
 				{

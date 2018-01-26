@@ -6,21 +6,20 @@
 #    By: iburel <iburel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/01/26 01:31:09 by iburel           ###   ########.fr        #
+#    Updated: 2018/01/26 22:46:37 by iburel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-DEBUG					=	no
+DEBUG					=	yes
 TIME					=	no
 
 NAME					=	corewar
 CFLAGS					=	-Wall -Wextra -Werror
-CFLAGS					+= -fsanitize=address
 
 ifeq ($(DEBUG), yes)
-	CFLAGS				+= -g -D DEBUG
+	CFLAGS				+= -g -D DEBUG# -fsanitize=address
 else
-	CFLAGS				+= -g
+	CFLAGS				+=
 endif
 
 ifeq ($(TIME), yes)
@@ -37,7 +36,8 @@ SRCS					=	parse_flags.c flags_v.c add_file.c get_nums.c get_dumps.c \
 							exec_procs_foreach.c exec_proc.c get_player_id.c purge.c \
 							pick_winner.c keyhook.c get_breakpoints.c \
 							bubble_tab.c get_sleep.c end_game.c move_procs_foreach.c \
-							move_proc.c settings.c clear_new.c add_clear_new.c main.c
+							move_proc.c settings.c clear_new.c add_clear_new.c get_theme.c \
+							main.c
 
 SRC_OP_PATH				=	$(SRC_PATH)/op
 SRCS_OP					=	op_live.c op_ld.c op_st.c op_add.c op_sub.c op_and.c \

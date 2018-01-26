@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:16:53 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/19 21:51:54 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/26 21:33:14 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ int         prog_chat(void)
     init_array(vertices, coord_text);
     if (!(g_prog = create_prog(VERTEX_CHAT, FRAGMENT_CHAT)))
         return (0);
-    glUniform1i(glGetUniformLocation(g_prog, "text"), 0);
+    glUseProgram(g_prog);
+        glUniform3f(glGetUniformLocation(g_prog, "color_font"), g_theme.color_chat.r, g_theme.color_chat.g, g_theme.color_chat.b);
+        glUniform1i(glGetUniformLocation(g_prog, "text"), 0);
+    glUseProgram(0);
     glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
         glBufferData(GL_ARRAY_BUFFER, sizeof(vertices) + sizeof(coord_text), 0, GL_STATIC_DRAW);

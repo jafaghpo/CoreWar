@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 21:49:39 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/09 22:54:48 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/26 21:29:00 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,9 @@ int             init_gl(t_gl *gl)
     glDisable(GL_CULL_FACE);
     if ((gl->prog = create_prog(VERTEX_DISPLAY, FRAGMENT_DISPLAY)) == UINT_MAX)
         return (0);
+    glUseProgram(gl->prog);
+        glUniform3f(glGetUniformLocation(gl->prog, "color_font"), g_theme.color_numbers.r, g_theme.color_numbers.g, g_theme.color_numbers.b);
+    glUseProgram(0);
     init_vram(gl);
     return (1);
 }

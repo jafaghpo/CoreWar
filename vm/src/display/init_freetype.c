@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 03:11:16 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/20 00:20:21 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/26 21:23:48 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int         init_freetype(void)
         ft_printf(ERROR_INIT_FREETYPE"\n");
         return (0);
     }
-    if (FT_New_Face(lib, "fonts/arial.ttf", 0, &face))
+    if (FT_New_Face(lib, g_theme.police_file, 0, &face))
     {
         ft_printf(ERROR_INIT_FONT"\n");
         return (0);

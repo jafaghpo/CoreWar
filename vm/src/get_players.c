@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 11:29:50 by root              #+#    #+#             */
-/*   Updated: 2018/01/26 01:45:46 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/26 22:54:45 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,6 @@ static void     fill_player(t_player *players, t_uint8 *binary)
 
 t_player        *get_players(t_file *files, int nb_players)
 {
-    static t_case   colors[4] =
-    {
-        {1.f / 255.f, 223.f / 255.f, 215.f / 255.f},
-        {233.f / 255.f, 70.f / 255.f, 70.f / 255.f},
-        {127.f / 255.f, 221.f / 255.f, 76.f / 255.f},
-        {152.f / 255.f, 50.f / 255.f, 203.f / 255.f}
-    };
     t_player        *players;
     t_uint8         *binary;
     int             i = 0;
@@ -76,7 +69,7 @@ t_player        *get_players(t_file *files, int nb_players)
         fill_player(players + files->pos, binary);
         g_champs[files->pos + 1].name = players[files->pos].name;
         g_champs[files->pos + 1].number = rand();
-		g_champs[files->pos + 1].color = colors[i % 4];
+		g_champs[files->pos + 1].color = g_theme.color_players[i % 4];
         files = files->next;
         i++;
     }

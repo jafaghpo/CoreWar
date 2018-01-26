@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 15:03:53 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/20 17:57:39 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/26 18:47:52 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,18 @@ void    check_breakpoints(void)
 void    *keyhook(void *av)
 {
     t_uint8 *key;
-    (void)av;
     char    str[CHAT_LINE_SIZE];
 
+    (void)av;
     key = (Uint8 *)SDL_GetKeyboardState(NULL);
     while (1)
     {
         while (!g_key)
         {
             if (key[SDL_SCANCODE_X])
-                g_sleep *= 1.000001;
+                g_sleep *= 1.0000001;
             if (key[SDL_SCANCODE_Z])
-                g_sleep *= 0.999999;
+                g_sleep *= 0.9999999;
             check_breakpoints();
         }
         if (g_key == SDLK_SPACE)

@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 21:49:59 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/19 23:58:17 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/26 21:35:02 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ int         prog_numbers(void)
     glGenTextures(1, text);
     if (!(g_prog = create_prog(VERTEX_NUMBERS, FRAGMENT_NUMBERS)))
         return (0);
-    glUniform1i(glGetUniformLocation(g_prog, "text"), 0);
+    glUseProgram(g_prog);
+        glUniform3f(glGetUniformLocation(g_prog, "color_font"), g_theme.color_fps.r, g_theme.color_fps.g, g_theme.color_fps.b);
+        glUniform1i(glGetUniformLocation(g_prog, "text"), 0);
+    glUseProgram(0);
     glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
         glBufferData(GL_ARRAY_BUFFER, sizeof(vertices) + sizeof(coord_text), 0, GL_STATIC_DRAW);
