@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 13:50:56 by root              #+#    #+#             */
-/*   Updated: 2018/01/20 00:45:18 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/25 21:56:26 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void    load_players(t_player *players, int nb_players)
         j = 0;
         while (j < players[i].size)
         {
-            g_color[j + i * step] = g_champs[i].color;
+            g_infos[j + i * step].player = i + 1;
             j++;
         }
         i++;

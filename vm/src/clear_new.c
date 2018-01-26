@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pick_winner.c                                      :+:      :+:    :+:   */
+/*   clear_new.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/27 15:42:15 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/25 21:59:43 by iburel           ###   ########.fr       */
+/*   Created: 2018/01/26 00:41:46 by iburel            #+#    #+#             */
+/*   Updated: 2018/01/26 01:13:28 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int    pick_winner(void)
+void    clear_new(t_proc *p)
 {
-    int max;
-    t_uint32 i;
-    t_uint32 j;
-
-    max = -1;
-    i = 1;
-    while (i <= g_nb_player)
-    {
-        if ((int)g_champs[i].live > max)
-        {
-            max = (int)g_champs[i].live;
-            j = i;
-        }
-        i++;
-    }
-    return (j);
+    g_infos[(p->pc + 0) % MEM_SIZE].new = 0;
+    g_infos[(p->pc + 1) % MEM_SIZE].new = 0;
+    g_infos[(p->pc + 2) % MEM_SIZE].new = 0;
+    g_infos[(p->pc + 3) % MEM_SIZE].new = 0;
 }

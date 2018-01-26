@@ -6,15 +6,11 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 15:03:53 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/19 19:34:08 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/20 17:57:39 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
-
-t_uint32    g_pause = 1;
-t_uint32    g_step = 0;
-t_uint32    g_key = 0;
 
 void    check_breakpoints(void)
 {

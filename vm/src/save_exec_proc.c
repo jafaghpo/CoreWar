@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_proc.c                                        :+:      :+:    :+:   */
+/*   save_exec_proc.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 16:04:48 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/10 15:04:19 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/25 21:50:57 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,10 @@ void    exec_proc(t_proc **cycle, t_uint32 g_nb_cycle, t_proc *tmp)
     char            str[CHAT_LINE_SIZE];
 
     op = tmp->op;
-    g_color[tmp->pc] = (t_case){1.f / 255.f, 223.f / 255.f, 215.f / 255.f};
     if (op == 0 || op > 16)
     {
         tmp->pc = (tmp->pc + 1) % MEM_SIZE;
-        insert_proc(cycle, tmp, (g_nb_cycle + 1) % 1001);
+        insert_proc(cycle, tmp, (g_nb_cycle + 1) % NB_CYCLE_MAX);
         return ;
     }
     size = get_args(tmp->pc, args, op);
@@ -37,9 +36,9 @@ void    exec_proc(t_proc **cycle, t_uint32 g_nb_cycle, t_proc *tmp)
         tmp->pc = (tmp->pc + -size + 1 + op_tab[op].octal) % MEM_SIZE;
         tmp->op = g_mem[tmp->pc];
         if (g_mem[tmp->pc] == 0 || g_mem[tmp->pc] > 16)
-            insert_proc(cycle, tmp, (g_nb_cycle + 1) % 1001);
+            insert_proc(cycle, tmp, (g_nb_cycle + 1) % NB_CYCLE_MAX);
         else
-            insert_proc(cycle, tmp, (g_nb_cycle + op_tab[g_mem[tmp->pc]].cycles) % 1001);
+            insert_proc(cycle, tmp, (g_nb_cycle + op_tab[g_mem[tmp->pc]].cycles) % NB_CYCLE_MAX);
         return ;
     }
 
@@ -52,11 +51,10 @@ void    exec_proc(t_proc **cycle, t_uint32 g_nb_cycle, t_proc *tmp)
         g_pause = 1;
         g_step = 0;
     }
-    g_color[tmp->pc] = (t_case){0.4f, 0.4f, 1.0f};
     tmp->op = g_mem[tmp->pc];
     if (g_mem[tmp->pc] == 0 || g_mem[tmp->pc] > 16)
-        insert_proc(cycle, tmp, (g_nb_cycle + 1) % 1001);
+        insert_proc(cycle, tmp, (g_nb_cycle + 1) % NB_CYCLE_MAX);
     else
-        insert_proc(cycle, tmp, (g_nb_cycle + op_tab[g_mem[tmp->pc]].cycles) % 1001);
+        insert_proc(cycle, tmp, (g_nb_cycle + op_tab[g_mem[tmp->pc]].cycles) % NB_CYCLE_MAX);
 
 }

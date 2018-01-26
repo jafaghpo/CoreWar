@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 11:29:50 by root              #+#    #+#             */
-/*   Updated: 2018/01/20 00:49:33 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/26 01:45:46 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,16 @@ static void     fill_player(t_player *players, t_uint8 *binary)
 
 t_player        *get_players(t_file *files, int nb_players)
 {
-    t_player    *players;
-    t_uint8     *binary;
-    int         i = 0;
+    static t_case   colors[4] =
+    {
+        {1.f / 255.f, 223.f / 255.f, 215.f / 255.f},
+        {233.f / 255.f, 70.f / 255.f, 70.f / 255.f},
+        {127.f / 255.f, 221.f / 255.f, 76.f / 255.f},
+        {152.f / 255.f, 50.f / 255.f, 203.f / 255.f}
+    };
+    t_player        *players;
+    t_uint8         *binary;
+    int             i = 0;
 
     if (!(players = malloc(sizeof(*players) * nb_players)))
         ft_afferror("error malloc");
@@ -67,12 +74,9 @@ t_player        *get_players(t_file *files, int nb_players)
     {
         binary = get_binary(files->name, &(players[files->pos].size));
         fill_player(players + files->pos, binary);
-        g_champs[files->pos].name = players[files->pos].name;
-        g_champs[files->pos].number = rand();
-		if (i == 0)
-			g_champs[files->pos].color = (t_case){1.f / 255.f, 223.f / 255.f, 215.f / 255.f};
-		else
-			g_champs[files->pos].color = (t_case){233.f / 255.f, 70.f / 255.f, 70.f / 255.f};
+        g_champs[files->pos + 1].name = players[files->pos].name;
+        g_champs[files->pos + 1].number = rand();
+		g_champs[files->pos + 1].color = colors[i % 4];
         files = files->next;
         i++;
     }

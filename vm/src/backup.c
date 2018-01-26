@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 15:21:22 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/09 22:55:17 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/20 18:03:05 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void        *vm(void *av)
                     {NULL, op_live, op_ld, op_st, op_add, op_sub, op_and, op_or,
                     op_xor, op_zjmp, op_ldi, op_sti, op_fork, op_lld, op_lldi,
                     op_lfork, op_aff};
-    static t_proc   *cycle[1001] = {0};
+    static t_proc   *cycle[NB_CYCLE_MAX] = {0};
     t_uint32        g_nb_cycle;
     t_proc          *tmp;
     t_inst          args[4];
@@ -42,7 +42,7 @@ void        *vm(void *av)
     while (1)
     {
         usleep(300);
-        tmp = cycle[g_nb_cycle % 1001];
+        tmp = cycle[g_nb_cycle % NB_CYCLE_MAX];
         while (tmp)
         {
             g_player[tmp->pc] = 1;    
@@ -58,7 +58,7 @@ void        *vm(void *av)
             {
                 tmp->pc++;
                 tmp->pc %= MEM_SIZE;
-                insert_proc(cycle, tmp, (g_nb_cycle + 1) % 1001);
+                insert_proc(cycle, tmp, (g_nb_cycle + 1) % NB_CYCLE_MAX);
             }
             else
             {
@@ -67,7 +67,7 @@ void        *vm(void *av)
                 {
                     tmp->pc += -size + 1 + op_tab[op].octal;
                     tmp->pc %= MEM_SIZE;
-                    insert_proc(cycle, tmp, (g_nb_cycle + op_tab[g_mem[tmp->pc]].cycles) % 1001);
+                    insert_proc(cycle, tmp, (g_nb_cycle + op_tab[g_mem[tmp->pc]].cycles) % NB_CYCLE_MAX);
                 }
                 else
                 {
@@ -82,15 +82,15 @@ void        *vm(void *av)
                     tmp->pc %= MEM_SIZE;
                     //debug_proc(tmp);
                     if (g_mem[tmp->pc] == 0 || g_mem[tmp->pc] > 16)
-                        insert_proc(cycle, tmp, (g_nb_cycle + 1) % 1001);
+                        insert_proc(cycle, tmp, (g_nb_cycle + 1) % NB_CYCLE_MAX);
                     else
-                        insert_proc(cycle, tmp, (g_nb_cycle + op_tab[g_mem[tmp->pc]].cycles) % 1001);
+                        insert_proc(cycle, tmp, (g_nb_cycle + op_tab[g_mem[tmp->pc]].cycles) % NB_CYCLE_MAX);
                     //system("clear");
                     //debug_map();
                 }
             }
             tmp = tmp2;
-            cycle[g_nb_cycle % 1001] = tmp;
+            cycle[g_nb_cycle % NB_CYCLE_MAX] = tmp;
         }
         g_nb_cycle++;
         //read(1, buf, 1);

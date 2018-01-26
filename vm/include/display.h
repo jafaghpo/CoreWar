@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:50:56 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/19 22:55:14 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/25 22:35:42 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,30 @@ typedef unsigned int  t_uint;
 # define POLICE_SIZE            16
 
 typedef struct s_case   t_case;
+typedef struct s_infos   t_infos;
+typedef struct s_champ		t_champ;
 
 struct s_case
 {
     float   r;
     float   g;
     float   b;
+};
+
+struct s_infos
+{
+    t_int32     player;
+    t_uint8     cursor : 1;
+    t_uint8     new : 1;
+};
+
+struct		s_champ
+{
+	char		*name;
+	t_uint32	id;
+	t_uint32	number;
+	t_uint32	live;
+	t_case		color;
 };
 
 extern Uint8    g_mem[MEM_SIZE];
@@ -77,9 +95,10 @@ extern Uint8    g_chat_buffer[128][30][16 * CHAT_LINE_SIZE];
 extern t_uint32 g_pause;
 extern t_uint32 g_key;
 extern float    g_sleep;
-extern t_case   g_color[MEM_SIZE];
+extern t_infos  g_infos[MEM_SIZE];
 extern Uint8    g_font[128][30][16];
 extern int      g_font_size[128];
+extern t_champ	*g_champs;
 
 typedef struct s_sdl    t_sdl;
 typedef struct s_gl     t_gl;

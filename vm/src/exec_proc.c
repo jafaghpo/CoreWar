@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 16:04:48 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/20 00:46:27 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/26 01:28:56 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 void    exec_proc(t_proc **cycle, t_proc *tmp)
 {
-    static void     (*f[17])() =
+    static void     (*f[18])() =
                     {NULL, op_live, op_ld, op_st, op_add, op_sub, op_and, op_or,
                     op_xor, op_zjmp, op_ldi, op_sti, op_fork, op_lld, op_lldi,
-                    op_lfork, op_aff};
+                    op_lfork, op_aff, clear_new};
     t_uint8         op;
     t_int32         size;
     t_inst          args[4];
     char            str[CHAT_LINE_SIZE];
 
     op = tmp->op;
-    g_color[tmp->pc] = g_champs[tmp->player].color;
-    if (op == 0 || op > 16)
+    g_infos[tmp->pc].cursor = 0;
+    if (op == 0)
     {
         tmp->pc = (tmp->pc + 1) % MEM_SIZE;
         return ;
@@ -47,5 +47,6 @@ void    exec_proc(t_proc **cycle, t_proc *tmp)
         g_pause = 1;
         g_step = 0;
     }
-    g_color[tmp->pc] = (t_case){0.4f, 0.4f, 1.0f};
+    if (op < 17)
+        g_infos[tmp->pc].cursor = 1;
 }

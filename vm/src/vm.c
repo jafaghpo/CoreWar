@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 15:21:22 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/16 00:59:56 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/20 18:03:11 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void        *vm(void *av)
 {
-    static t_proc   *cycle[1001] = {0};
+    static t_proc   *cycle[NB_CYCLE_MAX] = {0};
     t_uint32        checks;
     t_uint32        last_check;
 

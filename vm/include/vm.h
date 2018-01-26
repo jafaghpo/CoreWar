@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 18:31:33 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/20 00:28:59 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/26 01:33:41 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,11 @@
 # define READ_MAX				CHAMP_MAX_SIZE + PROG_NAME_LENGTH + COMMENT_LENGTH + 16
 # define HEADER_SIZE			PROG_NAME_LENGTH + COMMENT_LENGTH + 16
 
-
 typedef struct s_player		t_player;
 typedef struct s_args		t_args;
 typedef struct s_file		t_file;
 typedef struct s_proc		t_proc;
 typedef struct s_inst		t_inst;
-typedef struct s_champ		t_champ;
 
 struct		s_player
 {
@@ -90,21 +88,11 @@ struct		s_inst
 	t_int32	real;
 };
 
-struct		s_champ
-{
-	char		*name;
-	t_uint32	id;
-	t_uint32	number;
-	t_uint32	live;
-	t_case		color;
-};
-
 extern t_op		op_tab[OP_NB];
 extern t_uint32	g_id;
 extern t_uint32	g_step;
-extern t_champ	g_champs[4];
 extern t_uint32 g_nb_live;
-extern t_int32 g_cycle_to_die;
+extern t_int32	g_cycle_to_die;
 extern t_uint32 g_nb_player;
 extern t_uint32 g_nb_cycle;
 extern t_args	g_flags;
@@ -150,7 +138,8 @@ void 		*keyhook(void *av);
 void    	bubble_tab(t_uint32 *tab, t_uint32 size);
 int	    	get_sleep(t_args *flags, char *str);
 void    	end_game(void);
-
+void    	clear_new(t_proc *p);
+void        add_clear_new(t_proc **procs, t_int32 pc);
 
 /*
 ** debug
@@ -168,7 +157,7 @@ void		debug_inst(t_inst *args, int pc, int op);
 */
 void 		op_live(t_proc *p, t_inst *args);
 void 		op_ld(t_proc *p, t_inst *args);
-void 		op_st(t_proc *p, t_inst *args);
+void 		op_st(t_proc *p, t_inst *args, t_proc **procs);
 void 		op_add(t_proc *p, t_inst *args);
 void 		op_sub(t_proc *p, t_inst *args);
 void 		op_and(t_proc *p, t_inst *args);
@@ -176,7 +165,7 @@ void 		op_or(t_proc *p, t_inst *args);
 void 		op_xor(t_proc *p, t_inst *args);
 void 		op_zjmp(t_proc *p, t_inst *args);
 void 		op_ldi(t_proc *p, t_inst *args);
-void 		op_sti(t_proc *p, t_inst *args);
+void 		op_sti(t_proc *p, t_inst *args, t_proc **procs);
 void 		op_fork(t_proc *p, t_inst *args, t_proc **procs);
 void 		op_lld(t_proc *p, t_inst *args);
 void 		op_lldi(t_proc *p, t_inst *args);

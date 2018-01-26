@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 11:17:41 by root              #+#    #+#             */
-/*   Updated: 2018/01/12 12:30:43 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/25 22:23:21 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ void 		op_zjmp(t_proc *p, t_inst *args)
 {
     if (p->carry == 1)
     {
+        g_infos[p->pc].cursor = 0;
         p->pc += args[0].value % IDX_MOD;
-        g_color[p->pc % MEM_SIZE] = (t_case){0.0f, 1.0f, 0.0f};
+        g_infos[p->pc % MEM_SIZE + MEM_SIZE * (p->pc > INT_MAX / 2)].cursor = 1;
         p->pc -= 3;
     }
 }

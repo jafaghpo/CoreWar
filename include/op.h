@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/01/12 16:26:52 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/26 01:48:36 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 
 #define MAX_ARGS_NUMBER			4
-#define MAX_PLAYERS				4
+#define MAX_PLAYERS				255
 #define MEM_SIZE				((4*1024) * 1)
 #define IDX_MOD					(MEM_SIZE / 8)
 #define CHAMP_MAX_SIZE			(MEM_SIZE / 6)
@@ -46,6 +46,8 @@
 #define NBR_LIVE				21
 #define MAX_CHECKS				10
 #define OP_NB					18
+
+#define NB_CYCLE_MAX			1024
 /*
 **
 */

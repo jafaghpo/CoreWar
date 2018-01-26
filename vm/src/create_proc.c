@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 18:24:54 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/12 16:58:57 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/26 01:26:59 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_proc      *create_proc(t_proc *p, t_int32 pc, t_int32 g_nb_cycle)
     if (!(ret = malloc(sizeof(*ret))))
         ft_afferror(ERROR_MALLOC);
     ret->pc = pc;
+    ret->op = 0;
     ret->carry = p->carry;
     ret->player = p->player;
     ret->live = p->live;

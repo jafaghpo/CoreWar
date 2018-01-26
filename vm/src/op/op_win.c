@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_win.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/05 18:20:01 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/05 18:50:58 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/25 21:44:28 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void 		op_win(t_proc *p, t_inst *args)
     a = get_real_value(args, p, 1);
     b = get_real_value(args + 1, p, 1);
     c = get_real_value(args + 2, p, 1);
-    i = 0;
+    i = 1;
     if (b == 0xde && c == 0xad)
     {
-        while (i < g_nb_player)
+        while (i <= g_nb_player)
         {
             if (g_champs[i].number == a)
             {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/20 19:16:53 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/09 19:54:11 by niragne          ###   ########.fr       */
+/*   Updated: 2018/01/20 18:03:06 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	debug_cycle(t_proc **cycle)
 	t_proc	*tmp;
 
 	i = 0;
-	while (i < 1001)
+	while (i < NB_CYCLE_MAX)
 	{
 		tmp = cycle[i];
 		if (tmp)
