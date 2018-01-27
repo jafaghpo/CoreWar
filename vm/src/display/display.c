@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:51:33 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/26 21:49:47 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/27 01:54:31 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	*display(void)
 	GLuint		police_text[16];
 	GLuint		fond;
 	GLuint		image_load;
+	GLuint		case_texture;
 	GLint		model_location;
 	GLint		proj_location;
 	Uint32		i;
@@ -55,6 +56,8 @@ void	*display(void)
 	if ((fond = load_image(g_theme.background_file)) == UINT_MAX)
 		return (NULL);
 	if ((hud = load_image(g_theme.hud_file)) == UINT_MAX)
+		return (NULL);
+	if ((case_texture = load_onebyte_image(g_theme.case_texture)) == UINT_MAX)
 		return (NULL);
 	projection = mat4_unit();
 	projection[0] = ((float)WIN_Y / (float)WIN_X);
@@ -132,6 +135,8 @@ void	*display(void)
 			glBindVertexArray(gl.vao);
 				all_trans = mat4_mult(projection, modelview);
 				glUniformMatrix4fv(model_location, 1, GL_FALSE, all_trans);
+                glActiveTexture(GL_TEXTURE0);
+				glBindTexture(GL_TEXTURE_2D, case_texture);
 				free(all_trans);
 				i = 0;
 				while (i < MEM_SIZE)

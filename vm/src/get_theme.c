@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 21:44:38 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/26 22:47:14 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/27 01:42:58 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int             get_theme(t_args *flags, char *str)
         return (0);
     get_next_line(fd, &g_theme.background_file);
     get_next_line(fd, &g_theme.hud_file);
+    get_next_line(fd, &g_theme.case_texture);
     get_next_line(fd, &g_theme.music_file);
     get_next_line(fd, &g_theme.police_file);
     get_next_line(fd, &line);
@@ -68,6 +69,9 @@ int             get_theme(t_args *flags, char *str)
     free(line);
     get_next_line(fd, &line);
     get_color(line, &g_theme.color_numbers);
+    free(line);
+    get_next_line(fd, &line);
+    get_color(line, &g_theme.color_texture);
     free(line);
     get_next_line(fd, &line);
     get_color(line, &g_theme.color_chat);
