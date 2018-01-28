@@ -12,6 +12,27 @@
 
 #include "vm.h"
 
+static char	*ft_strdup_spe(char *str)
+{
+	char	*new;
+	int	i;
+	
+	i = 0;
+	while (str[i] && str[i] != '#')
+		i++;
+	if (!(new = malloc(sizeof(*new) * (i + 1))))
+		return (NULL);
+	new = ft_memcpy(new, str, i);
+	new[i] = 0;
+	i--;
+	while (new[i] == ' ' || new[i] == '\t')
+	{
+		new[i] = 0;
+		i--;
+	}
+	return (new);
+}
+
 static void	del_blanks(char **str)
 {
 	while (**str == ' ' || **str == '\t')
@@ -25,7 +46,7 @@ static int	get_filename(char *line, char **str)
 		return (0);
 	line++;
 	del_blanks(&line);
-	*str = ft_strdup(line);
+	*str = ft_strdup_spe(line);
 	return (1);
 }
 
