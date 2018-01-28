@@ -12,72 +12,114 @@
 
 #include "vm.h"
 
-static int  get_color(char *str, t_case *color)
+static void	del_blanks(char **str)
 {
-    int     i;
+	while (**str == ' ' || **str == '\t')
+		(*str)++;
+}
 
-    color->r = 0;
-    i = 0;
-    while (str[i] != ',')
-    {
-        color->r = color->r * 10 + str[i] - '0';
-        i++;
-    }
-    color->r /= 255.f;
-    color->g = 0;
-    i++;
-    while (str[i] != ',')
-    {
-        color->g = color->g * 10 + str[i] - '0';
-        i++;
-    }
-    color->g /= 255.f;
-    color->b = 0;
-    i++;
-    while (str[i] != '\n' && str[i] != ' ' && str[i])
-    {
-        color->b = color->b * 10 + str[i] - '0';
-        i++;
-    }
-    color->b /= 255.f;
-    i++;
-    return (i);
+static int	get_filename(char *line, char **str)
+{
+	del_blanks(&line);
+	if (*line != '=')
+		return (0);
+	line++;
+	del_blanks(&line);
+	*str = ft_strdup(line);
+	return (1);
+}
+
+static int	get_color(char *line, t_case *color)
+{
+	del_blanks(&line);
+	if (*line != '=')
+		return (0);
+	line++;
+	del_blanks(&line);
+	color->r = 0;
+	while (ft_isdigit(*line))
+	{
+		color->r = color->r * 10 + *line - '0';
+		line++;
+	}
+	color->r /= 255.f;
+	del_blanks(&line);
+	if (*line != ',')
+		return (0);
+	color->g = 0;
+	while (ft_isdigit(*line))
+	{
+		color->g = color->g * 10 + *line - '0';
+		line++;
+	}
+	color->g /= 255.f;
+	del_blanks(&line);
+	if (*line != ',')
+		return (0);
+	color->b = 0;
+	while (ft_isdigit(*line))
+	{
+		color->b = color->b * 10 + *line - '0';
+		line++;
+	}
+	color->b /= 255.f;
+	del_blanks(&line);
+	if (*line != '#' && *line)
+		return (0);
+	return (1);
 }
 
 int             get_theme(t_args *flags, char *str)
 {
-    int     fd;
-    char    *line;
-    int     i;
-
+	char	*line;
+	char	*tmp;
+	int		fd;
+	int		test;
+	int		i;
+	
     (void)flags;
-    if ((fd = open(str, O_RDONLY)) == -1)
-        return (0);
-    get_next_line(fd, &g_theme.background_file);
-    get_next_line(fd, &g_theme.hud_file);
-    get_next_line(fd, &g_theme.case_texture);
-    get_next_line(fd, &g_theme.music_file);
-    get_next_line(fd, &g_theme.police_file);
-    get_next_line(fd, &line);
-    get_color(line, &g_theme.color_empty);
-    free(line);
-    get_next_line(fd, &line);
-    i = get_color(line, &g_theme.color_players[0]);
-    i += get_color(line + i, &g_theme.color_players[1]);
-    i += get_color(line + i, &g_theme.color_players[2]);
-    get_color(line + i, &g_theme.color_players[3]);
-    free(line);
-    get_next_line(fd, &line);
-    get_color(line, &g_theme.color_numbers);
-    free(line);
-    get_next_line(fd, &line);
-    get_color(line, &g_theme.color_texture);
-    free(line);
-    get_next_line(fd, &line);
-    get_color(line, &g_theme.color_chat);
-    free(line);
-    get_next_line(fd, &line);
-    get_color(line, &g_theme.color_fps);
-    free(line);
-    return (1);
+	if ((fd = open(str, O_RDONLY)) == -1)
+	{
+		ft_printf("error open theme file\n");
+		return (0);
+	}
+	i = 1;
+	while (get_next_line(fd, &tmp))
+	{
+		test = 0;
+		line = tmp;
+		del_blanks(&line);
+		if (!ft_strncmp(line, "background", 10))
+			test = get_filename(line + 10, &g_theme.background_file);
+		else if (!ft_strncmp(line, "hud", 3))
+			test = get_filename(line + 3, &g_theme.hud_file);
+		else if (!ft_strncmp(line, "square texture", 14))
+			test = get_filename(line + 14, &g_theme.case_texture);
+		else if (!ft_strncmp(line, "music", 5))
+			test = get_filename(line + 5, &g_theme.music_file);
+		else if (!ft_strncmp(line, "font", 5))
+			test = get_filename(line + 5, &g_theme.police_file);
+		else if (!ft_strncmp(line, "color if empty", 14))
+			test = get_color(line + 14, &g_theme.color_empty);
+		else if (!ft_strncmp(line, "color player 1", 14))
+			test = get_color(line + 14, &g_theme.color_players[0]);
+		else if (!ft_strncmp(line, "color player 2", 14))
+			test = get_color(line + 14, &g_theme.color_players[1]);
+		else if (!ft_strncmp(line, "color player 3", 14))
+			test = get_color(line + 14, &g_theme.color_players[2]);
+		else if (!ft_strncmp(line, "color player 4", 14))
+			test = get_color(line + 14, &g_theme.color_players[3]);
+		else if (!ft_strncmp(line, "color numbers", 13))
+			test = get_color(line + 14, &g_theme.color_numbers);
+		else if (!ft_strncmp(line, "color square texture", 20))
+			test = get_color(line + 20, &g_theme.color_texture);
+		else if (!ft_strncmp(line, "color chat", 10))
+			test = get_color(line + 10, &g_theme.color_chat);
+		else if (!ft_strncmp(line, "color hud numbers", 17))
+			test = get_color(line + 17, &g_theme.color_fps);
+		if (!test && line[0] != '#' && line[0])
+			ft_printf("l%2d : \"%s\" ignored\n", i, tmp);
+		free(tmp);
+		i++;
+	}
 }
