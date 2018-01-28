@@ -120,8 +120,8 @@ int             get_theme(t_args *flags, char *str)
 			test = get_filename(line + 5, &g_theme.music_file);
 		else if (!ft_strncmp(line, "font", 5))
 			test = get_filename(line + 5, &g_theme.police_file);
-		else if (!ft_strncmp(line, "color if empty", 14))
-			test = get_color(line + 14, &g_theme.color_empty);
+		else if (!ft_strncmp(line, "color empty", 11))
+			test = get_color(line + 11, &g_theme.color_empty);
 		else if (!ft_strncmp(line, "color player 1", 14))
 			test = get_color(line + 14, &g_theme.color_players[0]);
 		else if (!ft_strncmp(line, "color player 2", 14))
