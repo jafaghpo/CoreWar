@@ -33,6 +33,7 @@ t_theme     g_theme =
 {
     "texture/fond.jpg",
     "texture/blanc.jpg",
+    "texture/blanc.jpg"
     NULL,
     "fonts/arial.ttf",
     {1.f, 1.f, 1.f},
@@ -42,6 +43,7 @@ t_theme     g_theme =
         {127.f / 255.f, 221.f / 255.f, 76.f / 255.f},
         {152.f / 255.f, 50.f / 255.f, 203.f / 255.f}
     },
+    {0.f, 0.f, 0.f},
     {0.f, 0.f, 0.f},
     {0.f, 0.f, 0.f},
     {0.f, 0.f, 0.f}
