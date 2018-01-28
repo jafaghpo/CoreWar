@@ -20,10 +20,8 @@ static char	*ft_strdup_spe(char *str)
 	i = 0;
 	while (str[i] && str[i] != '#')
 		i++;
-	i--;
-	while (str[i] == ' ' || str[i] == '\t')
+	while (str[i - 1] == ' ' || str[i - 1] == '\t')
 		i--;
-	i++;
 	if (!(new = malloc(sizeof(*new) * (i + 1))))
 		return (NULL);
 	new = ft_memcpy(new, str, i);
