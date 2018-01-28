@@ -1,11 +1,16 @@
-texture/hkbg.jpg
-texture/hkc.jpg
-kitty.jpg
-NULL
-fonts/arial.ttf
-255,204,204
-255,255,204 233,70,70 102,255,255 255,204,255
-0,0,0
-153,0,76
-255,51,153
-255,51,153
+#toutes les variables disponibles sont présente
+#les tabs et les espaces sont géré on peut en mettre n'importe où
+background            = texture/hkbg.jpg    #ouais c'est le fond
+hud                   = texture/hkc.jpg     #ouais c'est le fond de l'hud
+square texture        = kitty.jpg           #ouais c'est les imagines dans les cases
+#music                = unemusic.mp3        #c'est la musique mais c'est pas géré encore
+font                  = fonts/arial.ttf     #ouais je décris tout juste pour montrer que je gere les commentaires
+color if empty        = 255, 204, 204
+color player 1        = 255, 255, 204
+color player 2        = 233, 70,  70
+color player 3        = 102, 255, 255
+color player 4        = 255, 204, 255
+color numbers         = 0,   0,   0
+color square texture  = 153, 0,   76
+color chat            = 255, 51,  153
+color hud numbers     = 255, 51,  153
