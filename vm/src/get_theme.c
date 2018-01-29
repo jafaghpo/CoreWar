@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 21:44:38 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/27 01:42:58 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/29 16:42:33 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static char	*ft_strdup_spe(char *str)
 		i--;
 	if (!(new = malloc(sizeof(*new) * (i + 1))))
 		return (NULL);
-	new = ft_memcpy(new, str, i);
+	ft_memcpy(new, str, i);
 	new[i] = 0;
 	return (new);
 }
@@ -63,6 +63,8 @@ static int	get_color(char *line, t_case *color)
 	del_blanks(&line);
 	if (*line != ',')
 		return (0);
+	line++;
+	del_blanks(&line);
 	color->g = 0;
 	while (ft_isdigit(*line))
 	{
@@ -73,6 +75,8 @@ static int	get_color(char *line, t_case *color)
 	del_blanks(&line);
 	if (*line != ',')
 		return (0);
+	line++;
+	del_blanks(&line);
 	color->b = 0;
 	while (ft_isdigit(*line))
 	{
@@ -114,7 +118,7 @@ int             get_theme(t_args *flags, char *str)
 			test = get_filename(line + 14, &g_theme.case_texture);
 		else if (!ft_strncmp(line, "music", 5))
 			test = get_filename(line + 5, &g_theme.music_file);
-		else if (!ft_strncmp(line, "font", 5))
+		else if (!ft_strncmp(line, "font", 4))
 			test = get_filename(line + 5, &g_theme.police_file);
 		else if (!ft_strncmp(line, "color empty", 11))
 			test = get_color(line + 11, &g_theme.color_empty);
@@ -135,8 +139,9 @@ int             get_theme(t_args *flags, char *str)
 		else if (!ft_strncmp(line, "color hud numbers", 17))
 			test = get_color(line + 17, &g_theme.color_fps);
 		if (!test && line[0] != '#' && line[0])
-			ft_printf("l%2d : \"%s\" ignored\n", i, tmp);
+			ft_printf("l%-2d : \"%s\" ignored\n", i, tmp);
 		free(tmp);
 		i++;
 	}
+	return (1);
 }
