@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:51:33 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/29 17:52:14 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/29 17:57:36 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,9 @@ void	*display(void)
 	GLint first_number_location = glGetUniformLocation(gl.prog, "first_number");
 	GLint second_number_location = glGetUniformLocation(gl.prog, "second_number");
 	GLint color_location = glGetUniformLocation(gl.prog, "color");
-	GLint number_one[16];
 	i = 0;
 	while (i < 16)
 	{
-		number_one[i] = i + 1;
 		glActiveTexture(GL_TEXTURE0 + i + 1);
 		glBindTexture(GL_TEXTURE_2D, police_text[i]);
 		i++;
