@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/24 15:44:57 by jafaghpo          #+#    #+#             */
-/*   Updated: 2017/12/26 21:22:32 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/29 18:00:03 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void			display_integer(t_file *file, char *format, int arg)
 {
 	g_i += sprintf(g_buf + g_i, format, arg);
 	if (file->win.flag)
-	{	
+	{
 		wprintw(file->win.as, "\t");
 		wprintw(file->win.as, format, arg);
 		box(file->win.as, ACS_VLINE, ACS_HLINE);

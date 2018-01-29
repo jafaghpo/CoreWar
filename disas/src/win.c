@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/22 18:49:37 by jafaghpo          #+#    #+#             */
-/*   Updated: 2017/12/26 21:16:51 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/27 18:51:33 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ void		win_setup(t_file *file)
 	noecho();
 	curs_set(0);
 	start_color();
-	//use_default_colors();
 	keypad(stdscr, TRUE);
 	init_pair(1, COLOR_YELLOW, COLOR_BLACK);
 	init_pair(2, COLOR_GREEN, COLOR_BLACK);

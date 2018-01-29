@@ -6,29 +6,15 @@
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/01/16 16:37:56 by jafaghpo         ###   ########.fr        #
+#    Updated: 2018/01/27 15:53:31 by jafaghpo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-DEBUG				=	no
-
 NAME				=	asm
-
 CC					=	gcc
 CFLAGS				=	-Werror -Wextra -Wextra
-
-SRC_PATH			=	src
-SRCS				=	main.c debug.c
-SRC					=	$(addprefix $(SRC_PATH)/, $(SRCS))
-
-OBJ_PATH			=	obj
-OBJ					=	$(addprefix $(OBJ_PATH)/, $(SRCS:.c=.o))
-
-include src/general/general.mk
-include src/parsing/parse.mk
-include src/visual/visual.mk
-include src/label/label.mk
-include src/eval_expr/eval_expr.mk
+NCURSE				=	-lncurses
+DEBUG				=	no
 
 ifeq ($(DEBUG), yes)
 	CFLAGS			+=	-g -D DEBUG
@@ -36,11 +22,30 @@ else
 	CFLAGS			+=	-Ofast
 endif
 
+OBJ_PATH			=	obj
+SRC_PATH			=	src
+LIB_PATH			=	../lib_src
+
+SRCS				=	main.c debug.c
+SRC					=	$(addprefix $(SRC_PATH)/, $(SRCS))
+OBJ					=	$(addprefix $(OBJ_PATH)/, $(SRCS:.c=.o))
+
+
+SRC_GEN_PATH		=	$(SRC_PATH)/general
+SRC_PARSE_PATH		=	$(SRC_PATH)/parsing
+SRC_LABEL_PATH		=	$(SRC_PATH)/label
+SRC_EVAL_PATH		=	$(SRC_PATH)/eval_expr
+SRC_VISUAL_PATH		=	$(SRC_PATH)/visual
+
+include $(SRC_GEN_PATH)/general.mk
+include $(SRC_PARSE_PATH)/parse.mk
+include $(SRC_LABEL_PATH)/label.mk
+include $(SRC_EVAL_PATH)/eval_expr.mk
+include $(SRC_VISUAL_PATH)/visual.mk
+
 INCL_PATH			=	include
 OP_INC_PATH			=	../include
 INCL				=	$(INCL_PATH)/asm.h $(OP_INC_PATH)/op.h $(INCL_PATH)/eval_expr.h
-
-LIB_PATH			=	../lib_src
 
 LIBFT_PATH			=	$(LIB_PATH)/libft
 LIBFT				=	$(LIBFT_PATH)/libft.a
@@ -50,9 +55,9 @@ LIBFT_INCL_PATH		=	$(LIBFT_PATH)/include
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) -o $(NAME) $(OBJ) $(LIBFT) $(CFLAGS)
+	$(CC) -o $@ $(OBJ) $(LIBFT) $(CFLAGS) $(NCURSE)
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCL) 
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCL)
 	$(CC) -o $@ -c $< $(CFLAGS) -I $(INCL_PATH) -I $(OP_INC_PATH) -I $(LIBFT_INCL_PATH)
 
 clean:

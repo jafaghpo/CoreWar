@@ -6,11 +6,9 @@
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/02 20:37:31 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/01/03 22:50:35 by jafaghpo         ###   ########.fr        #
+#    Updated: 2018/01/27 15:40:34 by jafaghpo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-SRC_EVAL_PATH		=	src/eval_expr
 
 SRCS_EVAL			=	atoi_base.c bitwise_op.c eval_stack.c eval_token.c \
 						eval_expr.c lexer.c reg_op.c stack.c

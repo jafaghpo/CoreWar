@@ -6,21 +6,19 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 14:38:13 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/16 18:02:01 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/29 16:44:39 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ASM_H
 # define ASM_H
-
 /*
 **	-- Includes --
 */
-# include <ncurses.h>
 # include <errno.h>
-# include "libft.h"
 # include "op.h"
 # include "eval_expr.h"
+# include "visual.h"
 /*
 **	-- Error messages --
 */
@@ -134,10 +132,10 @@ int			word_len(char *str);
 /*
 **	-- Parsing --
 */
-int			parse_file(char *name);
-int			get_header(t_tab *tab, int fd);
-int			get_instructions(t_tab *tab, t_label *label, int fd);
-int			store_line(t_tab *tab, t_tab *current);
+int			parse_file(char *name, t_visual *win, t_tab *tab);
+int			get_header(t_tab *tab, int fd, t_visual *win);
+int			get_instructions(t_tab *tab, t_label *label, int fd, t_visual *win);
+int			store_line(t_tab *tab, t_tab *current, t_visual *win);
 int			parse_arguments(char *line, t_label *label, t_inst *inst);
 void		store_argument(t_inst *inst, int n, int size);
 int			get_opcode(char *line, int *op);
@@ -151,9 +149,5 @@ int			check_labels(t_label *label);
 t_lstlb		*add_label(t_lstlb *label, char *name, int size);
 char		*duplicate_label(char *name, int size);
 t_tmplb		*add_tmp_label(t_tmplb *label, t_tmplb tmp);
-/*
-**	-- Visual --
-*/
-void		run_visual(t_tab *tab);
 
 #endif

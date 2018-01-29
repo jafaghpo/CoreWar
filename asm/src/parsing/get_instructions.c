@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 21:16:35 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/16 18:14:27 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/29 15:55:28 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int	analize_line(char *line, t_label *label, t_tab *current)
 	return (1);
 }
 
-int			get_instructions(t_tab *tab, t_label *label, int fd)
+int			get_instructions(t_tab *tab, t_label *label, int fd, t_visual *win)
 {
 	t_tab	current;
 	char	*line;
@@ -74,7 +74,9 @@ int			get_instructions(t_tab *tab, t_label *label, int fd)
 			continue ;
 		else if (!analize_line(line, label, &current))
 			return (0);
-		store_line(tab, &current);
+		store_line(tab, &current, win);
 	}
+	if (g_lines && (g_option & VISUAL_FLAG))
+		run_visual(tab, &win);
 	return (1);
 }

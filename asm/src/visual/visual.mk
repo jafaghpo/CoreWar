@@ -6,11 +6,9 @@
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/03 22:48:22 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/01/03 22:49:50 by jafaghpo         ###   ########.fr        #
+#    Updated: 2018/01/27 15:41:15 by jafaghpo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-SRC_VISUAL_PATH		=	src/visual
 
 SRCS_VISUAL			=	run_visual.c
 

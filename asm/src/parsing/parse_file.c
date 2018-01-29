@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 17:54:54 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/16 18:20:19 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/29 17:09:27 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,46 +38,26 @@ static void		delete_label(t_label *label)
 	}
 }
 
-static void		release_memory(t_tab *tab, t_label *label)
-{
-	int		i;
-
-	i = 0;
-	delete_label(label);
-	if (!(g_option & VISUAL_FLAG))
-		return ;
-	while (tab[i].line)
-	{
-		ft_memdel((void**)&tab[i].line);
-		i++;
-	}
-	ft_memdel((void**)&tab);
-}
-
-int				parse_file(char *name)
+int				parse_file(char *name, t_visual *win, t_tab *tab)
 {
 	t_tab		*tab;
 	t_label		label;
 	int			fd;
 
+	ft_printf("Compilation of %s\n", av[i]);
 	if ((fd = open(name, O_RDONLY)) == -1)
 		return (print_error(UNKNOWN_FILE, name, strerror(errno)));
-	if (g_option & VISUAL_FLAG)
-	{
-		if (!(tab = ft_memalloc(sizeof(*tab) * TAB_SIZE)))
-			return (print_error(strerror(errno)));
-	}
 	label = (t_label){0, 0};
 	if (!(g_bin.data = ft_memalloc(sizeof(*g_bin.data) * BUFF_SIZE)))
 		return (print_error(strerror(errno)));
-	if (!get_header(tab, fd) || !get_instructions(tab, &label, fd))
+	if (!get_header(tab, fd, &win) || !get_instructions(tab, &label, fd, &win))
 		return (0);
 	if (!check_labels(&label))
 		return (0);
 	if (g_option & VISUAL_FLAG)
-		run_visual(tab);
+		run_visual(tab, &win);
 	debug_tab(tab);
-	release_memory(tab, &label);
+	delete_label(&label);
 	close(fd);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 16:05:11 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/16 17:16:38 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/29 15:50:33 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static int		analize_header(char *line, t_tab *current, int *state)
 	return (1);
 }
 
-int				get_header(t_tab *tab, int fd)
+int				get_header(t_tab *tab, int fd, t_visual *win)
 {
 	t_tab	current;
 	char	*line;
@@ -94,7 +94,7 @@ int				get_header(t_tab *tab, int fd)
 		{
 			if (!analize_header(line, &current, &state))
 				return (0);
-			store_line(tab, &current);
+			store_line(tab, &current, win);
 			if (state == 2)
 				return (1);
 		}

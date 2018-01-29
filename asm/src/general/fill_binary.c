@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 18:03:45 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/15 17:59:05 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/29 16:00:21 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ int			fill_binary(char *name)
 	write(fd, g_bin.data, g_bin.i);
 	free(g_bin.data);
 	close(fd);
+	ft_printf("Done in %s\n", bin_name);
 	return (1);
 }
