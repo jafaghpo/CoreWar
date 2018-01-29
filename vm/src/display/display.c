@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:51:33 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/27 01:54:31 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/29 17:52:14 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	*display(void)
 		return (NULL);
 	if ((hud = load_image(g_theme.hud_file)) == UINT_MAX)
 		return (NULL);
-	if ((case_texture = load_onebyte_image(g_theme.case_texture)) == UINT_MAX)
+	if ((case_texture = load_image(g_theme.case_texture)) == UINT_MAX)
 		return (NULL);
 	projection = mat4_unit();
 	projection[0] = ((float)WIN_Y / (float)WIN_X);

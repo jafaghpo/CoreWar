@@ -17,7 +17,7 @@ void    main()
     float   trans_text;
 
     trans_font = (1.0 - texture(first_number, vec2(coord_texture.x, coord_texture.y)).r) * (1.0 - texture(second_number, vec2(coord_texture.x - 0.4, coord_texture.y)).r);
-    trans_text = 1.0 - texture(text, coord_texture).r;
+    trans_text = texture(text, coord_texture).r;
 
     out_Color = vec4(color.r * trans_text + color_text.r * (1.0 - trans_text),
                      color.g * trans_text + color_text.g * (1.0 - trans_text),

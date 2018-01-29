@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/20 17:49:37 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/29 17:12:10 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/29 17:51:01 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_theme     g_theme =
 {
     "texture/fond.jpg",
     "texture/blanc.jpg",
+//    "test.jpg",
     "kitty.jpg",
     NULL,
     "fonts/arial.ttf",
