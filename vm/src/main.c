@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/09 20:49:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/26 22:54:41 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/29 19:04:21 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,13 @@ int		main(int ac, char **av)
 	}
 	g_flags.dumps = UINT_MAX;
 	files = parse_flags(&g_flags, av, ac);
+	if (g_flags.nb_players == 0)
+	{
+		ft_printf("error: no players\n");
+		return (3);
+	}
 	if (!(g_champs = malloc(sizeof(*g_champs) * (g_flags.nb_players + 1))))
-		return (0);
+		return (4);
 	g_champs[0].color = g_theme.color_empty;
 	bubble_tab(g_flags.breakpoints, g_flags.nb_breakpoints);
 	fill_pos_players(files, g_flags.nb_players + 1);

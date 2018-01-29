@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 17:03:21 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/25 22:17:50 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/29 19:02:42 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void purge(t_proc **cycle)
         tmp = cycle[i];
         while (tmp)
         {
-            if (!tmp->live)
+            if (!tmp->live && tmp->op < 17)
             {
                 if (!tmp2)
                 {
