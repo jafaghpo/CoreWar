@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 17:54:54 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/29 17:09:27 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/30 13:43:02 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,23 @@ static void		delete_label(t_label *label)
 
 int				parse_file(char *name, t_visual *win, t_tab *tab)
 {
-	t_tab		*tab;
 	t_label		label;
 	int			fd;
 
-	ft_printf("Compilation of %s\n", av[i]);
 	if ((fd = open(name, O_RDONLY)) == -1)
 		return (print_error(UNKNOWN_FILE, name, strerror(errno)));
 	label = (t_label){0, 0};
-	if (!(g_bin.data = ft_memalloc(sizeof(*g_bin.data) * BUFF_SIZE)))
-		return (print_error(strerror(errno)));
-	if (!get_header(tab, fd, &win) || !get_instructions(tab, &label, fd, &win))
+	if (!g_bin.data)
+	{
+		if (!(g_bin.data = ft_memalloc(sizeof(*g_bin.data) * BUFF_SIZE)))
+			return (print_error(strerror(errno)));
+	}
+	if (!get_header(tab, fd, win) || !get_instructions(tab, &label, fd, win))
 		return (0);
 	if (!check_labels(&label))
 		return (0);
 	if (g_option & VISUAL_FLAG)
-		run_visual(tab, &win);
-	debug_tab(tab);
+		run_visual(tab, win);
 	delete_label(&label);
 	close(fd);
 	return (1);

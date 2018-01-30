@@ -6,42 +6,40 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 16:42:50 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/29 15:47:13 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/30 12:50:19 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static int	realloc_tab(t_tab *tab)
+static void	clear_tab(t_tab *tab)
 {
-	t_tab	*dest;
 	int		i;
 
-	if (!(dest = ft_memalloc(sizeof(*dest) * (g_lines + TAB_SIZE))))
-		return (print_error(0, strerror(errno)));
 	i = 0;
-	while (tab[i].line)
+	while (i < g_lines)
 	{
-		dest[i].line = tab[i].line;
-		dest[i].ptr = tab[i].ptr;
-		dest[i].size = tab[i].size;
-		dest[i].new_line = tab[i].new_line;
+		free(tab[i].line);
+		tab[i].line = 0;
+		tab[i].ptr = 0;
+		tab[i].size = 0;
+		tab[i].new_line = 0;
 		i++;
 	}
-	return (1);
+	g_lines = 0;
 }
 
-int			store_line(t_tab *tab, t_tab *current)
+int			store_line(t_tab *tab, t_tab *current, t_visual *win)
 {
 	if (!(g_option & VISUAL_FLAG))
 	{
 		free(current->line);
 		return (1);
 	}
-	if ()
+	if (g_lines == win->size.y)
 	{
-		if (!realloc_tab(tab))
-			return (0);
+		run_visual(tab, win);
+		clear_tab(tab);
 	}
 	tab[g_lines].line = current->line;
 	tab[g_lines].ptr = current->ptr;

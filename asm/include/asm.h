@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 14:38:13 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/29 16:44:39 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/30 15:02:13 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 **	-- Includes --
 */
 # include <errno.h>
+# include "libft.h"
 # include "op.h"
 # include "eval_expr.h"
 # include "visual.h"
@@ -39,6 +40,7 @@
 # define ARG_NUMBER		"invalid number of argument: \033[31m\"%s\"\033[0m"
 # define NO_SEPARATOR	"missing separator between args: \033[31m\"%s\"\033[0m"
 # define UNDEF_LABEL	"undefined label: \033[31m\"%s\"\033[0m"
+# define MAX_SIZE		"%sWarning:%s too large size [max: %d bytes]\n"
 /*
 **	-- Option masks --
 */
@@ -54,13 +56,14 @@
 /*
 **	-- Typedefs --
 */
-typedef uint8_t			t_uint8;
+typedef unsigned char	t_uint8;
 typedef struct s_tab	t_tab;
 typedef struct s_buf	t_buf;
 typedef struct s_tmplb	t_tmplb;
 typedef struct s_lstlb	t_lstlb;
 typedef struct s_label	t_label;
 typedef struct s_inst	t_inst;
+typedef struct s_visual	t_visual;
 /*
 **	-- Structures --
 */
@@ -115,7 +118,7 @@ extern	int		g_option;
 extern	t_buf	g_bin;
 extern	t_op	g_op[17];
 /*
-**	DEBUG
+**	-- Debug --
 */
 void		debug_inst(t_inst *inst);
 void		debug_label(t_label *label);
@@ -146,8 +149,8 @@ int			get_next_arg(char **str);
 */
 int			valid_label(char *str);
 int			check_labels(t_label *label);
-t_lstlb		*add_label(t_lstlb *label, char *name, int size);
 char		*duplicate_label(char *name, int size);
+t_lstlb		*add_label(t_lstlb *label, char *name, int size);
 t_tmplb		*add_tmp_label(t_tmplb *label, t_tmplb tmp);
 
 #endif

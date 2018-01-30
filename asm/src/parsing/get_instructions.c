@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 21:16:35 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/29 15:55:28 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/30 12:09:39 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,6 @@ int			get_instructions(t_tab *tab, t_label *label, int fd, t_visual *win)
 		store_line(tab, &current, win);
 	}
 	if (g_lines && (g_option & VISUAL_FLAG))
-		run_visual(tab, &win);
+		run_visual(tab, win);
 	return (1);
 }

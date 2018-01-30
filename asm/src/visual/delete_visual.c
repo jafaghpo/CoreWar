@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/29 17:11:17 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/29 17:22:36 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/30 13:04:04 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		delete_visual(t_visual *win, t_tab *tab)
 	i = 0;
 	delwin(win->as);
 	delwin(win->bin);
-	while (tab[i].line)
+	while (i < g_lines)
 	{
 		free(tab[i].line);
 		i++;

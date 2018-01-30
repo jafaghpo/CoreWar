@@ -6,13 +6,14 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 22:09:40 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/03 22:17:21 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/30 15:10:27 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void		run_visual(t_tab *tab)
+void		run_visual(t_tab *tab, t_visual *win)
 {
-	(void)tab;
+	static t_size	size = {0, 0};
+
 }
