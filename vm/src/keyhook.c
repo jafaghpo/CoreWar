@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 15:03:53 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/26 18:47:52 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/30 17:39:29 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,15 @@ void    *keyhook(void *av)
     {
         while (!g_key)
         {
-            if (key[SDL_SCANCODE_X])
+            if (key[SDL_SCANCODE_X] && g_sleep <= 1000000.f)
                 g_sleep *= 1.0000001;
             if (key[SDL_SCANCODE_Z])
-                g_sleep *= 0.9999999;
+            {
+                if (g_sleep > 50.f)
+                    g_sleep *= 0.9999999;
+                else
+                    g_sleep = 50.f;
+            }
             check_breakpoints();
         }
         if (g_key == SDLK_SPACE)
@@ -54,7 +59,7 @@ void    *keyhook(void *av)
             g_pause = !g_pause;
         }
         if (g_key == SDLK_c)
-            g_sleep = 500;
+            g_sleep = 2000;
         if (g_key == SDLK_n)
         {
             g_step = !g_step;

@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 11:29:50 by root              #+#    #+#             */
-/*   Updated: 2018/01/26 22:54:45 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/30 16:31:37 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,8 @@ static t_uint8  *get_binary(char *file, t_uint32 *size)
 
 static void     fill_player(t_player *players, t_uint8 *binary)
 {
-
-#ifdef DEBUG
-    ft_printf("\nmagic : %#x\n", get_uint32(binary));
-    ft_printf("real magic : %#x\n\n", COREWAR_EXEC_MAGIC);
-#endif
-
     if (get_uint32(binary) != COREWAR_EXEC_MAGIC)
         ft_afferror("bad magic number");
-
-#ifdef DEBUG
-        ft_printf("size : %#x\n", get_uint32(binary + PROG_NAME_LENGTH + 8));
-        ft_printf("real size : %#x\n\n", players->size);
-#endif
-
     if (get_uint32(binary + PROG_NAME_LENGTH + 8) != players->size)
         ft_afferror("bad size");
     players->name = (char *)binary + 4;

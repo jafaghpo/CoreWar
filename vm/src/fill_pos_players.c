@@ -6,34 +6,11 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 23:51:17 by iburel            #+#    #+#             */
-/*   Updated: 2017/10/22 17:05:46 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/30 16:31:25 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
-
-#ifdef DEBUG
-static void debug_used(char *tab, int nb_players)
-{
-    int     i;
-
-    ft_printf("\n");
-    i = 0;
-    while (i < nb_players)
-    {
-        ft_printf("%-4d", i);
-        i++;
-    }
-    ft_printf("\n");
-    i = 0;
-    while (i < nb_players)
-    {
-        ft_printf("%-4d", tab[i]);
-        i++;
-    }
-    ft_printf("\n");
-}
-#endif
 
 static void get_used(t_file *files, int nb_players, char *tab)
 {
@@ -76,10 +53,5 @@ void        fill_pos_players(t_file *files, int nb_players)
     ft_bzero(tab, nb_players);
     tab[0] = 1;
     get_used(files, nb_players, tab);
-
-#ifdef DEBUG
-    debug_used(tab, nb_players);
-#endif
-
     fill_pos(files, tab);
 }

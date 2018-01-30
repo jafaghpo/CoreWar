@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:50:56 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/30 09:43:00 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/30 17:08:16 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,10 +116,10 @@ extern Uint8    g_font[128][30][16];
 extern int      g_font_size[128];
 extern t_champ	*g_champs;
 extern t_theme  g_theme;
+extern t_uint32 g_nb_cycle;
 
 typedef struct s_sdl    t_sdl;
 typedef struct s_gl     t_gl;
-
 
 struct s_sdl
 {
@@ -161,6 +161,8 @@ void            load_numbers(GLuint *police_text);
 int             prog_chat(void);
 int             prog_numbers(void);
 void            update_fps(int fps);
+void            update_nb_cycle(int nb_cycle);
+void            update_speed(int number);
 void            put_numbers(void);
 
 #endif

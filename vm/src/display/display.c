@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:51:33 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/30 09:43:16 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/30 17:08:42 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,8 @@ void	*display(void)
 		glUseProgram(0);
 		display_square((t_vec2){0.4f, -1.f}, (t_vec2){0.6f, 2.f}, hud);
 		put_chat();
+		update_nb_cycle(g_nb_cycle);
+		update_speed((int)g_sleep);
 		put_numbers();
 		SDL_GL_SwapWindow(sdl.win);
 		sdl.time_end = SDL_GetTicks();

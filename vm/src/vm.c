@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 15:21:22 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/30 09:10:21 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/30 17:17:32 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,16 @@ void        *vm(void *av)
     static t_proc   *cycle[NB_CYCLE_MAX] = {0};
     t_uint32        checks;
     t_uint32        last_check;
+    Uint32          start;
+    Uint32          end;
+    Uint32          diff;
 
     init_proc(cycle, ((t_args*)av)->nb_players);
     checks = 0;
     last_check = CYCLE_TO_DIE;
     while (g_nb_process)
     {
+        start = SDL_GetTicks();
         if (((t_args*)av)->dump && g_nb_cycle == ((t_args*)av)->dumps)
         {
             debug_map();
@@ -45,9 +49,12 @@ void        *vm(void *av)
             checks++;
             last_check += (g_cycle_to_die - 1) * (g_cycle_to_die >= 0) + 1;
         }
-        usleep((int)g_sleep);
         exec_procs_foreach(cycle);
         move_procs_foreach(cycle);
+        end = SDL_GetTicks();
+        diff = end - start;
+        if (diff < (Uint32)g_sleep)
+            usleep((Uint32)g_sleep - diff);
         g_nb_cycle++;
     }
     end_game();
