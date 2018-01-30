@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/09 20:49:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/29 19:04:21 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/30 09:23:03 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ int		main(int ac, char **av)
 	g_champs[0].color = g_theme.color_empty;
 	bubble_tab(g_flags.breakpoints, g_flags.nb_breakpoints);
 	fill_pos_players(files, g_flags.nb_players + 1);
-	g_id = g_flags.nb_players;
+	g_nb_process = g_flags.nb_players;
+	init_gid(g_nb_process);
 	g_nb_player = g_flags.nb_players;
 	players = get_players(files, g_flags.nb_players);
 	load_players(players, g_flags.nb_players);

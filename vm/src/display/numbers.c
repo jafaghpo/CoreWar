@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 21:49:59 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/26 21:35:02 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/30 09:44:45 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void        put_numbers(void)
     glUseProgram(0);
 }
 
-void        update_numbers(int *numbers)
+void        update_fps(int fps)
 {
     Uint8   buf[17][16 * 3];
     int     y;
@@ -94,10 +94,10 @@ void        update_numbers(int *numbers)
         y = 0;
         while (y < 17)
         {
-            ft_memcpy(buf[y] + i * 16, g_font[numbers[0] / div + '0'][y + 4], 16);
+            ft_memcpy(buf[y] + i * 16, g_font[fps / div + '0'][y + 4], 16);
             y++;
         }
-        numbers[0] %= div;
+        fps %= div;
         div /= 10;
         i++;
     }

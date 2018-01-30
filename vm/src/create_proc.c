@@ -6,11 +6,18 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 18:24:54 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/26 01:26:59 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/30 09:24:25 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
+
+static t_uint32 g_id;
+
+void        init_gid(t_uint32 id)
+{
+    g_id = id;
+}
 
 t_proc      *create_proc(t_proc *p, t_int32 pc, t_int32 g_nb_cycle)
 {
@@ -32,6 +39,7 @@ t_proc      *create_proc(t_proc *p, t_int32 pc, t_int32 g_nb_cycle)
         i++;
     }
     ret->next = NULL;
+    g_nb_process++;
     g_id++;
     ret->id = g_id;
     return (ret);

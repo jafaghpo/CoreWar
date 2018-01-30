@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 15:21:22 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/26 18:47:19 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/30 09:10:21 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void        *vm(void *av)
     init_proc(cycle, ((t_args*)av)->nb_players);
     checks = 0;
     last_check = CYCLE_TO_DIE;
-    while (g_id)
+    while (g_nb_process)
     {
         if (((t_args*)av)->dump && g_nb_cycle == ((t_args*)av)->dumps)
         {

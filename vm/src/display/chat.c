@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:16:53 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/26 21:33:14 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/30 09:40:16 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ static void init_array(float *vertices, float *coord_text)
     i = 0;
     while (i < 8 * CHAT_SIZE)
     {
-        vertices[i + 0] = 0.41f;
+        vertices[i + 0] = 0.43f;
         vertices[i + 1] = -0.9f + (float)30 / (float)WIN_Y * (float)(i / 8 + 1);
-        vertices[i + 2] = 0.41f + (float)(16 * CHAT_LINE_SIZE) / (float)WIN_Y;
+        vertices[i + 2] = 0.43f + (float)(16 * CHAT_LINE_SIZE) / (float)WIN_Y;
         vertices[i + 3] = -0.9f + (float)30 / (float)WIN_Y * (float)(i / 8 + 1);
-        vertices[i + 4] = 0.41f;
+        vertices[i + 4] = 0.43f;
         vertices[i + 5] = -0.9f + (float)30 / (float)WIN_Y * (float)(i / 8);
-        vertices[i + 6] = 0.41f + (float)(16 * CHAT_LINE_SIZE) / (float)WIN_Y;
+        vertices[i + 6] = 0.43f + (float)(16 * CHAT_LINE_SIZE) / (float)WIN_Y;
         vertices[i + 7] = -0.9f + (float)30 / (float)WIN_Y * (float)(i / 8);
         coord_text[i + 0] = 0.f;
         coord_text[i + 1] = 0.f;

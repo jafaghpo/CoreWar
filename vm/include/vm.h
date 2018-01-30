@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 18:31:33 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/26 21:52:17 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/30 09:23:20 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ struct		s_inst
 };
 
 extern t_op		op_tab[OP_NB];
-extern t_uint32	g_id;
+extern t_uint32	g_nb_process;
 extern t_uint32	g_step;
 extern t_uint32 g_nb_live;
 extern t_int32	g_cycle_to_die;
@@ -141,6 +141,7 @@ int	    	get_sleep(t_args *flags, char *str);
 void    	end_game(void);
 void    	clear_new(t_proc *p);
 void        add_clear_new(t_proc **procs, t_int32 pc);
+void        init_gid(t_uint32 id);
 
 /*
 ** debug

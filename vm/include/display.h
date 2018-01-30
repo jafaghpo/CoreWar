@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:50:56 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/27 02:04:30 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/30 09:43:00 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ void            add_line_chat(char *str);
 void            load_numbers(GLuint *police_text);
 int             prog_chat(void);
 int             prog_numbers(void);
-void            update_numbers(int *numbers);
+void            update_fps(int fps);
 void            put_numbers(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:51:33 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/29 17:57:36 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/30 09:43:16 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,11 +160,9 @@ void	*display(void)
 		{
 			fps = sdl.time_end;
 			put_fps = nb_frames;
-			update_numbers(&put_fps);
+			update_fps(put_fps);
 			nb_frames = 0;
 		}
-//		if (sdl.time_end < sdl.time_start + (1000.f / 60.f))
-//			SDL_Delay((1000.f / 60.f) - (sdl.time_end - sdl.time_start));
 		nb_frames++;
 	}
 	return (NULL);

@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/05 18:20:01 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/25 21:44:28 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/30 09:10:22 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void 		op_win(t_proc *p, t_inst *args)
             if (g_champs[i].number == a)
             {
                 g_champs[i].live = UINT_MAX;
-                g_id = 0;
+                g_nb_process = 0;
             }
             i++;
         }

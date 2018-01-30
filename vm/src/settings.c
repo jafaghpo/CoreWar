@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/20 17:49:37 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/29 18:09:21 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/30 09:10:58 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_uint8		g_mem[MEM_SIZE] = {};
 t_infos		g_infos[MEM_SIZE] = {};
 t_uint32	g_nb_player;
-t_uint32	g_id;
+t_uint32	g_nb_process;
 t_champ		*g_champs;
 t_uint32	g_nb_live = 0;
 t_int32   	g_cycle_to_die = CYCLE_TO_DIE;

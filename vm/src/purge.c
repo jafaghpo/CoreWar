@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 17:03:21 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/29 19:02:42 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/30 09:10:20 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ void purge(t_proc **cycle)
                     cycle[i] = tmp->next;
                     g_infos[tmp->pc].cursor = 0;
                     free(tmp);
-                    g_id--;
+                    g_nb_process--;
                     tmp = cycle[i];
                     continue ;
                 }
                 tmp2->next = tmp->next;
                 g_infos[tmp->pc].cursor = 0;
                 free(tmp);
-                g_id--;
+                g_nb_process--;
                 tmp = tmp2->next;
                 continue ;
             }
