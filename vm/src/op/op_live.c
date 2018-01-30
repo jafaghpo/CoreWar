@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 11:12:19 by root              #+#    #+#             */
-/*   Updated: 2018/01/30 09:30:11 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/30 17:49:05 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void 		op_live(t_proc *p, t_inst *args)
     }
     if (player != -1)
     {
-        ft_sprintf(str, "[%6d] player %.15s says that %.15s is alive !", g_nb_cycle, g_champs[p->player].name, tmp);
+        ft_sprintf(str, "[%6d] %.10s is alive !", g_nb_cycle, tmp);
         add_line_chat(str);
     }
 }
