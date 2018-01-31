@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:51:33 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/30 17:08:42 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/30 23:53:52 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	*display(void)
 	t_mat4		all_trans;
 	int			done;
 	GLuint		hud;
+	GLuint		hud_background;
 	GLuint		police_text[16];
 	GLuint		fond;
 	GLuint		image_load;
@@ -54,6 +55,8 @@ void	*display(void)
 		return (NULL);
 	load_numbers(police_text);
 	if ((fond = load_image(g_theme.background_file)) == UINT_MAX)
+		return (NULL);
+	if ((hud_background = load_image(g_theme.hud_background_file)) == UINT_MAX)
 		return (NULL);
 	if ((hud = load_image(g_theme.hud_file)) == UINT_MAX)
 		return (NULL);
@@ -150,6 +153,7 @@ void	*display(void)
 				};
 			glBindVertexArray(0);
 		glUseProgram(0);
+		display_square((t_vec2){0.4f, -1.f}, (t_vec2){0.6f, 2.f}, hud_background);
 		display_square((t_vec2){0.4f, -1.f}, (t_vec2){0.6f, 2.f}, hud);
 		put_chat();
 		update_nb_cycle(g_nb_cycle);

@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 21:44:38 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/29 16:42:33 by iburel           ###   ########.fr       */
+/*   Updated: 2018/01/30 23:55:12 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,8 @@ int             get_theme(t_args *flags, char *str)
 		del_blanks(&line);
 		if (!ft_strncmp(line, "background", 10))
 			test = get_filename(line + 10, &g_theme.background_file);
+		else if (!ft_strncmp(line, "hud background", 14))
+			test = get_filename(line + 14, &g_theme.hud_background_file);
 		else if (!ft_strncmp(line, "hud", 3))
 			test = get_filename(line + 3, &g_theme.hud_file);
 		else if (!ft_strncmp(line, "square texture", 14))
