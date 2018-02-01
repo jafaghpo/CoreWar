@@ -1,11 +1,11 @@
 vm/corewar
 asm/asm
 lib/
+lib_src/
 
 # Prerequisites
 *.d
 .DS_Store
-
 # Object files
 *.o
 *.ko
