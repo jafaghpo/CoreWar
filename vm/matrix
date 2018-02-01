@@ -1,0 +1,14 @@
+#toutes les variables disponibles sont présente
+#les tabs et les espaces sont géré on peut en mettre n'importe où
+background            = theme/matrix/mbg.jpg    #ouais c'est le fond
+hud                   = theme/matrix/mc.jpg      #ouais c'est le fond de l'hud
+#music                = unemusic.mp3        #c'est la musique mais c'est pas géré encore
+#font                  = theme/matrix/digitalix.ttf     #ouais je décris tout juste pour montrer que je gere les commentaires
+color empty           = 0, 0, 0
+color player 1        = 0, 0, 0
+color player 2        = 0, 0, 0
+color player 3        = 0, 0, 0
+color player 4        = 0, 0, 0
+color numbers         = 51, 255, 51
+color chat            = 51, 255, 51
+color hud numbers     = 51, 255, 51
