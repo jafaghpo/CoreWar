@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:50:56 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/01 15:47:53 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/01 18:04:23 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,7 @@ int             init_sdl(t_sdl *sdl);
 int             init_gl(t_gl *gl);
 int             shader_build(GLuint *shader, GLenum type, char *file);
 GLuint          load_image(char *file);
+GLuint          load_hud(char *file);
 GLuint          load_onebyte_image(char *file);
 int             load_police_text(GLuint *police_text, SDL_Window *win);
 SDL_Surface		*get_alpha(SDL_Surface *image, Uint32 rgb);

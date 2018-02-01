@@ -1,24 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   end_game.c                                         :+:      :+:    :+:   */
+/*   add_text.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/07 13:12:53 by niragne           #+#    #+#             */
-/*   Updated: 2018/02/02 00:14:35 by iburel           ###   ########.fr       */
+/*   Created: 2018/02/01 19:01:27 by iburel            #+#    #+#             */
+/*   Updated: 2018/02/02 00:14:36 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vm.h"
+#include "display.h"
 
-void    end_game(void)
-{
-    char            str[CHAT_LINE_SIZE];
-
-    ft_memset(str, '-', sizeof(str) - 1);
-    str[sizeof(str) - 1] = 0;
-//    add_line_chat(str);
-    ft_sprintf(str, "%.20s won the game.", g_champs[pick_winner()].name);
-//    add_line_chat(str);
-}
+void    

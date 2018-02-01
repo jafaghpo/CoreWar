@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/27 15:42:15 by niragne           #+#    #+#             */
-/*   Updated: 2018/02/01 16:22:36 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/01 17:59:39 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@ int    pick_winner(void)
 
     max = -1;
     i = 1;
-    ft_printf("%d\n", g_nb_player);
     while (i <= g_nb_player)
     {
-        ft_printf("%#x\n", (int)g_champs[i].live);
         if ((int)g_champs[i].live > max)
         {
             max = (int)g_champs[i].live;

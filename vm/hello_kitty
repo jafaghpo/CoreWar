@@ -2,6 +2,7 @@
 #les tabs et les espaces sont géré on peut en mettre n'importe où
 background            = texture/hkbg.jpg    #ouais c'est le fond
 hud                   = texture/hkc.jpg     #ouais c'est le fond de l'hud
+square texture		  =	texture/hkbg.jpg
 #music                = unemusic.mp3        #c'est la musique mais c'est pas géré encore
 color empty           = 255, 204, 204
 color player 1        = 255, 255, 204

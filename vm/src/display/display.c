@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:51:33 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/30 23:53:52 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/01 18:12:41 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	*display(void)
 		return (NULL);
 	if ((hud_background = load_image(g_theme.hud_background_file)) == UINT_MAX)
 		return (NULL);
-	if ((hud = load_image(g_theme.hud_file)) == UINT_MAX)
+	if ((hud = load_hud(g_theme.hud_file)) == UINT_MAX)
 		return (NULL);
 	if ((case_texture = load_image(g_theme.case_texture)) == UINT_MAX)
 		return (NULL);
@@ -126,7 +126,7 @@ void	*display(void)
 				if (left_mouse)
         			rotate(&modelview, norme((float)sdl.event.motion.yrel, (float)sdl.event.motion.xrel, 0.f), (M_PI / 512.f) * sqrt(sdl.event.motion.yrel * sdl.event.motion.yrel + sdl.event.motion.xrel * sdl.event.motion.xrel));
 				if (right_mouse)
-        			translation(&projection, (t_vec3){(float)sdl.event.motion.xrel / (float)WIN_X, -(float)sdl.event.motion.yrel / (float)WIN_Y, 0.f});
+        			translation(&projection, (t_vec3){(float)sdl.event.motion.xrel / (float)WIN_X * 2.f, -(float)sdl.event.motion.yrel / (float)WIN_Y * 2.f, 0.f});
 			}
 		}
 		event(&projection, &modelview);

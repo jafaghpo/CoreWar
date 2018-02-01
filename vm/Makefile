@@ -6,7 +6,7 @@
 #    By: iburel <iburel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/02/01 14:26:55 by iburel           ###   ########.fr        #
+#    Updated: 2018/02/01 18:07:29 by iburel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ NAME					=	corewar
 CFLAGS					=	-Wall -Wextra -Werror
 
 ifeq ($(DEBUG), yes)
-	CFLAGS				+= -g -D DEBUG# -fsanitize=address
+	CFLAGS				+= -g -D DEBUG -fsanitize=address
 else
 	CFLAGS				+=
 endif
@@ -48,7 +48,7 @@ SRC_DISPLAY_PATH		=	$(SRC_PATH)/display
 SRCS_DISPLAY			=	display.c init_sdl.c init_gl.c shader_build.c load_image.c \
 							load_police_text.c get_alpha.c event.c create_prog.c \
 							load_screen.c square_texture.c init_freetype.c chat.c \
-							numbers.c
+							numbers.c load_hud.c
 
 SRC						=	$(addprefix $(SRCS_PATH)/, $(SRCS))
 SRC						+=	$(addprefix $(SRCS_OP_PATH)/, $(SRCS_OP))
