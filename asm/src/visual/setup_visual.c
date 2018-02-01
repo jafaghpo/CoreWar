@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 18:44:08 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/30 13:46:09 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/01 14:07:04 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int				setup_visual(t_visual *win, t_tab **tab)
 	mvprintw(1, ((COLS / 2) - 8) / 2, "Asm file");
 	mvprintw(1, ((COLS / 2) - 11) / 2 + (COLS / 2), "Binary file");
 	attroff(COLOR_PAIR(NC_GREEN));
+	wprintw(win->bin, "\n\n\n\t");
 	if (!(*tab = ft_memalloc(sizeof(**tab) * win->size.y)))
 		return (print_error(strerror(errno)));
 	return (1);
