@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/09 20:49:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/01 16:23:19 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/01 16:40:05 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		main(int ac, char **av)
 		ft_printf("error: no players\n");
 		return (3);
 	}
-	if (!(g_champs = malloc(sizeof(*g_champs) * (g_flags.nb_players + 10))))
+	if (!(g_champs = malloc(sizeof(*g_champs) * (g_flags.nb_players + 1))))
 		return (4);
 	g_champs[0].color = g_theme.color_empty;
 	bubble_tab(g_flags.breakpoints, g_flags.nb_breakpoints);

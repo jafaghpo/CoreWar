@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 11:29:50 by root              #+#    #+#             */
-/*   Updated: 2018/02/01 15:30:34 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/01 16:43:46 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ t_player        *get_players(t_pfile *files, int nb_players)
         g_champs[files->pos + 1].name = players[files->pos].name;
         g_champs[files->pos + 1].number = rand();
 		g_champs[files->pos + 1].color = g_theme.color_players[i % 4];
+        g_champs[files->pos + 1].live = 0;
         files = files->next;
         i++;
     }
