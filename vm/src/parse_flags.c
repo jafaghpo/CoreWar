@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/11 14:20:31 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/26 21:51:48 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/01 15:30:34 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ static int	parse_args(t_args *flags, char **av, int *i)
 	return (tmp);
 }
 
-t_file		*parse_flags(t_args *flags, char **av, int ac)
+t_pfile		*parse_flags(t_args *flags, char **av, int ac)
 {
-	t_file	*files;
+	t_pfile	*files;
 	int		i;
 	int		tmp;
 

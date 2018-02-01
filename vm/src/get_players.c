@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 11:29:50 by root              #+#    #+#             */
-/*   Updated: 2018/01/30 16:31:37 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/01 15:30:34 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void     fill_player(t_player *players, t_uint8 *binary)
     players->buffer = binary + PROG_NAME_LENGTH + COMMENT_LENGTH + 16;
 }
 
-t_player        *get_players(t_file *files, int nb_players)
+t_player        *get_players(t_pfile *files, int nb_players)
 {
     t_player        *players;
     t_uint8         *binary;

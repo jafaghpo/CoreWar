@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 21:44:38 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/30 23:55:12 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/01 15:39:04 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,18 +94,18 @@ int             get_theme(t_args *flags, char *str)
 {
 	char	*line;
 	char	*tmp;
-	int		fd;
+	t_file	*file;
 	int		test;
 	int		i;
 	
     (void)flags;
-	if ((fd = open(str, O_RDONLY)) == -1)
+	if (!(file = ft_fopen(str, O_RDONLY)))
 	{
 		ft_printf("error open theme file\n");
 		return (0);
 	}
 	i = 1;
-	while (get_next_line(fd, &tmp))
+	while (ft_getline(&tmp, file))
 	{
 		test = 0;
 		line = tmp;

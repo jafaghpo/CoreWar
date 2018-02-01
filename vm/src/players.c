@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 15:31:41 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/20 00:44:37 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/01 15:30:33 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void		load_players(t_args *flags, t_player **players, t_uchar *map)
 	}
 }
 
-void		fill_players(t_args *flags, t_file **files, t_player **p, int *used)
+void		fill_players(t_args *flags, t_pfile **files, t_player **p, int *used)
 {
 	int i;
 
@@ -61,10 +61,10 @@ void		verif_players(t_args *flags, t_player *players)
 	}
 }
 
-void		get_players(t_args *flags, t_file **files, t_player **players)
+void		get_players(t_args *flags, t_pfile **files, t_player **players)
 {
 	int		i;
-	t_file	*backup;
+	t_pfile	*backup;
 	int		used[flags->nb_players];
 
 	i = 0;

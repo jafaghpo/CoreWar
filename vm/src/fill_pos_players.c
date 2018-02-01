@@ -6,13 +6,13 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 23:51:17 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/30 16:31:25 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/01 15:30:29 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-static void get_used(t_file *files, int nb_players, char *tab)
+static void get_used(t_pfile *files, int nb_players, char *tab)
 {
     while (files)
     {
@@ -26,7 +26,7 @@ static void get_used(t_file *files, int nb_players, char *tab)
     }
 }
 
-static void fill_pos(t_file *files, char *tab)
+static void fill_pos(t_pfile *files, char *tab)
 {
     int    i;
 
@@ -46,7 +46,7 @@ static void fill_pos(t_file *files, char *tab)
     }
 }
 
-void        fill_pos_players(t_file *files, int nb_players)
+void        fill_pos_players(t_pfile *files, int nb_players)
 {
     char    tab[nb_players];
 

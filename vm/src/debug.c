@@ -6,13 +6,13 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/20 19:16:53 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/20 18:03:06 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/01 15:30:18 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void	debug_print_file(t_file *files)
+void	debug_print_pfile(t_pfile *files)
 {
 	ft_printf("\n");
 	while (files)

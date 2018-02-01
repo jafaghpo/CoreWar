@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 18:31:33 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/30 09:23:20 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/01 15:30:23 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 
 typedef struct s_player		t_player;
 typedef struct s_args		t_args;
-typedef struct s_file		t_file;
+typedef struct s_pfile		t_pfile;
 typedef struct s_proc		t_proc;
 typedef struct s_inst		t_inst;
 
@@ -73,11 +73,11 @@ struct		s_args
 	t_uint8		nb_breakpoints;
 };
 
-struct		s_file
+struct		s_pfile
 {
 	char	*name;
 	int		pos;
-	t_file	*next;
+	t_pfile	*next;
 };
 
 struct		s_inst
@@ -101,18 +101,18 @@ extern t_args	g_flags;
 t_uint16	get_uint16(t_uint32 pc);
 t_uint32	get_uint32(t_uint8 *data);
 t_uint32    get_uint32_mem(t_uint32 pc);
-t_player	*get_players(t_file *files, int nb_players);
+t_player	*get_players(t_pfile *files, int nb_players);
 void		load_players(t_player *players, int nb_players);
 void		flags_v(t_args *flags);
-t_file		*parse_flags(t_args *flags, char **av, int ac);
+t_pfile		*parse_flags(t_args *flags, char **av, int ac);
 void		init_proc(t_proc **cycle, int nb);
-t_file		*add_file(t_args *flags, t_file *files, char *name, int *pos);
+t_pfile		*add_file(t_args *flags, t_pfile *files, char *name, int *pos);
 int			get_dumps(t_args *flags, char *str);
 int			get_nums(t_args *flags, char *str);
 int    		get_theme(t_args *flags, char *str);
 int	    	get_breakpoints(t_args *flags, char *str, char **av, int *i);
 void		get_name(char *file);
-void    	fill_pos_players(t_file *files, int nb_players);
+void    	fill_pos_players(t_pfile *files, int nb_players);
 void   		*vm(void *av);
 void 		insert_proc(t_proc **cycle, t_proc *proc, t_uint32 pos);
 void		remove_proc(t_proc *proc);
@@ -146,7 +146,7 @@ void        init_gid(t_uint32 id);
 /*
 ** debug
 */
-void		debug_print_file(t_file *files);
+void		debug_print_pfile(t_pfile *files);
 void		debug_flags(t_args *flags);
 void		debug_players(t_player *players, int nb_players);
 void		debug_map(void);

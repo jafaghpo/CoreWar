@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/09 20:49:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/30 09:23:03 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/01 15:30:32 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int		main(int ac, char **av)
 {
 	pthread_t	tid;
-	t_file		*files;
+	t_pfile		*files;
 	t_player	*players;
 
 	if (ac < 2)
