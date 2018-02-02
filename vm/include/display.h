@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:50:56 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/01 18:04:23 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/02 18:33:07 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,5 +166,6 @@ void            update_fps(int fps);
 void            update_nb_cycle(int nb_cycle);
 void            update_speed(int number);
 void            put_numbers(void);
+void            add_text(Uint8 *buf, char *str, int x, int y);
 
 #endif

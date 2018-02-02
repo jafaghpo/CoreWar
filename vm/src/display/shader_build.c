@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 22:25:25 by iburel            #+#    #+#             */
-/*   Updated: 2017/11/05 22:46:16 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/02 17:31:30 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static char *file_to_str(char *file)
     int     fd;
     int     ret;
 
-    if (!(buf = malloc(sizeof(*buf) * 10001)))
+    if (!(buf = malloc(sizeof(*buf) * BUFF_SIZE)))
     {
         ft_printf(ERROR_MALLOC"\n");
         return (NULL);
@@ -28,12 +28,12 @@ static char *file_to_str(char *file)
         ft_printf(ERROR_OPEN"\n");
         return (NULL);
     }
-    if ((ret = read(fd, buf, 10001)) == -1)
+    if ((ret = read(fd, buf, BUFF_SIZE)) == -1)
     {
         ft_printf(ERROR_READ"\n");
         return (NULL);
     }
-    if (ret == 10001)
+    if (ret == BUFF_SIZE)
         return (NULL);
     close(fd);
     buf[ret] = 0;
@@ -50,7 +50,7 @@ static int  check_shader(GLuint shader)
     if (!error)
     {
         glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &size);
-        if (!(str = malloc(sizeof(*str) * size + 1)))
+        if (!(str = malloc(sizeof(*str) * (size + 1))))
         {
             ft_printf(ERROR_MALLOC"\n");
             return (0);

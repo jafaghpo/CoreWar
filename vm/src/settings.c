@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/20 17:49:37 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/01 16:22:57 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/02 19:01:20 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ t_uint32    g_key = 0;
 t_theme     g_theme =
 {
     "theme/default/black.jpg",
-    "theme/default/white.jpg",
+    "texture/fond.jpg",
+//    "texture/fond.jpg",
+//    "theme/default/white.jpg",
     "theme/default/white.jpg",
     "theme/default/white.jpg",
     NULL,
