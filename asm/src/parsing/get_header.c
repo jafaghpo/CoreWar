@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 16:05:11 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/29 15:50:33 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/02 17:06:52 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static int		analize_header(char *line, t_tab *current, int *state)
 			return (print_error(NO_NAME));
 		if (!(len = check_syntax(g_bin.data + g_bin.i, line + len, NAME_LEN)))
 			return (print_error(SYNTAX, line + len));
-		current->size = len - 1;
+		current->size = NAME_LEN;
 		g_bin.i = NAME_LEN + 12;
 		(*state)++;
 	}
@@ -69,7 +69,7 @@ static int		analize_header(char *line, t_tab *current, int *state)
 			return (print_error(NO_COMMENT));
 		if (!(len = check_syntax(g_bin.data + g_bin.i, line + len, COM_LEN)))
 			return (print_error(SYNTAX, line + len));
-		current->size = len - 1;
+		current->size = COM_LEN;
 		g_bin.i = HEADER_LEN;
 		(*state)++;
 	}

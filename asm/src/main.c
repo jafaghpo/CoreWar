@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/29 15:19:44 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/30 12:08:22 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/02 17:27:42 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,18 @@ int				main(int ac, char **av)
 	i = 1;
 	if (!get_option(av))
 		return (0);
+	if ((g_option & VISUAL_FLAG) && !setup_visual(&win, &tab))
+		visual_error(&g_option);
 	while (i < ac)
 	{
 		if (*av[i] != '-' && (bin_name = get_name(av[i])))
 		{
-			if ((g_option & VISUAL_FLAG) && !setup_visual(&win, &tab))
-				visual_error(&g_option);
 			if (parse_file(av[i], &win, tab))
 				fill_binary(bin_name);
+			if (g_option & VISUAL_FLAG)
+				delete_visual(&win, tab, (i + 1 == ac));
 		}
 		i++;
 	}
-	if (g_option & VISUAL_FLAG)
-		delete_visual(&win, tab);
 	return (0);
 }

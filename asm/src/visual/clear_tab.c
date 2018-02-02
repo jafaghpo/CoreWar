@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_label.c                                        :+:      :+:    :+:   */
+/*   clear_tab.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/12 16:25:46 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/02 16:53:18 by jafaghpo         ###   ########.fr       */
+/*   Created: 2018/02/02 17:54:00 by jafaghpo          #+#    #+#             */
+/*   Updated: 2018/02/02 17:54:27 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_lstlb			*add_label(t_lstlb *label, char *name, int size)
+void		clear_tab(t_tab *tab)
 {
-	t_lstlb		*new;
+	int		i;
 
-	if (!(new = malloc(sizeof(*new))))
+	i = 0;
+	while (i < g_lines)
 	{
-		print_error(strerror(errno));
-		return (NULL);
+		free(tab[i].line);
+		tab[i].line = 0;
+		tab[i].ptr = 0;
+		tab[i].size = 0;
+		tab[i].new_line = 0;
+		i++;
 	}
-	new->name = duplicate_label(name, size);
-	new->addr = g_bin.i - HEADER_LEN;
-	if (!label)
-		new->next = NULL;
-	else
-		new->next = label;
-	return (new);
+	g_lines = 0;
 }

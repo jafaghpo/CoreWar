@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/16 16:26:07 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/16 18:18:33 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/02 17:47:34 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,21 @@ void		debug_tab(t_tab *tab)
 {
 	int		i;
 	int		j;
+	int		fd;
 
 	i = 0;
-	ft_printf("\ntable:\n");
+	fd = open("/dev/ttys001", O_WRONLY);
+	dprintf(fd, "\ntable:\n");
 	while (i < g_lines)
 	{
 		if (tab[i].new_line)
-			ft_printf("\n");
-		ft_printf("line n%d: [%s]\n", i, tab[i].line);
+			dprintf(fd, "\n");
+		dprintf(fd, "line n%d: [%s]\n", i, tab[i].line);
 		j = 0;
-		ft_printf("ptr: ");
+		dprintf(fd, "ptr: ");
 		while (j < tab[i].size)
-			ft_printf("%.2X ", tab[i].ptr[j++]);
-		ft_printf("size: [%d] new_line: [%d]\n", tab[i].size, tab[i].new_line);
+			dprintf(fd, "%.2X ", tab[i].ptr[j++]);
+		dprintf(fd, "size: [%d] new_line: [%d]\n", tab[i].size, tab[i].new_line);
 		i++;
 	}
 }

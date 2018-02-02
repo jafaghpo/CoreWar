@@ -6,19 +6,19 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:03:21 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/31 01:00:31 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/02 19:01:11 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VISUAL_H
 # define VISUAL_H
 
-#include <ncurses.h>
-#include "asm.h"
+# include <ncurses.h>
+# include "asm.h"
 /*
 **	-- Defines --
 */
-# define DELAY_USEC		50000
+# define DELAY_USEC		100000
 
 # define NC_BLACK		0
 # define NC_GREEN		1
@@ -49,6 +49,7 @@ struct		s_visual
 	WINDOW	*as;
 	WINDOW	*bin;
 	t_size	size;
+	t_size	cur;
 	int		delay;
 };
 /*
@@ -56,7 +57,8 @@ struct		s_visual
 */
 int			setup_visual(t_visual *win, t_tab **tab);
 void		run_visual(t_tab *tab, t_visual *win);
-void		delete_visual(t_visual *win, t_tab *tab);
+void		delete_visual(t_visual *win, t_tab *tab, int end);
 void		visual_error(int *option);
+void		clear_tab(t_tab *tab);
 
 #endif
