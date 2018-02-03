@@ -6,18 +6,18 @@
 #    By: iburel <iburel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/02/03 15:31:40 by iburel           ###   ########.fr        #
+#    Updated: 2018/02/03 15:39:24 by iburel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-DEBUG					=	yes
+DEBUG					=	no
 TIME					=	no
 
 NAME					=	corewar
 CFLAGS					=	-Wall -Wextra -Werror
 
 ifeq ($(DEBUG), yes)
-	CFLAGS				+= -g -D DEBUG# -fsanitize=address
+	CFLAGS				+= -g -D DEBUG -fsanitize=address
 else
 	CFLAGS				+=
 endif
