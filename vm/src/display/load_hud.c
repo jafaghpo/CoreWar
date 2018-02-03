@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 18:02:16 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/02 19:27:06 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/03 13:52:05 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static int      check_format(SDL_Surface *image, GLenum *form, GLenum *form_int)
 static Uint8    *add_infos(SDL_Surface *image)
 {
     Uint8   *buf;
+    char    str[50];
     int     i;
     int     j;
 
@@ -63,7 +64,16 @@ static Uint8    *add_infos(SDL_Surface *image)
         }
         i++;
     }
-    add_text(buf, "CYCLE:", 100, 100);
+    add_text(buf, "FPS:", 570, 51, &g_theme.color_fps);
+    add_text(buf, "CYCLE:", 60, 195, &g_theme.color_fps);
+    add_text(buf, "CYCLE/S:", 400, 195, &g_theme.color_fps);
+    i = 0;
+    while (i < (int)g_nb_player)
+    {
+        ft_sprintf(str, "player%d : %.30s", i + 1, g_champs[i + 1].name);
+        add_text(buf, str, 100, 300 + 40 * i, &g_theme.color_players[i % 4]);
+        i++;
+    }
     return (buf);
 }
 

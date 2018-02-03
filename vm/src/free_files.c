@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_procs_foreach.c                               :+:      :+:    :+:   */
+/*   free_files.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/11 10:57:18 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/03 14:15:09 by iburel           ###   ########.fr       */
+/*   Created: 2018/02/03 14:26:41 by iburel            #+#    #+#             */
+/*   Updated: 2018/02/03 14:51:03 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void    move_procs_foreach(t_proc **cycle)
+void    free_files(t_pfile *files)
 {
-    t_proc      *tmp;
-    t_proc      *tmp2;
-    int         pos;
+    t_pfile     *tmp;
 
-    pos = g_nb_cycle % NB_CYCLE_MAX;
-    tmp = cycle[pos];
-    while (tmp)
+    while (files)
     {
-        if (tmp->op >= 17)
-        {
-            tmp2 = tmp->next;
-            free(tmp);
-            tmp = tmp2;
-            continue ;
-        }
-        tmp2 = tmp->next;
-        move_proc(cycle, tmp);
-        tmp = tmp2;
+        tmp = files->next;
+        free(files->binary);
+        free(files);
+        files = tmp;
     }
-    cycle[pos] = NULL;
 }

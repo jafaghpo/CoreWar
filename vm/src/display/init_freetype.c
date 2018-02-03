@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 03:11:16 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/02 18:10:27 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/03 15:18:03 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,14 @@ static void resize(int i, FT_GlyphSlot slot)
     Uint32     y;
 
     y = 0;
-    while (y < slot->bitmap.rows)
+    while (y < slot->bitmap.rows && y < 30)
     {
-        ft_memcpy(g_font[i][20 - slot->bitmap_top + y] + slot->bitmap_left,
-                  slot->bitmap.buffer + y * slot->bitmap.width,
-                  slot->bitmap.width);
+        if (slot->bitmap_top <= 20)
+        {
+            ft_memcpy(g_font[i][20 - slot->bitmap_top + y] + slot->bitmap_left,
+                    slot->bitmap.buffer + y * slot->bitmap.width,
+                    slot->bitmap.width);
+        }
         y++;
     }
 }

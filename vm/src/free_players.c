@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_procs_foreach.c                               :+:      :+:    :+:   */
+/*   free_players.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/11 10:57:18 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/03 14:15:09 by iburel           ###   ########.fr       */
+/*   Created: 2018/02/03 14:38:57 by iburel            #+#    #+#             */
+/*   Updated: 2018/02/03 14:42:13 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void    move_procs_foreach(t_proc **cycle)
+void    free_players(t_player *players)
 {
-    t_proc      *tmp;
-    t_proc      *tmp2;
-    int         pos;
+    t_uint8     i;
 
-    pos = g_nb_cycle % NB_CYCLE_MAX;
-    tmp = cycle[pos];
-    while (tmp)
+    i = 0;
+    while (i < g_nb_player)
     {
-        if (tmp->op >= 17)
-        {
-            tmp2 = tmp->next;
-            free(tmp);
-            tmp = tmp2;
-            continue ;
-        }
-        tmp2 = tmp->next;
-        move_proc(cycle, tmp);
-        tmp = tmp2;
+//        free(players[i].name);
+//        free(players[i].comment);
+//        free(players[i].buffer);
+        (void)players;
+        i++;
     }
-    cycle[pos] = NULL;
 }

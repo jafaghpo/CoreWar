@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 18:31:33 by niragne           #+#    #+#             */
-/*   Updated: 2018/02/01 15:30:23 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/03 14:51:28 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ struct		s_args
 struct		s_pfile
 {
 	char	*name;
+	t_uint8	*binary;
 	int		pos;
 	t_pfile	*next;
 };
@@ -93,7 +94,6 @@ extern t_uint32	g_nb_process;
 extern t_uint32	g_step;
 extern t_uint32 g_nb_live;
 extern t_int32	g_cycle_to_die;
-extern t_uint32 g_nb_player;
 extern t_uint32 g_nb_cycle;
 extern t_args	g_flags;
 
@@ -142,6 +142,8 @@ void    	end_game(void);
 void    	clear_new(t_proc *p);
 void        add_clear_new(t_proc **procs, t_int32 pc);
 void        init_gid(t_uint32 id);
+void    	free_files(t_pfile *files);
+void    	free_players(t_player *players);
 
 /*
 ** debug

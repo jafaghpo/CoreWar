@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:50:56 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/02 18:33:07 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/03 13:49:59 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ extern int      g_font_size[128];
 extern t_champ	*g_champs;
 extern t_theme  g_theme;
 extern t_uint32 g_nb_cycle;
+extern t_uint32 g_nb_player;
 
 typedef struct s_sdl    t_sdl;
 typedef struct s_gl     t_gl;
@@ -166,6 +167,6 @@ void            update_fps(int fps);
 void            update_nb_cycle(int nb_cycle);
 void            update_speed(int number);
 void            put_numbers(void);
-void            add_text(Uint8 *buf, char *str, int x, int y);
+void            add_text(Uint8 *buf, char *str, int x, int y, t_case *color);
 
 #endif

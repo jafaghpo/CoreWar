@@ -6,12 +6,17 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/09 20:49:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/01 16:40:05 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/03 15:02:26 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 #include <pthread.h>
+
+void	attend(void)
+{
+	while (1);
+}
 
 int		main(int ac, char **av)
 {
@@ -19,6 +24,7 @@ int		main(int ac, char **av)
 	t_pfile		*files;
 	t_player	*players;
 
+//	atexit(attend);
 	if (ac < 2)
 	{
 		ft_printf("usage: %s [-d cycles -v] [[-n nbr] champ.cor] ...\n", av[0]);
@@ -41,6 +47,7 @@ int		main(int ac, char **av)
 	g_nb_player = g_flags.nb_players;
 	players = get_players(files, g_flags.nb_players);
 	load_players(players, g_flags.nb_players);
+	free_files(files);
 	if (g_flags.visu)
 	{
 		pthread_create(&tid, NULL, keyhook, NULL);		

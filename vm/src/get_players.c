@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 11:29:50 by root              #+#    #+#             */
-/*   Updated: 2018/02/01 16:43:46 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/03 14:50:48 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,15 @@ static void     fill_player(t_player *players, t_uint8 *binary)
 t_player        *get_players(t_pfile *files, int nb_players)
 {
     t_player        *players;
-    t_uint8         *binary;
     int             i = 0;
 
     if (!(players = malloc(sizeof(*players) * nb_players)))
         ft_afferror("error malloc");
     while (files)
     {
-        binary = get_binary(files->name, &(players[files->pos].size));
-        fill_player(players + files->pos, binary);
-        g_champs[files->pos + 1].name = players[files->pos].name;
+        files->binary = get_binary(files->name, &(players[files->pos].size));
+        fill_player(players + files->pos, files->binary);
+        g_champs[files->pos + 1].name = ft_strdup(players[files->pos].name);
         g_champs[files->pos + 1].number = rand();
 		g_champs[files->pos + 1].color = g_theme.color_players[i % 4];
         g_champs[files->pos + 1].live = 0;
