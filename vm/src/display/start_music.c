@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/03 15:27:45 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/03 15:31:11 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/03 15:45:17 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,5 @@ void    start_music(void)
         return ;
     ft_sprintf(music_command, "afplay %s&", g_theme.music_file);
     system("afplay ./music/aivi_answer.mp3&");
+    free(music_command);
 }
