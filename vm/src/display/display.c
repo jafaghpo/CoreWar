@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:51:33 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/03 15:07:25 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/03 15:27:36 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	*display(void)
 	float		cursor;
 	float		new;
 
+	start_music();
 	if (!init_sdl(&sdl))
 		return (NULL);
 	if (!init_gl(&gl))

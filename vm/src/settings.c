@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/20 17:49:37 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/03 15:20:36 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/03 15:21:51 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ t_theme     g_theme =
     "theme/default/white.jpg",
     "theme/default/white.jpg",
     NULL,
-    "fonts/KR.ttf",
-//    "theme/default/arial.ttf",
+    "theme/default/arial.ttf",
     {1.f, 1.f, 1.f},
     {
         {1.f / 255.f, 223.f / 255.f, 215.f / 255.f},

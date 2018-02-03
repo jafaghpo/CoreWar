@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/09 20:49:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/03 15:02:26 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/03 15:36:50 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int		main(int ac, char **av)
 		pthread_create(&tid, NULL, keyhook, NULL);		
 		pthread_create(&tid, NULL, vm, &g_flags);
 		display();
+		system("killall afplay 2&>/dev/null >/dev/null");
 	}
 	else
 	{
