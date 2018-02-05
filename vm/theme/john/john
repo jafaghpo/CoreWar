@@ -1,10 +1,11 @@
 #toutes les variables disponibles sont présente
 #les tabs et les espaces sont géré on peut en mettre n'importe où
-background            = theme/hello_kitty/hkbg.jpg    #ouais c'est le fond
-hud                   = theme/hello_kitty/hkc.jpg     #ouais c'est le fond de l'hud
-#square texture		  =	texture/hkbg.jpg
+background            = theme/john/jafaghpo.JPG    #ouais c'est le fond
+hud                   = theme/john/jafaghpo.JPG     #ouais c'est le fond de l'hud
+square texture		  =	theme/john/jafaghpo.JPG
 #music                = unemusic.mp3        #c'est la musique mais c'est pas géré encore
-color empty           = 255, 204, 204
+
+color empty			  = 255, 204, 204
 color player 1        = 255, 255, 204
 color player 2        = 233, 70,  70
 color player 3        = 102, 255, 255
