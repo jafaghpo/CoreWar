@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:51:33 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/03 15:27:36 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/04 22:14:54 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	*display(void)
 	GLuint		hud_background;
 	GLuint		police_text[16];
 	GLuint		fond;
-	GLuint		image_load;
 	GLuint		case_texture;
 	GLint		model_location;
 	GLint		proj_location;
@@ -38,6 +37,7 @@ void	*display(void)
 	t_case		*color;
 	float		cursor;
 	float		new;
+//	GLuint		image_load;
 
 	start_music();
 	if (!init_sdl(&sdl))
@@ -48,13 +48,21 @@ void	*display(void)
 		return (NULL);
 	if (!init_square_texture())
 		return (NULL);
-	if ((image_load = load_image("texture/load.jpg")) == UINT_MAX)
-		return (NULL);
-	display_square((t_vec2){-1.f, -1.f}, (t_vec2){2.f, 2.f}, image_load);
-	SDL_GL_SwapWindow(sdl.win);
 	if (!(init_freetype()))
 		return (NULL);
 	load_numbers(police_text);
+/*	if ((image_load = load_image("texture/load.jpg")) == UINT_MAX)
+		return (NULL);
+	display_square((t_vec2){-1.f, -1.f}, (t_vec2){2.f, 2.f}, image_load);
+	SDL_GL_SwapWindow(sdl.win);
+	sleep(1);
+	i = 0;
+	while (i < 100)
+	{
+		usleep(10000);
+		display_load(sdl.win, 0.01f);
+		i++;
+	}*/
 	if ((fond = load_image(g_theme.background_file)) == UINT_MAX)
 		return (NULL);
 	if ((hud_background = load_image(g_theme.hud_background_file)) == UINT_MAX)

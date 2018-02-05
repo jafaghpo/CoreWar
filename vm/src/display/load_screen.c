@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_screen.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/19 01:02:31 by iburel            #+#    #+#             */
-/*   Updated: 2017/12/08 19:08:19 by niragne          ###   ########.fr       */
+/*   Updated: 2018/02/04 18:47:09 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void    display_load(SDL_Window *win, float per)
     glUseProgram(g_prog);
         glBindVertexArray(g_vao);
             glUniform1f(glGetUniformLocation(g_prog, "offset"), (float)save);
-            glUniform1f(glGetUniformLocation(g_prog, "size"), (float)per / 0.01f);
+            glUniform1f(glGetUniformLocation(g_prog, "size"), (float)per * 100.f);
             glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
         glBindVertexArray(0);
     glUseProgram(0);

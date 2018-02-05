@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 15:03:53 by niragne           #+#    #+#             */
-/*   Updated: 2018/02/02 00:15:45 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/04 22:11:35 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,13 @@ void    *keyhook(void *av)
             if (!g_pause)
             {
                 ft_sprintf(str, "[%6d] Game paused by user.", g_nb_cycle);
-                add_line_chat(str);            
-            }                
+                add_line_chat(str);
+            }
+            else
+            {
+                ft_sprintf(str, "[%6d] Game unpaused by user.", g_nb_cycle);
+                add_line_chat(str);
+            }
             g_pause = !g_pause;
         }
         if (g_key == SDLK_c)

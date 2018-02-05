@@ -1,0 +1,9 @@
+color empty           = 255, 255, 255
+color player 1        = 69, 94, 169
+color player 2        = 255, 20, 147
+color player 3        = 0, 178, 238
+color player 4        = 30, 169, 30
+color numbers         = 0, 0, 0
+color square texture  = 0, 0, 0
+color chat            = 0, 0, 0
+color hud numbers     = 0, 0, 0
