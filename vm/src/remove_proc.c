@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   remove_proc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 13:30:14 by niragne           #+#    #+#             */
-/*   Updated: 2017/11/26 16:06:50 by niragne          ###   ########.fr       */
+/*   Updated: 2018/02/05 16:53:19 by ggregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void        remove_proc(t_proc *proc)
+void	remove_proc(t_proc *proc)
 {
-    
+	
 }

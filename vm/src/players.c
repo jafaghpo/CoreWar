@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 15:31:41 by niragne           #+#    #+#             */
-/*   Updated: 2018/02/01 15:30:33 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/05 16:41:25 by ggregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void		load_players(t_args *flags, t_player **players, t_uchar *map)
 	{
 		(*players)[i].pc = i * (MEM_SIZE / flags->nb_players);
 		ft_memcpy(map + i * (MEM_SIZE / flags->nb_players),
-		(*players)[i].buffer, (*players)[i].size);
+				(*players)[i].buffer, (*players)[i].size);
 		i++;
 	}
 }

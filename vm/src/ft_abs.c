@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 14:14:53 by niragne           #+#    #+#             */
-/*   Updated: 2017/11/23 14:15:27 by niragne          ###   ########.fr       */
+/*   Updated: 2018/02/05 14:53:13 by ggregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_int32 ft_abs(t_int32 x)
 {
-    if (x < 0)
-        return (-x);
-    return (x);
+	if (x < 0)
+		return (-x);
+	return (x);
 }

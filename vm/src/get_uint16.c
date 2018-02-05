@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   get_uint16.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 12:29:26 by root              #+#    #+#             */
-/*   Updated: 2017/11/26 18:04:32 by niragne          ###   ########.fr       */
+/*   Updated: 2018/02/05 15:45:27 by ggregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-t_uint16    get_uint16(t_uint32 pc)
+t_uint16	get_uint16(t_uint32 pc)
 {
-    t_uint32    ret;
+	t_uint32	ret;
 
-    ret = g_mem[(t_uint32)(pc + 0) % MEM_SIZE];
-    ret = (ret << 8) + g_mem[(t_uint32)(pc + 1) % MEM_SIZE];
-    return (ret);
+	ret = g_mem[(t_uint32)(pc + 0) % MEM_SIZE];
+	ret = (ret << 8) + g_mem[(t_uint32)(pc + 1) % MEM_SIZE];
+	return (ret);
 }

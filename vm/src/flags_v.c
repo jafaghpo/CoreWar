@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   flags_v.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 15:20:50 by niragne           #+#    #+#             */
-/*   Updated: 2017/10/21 15:42:36 by niragne          ###   ########.fr       */
+/*   Updated: 2018/02/05 14:40:51 by ggregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void    flags_v(t_args *flags)
+void	flags_v(t_args *flags)
 {
-    flags->visu = 1;
+	flags->visu = 1;
 }

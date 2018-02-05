@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_reg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 16:02:03 by niragne           #+#    #+#             */
-/*   Updated: 2018/01/12 13:05:31 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/05 14:22:08 by ggregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 t_uint8  check_reg(t_inst *args)
 {
-    t_int32 i;
+	t_int32 i;
 
-    i = 0;
-    while (i < 4)
-    {
-        if (args[i].type == T_REG)
-        {
-            if (args[i].value == -1)
-                return (0);
-        }
-        i++;
-    }
-    return (1);
+	i = 0;
+	while (i < 4)
+	{
+		if (args[i].type == T_REG)
+		{
+			if (args[i].value == -1)
+				return (0);
+		}
+		i++;
+	}
+	return (1);
 }

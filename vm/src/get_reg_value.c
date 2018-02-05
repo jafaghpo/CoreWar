@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_reg_value.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 16:13:26 by niragne           #+#    #+#             */
-/*   Updated: 2017/11/16 16:56:06 by niragne          ###   ########.fr       */
+/*   Updated: 2018/02/05 15:32:34 by ggregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-t_int32     get_reg_value(t_int32 val, t_proc *p)
+t_int32		get_reg_value(t_int32 val, t_proc *p)
 {
-    return (p->reg[val - 1]);
+	return (p->reg[val - 1]);
 }

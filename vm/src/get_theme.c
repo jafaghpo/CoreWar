@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_theme.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 21:44:38 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/03 15:48:09 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/05 15:45:30 by ggregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static char	*ft_strdup_spe(char *str)
 {
 	char	*new;
 	int	i;
-	
+
 	i = 0;
 	while (str[i] && str[i] != '#')
 		i++;
@@ -90,7 +90,7 @@ static int	get_color(char *line, t_case *color)
 	return (1);
 }
 
-int             get_theme(t_args *flags, char *str)
+int				get_theme(t_args *flags, char *str)
 {
 	char	*line;
 	char	*tmp;
@@ -98,8 +98,8 @@ int             get_theme(t_args *flags, char *str)
 	int		test;
 	int		i;
 	int		size;
-	
-    (void)flags;
+
+	(void)flags;
 	size = ft_strlen(str);
 	if (!(tmp = malloc(sizeof(*tmp) * (6 + size + 1 + size + 1))))
 		return (0);

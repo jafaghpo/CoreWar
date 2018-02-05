@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/11 20:37:34 by jafaghpo          #+#    #+#             */
-/*   Updated: 2017/09/21 15:35:44 by niragne          ###   ########.fr       */
+/*   Updated: 2018/02/05 15:16:41 by ggregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_player		get_mem(char *name)
 	ft_memcpy(new.buffer, buffer + HEADER_SIZE, size);
 	ft_memcpy(new.header.prog_name, buffer + 4, PROG_NAME_LENGTH);
 	ft_memcpy(new.header.comment, buffer + 12 + PROG_NAME_LENGTH,
-												COMMENT_LENGTH);
+			COMMENT_LENGTH);
 	close(fd);
 	return (new);
 }
