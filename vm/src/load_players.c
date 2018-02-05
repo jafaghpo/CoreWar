@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_players.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 13:50:56 by root              #+#    #+#             */
-/*   Updated: 2018/02/05 16:19:26 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/05 18:05:01 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void    load_players(t_player *players, int nb_players)
 	i = 0;
 	while (i < nb_players)
 	{
-		ft_memcpy(g_mem + i * step, players[i].buffer, players[i].size);
+		if (i * step + players[i].size < MEM_SIZE)
+			ft_memcpy(g_mem + i * step, players[i].buffer, players[i].size);
 		j = 0;
 		while (j < players[i].size)
 		{
