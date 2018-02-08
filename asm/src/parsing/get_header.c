@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 16:05:11 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/02 17:06:52 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/08 12:19:01 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,24 @@ static int		analize_header(char *line, t_tab *current, int *state)
 	return (1);
 }
 
+static int		parse_header(char *line, t_tab *cur, int *state, t_visual *win)
+{
+	if (!*line || *line == COMMENT_CHAR)
+		free(cur->line);
+	else if (*line == '.' && *state < 2)
+	{
+		if (!analize_header(line, cur, state))
+			return (free_error((void*)cur->line));
+		store_line(tab, cur, win);
+	}
+	else
+	{
+		free_error((void*)cur->line);
+		return (print_error(HEADER_LINE, line));
+	}
+	return (1);
+}
+
 int				get_header(t_tab *tab, int fd, t_visual *win)
 {
 	t_tab	current;
@@ -88,18 +106,11 @@ int				get_header(t_tab *tab, int fd, t_visual *win)
 	{
 		current = (t_tab){line, g_bin.data + g_bin.i, 0, 0};
 		ft_delspace(&line);
-		if (!*line || *line == COMMENT_CHAR)
-			;
-		else if (*line == '.' && state < 2)
-		{
-			if (!analize_header(line, &current, &state))
-				return (0);
-			store_line(tab, &current, win);
-			if (state == 2)
-				return (1);
-		}
-		else
-			return (print_error(HEADER_LINE, line));
+		if (!parse_header(line, &current, &state, win))
+			return (0);
+		if (state == 2)
+			return (1);
 	}
+	free(current.line);
 	return (print_error(!state ? NO_NAME : NO_COMMENT));
 }

@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 18:44:08 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/02 19:07:35 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/08 11:57:06 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int		select_mode(void)
 		key = getch();
 	erase();
 	if (key == '\n')
-		return (DELAY_USEC);
+		return (1);
 	return (0);
 }
 
@@ -51,18 +51,8 @@ static t_size	get_win_size(void)
 	return (size);
 }
 
-int				setup_visual(t_visual *win, t_tab **tab)
+static void		create_window(t_visual *win)
 {
-	initscr();
-	noecho();
-	curs_set(0);
-	setup_color();
-	keypad(stdscr, TRUE);
-	win->size = get_win_size();
-	win->cur.x = 0;
-	win->cur.y = 0;
-	win->as = subwin(stdscr, LINES - 2, (COLS / 2), 2, 0);
-	win->bin = subwin(stdscr, LINES - 2, (COLS / 2), 2, (COLS / 2));
 	attron(COLOR_PAIR(NC_GREEN));
 	mvprintw(LINES / 2, (COLS - 33) / 2, AUTO_MODE);
 	mvprintw(LINES / 2 + 1, (COLS - 34) / 2, STEP_MODE);
@@ -74,6 +64,24 @@ int				setup_visual(t_visual *win, t_tab **tab)
 	box(win->as, ACS_VLINE, ACS_HLINE);
 	box(win->bin, ACS_VLINE, ACS_HLINE);
 	refresh();
+}
+
+int				setup_visual(t_visual *win, t_tab **tab)
+{
+	initscr();
+	noecho();
+	curs_set(0);
+	setup_color();
+	cbreak();
+	keypad(stdscr, TRUE);
+	win->size = get_win_size();
+	win->cur.x = 0;
+	win->cur.y = 0;
+	win->as = subwin(stdscr, LINES - 2, (COLS / 2), 2, 0);
+	win->bin = subwin(stdscr, LINES - 2, (COLS / 2), 2, (COLS / 2));
+	create_window(win);
+	if (win->delay)
+		halfdelay(1);
 	if (!(*tab = ft_memalloc(sizeof(**tab) * win->size.y)))
 		return (print_error(strerror(errno)));
 	return (1);

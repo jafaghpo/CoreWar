@@ -6,12 +6,13 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 14:38:13 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/02 18:54:42 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/08 11:54:05 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ASM_H
 # define ASM_H
+
 /*
 **	-- Includes --
 */
@@ -20,10 +21,11 @@
 # include "op.h"
 # include "eval_expr.h"
 # include "visual.h"
+
 /*
 **	-- Error messages --
 */
-# define NO_PARAMETER	"missing parameters\n%s"	
+# define NO_PARAMETER	"missing parameters\n%s"
 # define USAGE			"usage: ./asm [-wv] file ..."
 # define EXTENSION		"invalid file extension: \033[31m%s"
 # define OPTION			"illegal option -- \033[31m%c\033[0m\n%s"
@@ -41,11 +43,13 @@
 # define NO_SEPARATOR	"missing separator between args: \033[31m\"%s\"\033[0m"
 # define UNDEF_LABEL	"undefined label: \033[31m\"%s\"\033[0m"
 # define MAX_SIZE		"%sWarning:%s too large size [max: %d bytes]\n"
+
 /*
 **	-- Option masks --
 */
 # define VISUAL_FLAG	0x01
 # define SIZE_FLAG		0x02
+
 /*
 **	-- Length macros --
 */
@@ -53,6 +57,7 @@
 # define NAME_LEN		PROG_NAME_LENGTH
 # define COM_LEN		COMMENT_LENGTH
 # define HEADER_LEN		(NAME_LEN + COM_LEN + 16)
+
 /*
 **	-- Typedefs --
 */
@@ -72,7 +77,6 @@ struct		s_tab
 	char	*line;
 	t_uint8	*ptr;
 	int		size;
-	int		new_line;
 };
 
 struct		s_buf
@@ -128,6 +132,7 @@ void		debug_tab(t_tab *tab);
 **	-- General --
 */
 int			print_error(const char *msg, ...);
+int			free_error(void *elem);
 char		*get_name(char *file);
 int			fill_binary(char *name);
 int			word_equal(char *s1, char *s2);

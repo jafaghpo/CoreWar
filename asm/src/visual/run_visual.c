@@ -6,12 +6,12 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 22:09:40 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/02 19:07:01 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/08 11:53:13 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-
+/*
 static void		wait_event(int delay)
 {
 	int			key;
@@ -31,7 +31,7 @@ static void		wait_event(int delay)
 			}
 		}
 	}
-}
+}*/
 
 static void		set_attribute(t_visual *win, char *status)
 {
@@ -100,19 +100,40 @@ static void		display_asm(t_tab *tab, t_visual *win, int line)
 	box(win->as, ACS_VLINE, ACS_HLINE);
 }
 
+static int		wait_event(t_visual *win)
+{
+	int			key;
+
+	key = getch();
+	if (key == 27)
+	{
+		endwin();
+		exit(1);
+	}
+	else if (win->delay)
+		return (1);
+	else if (key == ' ')
+		return (1);
+	return (0);
+}
+
 void			run_visual(t_tab *tab, t_visual *win)
 {
 	int		line;
+	int		run;
 
 	line = 0;
 	while (line < g_lines)
 	{
-		wait_event(win->delay);
-		display_asm(tab, win, line);
-		display_bin(tab, win, line);
-		wrefresh(win->as);
-		wrefresh(win->bin);
-		line++;
+		run = wait_event(win);
+		if (run)
+		{
+			display_asm(tab, win, line);
+			display_bin(tab, win, line);
+			wrefresh(win->as);
+			wrefresh(win->bin);
+			line++;
+		}
 	}
 	clear_tab(tab);
 }

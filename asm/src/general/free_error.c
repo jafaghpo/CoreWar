@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clear_tab.c                                        :+:      :+:    :+:   */
+/*   free_error.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/02 17:54:00 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/08 11:54:30 by jafaghpo         ###   ########.fr       */
+/*   Created: 2018/02/04 17:24:41 by jafaghpo          #+#    #+#             */
+/*   Updated: 2018/02/04 17:26:03 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void		clear_tab(t_tab *tab)
+int			free_error(void *elem)
 {
-	int		i;
-
-	i = 0;
-	while (i < g_lines)
-	{
-		free(tab[i].line);
-		tab[i].line = 0;
-		tab[i].ptr = 0;
-		tab[i].size = 0;
-		i++;
-	}
-	g_lines = 0;
+	ft_memdel(&elem);
+	return (0);
 }

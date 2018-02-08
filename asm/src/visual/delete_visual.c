@@ -6,13 +6,13 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/29 17:11:17 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/02 17:59:43 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/04 17:39:00 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visual.h"
 
-static void	wait_end()
+static void	wait_end(void)
 {
 	int		key;
 
@@ -42,7 +42,7 @@ void		delete_visual(t_visual *win, t_tab *tab, int end)
 		win->cur.y = 0;
 		return ;
 	}
-	while (i < g_lines)
+	while (tab[i].line)
 	{
 		free(tab[i].line);
 		i++;
