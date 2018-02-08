@@ -6,32 +6,11 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 22:09:40 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/08 11:53:13 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/08 15:01:01 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-/*
-static void		wait_event(int delay)
-{
-	int			key;
-
-	if (delay)
-		usleep(delay);
-	else
-	{
-		key = 0;
-		while (key != ' ')
-		{
-			key = getch();
-			if (key == 27)
-			{
-				endwin();
-				exit(1);
-			}
-		}
-	}
-}*/
 
 static void		set_attribute(t_visual *win, char *status)
 {

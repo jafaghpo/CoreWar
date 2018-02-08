@@ -6,7 +6,7 @@
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/02/04 20:55:13 by jafaghpo         ###   ########.fr        #
+#    Updated: 2018/02/08 14:55:05 by jafaghpo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,6 @@ endif
 OBJ_PATH			=	obj
 SRC_PATH			=	src
 LIB_PATH			=	../lib
-LIBSDL2				=	$(LIB_PATH)/SDL2/lib -lSDL2
-LIBSDL2_INCL		=	$(LIB_PATH)/SDL2/include
 
 SRCS				=	main.c debug.c
 SRC					=	$(addprefix $(SRC_PATH)/, $(SRCS))
@@ -57,10 +55,10 @@ LIBFT_INCL_PATH		=	$(LIBFT_PATH)/include
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) -o $@ $(OBJ) $(LIBFT) $(CFLAGS) $(NCURSE) -L $(LIBSDL2)
+	$(CC) -o $@ $(OBJ) $(LIBFT) $(CFLAGS) $(NCURSE)
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCL)
-	$(CC) -o $@ -c $< $(CFLAGS) -I $(INCL_PATH) -I $(OP_INC_PATH) -I $(LIBFT_INCL_PATH) -I $(LIBSDL2_INCL)
+	$(CC) -o $@ -c $< $(CFLAGS) -I $(INCL_PATH) -I $(OP_INC_PATH) -I $(LIBFT_INCL_PATH)
 
 clean:
 	rm -rf $(OBJ)
