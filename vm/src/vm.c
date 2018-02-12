@@ -6,7 +6,7 @@
 /*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 15:21:22 by niragne           #+#    #+#             */
-/*   Updated: 2018/02/05 16:54:45 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/12 14:05:22 by ggregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void			*vm(void *av)
 {
-	static t_proc   *cycle[NB_CYCLE_MAX] = {0};
-	t_uint32	checks;
-	t_uint32	last_check;
-	Uint32		start;
-	Uint32		end;
-	Uint32		diff;
+	static t_proc	*cycle[NB_CYCLE_MAX] = {0};
+	t_uint32		checks;
+	t_uint32		last_check;
+	Uint32			start;
+	Uint32			end;
+	Uint32			diff;
 
 	init_proc(cycle, ((t_args*)av)->nb_players);
 	checks = 0;

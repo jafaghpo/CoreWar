@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   op_aff.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 11:20:24 by root              #+#    #+#             */
-/*   Updated: 2018/01/11 11:05:41 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/12 14:01:53 by ggregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void 		op_aff(t_proc *p, t_inst *args)
+void		op_aff(t_proc *p, t_inst *args)
 {
-    (void)p;
-    (void)args;
-    ft_printf("%d aff: %c\n", g_nb_cycle, p->reg[args[0].value - 1]);
+	(void)p;
+	(void)args;
+	ft_printf("%d aff: %c\n", g_nb_cycle, p->reg[args[0].value - 1]);
 }

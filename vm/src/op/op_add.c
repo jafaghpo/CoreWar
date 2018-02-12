@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   op_add.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 11:15:11 by root              #+#    #+#             */
-/*   Updated: 2017/11/24 17:22:45 by niragne          ###   ########.fr       */
+/*   Updated: 2018/02/12 14:01:52 by ggregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void 		op_add(t_proc *p, t_inst *args)
+void		op_add(t_proc *p, t_inst *args)
 {
-    p->reg[args[2].value - 1] = p->reg[args[0].value - 1] + p->reg[args[1].value - 1];
-    p->carry = !p->reg[args[2].value - 1];
+	p->reg[args[2].value - 1] = p->reg[args[0].value - 1] + p->reg[args[1].value - 1];
+	p->carry = !p->reg[args[2].value - 1];
 }

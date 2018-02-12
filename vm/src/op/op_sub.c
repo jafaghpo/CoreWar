@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   op_sub.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 11:16:12 by root              #+#    #+#             */
-/*   Updated: 2018/01/11 12:00:38 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/12 14:24:10 by ggregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void 		op_sub(t_proc *p, t_inst *args)
+void		op_sub(t_proc *p, t_inst *args)
 {
-    p->reg[args[2].value - 1] = p->reg[args[0].value - 1] - p->reg[args[1].value - 1];
-    p->carry = !p->reg[args[2].value - 1];
+	p->reg[args[2].value - 1] = p->reg[args[0].value - 1] - p->reg[args[1].value - 1];
+	p->carry = !p->reg[args[2].value - 1];
 }
