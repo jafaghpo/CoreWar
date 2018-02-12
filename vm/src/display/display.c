@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:51:33 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/04 22:14:54 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/12 14:35:49 by ggregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	*display(void)
 	t_case		*color;
 	float		cursor;
 	float		new;
-//	GLuint		image_load;
+	//	GLuint		image_load;
 
 	start_music();
 	if (!init_sdl(&sdl))
@@ -51,18 +51,18 @@ void	*display(void)
 	if (!(init_freetype()))
 		return (NULL);
 	load_numbers(police_text);
-/*	if ((image_load = load_image("texture/load.jpg")) == UINT_MAX)
+	/*	if ((image_load = load_image("texture/load.jpg")) == UINT_MAX)
 		return (NULL);
-	display_square((t_vec2){-1.f, -1.f}, (t_vec2){2.f, 2.f}, image_load);
-	SDL_GL_SwapWindow(sdl.win);
-	sleep(1);
-	i = 0;
-	while (i < 100)
-	{
+		display_square((t_vec2){-1.f, -1.f}, (t_vec2){2.f, 2.f}, image_load);
+		SDL_GL_SwapWindow(sdl.win);
+		sleep(1);
+		i = 0;
+		while (i < 100)
+		{
 		usleep(10000);
 		display_load(sdl.win, 0.01f);
 		i++;
-	}*/
+		}*/
 	if ((fond = load_image(g_theme.background_file)) == UINT_MAX)
 		return (NULL);
 	if ((hud_background = load_image(g_theme.hud_background_file)) == UINT_MAX)
@@ -95,7 +95,7 @@ void	*display(void)
 		i++;
 	}
 	glUseProgram(gl.prog);
-		glUniform1i(back_ground_location, 0);
+	glUniform1i(back_ground_location, 0);
 	glUseProgram(0);
 	while (!done)
 	{
@@ -118,49 +118,49 @@ void	*display(void)
 			}
 			else if (sdl.event.type == SDL_MOUSEBUTTONDOWN)
 			{
-    			if (sdl.event.button.button == SDL_BUTTON_LEFT)
+				if (sdl.event.button.button == SDL_BUTTON_LEFT)
 					left_mouse = 1;
-    			else if (sdl.event.button.button == SDL_BUTTON_RIGHT)
+				else if (sdl.event.button.button == SDL_BUTTON_RIGHT)
 					right_mouse = 1;
 			}
 			else if (sdl.event.type == SDL_MOUSEBUTTONUP)
 			{
-    			if (sdl.event.button.button == SDL_BUTTON_LEFT)
+				if (sdl.event.button.button == SDL_BUTTON_LEFT)
 					left_mouse = 0;
-    			else if (sdl.event.button.button == SDL_BUTTON_RIGHT)
+				else if (sdl.event.button.button == SDL_BUTTON_RIGHT)
 					right_mouse = 0;
 			}
 			else if (sdl.event.type == SDL_MOUSEMOTION)
 			{
 				if (left_mouse)
-        			rotate(&modelview, norme((float)sdl.event.motion.yrel, (float)sdl.event.motion.xrel, 0.f), (M_PI / 512.f) * sqrt(sdl.event.motion.yrel * sdl.event.motion.yrel + sdl.event.motion.xrel * sdl.event.motion.xrel));
+					rotate(&modelview, norme((float)sdl.event.motion.yrel, (float)sdl.event.motion.xrel, 0.f), (M_PI / 512.f) * sqrt(sdl.event.motion.yrel * sdl.event.motion.yrel + sdl.event.motion.xrel * sdl.event.motion.xrel));
 				if (right_mouse)
-        			translation(&projection, (t_vec3){(float)sdl.event.motion.xrel / (float)WIN_X * 2.f, -(float)sdl.event.motion.yrel / (float)WIN_Y * 2.f, 0.f});
+					translation(&projection, (t_vec3){(float)sdl.event.motion.xrel / (float)WIN_X * 2.f, -(float)sdl.event.motion.yrel / (float)WIN_Y * 2.f, 0.f});
 			}
 		}
 		event(&projection, &modelview);
 
 		display_square((t_vec2){-1.f, -1.f}, (t_vec2){2.f, 2.f}, fond);
 		glUseProgram(gl.prog);
-			glBindVertexArray(gl.vao);
-				all_trans = mat4_mult(projection, modelview);
-				glUniformMatrix4fv(model_location, 1, GL_FALSE, all_trans);
-                glActiveTexture(GL_TEXTURE0);
-				glBindTexture(GL_TEXTURE_2D, case_texture);
-				free(all_trans);
-				i = 0;
-				while (i < MEM_SIZE)
-				{
-					color = &g_champs[g_infos[i].player].color;
-					cursor = -0.2f * g_infos[i].cursor;
-					new = 0.2f * g_infos[i].new;
-					glUniform3f(color_location, color->r + cursor + new, color->g + cursor + new, color->b + cursor + new);
-					glUniform1i(first_number_location, (g_mem[i] >> 4) + 1);
-					glUniform1i(second_number_location, (g_mem[i] & 0x0f) + 1);
-					glDrawArrays(GL_TRIANGLE_STRIP, i * 4, 4);
-					i++;
-				};
-			glBindVertexArray(0);
+		glBindVertexArray(gl.vao);
+		all_trans = mat4_mult(projection, modelview);
+		glUniformMatrix4fv(model_location, 1, GL_FALSE, all_trans);
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, case_texture);
+		free(all_trans);
+		i = 0;
+		while (i < MEM_SIZE)
+		{
+			color = &g_champs[g_infos[i].player].color;
+			cursor = -0.2f * g_infos[i].cursor;
+			new = 0.2f * g_infos[i].new;
+			glUniform3f(color_location, color->r + cursor + new, color->g + cursor + new, color->b + cursor + new);
+			glUniform1i(first_number_location, (g_mem[i] >> 4) + 1);
+			glUniform1i(second_number_location, (g_mem[i] & 0x0f) + 1);
+			glDrawArrays(GL_TRIANGLE_STRIP, i * 4, 4);
+			i++;
+		};
+		glBindVertexArray(0);
 		glUseProgram(0);
 		display_square((t_vec2){0.4f, -1.f}, (t_vec2){0.6f, 2.f}, hud_background);
 		display_square((t_vec2){0.4f, -1.f}, (t_vec2){0.6f, 2.f}, hud);

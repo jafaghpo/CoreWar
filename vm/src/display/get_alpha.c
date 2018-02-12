@@ -3,41 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   get_alpha.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 17:11:38 by iburel            #+#    #+#             */
-/*   Updated: 2017/11/16 17:11:39 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/12 14:37:15 by ggregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "display.h"
 
-SDL_Surface     *get_alpha(SDL_Surface *image, Uint32 rgb)
+SDL_Surface		*get_alpha(SDL_Surface *image, Uint32 rgb)
 {
-    SDL_Surface *alpha;
-    Uint32      *tmp1;
-    Uint32      *tmp2;
-    Uint32      size;
-    Uint32      i;
+	SDL_Surface *alpha;
+	Uint32		*tmp1;
+	Uint32		*tmp2;
+	Uint32		size;
+	Uint32		i;
 
-    (void)rgb;
-    if (!(alpha = SDL_CreateRGBSurface(0, image->w, image->h, 32, 0, 0, 0, 0)))
-    {
-        ft_printf(ERROR_CREAT_IMAGE"\n");
-        return (NULL);
-    }
-    tmp1 = image->pixels;
-    tmp2 = alpha->pixels;
-    size = image->w * image->h;
-    i = 0;
-    while (i < size)
-    {
+	(void)rgb;
+	if (!(alpha = SDL_CreateRGBSurface(0, image->w, image->h, 32, 0, 0, 0, 0)))
+	{
+		ft_printf(ERROR_CREAT_IMAGE"\n");
+		return (NULL);
+	}
+	tmp1 = image->pixels;
+	tmp2 = alpha->pixels;
+	size = image->w * image->h;
+	i = 0;
+	while (i < size)
+	{
 
-        if ((tmp1[i] & 0xffffff) == rgb)
-            tmp2[i] = 0;
-        else
-            tmp2[i] = tmp1[i];
-        i++;
-    }
-    return (alpha);
+		if ((tmp1[i] & 0xffffff) == rgb)
+			tmp2[i] = 0;
+		else
+			tmp2[i] = tmp1[i];
+		i++;
+	}
+	return (alpha);
 }

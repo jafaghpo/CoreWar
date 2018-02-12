@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_chat.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 02:28:24 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/15 21:09:37 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/12 14:57:49 by ggregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 # define DIFF_Y (((float)POLICE_SIZE / (float)WIN_Y) * 1.5f)
 
-void    put_chat(void)
+void	put_chat(void)
 {
-    int     i;
-    int     tmp;
-    float   y;
+	int		i;
+	int		tmp;
+	float	y;
 
-    tmp = g_line_chat;
-    y = 0;
-    i = tmp;
-    while (i >= 0)
-    {
-//        put_text(g_chat[i], 0.43f, -0.95f + y * DIFF_Y);
-        i--;
-        y++;
-    }
-    i = CHAT_SIZE - 1;
-    while (i > tmp)
-    {
-//        put_text(g_chat[i], 0.43f, -0.95f + y * DIFF_Y);
-        i--;
-        y++;
-    }
+	tmp = g_line_chat;
+	y = 0;
+	i = tmp;
+	while (i >= 0)
+	{
+		//        put_text(g_chat[i], 0.43f, -0.95f + y * DIFF_Y);
+		i--;
+		y++;
+	}
+	i = CHAT_SIZE - 1;
+	while (i > tmp)
+	{
+		//        put_text(g_chat[i], 0.43f, -0.95f + y * DIFF_Y);
+		i--;
+		y++;
+	}
 }
