@@ -6,15 +6,15 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 17:55:34 by root              #+#    #+#             */
-/*   Updated: 2017/12/16 17:55:35 by root             ###   ########.fr       */
+/*   Updated: 2018/02/10 15:25:12 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int     pf_maj_b(va_list arg, t_pfflags *flags)
+int		pf_maj_b(va_list arg, t_pfflags *flags)
 {
-    (void)arg;
-    (void)flags;
-    return (0);
+	(void)arg;
+	(void)flags;
+	return (0);
 }

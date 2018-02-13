@@ -3,16 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   vm.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 15:21:22 by niragne           #+#    #+#             */
-/*   Updated: 2018/02/12 14:05:22 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/13 01:39:46 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void			*vm(void *av)
+/*static void	check_process()
+{
+	
+}*/
+
+void		*vm(void *av)
 {
 	static t_proc	*cycle[NB_CYCLE_MAX] = {0};
 	t_uint32		checks;

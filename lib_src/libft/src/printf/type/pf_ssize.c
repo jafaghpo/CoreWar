@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   pf_ssize.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 17:59:25 by root              #+#    #+#             */
-/*   Updated: 2017/12/16 17:59:25 by root             ###   ########.fr       */
+/*   Updated: 2018/02/10 14:29:32 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_int64 pf_ssize(va_list arg)
+t_int64	pf_ssize(va_list arg)
 {
-    t_int64 n;
+	t_int64 n;
 
-    n = va_arg(arg, ssize_t);
-    return (n);
+	n = va_arg(arg, ssize_t);
+	return (n);
 }

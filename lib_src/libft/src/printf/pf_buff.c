@@ -3,32 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   pf_buff.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 15:47:29 by root              #+#    #+#             */
-/*   Updated: 2017/12/16 18:00:46 by root             ###   ########.fr       */
+/*   Updated: 2018/02/10 14:40:21 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <unistd.h>
 
-static char buf[PF_BUFF_SIZE];
-static int  i = 0;
+static char	g_buf[PF_BUFF_SIZE];
+static int	g_i = 0;
 
-void    pf_buff(char *str, int len)
+void	pf_buff(char *str, int len)
 {
-    if (i + len > PF_BUFF_SIZE)
-    {
-        write(1, buf, i);
-        i = 0;
-    }
-    ft_memcpy(buf + i, str, len);
-    i += len;
+	if (g_i + len > PF_BUFF_SIZE)
+	{
+		write(1, g_buf, g_i);
+		g_i = 0;
+	}
+	ft_memcpy(g_buf + g_i, str, len);
+	g_i += len;
 }
 
-void    pf_putbuff(void)
+void	pf_putbuff(void)
 {
-    write(1, buf, i);
-    i = 0;
+	write(1, g_buf, g_i);
+	g_i = 0;
 }

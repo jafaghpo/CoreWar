@@ -1,7 +1,7 @@
 #toutes les variables disponibles sont présente
 #les tabs et les espaces sont géré on peut en mettre n'importe où
 background            = theme/john/jafaghpo.JPG    #ouais c'est le fond
-hud                   = theme/john/jafaghpo.JPG     #ouais c'est le fond de l'hud
+hud background        = theme/john/jafaghpo.JPG     #ouais c'est le fond de l'hud
 square texture		  =	theme/john/jafaghpo.JPG
 #music                = unemusic.mp3        #c'est la musique mais c'est pas géré encore
 

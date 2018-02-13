@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_freetype.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 03:11:16 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/12 14:39:23 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/12 19:40:58 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ int			init_freetype(void)
 		ft_printf(ERROR_INIT_FONT"\n");
 		return (0);
 	}
+	FT_Done_Face(face);
+	FT_Done_FreeType(lib);
 	if (!prog_chat())
 	{
 		ft_printf("error\n");

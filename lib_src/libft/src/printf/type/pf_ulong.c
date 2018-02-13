@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   pf_ulong.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 17:59:40 by root              #+#    #+#             */
-/*   Updated: 2017/12/16 17:59:41 by root             ###   ########.fr       */
+/*   Updated: 2018/02/10 14:29:20 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_uint64 pf_ulong(va_list arg)
+t_uint64	pf_ulong(va_list arg)
 {
-    t_uint64 n;
+	t_uint64 n;
 
-    n = va_arg(arg, t_uint64);
-    return (n);
+	n = va_arg(arg, t_uint64);
+	return (n);
 }

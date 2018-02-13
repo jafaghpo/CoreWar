@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   settings.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/20 17:49:37 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/05 17:53:22 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/12 19:42:27 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_uint32	g_nb_process;
 t_champ		*g_champs;
 t_uint32	g_nb_live = 0;
 t_int32		g_cycle_to_die = CYCLE_TO_DIE;
-float		g_sleep = 50;
+float		g_sleep = 2000;
 t_uint32	g_nb_cycle = 0;
 t_args		g_flags = {};
 t_uint8		g_line_chat = CHAT_SIZE - 1;

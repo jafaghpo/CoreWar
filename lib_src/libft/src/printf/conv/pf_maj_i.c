@@ -6,14 +6,14 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 17:56:10 by root              #+#    #+#             */
-/*   Updated: 2017/12/16 17:56:11 by root             ###   ########.fr       */
+/*   Updated: 2018/02/10 15:20:22 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int     pf_maj_i(va_list arg, t_pfflags *flags)
+int		pf_maj_i(va_list arg, t_pfflags *flags)
 {
-    pf_maj_d(arg, flags);
-    return (0);
+	pf_maj_d(arg, flags);
+	return (0);
 }

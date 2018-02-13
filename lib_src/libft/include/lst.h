@@ -6,14 +6,14 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 16:12:43 by iburel            #+#    #+#             */
-/*   Updated: 2017/12/17 20:04:58 by root             ###   ########.fr       */
+/*   Updated: 2018/02/10 16:08:43 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LST_H
 # define LST_H
 
-#include <string.h>
+# include <string.h>
 
 typedef struct s_list	t_list;
 

@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   pf_ushort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 17:59:42 by root              #+#    #+#             */
-/*   Updated: 2017/12/16 17:59:43 by root             ###   ########.fr       */
+/*   Updated: 2018/02/10 14:30:13 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_uint64 pf_ushort(va_list arg)
+t_uint64	pf_ushort(va_list arg)
 {
-    t_uint64     n;
+	t_uint64	n;
 
-    n = va_arg(arg, t_uint32);
-    n = (t_uint16)n;
-    return (n);
+	n = va_arg(arg, t_uint32);
+	n = (t_uint16)n;
+	return (n);
 }

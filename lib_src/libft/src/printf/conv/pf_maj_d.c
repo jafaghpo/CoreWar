@@ -6,15 +6,15 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 17:55:48 by root              #+#    #+#             */
-/*   Updated: 2017/12/16 17:55:49 by root             ###   ########.fr       */
+/*   Updated: 2018/02/10 15:22:05 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int     pf_maj_d(va_list arg, t_pfflags *flags)
+int		pf_maj_d(va_list arg, t_pfflags *flags)
 {
-    flags->type = L;
-    pf_d(arg, flags);
-    return (0);
+	flags->type = L;
+	pf_d(arg, flags);
+	return (0);
 }

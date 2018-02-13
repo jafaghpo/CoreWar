@@ -6,14 +6,14 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/09 14:51:54 by iburel            #+#    #+#             */
-/*   Updated: 2017/12/17 20:04:38 by root             ###   ########.fr       */
+/*   Updated: 2018/02/10 16:09:13 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MEM_H
 # define MEM_H
 
-#include <string.h>
+# include <string.h>
 
 void	*ft_realloc(void *data, size_t size);
 int		ft_nbbits(unsigned long long int nb);

@@ -6,15 +6,15 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 17:58:58 by root              #+#    #+#             */
-/*   Updated: 2017/12/16 17:58:59 by root             ###   ########.fr       */
+/*   Updated: 2018/02/10 15:08:45 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char    *pf_zero(char *format, va_list arg, t_pfflags *flags)
+char	*pf_zero(char *format, va_list arg, t_pfflags *flags)
 {
-    (void)arg;
-    flags->tags.zero = 1;
-    return (format + 1);
+	(void)arg;
+	flags->tags.zero = 1;
+	return (format + 1);
 }

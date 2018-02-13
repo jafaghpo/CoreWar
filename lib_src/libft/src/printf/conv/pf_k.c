@@ -6,15 +6,15 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 17:55:23 by root              #+#    #+#             */
-/*   Updated: 2017/12/16 17:55:24 by root             ###   ########.fr       */
+/*   Updated: 2018/02/10 15:26:16 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int     pf_k(va_list arg, t_pfflags *flags)
+int		pf_k(va_list arg, t_pfflags *flags)
 {
-    (void)arg;
-    (void)flags;
-    return (0);
+	(void)arg;
+	(void)flags;
+	return (0);
 }
