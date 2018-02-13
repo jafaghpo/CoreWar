@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   check_reg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 16:02:03 by niragne           #+#    #+#             */
-/*   Updated: 2018/02/05 14:22:08 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/13 15:34:20 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-t_uint8  check_reg(t_inst *args)
+t_uint8	check_reg(t_inst *args)
 {
-	t_int32 i;
+	t_int32	i;
 
 	i = 0;
 	while (i < 4)

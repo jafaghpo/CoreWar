@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   fill_pos_players.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 23:51:17 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/05 14:40:40 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/13 16:31:50 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-static void get_used(t_pfile *files, int nb_players, char *tab)
+static void	get_used(t_pfile *files, int nb_players, char *tab)
 {
 	while (files)
 	{
@@ -26,7 +26,7 @@ static void get_used(t_pfile *files, int nb_players, char *tab)
 	}
 }
 
-static void fill_pos(t_pfile *files, char *tab)
+static void	fill_pos(t_pfile *files, char *tab)
 {
 	int	i;
 

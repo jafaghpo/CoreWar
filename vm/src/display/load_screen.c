@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_screen.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/19 01:02:31 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/12 14:54:27 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/13 16:29:56 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ static GLuint	g_vao;
 
 int			init_load_screen(void)
 {
-	static float	vertices[8] = {0.f, -0.217f, 0.0079f, -0.217f, 0.f, -0.275f, 0.0079f, -0.275f};
+	static float	vertices[8] = {0.f, -0.217f, 0.0079f,
+		-0.217f, 0.f, -0.275f, 0.0079f, -0.275f};
 	GLuint			vbo;
 
 	if (!(g_prog = create_prog(VERTEX_LOAD, FRAGMENT_LOAD)))
@@ -39,7 +40,7 @@ int			init_load_screen(void)
 
 void		display_load(SDL_Window *win, float per)
 {
-	static float  save = -0.377f;
+	static float	save = -0.377f;
 
 	glUseProgram(g_prog);
 	glBindVertexArray(g_vao);

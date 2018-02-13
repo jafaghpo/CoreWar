@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_reg.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 14:16:13 by niragne           #+#    #+#             */
-/*   Updated: 2018/02/05 15:32:26 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/13 16:39:00 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_int32		get_reg(t_uint32 pc, t_inst *args, t_int8 index, t_int8 octal)
 {
-	t_uint8  i;
+	t_uint8	i;
 
 	i = 0;
 	pc = (pc + 1 + octal) % MEM_SIZE;

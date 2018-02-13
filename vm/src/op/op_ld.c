@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   op_ld.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 11:14:25 by root              #+#    #+#             */
-/*   Updated: 2018/02/12 14:04:56 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/13 17:00:20 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void		op_ld(t_proc *p, t_inst *args)
+void	op_ld(t_proc *p, t_inst *args)
 {
 	p->reg[args[1].value - 1] = get_real_value(args, p, 1);
 	p->carry = !p->reg[args[1].value - 1];

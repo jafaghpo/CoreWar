@@ -6,17 +6,17 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 13:50:56 by root              #+#    #+#             */
-/*   Updated: 2018/02/05 18:05:01 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/13 17:16:16 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void    load_players(t_player *players, int nb_players)
+void	load_players(t_player *players, int nb_players)
 {
-	int         step;
-	int         i;
-	t_uint32    j;
+	int			step;
+	int			i;
+	t_uint32	j;
 
 	step = MEM_SIZE / nb_players;
 	i = 0;

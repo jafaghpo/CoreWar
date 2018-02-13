@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   insert_proc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/29 17:11:25 by niragne           #+#    #+#             */
-/*   Updated: 2018/02/05 16:17:13 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/13 16:47:25 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	insert_proc(t_proc **cycle, t_proc *proc, t_uint32 pos)
 	{
 		proc->next = cycle[pos];
 		cycle[pos] = proc;
-		return ;  
+		return ;
 	}
 	tmp = tmp2->next;
 	while (tmp && tmp->id > proc->id)
@@ -30,11 +30,6 @@ void	insert_proc(t_proc **cycle, t_proc *proc, t_uint32 pos)
 		tmp2 = tmp;
 		tmp = tmp->next;
 	}
-	/*
-	   ft_printf("TMP %l#x\n", tmp);
-	   ft_printf("TMP 2 %l#x\n", tmp2);
-	   ft_printf("TMP2 NEXT %p\n", tmp2->next);
-	   */  
-	tmp2->next = proc;  
+	tmp2->next = proc;
 	proc->next = tmp;
 }

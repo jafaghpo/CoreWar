@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 15:31:41 by niragne           #+#    #+#             */
-/*   Updated: 2018/02/05 16:41:25 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/13 14:23:40 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ void		load_players(t_args *flags, t_player **players, t_uchar *map)
 	}
 }
 
-void		fill_players(t_args *flags, t_pfile **files, t_player **p, int *used)
+static void	fill_players(t_args *flags, t_pfile **fil, t_player **p, int *used)
 {
 	int i;
 
 	i = 0;
-	while (*files)
+	while (*fil)
 	{
-		if ((*files)->pos == -1)
+		if ((*fil)->pos == -1)
 		{
 			while (used[flags->nb_players - 1 - i])
 			{
@@ -41,14 +41,14 @@ void		fill_players(t_args *flags, t_pfile **files, t_player **p, int *used)
 					ft_afferror(ERROR_TOO_MANY_PLAYERS);
 				i++;
 			}
-			(*p)[flags->nb_players - 1 - i] = get_mem((*files)->name);
+			(*p)[flags->nb_players - 1 - i] = get_mem((*fil)->name);
 			i++;
 		}
-		(*files) = (*files)->next;
+		(*fil) = (*fil)->next;
 	}
 }
 
-void		verif_players(t_args *flags, t_player *players)
+static void	verif_players(t_args *flags, t_player *players)
 {
 	int		i;
 

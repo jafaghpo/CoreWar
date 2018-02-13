@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 14:14:53 by niragne           #+#    #+#             */
-/*   Updated: 2018/02/05 14:53:13 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/13 16:35:50 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-t_int32 ft_abs(t_int32 x)
+t_int32	ft_abs(t_int32 x)
 {
 	if (x < 0)
 		return (-x);

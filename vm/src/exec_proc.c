@@ -3,21 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   exec_proc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 16:04:48 by niragne           #+#    #+#             */
-/*   Updated: 2018/02/05 14:52:30 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/13 17:03:59 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
+static void	(*g_f[18])() =
+{
+	NULL,
+	op_live,
+	op_ld,
+	op_st,
+	op_add,
+	op_sub,
+	op_and,
+	op_or,
+	op_xor,
+	op_zjmp,
+	op_ldi,
+	op_sti,
+	op_fork,
+	op_lld,
+	op_lldi,
+	op_lfork,
+	op_aff,
+	clear_new
+};
+
 void	exec_proc(t_proc **cycle, t_proc *tmp)
 {
-	static void		(*f[18])() =
-	{NULL, op_live, op_ld, op_st, op_add, op_sub, op_and, op_or,
-		op_xor, op_zjmp, op_ldi, op_sti, op_fork, op_lld, op_lldi,
-		op_lfork, op_aff, clear_new};
 	t_uint8			op;
 	t_int32			size;
 	t_inst			args[4];
@@ -35,7 +53,7 @@ void	exec_proc(t_proc **cycle, t_proc *tmp)
 		tmp->pc = (tmp->pc + -size + 1 + op_tab[op].octal) % MEM_SIZE;
 		return ;
 	}
-	f[op](tmp, args, cycle);
+	g_f[op](tmp, args, cycle);
 	tmp->pc = (tmp->pc + size + 1 + op_tab[op].octal) % MEM_SIZE;
 	if (g_step && op < 17)
 	{

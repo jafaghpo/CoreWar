@@ -1,0 +1,43 @@
+Norme: ./include/vm.h
+Error (line 92, col 13): global named op_tab is not well prefixed
+--
+Norme: ./src/display/square_texture.c
+Error (line 21): function init_square_texture has 28 lines
+--
+Norme: ./src/display/display.c
+Error (line 15): function display has 157 lines
+Error (line 15, col 0): display has 27 variables
+Error (line 33, col 6): put_fps is instanciated during declaration
+Error (line 35, col 6): right_mouse is instanciated during declaration
+Error (line 36, col 6): left_mouse is instanciated during declaration
+Error (line 127): line has 230 characters
+Error (line 129): line has 164 characters
+Error (line 147): line has 116 characters
+Error (line 152, col 2): no newline after block
+Error (line 155): line has 83 characters
+--
+Norme: ./src/exec_proc.c
+Error (line 37): function exec_proc has 26 lines
+--
+Norme: ./src/display/numbers.c
+Error: 7 functions in the file
+Error (line 75): function prog_numbers has 33 lines
+Error (line 127): function update_fps has 34 lines
+Error (line 165): function update_nb_cycle has 35 lines
+Error (line 204): function update_speed has 39 lines
+Error (line 204, col 0): update_speed has 6 variables
+--
+Norme: ./src/main.c
+Error (line 16): function main has 40 lines
+--
+Norme: ./src/op.c
+Error: 42 header not at top of the file
+Error (line 1): line has 83 characters
+Error (line 15, col 5): global named op_tab is not well prefixed
+Error (line 18, col 23): bad character after ,
+Error (line 24): bad indentation
+Error (line 26): bad indentation
+Error (line 28): bad indentation
+Error (line 31): bad indentation
+Error (line 33): bad indentation
+Error (line 37): bad indentation

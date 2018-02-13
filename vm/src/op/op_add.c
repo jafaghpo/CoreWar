@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_add.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 11:15:11 by root              #+#    #+#             */
-/*   Updated: 2018/02/12 14:01:52 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/13 16:59:18 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void		op_add(t_proc *p, t_inst *args)
 {
-	p->reg[args[2].value - 1] = p->reg[args[0].value - 1] + p->reg[args[1].value - 1];
+	p->reg[args[2].value - 1] = p->reg[args[0].value - 1]
+		+ p->reg[args[1].value - 1];
 	p->carry = !p->reg[args[2].value - 1];
 }

@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 18:31:33 by niragne           #+#    #+#             */
-/*   Updated: 2018/02/03 14:51:28 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/13 16:28:25 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@
 # define LIST_ARGS				"bdsnt"
 # define MAX_BREAKPOINTS		10
 
-# define READ_MAX				CHAMP_MAX_SIZE + PROG_NAME_LENGTH + COMMENT_LENGTH + 16
-# define HEADER_SIZE			PROG_NAME_LENGTH + COMMENT_LENGTH + 16
+# define READ_MAX		CHAMP_MAX_SIZE + PROG_NAME_LENGTH + COMMENT_LENGTH + 16
+# define HEADER_SIZE	PROG_NAME_LENGTH + COMMENT_LENGTH + 16
 
 typedef struct s_player		t_player;
 typedef struct s_args		t_args;
@@ -97,10 +97,9 @@ extern t_int32	g_cycle_to_die;
 extern t_uint32 g_nb_cycle;
 extern t_args	g_flags;
 
-
 t_uint16	get_uint16(t_uint32 pc);
 t_uint32	get_uint32(t_uint8 *data);
-t_uint32    get_uint32_mem(t_uint32 pc);
+t_uint32	get_uint32_mem(t_uint32 pc);
 t_player	*get_players(t_pfile *files, int nb_players);
 void		load_players(t_player *players, int nb_players);
 void		flags_v(t_args *flags);
@@ -109,41 +108,46 @@ void		init_proc(t_proc **cycle, int nb);
 t_pfile		*add_file(t_args *flags, t_pfile *files, char *name, int *pos);
 int			get_dumps(t_args *flags, char *str);
 int			get_nums(t_args *flags, char *str);
-int    		get_theme(t_args *flags, char *str);
-int	    	get_breakpoints(t_args *flags, char *str, char **av, int *i);
+int			get_theme(t_args *flags, char *str);
+int			get_breakpoints(t_args *flags, char *str, char **av, int *i);
 void		get_name(char *file);
-void    	fill_pos_players(t_pfile *files, int nb_players);
-void   		*vm(void *av);
-void 		insert_proc(t_proc **cycle, t_proc *proc, t_uint32 pos);
+void		fill_pos_players(t_pfile *files, int nb_players);
+void		*vm(void *av);
+void		insert_proc(t_proc **cycle, t_proc *proc, t_uint32 pos);
 void		remove_proc(t_proc *proc);
-t_int32     get_args(t_uint32 pc, t_inst *args, t_uint8 op);
+t_int32		get_args(t_uint32 pc, t_inst *args, t_uint8 op);
 int			check_type(int op, t_inst *type);
 t_int32		get_ind(t_uint32 pc, t_inst *args, t_int8 index, t_int8 octal);
 t_int32		get_reg(t_uint32 pc, t_inst *args, t_int8 index, t_int8 octal);
 t_int32		get_dir(t_uint32 pc, t_inst *args, t_int8 index, t_int8 octal);
 t_int32		get_void(t_uint32 pc, t_inst *args, t_int8 index, t_int8 octal);
-void   		live(t_uint32 value);
-void   		put_uint32(t_uint32 x, t_uint32 i);
-t_proc      *create_proc(t_proc *p, t_int32 pc, t_int32 g_nb_cycle);
-t_int32    	get_real_value(t_inst *args, t_proc *p, t_uint8 mod);
-t_int32 	ft_abs(t_int32 x);
-t_uint8  	check_reg(t_inst *args);
-void 		exec_procs_foreach(t_proc **cycle);
+void		live(t_uint32 value);
+void		put_uint32(t_uint32 x, t_uint32 i);
+t_proc		*create_proc(t_proc *p, t_int32 pc, t_int32 g_nb_cycle);
+t_int32		get_real_value(t_inst *args, t_proc *p, t_uint8 mod);
+t_int32		ft_abs(t_int32 x);
+t_uint8		check_reg(t_inst *args);
+void		exec_procs_foreach(t_proc **cycle);
 void		move_procs_foreach(t_proc **cycle);
-void    	exec_proc(t_proc **cycle, t_proc *tmp);
-void    	move_proc(t_proc **cycle, t_proc *tmp);
-t_int32    	get_player_id(t_uint32 octet);
-void 		purge(t_proc **cycle);
-int    		pick_winner(void);
-void 		*keyhook(void *av);
-void    	bubble_tab(t_uint32 *tab, t_uint32 size);
-int	    	get_sleep(t_args *flags, char *str);
-void    	end_game(void);
-void    	clear_new(t_proc *p);
-void        add_clear_new(t_proc **procs, t_int32 pc);
-void        init_gid(t_uint32 id);
-void    	free_files(t_pfile *files);
-void    	free_players(t_player *players);
+void		exec_proc(t_proc **cycle, t_proc *tmp);
+void		move_proc(t_proc **cycle, t_proc *tmp);
+t_int32		get_player_id(t_uint32 octet);
+void		purge(t_proc **cycle);
+int			pick_winner(void);
+void		*keyhook(void *av);
+void		bubble_tab(t_uint32 *tab, t_uint32 size);
+int			get_sleep(t_args *flags, char *str);
+void		end_game(void);
+void		clear_new(t_proc *p);
+void		add_clear_new(t_proc **procs, t_int32 pc);
+void		init_gid(t_uint32 id);
+void		free_files(t_pfile *files);
+void		free_players(t_player *players);
+float		one_color(char **line);
+int			get_color(char *line, t_case *color);
+void		check_line_theme(char *line, char *tmp, int i);
+void		del_blanks(char **str);
+int			get_filename(char *line, char **str);
 
 /*
 ** debug
@@ -159,26 +163,22 @@ void		debug_inst(t_inst *args, int pc, int op);
 /*
 ** op
 */
-void 		op_live(t_proc *p, t_inst *args);
-void 		op_ld(t_proc *p, t_inst *args);
-void 		op_st(t_proc *p, t_inst *args, t_proc **procs);
-void 		op_add(t_proc *p, t_inst *args);
-void 		op_sub(t_proc *p, t_inst *args);
-void 		op_and(t_proc *p, t_inst *args);
-void 		op_or(t_proc *p, t_inst *args);
-void 		op_xor(t_proc *p, t_inst *args);
-void 		op_zjmp(t_proc *p, t_inst *args);
-void 		op_ldi(t_proc *p, t_inst *args);
-void 		op_sti(t_proc *p, t_inst *args, t_proc **procs);
-void 		op_fork(t_proc *p, t_inst *args, t_proc **procs);
-void 		op_lld(t_proc *p, t_inst *args);
-void 		op_lldi(t_proc *p, t_inst *args);
-void 		op_lfork(t_proc *p, t_inst *args, t_proc **procs);
-void 		op_aff(t_proc *p, t_inst *args);
-void 		op_win(t_proc *p, t_inst *args);
-
-/*
-** vm
-*/
+void		op_live(t_proc *p, t_inst *args);
+void		op_ld(t_proc *p, t_inst *args);
+void		op_st(t_proc *p, t_inst *args, t_proc **procs);
+void		op_add(t_proc *p, t_inst *args);
+void		op_sub(t_proc *p, t_inst *args);
+void		op_and(t_proc *p, t_inst *args);
+void		op_or(t_proc *p, t_inst *args);
+void		op_xor(t_proc *p, t_inst *args);
+void		op_zjmp(t_proc *p, t_inst *args);
+void		op_ldi(t_proc *p, t_inst *args);
+void		op_sti(t_proc *p, t_inst *args, t_proc **procs);
+void		op_fork(t_proc *p, t_inst *args, t_proc **procs);
+void		op_lld(t_proc *p, t_inst *args);
+void		op_lldi(t_proc *p, t_inst *args);
+void		op_lfork(t_proc *p, t_inst *args, t_proc **procs);
+void		op_aff(t_proc *p, t_inst *args);
+void		op_win(t_proc *p, t_inst *args);
 
 #endif

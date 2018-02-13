@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_sdl.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 18:15:15 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/12 14:42:28 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/13 15:42:27 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int		init_sdl(t_sdl *sdl)
 	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
 	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 8);
 	if (!(sdl->win = SDL_CreateWindow("corewar", SDL_WINDOWPOS_CENTERED,
-		SDL_WINDOWPOS_CENTERED, WIN_X, WIN_Y, SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN_DESKTOP)))
+		SDL_WINDOWPOS_CENTERED, WIN_X, WIN_Y, SDL_WINDOW_OPENGL
+		| SDL_WINDOW_FULLSCREEN_DESKTOP)))
 	{
 		ft_printf(ERROR_CREAT_WIN"\n");
 		return (0);
@@ -37,7 +38,5 @@ int		init_sdl(t_sdl *sdl)
 		ft_printf(ERROR_CREAT_CONTEXT_GL"\n");
 		return (0);
 	}
-	//    SDL_GL_SetSwapInterval(0);
-	SDL_GL_SwapWindow(sdl->win);
 	return (1);
 }

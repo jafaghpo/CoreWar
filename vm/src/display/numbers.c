@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   numbers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 21:49:59 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/12 14:57:12 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/13 17:15:46 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,21 +84,25 @@ int			prog_numbers(void)
 	if (!(g_prog = create_prog(VERTEX_NUMBERS, FRAGMENT_NUMBERS)))
 		return (0);
 	glUseProgram(g_prog);
-	glUniform3f(glGetUniformLocation(g_prog, "color_font"), g_theme.color_fps.r, g_theme.color_fps.g, g_theme.color_fps.b);
+	glUniform3f(glGetUniformLocation(g_prog, "color_font"),
+		g_theme.color_fps.r, g_theme.color_fps.g, g_theme.color_fps.b);
 	glUniform1i(glGetUniformLocation(g_prog, "text"), 0);
 	glUseProgram(0);
 	glGenBuffers(1, &vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices) + sizeof(coord_text), 0, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices) + sizeof(coord_text),
+		0, GL_STATIC_DRAW);
 	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
-	glBufferSubData(GL_ARRAY_BUFFER, sizeof(vertices), sizeof(coord_text), coord_text);
+	glBufferSubData(GL_ARRAY_BUFFER, sizeof(vertices),
+		sizeof(coord_text), coord_text);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glGenVertexArrays(1, &g_vao);
 	glBindVertexArray(g_vao);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0);
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, (GLvoid *)(sizeof(vertices)));
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0,
+		(GLvoid *)(sizeof(vertices)));
 	glEnableVertexAttribArray(1);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
@@ -150,7 +154,8 @@ void		update_fps(int fps)
 		i++;
 	}
 	glBindTexture(GL_TEXTURE_2D, g_text[0]);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, 16 * 3, 17, 0, GL_RED, GL_UNSIGNED_BYTE, buf);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, 16 * 3, 17, 0,
+		GL_RED, GL_UNSIGNED_BYTE, buf);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glBindTexture(GL_TEXTURE_2D, 0);
@@ -179,7 +184,8 @@ void		update_nb_cycle(int nb_cycle)
 		y = 0;
 		while (y < 17)
 		{
-			ft_memcpy(buf[y] + i * 16, g_font[nb_cycle / div + '0'][y + 4], 16);
+			ft_memcpy(buf[y] + i * 16,
+				g_font[nb_cycle / div + '0'][y + 4], 16);
 			y++;
 		}
 		nb_cycle %= div;
@@ -187,7 +193,8 @@ void		update_nb_cycle(int nb_cycle)
 		i++;
 	}
 	glBindTexture(GL_TEXTURE_2D, g_text[1]);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, 16 * 7, 17, 0, GL_RED, GL_UNSIGNED_BYTE, buf);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, 16 * 7, 17, 0,
+		GL_RED, GL_UNSIGNED_BYTE, buf);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glBindTexture(GL_TEXTURE_2D, 0);
@@ -229,7 +236,8 @@ void		update_speed(int number)
 		i++;
 	}
 	glBindTexture(GL_TEXTURE_2D, g_text[2]);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, 16 * 5, 17, 0, GL_RED, GL_UNSIGNED_BYTE, buf);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, 16 * 5, 17, 0,
+		GL_RED, GL_UNSIGNED_BYTE, buf);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glBindTexture(GL_TEXTURE_2D, 0);

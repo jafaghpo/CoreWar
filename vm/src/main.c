@@ -3,20 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/09 20:49:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/05 14:52:27 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/13 17:00:47 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 #include <pthread.h>
-
-void	attend(void)
-{
-	while (1);
-}
 
 int		main(int ac, char **av)
 {
@@ -49,7 +44,7 @@ int		main(int ac, char **av)
 	free_files(files);
 	if (g_flags.visu)
 	{
-		pthread_create(&tid, NULL, keyhook, NULL);		
+		pthread_create(&tid, NULL, keyhook, NULL);
 		pthread_create(&tid, NULL, vm, &g_flags);
 		display();
 		system("killall afplay 2&>/dev/null >/dev/null");

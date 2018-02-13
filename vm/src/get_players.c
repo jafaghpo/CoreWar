@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_players.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 11:29:50 by root              #+#    #+#             */
-/*   Updated: 2018/02/05 15:44:08 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/13 16:41:15 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,9 @@ static void		fill_player(t_player *players, t_uint8 *binary)
 t_player		*get_players(t_pfile *files, int nb_players)
 {
 	t_player		*players;
-	int				i = 0;
+	int				i;
 
+	i = 0;
 	if (!(players = malloc(sizeof(*players) * nb_players)))
 		ft_afferror("error malloc");
 	while (files)

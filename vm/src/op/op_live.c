@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   op_live.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 11:12:19 by root              #+#    #+#             */
-/*   Updated: 2018/02/12 14:22:08 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/13 16:57:15 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void 		op_live(t_proc *p, t_inst *args)
+void	op_live(t_proc *p, t_inst *args)
 {
 	static char	err[] = "UNDEFINED";
 	char		str[CHAT_LINE_SIZE];

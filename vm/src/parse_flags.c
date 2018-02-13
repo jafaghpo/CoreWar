@@ -6,16 +6,25 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/11 14:20:31 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/01 15:30:34 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/13 14:28:55 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
+static int	(*g_f[256])() =
+{
+	['d'] = get_dumps,
+	['n'] = get_nums,
+	['b'] = get_breakpoints,
+	['s'] = get_sleep,
+	['t'] = get_theme
+};
+
 static void	parse_noargs(t_args *flags, char *str)
 {
 	static void	(*f[256])(t_args *) = {['v'] = flags_v};
-	int i;
+	int			i;
 
 	i = 1;
 	while (str[i])
@@ -29,12 +38,11 @@ static void	parse_noargs(t_args *flags, char *str)
 
 static int	parse_args(t_args *flags, char **av, int *i)
 {
-	static int	(*f[256])() = {['d'] = get_dumps, ['n'] = get_nums, ['b'] = get_breakpoints, ['s'] = get_sleep, ['t'] = get_theme};
 	int			tmp;
 
-	if (!f[(int)av[0][1]] || av[0][2])
+	if (!g_f[(int)av[0][1]] || av[0][2])
 		ft_afferror("invalid argument");
-	tmp = f[(int)av[0][1]](flags, av[1], av, i);
+	tmp = g_f[(int)av[0][1]](flags, av[1], av, i);
 	return (tmp);
 }
 
@@ -46,8 +54,8 @@ t_pfile		*parse_flags(t_args *flags, char **av, int ac)
 
 	tmp = -1;
 	files = NULL;
-	i = 1;
-	while (i < ac)
+	i = 0;
+	while (++i < ac)
 	{
 		if (av[i][0] == '-')
 		{
@@ -63,7 +71,6 @@ t_pfile		*parse_flags(t_args *flags, char **av, int ac)
 		}
 		else
 			files = add_file(flags, files, av[i], &tmp);
-		i++;
 	}
 	return (files);
 }

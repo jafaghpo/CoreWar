@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_alpha.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 17:11:38 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/12 14:37:15 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/13 15:38:36 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,13 @@ SDL_Surface		*get_alpha(SDL_Surface *image, Uint32 rgb)
 	tmp1 = image->pixels;
 	tmp2 = alpha->pixels;
 	size = image->w * image->h;
-	i = 0;
-	while (i < size)
+	i = -1;
+	while (++i < size)
 	{
-
 		if ((tmp1[i] & 0xffffff) == rgb)
 			tmp2[i] = 0;
 		else
 			tmp2[i] = tmp1[i];
-		i++;
 	}
 	return (alpha);
 }

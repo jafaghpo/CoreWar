@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_breakpoints.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 15:02:19 by niragne           #+#    #+#             */
-/*   Updated: 2018/02/05 15:15:40 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/13 16:37:35 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ int			get_breakpoints(t_args *flags, char *str, char **av, int *i)
 	}
 	(*i) += n - 2;
 	if (n == 1)
-		ft_afferror(ERROR_BREAKPOINT);        
+		ft_afferror(ERROR_BREAKPOINT);
 	return (-1);
 }

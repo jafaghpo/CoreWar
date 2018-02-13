@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pick_winner.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/27 15:42:15 by niragne           #+#    #+#             */
-/*   Updated: 2018/02/05 16:51:32 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/13 14:38:29 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int		pick_winner(void)
 {
-	int max;
-	t_uint32 i;
-	t_uint32 j;
+	int			max;
+	t_uint32	i;
+	t_uint32	j;
 
 	max = -1;
 	i = 1;

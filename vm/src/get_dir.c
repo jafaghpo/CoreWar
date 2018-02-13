@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_dir.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 14:17:06 by niragne           #+#    #+#             */
-/*   Updated: 2018/02/05 15:33:42 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/13 16:38:01 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-t_int32 get_dir(t_uint32 pc, t_inst *args, t_int8 index, t_int8 octal)
+t_int32	get_dir(t_uint32 pc, t_inst *args, t_int8 index, t_int8 octal)
 {
 	t_uint8		i;
 	t_int32		ret;

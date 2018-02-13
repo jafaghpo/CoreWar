@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:51:33 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/12 14:35:49 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/13 17:18:08 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,33 @@
 
 void	*display(void)
 {
-	t_sdl		sdl;
-	t_gl		gl;
-	t_mat4		projection;
-	t_mat4		modelview;
-	t_mat4		all_trans;
-	int			done;
-	GLuint		hud;
-	GLuint		hud_background;
-	GLuint		police_text[16];
-	GLuint		fond;
-	GLuint		case_texture;
-	GLint		model_location;
-	GLint		proj_location;
-	Uint32		i;
-	Uint32		nb_frames;
-	Uint32		fps;
-	int			put_fps = 60;
-	Uint32		tmp;
-	int			right_mouse = 0;
-	int			left_mouse = 0;
-	t_case		*color;
-	float		cursor;
-	float		new;
-	//	GLuint		image_load;
+	t_sdl	sdl;
+	t_gl	gl;
+	t_mat4	projection;
+	t_mat4	modelview;
+	t_mat4	all_trans;
+	int		done;
+	GLuint	hud;
+	GLuint	hud_background;
+	GLuint	police_text[16];
+	GLuint	fond;
+	GLuint	case_texture;
+	GLint	model_location;
+	GLint	proj_location;
+	Uint32	i;
+	Uint32	nb_frames;
+	Uint32	fps;
+	int		put_fps = 60;
+	Uint32	tmp;
+	int		right_mouse = 0;
+	int		left_mouse = 0;
+	t_case	*color;
+	float	cursor;
+	float	new;
+	GLint	back_ground_location;
+	GLint	first_number_location;
+	GLint	second_number_location;
+	GLint	color_location;
 
 	start_music();
 	if (!init_sdl(&sdl))
@@ -51,18 +54,6 @@ void	*display(void)
 	if (!(init_freetype()))
 		return (NULL);
 	load_numbers(police_text);
-	/*	if ((image_load = load_image("texture/load.jpg")) == UINT_MAX)
-		return (NULL);
-		display_square((t_vec2){-1.f, -1.f}, (t_vec2){2.f, 2.f}, image_load);
-		SDL_GL_SwapWindow(sdl.win);
-		sleep(1);
-		i = 0;
-		while (i < 100)
-		{
-		usleep(10000);
-		display_load(sdl.win, 0.01f);
-		i++;
-		}*/
 	if ((fond = load_image(g_theme.background_file)) == UINT_MAX)
 		return (NULL);
 	if ((hud_background = load_image(g_theme.hud_background_file)) == UINT_MAX)
@@ -80,13 +71,13 @@ void	*display(void)
 	rotate(&modelview, norme(1.f, 0.f, 0.f), M_PI);
 	model_location = glGetUniformLocation(gl.prog, "modelview");
 	proj_location = glGetUniformLocation(gl.prog, "projection");
+	back_ground_location = glGetUniformLocation(gl.prog, "back_ground");
+	first_number_location = glGetUniformLocation(gl.prog, "first_number");
+	second_number_location = glGetUniformLocation(gl.prog, "second_number");
+	color_location = glGetUniformLocation(gl.prog, "color");
 	done = 0;
 	fps = 0;
 	nb_frames = 0;
-	GLint back_ground_location = glGetUniformLocation(gl.prog, "back_ground");
-	GLint first_number_location = glGetUniformLocation(gl.prog, "first_number");
-	GLint second_number_location = glGetUniformLocation(gl.prog, "second_number");
-	GLint color_location = glGetUniformLocation(gl.prog, "color");
 	i = 0;
 	while (i < 16)
 	{
@@ -139,7 +130,6 @@ void	*display(void)
 			}
 		}
 		event(&projection, &modelview);
-
 		display_square((t_vec2){-1.f, -1.f}, (t_vec2){2.f, 2.f}, fond);
 		glUseProgram(gl.prog);
 		glBindVertexArray(gl.vao);

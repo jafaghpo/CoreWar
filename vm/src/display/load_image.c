@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_image.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 21:00:37 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/12 14:52:08 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/13 16:25:30 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	check_format(SDL_Surface *image, GLenum *form, GLenum *form_int)
 			*form = GL_RGB;
 		else
 			*form = GL_BGR;
-	} 
+	}
 	else if (image->format->BytesPerPixel == 4)
 	{
 		*form_int = GL_RGBA;
@@ -54,7 +54,8 @@ GLuint		load_image(char *file)
 		return (UINT_MAX);
 	glGenTextures(1, &id);
 	glBindTexture(GL_TEXTURE_2D, id);
-	glTexImage2D(GL_TEXTURE_2D, 0, form_int, image->w, image->h, 0, form, GL_UNSIGNED_BYTE, image->pixels);
+	glTexImage2D(GL_TEXTURE_2D, 0, form_int, image->w, image->h,
+		0, form, GL_UNSIGNED_BYTE, image->pixels);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glBindTexture(GL_TEXTURE_2D, 0);
