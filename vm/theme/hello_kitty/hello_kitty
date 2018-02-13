@@ -1,7 +1,8 @@
 #toutes les variables disponibles sont présente
 #les tabs et les espaces sont géré on peut en mettre n'importe où
 background            = theme/hello_kitty/hkbg.jpg    #ouais c'est le fond
-hud                   = theme/hello_kitty/hkc.jpg     #ouais c'est le fond de l'hud
+hud background                  = theme/hello_kitty/hkc.jpg     #ouais c'est le fond de l'hud
+hud  	= theme/hello_kitty/framewhite.png     #ouais c'est le fond de l'hud
 #square texture		  =	texture/hkbg.jpg
 #music                = unemusic.mp3        #c'est la musique mais c'est pas géré encore
 color empty           = 255, 204, 204
