@@ -6,7 +6,7 @@
 #    By: iburel <iburel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/02/14 22:32:07 by iburel           ###   ########.fr        #
+#    Updated: 2018/02/14 22:34:11 by iburel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,7 +100,7 @@ $(OBJ_PATH)/%.o: $(SRC_OP_PATH)/%.c $(INCL_OP) $(INCL_VM)
 $(OBJ_PATH)/%.o: $(SRC_DISPLAY_PATH)/%.c $(INCL_OP) $(INCL_VM) $(INCL_DISPLAY)
 	gcc -o $@ -c $< $(CFLAGS) -I $(INCL_PATH) -I $(OP_INC_PATH) -I $(LIBFT_INCL) -I $(LIBMAT_INCL) -I $(LIBFREETYPE_INCL) -I $(LIBSDL2_INCL)
 
-libs: $(LIB_PATH) ft mat sdl2 sdl2_image sdl2_mixer freetype
+libs: $(LIB_PATH) ft mat sdl2 sdl2_image freetype
 
 $(LIB_PATH):
 	mkdir $(LIB_PATH)
