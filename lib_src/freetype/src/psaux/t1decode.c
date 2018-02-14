@@ -150,7 +150,7 @@
 
       if ( name                               &&
            name[0] == glyph_name[0]           &&
-           strcmp( name, glyph_name ) == 0 )
+           ft_strcmp( name, glyph_name ) == 0 )
         return (FT_Int)n;
     }
 
@@ -893,7 +893,7 @@
                  (FT_UInt)idx + blend->num_designs > decoder->len_buildchar )
               goto Unexpected_OtherSubr;
 
-            memcpy( &decoder->buildchar[idx],
+            ft_memcpy( &decoder->buildchar[idx],
                        blend->weight_vector,
                        blend->num_designs *
                          sizeof ( blend->weight_vector[0] ) );

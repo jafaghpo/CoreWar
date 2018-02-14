@@ -6,11 +6,13 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 16:05:11 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/29 15:50:33 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/08 14:59:54 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+static int		g_state = 0;
 
 static void		write_magic_number(void)
 {
@@ -49,29 +51,47 @@ static int		check_syntax(t_uint8 *dest, char *line, int len)
 	return ((!*line || *line == COMMENT_CHAR) ? i + 1 : 0);
 }
 
-static int		analize_header(char *line, t_tab *current, int *state)
+static int		analize_header(char *line, t_tab *current)
 {
 	int		len;
 
 	if ((len = word_equal(line, NAME_CMD_STRING)))
 	{
-		if (*state != 0)
+		if (g_state != 0)
 			return (print_error(NO_NAME));
 		if (!(len = check_syntax(g_bin.data + g_bin.i, line + len, NAME_LEN)))
 			return (print_error(SYNTAX, line + len));
-		current->size = len - 1;
+		current->size = NAME_LEN;
 		g_bin.i = NAME_LEN + 12;
-		(*state)++;
+		g_state++;
 	}
 	else if ((len = word_equal(line, COMMENT_CMD_STRING)))
 	{
-		if (*state != 1)
+		if (g_state != 1)
 			return (print_error(NO_COMMENT));
 		if (!(len = check_syntax(g_bin.data + g_bin.i, line + len, COM_LEN)))
 			return (print_error(SYNTAX, line + len));
-		current->size = len - 1;
+		current->size = COM_LEN;
 		g_bin.i = HEADER_LEN;
-		(*state)++;
+		g_state++;
+	}
+	return (1);
+}
+
+static int		parse_header(char *line, t_tab *cur, t_tab *tab, t_visual *win)
+{
+	if (!*line || *line == COMMENT_CHAR)
+		free(cur->line);
+	else if (*line == '.' && g_state < 2)
+	{
+		if (!analize_header(line, cur))
+			return (free_error((void*)cur->line));
+		store_line(tab, cur, win);
+	}
+	else
+	{
+		free_error((void*)cur->line);
+		return (print_error(HEADER_LINE, line));
 	}
 	return (1);
 }
@@ -80,26 +100,18 @@ int				get_header(t_tab *tab, int fd, t_visual *win)
 {
 	t_tab	current;
 	char	*line;
-	int		state;
 
-	state = 0;
+	g_state = 0;
 	write_magic_number();
 	while (get_next_line(fd, &line) > 0)
 	{
-		current = (t_tab){line, g_bin.data + g_bin.i, 0, 0};
+		current = (t_tab){line, g_bin.data + g_bin.i, 0};
 		ft_delspace(&line);
-		if (!*line || *line == COMMENT_CHAR)
-			;
-		else if (*line == '.' && state < 2)
-		{
-			if (!analize_header(line, &current, &state))
-				return (0);
-			store_line(tab, &current, win);
-			if (state == 2)
-				return (1);
-		}
-		else
-			return (print_error(HEADER_LINE, line));
+		if (!parse_header(line, &current, tab, win))
+			return (0);
+		if (g_state == 2)
+			return (1);
 	}
-	return (print_error(!state ? NO_NAME : NO_COMMENT));
+	free(current.line);
+	return (print_error(!g_state ? NO_NAME : NO_COMMENT));
 }

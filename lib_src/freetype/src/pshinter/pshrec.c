@@ -475,7 +475,7 @@
         PS_MaskRec  dummy = *mask2;
 
 
-        memmove( mask2,
+        ft_memmove( mask2,
                     mask2 + 1,
                     (FT_UInt)delta * sizeof ( PS_MaskRec ) );
 

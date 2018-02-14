@@ -463,7 +463,7 @@
 
         if ( ps_name_len != 0 )
         {
-          memcpy(ps_name, names[0] + 1, ps_name_len);
+          ft_memcpy(ps_name, names[0] + 1, ps_name_len);
           ps_name[ps_name_len] = 0;
         }
         if ( style->indexes[face_index] > 1 &&
@@ -485,7 +485,7 @@
 
               if ( s_len != 0 && ps_name_len + s_len < sizeof ( ps_name ) )
               {
-                memcpy( ps_name + ps_name_len, s + 1, s_len );
+                ft_memcpy( ps_name + ps_name_len, s + 1, s_len );
                 ps_name_len += s_len;
                 ps_name[ps_name_len] = 0;
               }
@@ -522,13 +522,13 @@
     if ( noErr != FSRefMakePath( &par_ref, path_lwfn, path_size ) )
       return FT_THROW( Invalid_Argument );
 
-    if ( strlen( (char *)path_lwfn ) + 1 + base_lwfn[0] > path_size )
+    if ( ft_strlen( (char *)path_lwfn ) + 1 + base_lwfn[0] > path_size )
       return FT_THROW( Invalid_Argument );
 
     /* now we have absolute dirname in path_lwfn */
-    strcat( (char *)path_lwfn, "/" );
-    dirname_len = strlen( (char *)path_lwfn );
-    strcat( (char *)path_lwfn, (char *)base_lwfn + 1 );
+    ft_strcat( (char *)path_lwfn, "/" );
+    dirname_len = ft_strlen( (char *)path_lwfn );
+    ft_strcat( (char *)path_lwfn, (char *)base_lwfn + 1 );
     path_lwfn[dirname_len + base_lwfn[0]] = '\0';
 
     if ( noErr != FSPathMakeRef( path_lwfn, &ref, FALSE ) )
@@ -681,7 +681,7 @@
         }
       }
 
-      memcpy( p, *post_data + 2, post_size );
+      ft_memcpy( p, *post_data + 2, post_size );
       pfb_chunk_size += post_size;
       p += post_size;
       last_code = code;
@@ -759,11 +759,11 @@
       return error;
     }
 
-    memcpy( sfnt_data, *sfnt, sfnt_size );
+    ft_memcpy( sfnt_data, *sfnt, sfnt_size );
     ReleaseResource( sfnt );
 
-    is_cff     = sfnt_size > 4 && !memcmp( sfnt_data, "OTTO", 4 );
-    is_sfnt_ps = sfnt_size > 4 && !memcmp( sfnt_data, "typ1", 4 );
+    is_cff     = sfnt_size > 4 && !ft_memcmp( sfnt_data, "OTTO", 4 );
+    is_sfnt_ps = sfnt_size > 4 && !ft_memcmp( sfnt_data, "typ1", 4 );
 
     if ( is_sfnt_ps )
     {

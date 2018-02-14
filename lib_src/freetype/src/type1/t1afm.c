@@ -70,8 +70,8 @@
 
 
       if ( gname && gname[0] == name[0]        &&
-           strlen( gname ) == len           &&
-           strncmp( gname, name, len ) == 0 )
+           ft_strlen( gname ) == len           &&
+           ft_strncmp( gname, name, len ) == 0 )
         return n;
     }
 

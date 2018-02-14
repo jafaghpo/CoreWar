@@ -84,7 +84,7 @@
                     FT_Hashkey*  b )
   {
     if ( a->str[0] == b->str[0]           &&
-         strcmp( a->str, b->str ) == 0 )
+         ft_strcmp( a->str, b->str ) == 0 )
       return 1;
 
     return 0;

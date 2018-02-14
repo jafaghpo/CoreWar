@@ -145,7 +145,7 @@
        * A per-font filter is set.  It always uses the default 5-tap
        * in-place FIR filter.
        */
-      memcpy( lcd_weights,
+      ft_memcpy( lcd_weights,
                  slot->face->internal->lcd_weights,
                  FT_LCD_FILTER_FIVE_TAPS );
       lcd_filter_func = ft_lcd_filter_fir;
@@ -158,7 +158,7 @@
        * (lcd_filter_func == NULL), `lcd_filter_func' here is also set to
        * NULL and the tests further below pass over the filtering process.
        */
-      memcpy( lcd_weights,
+      ft_memcpy( lcd_weights,
                  slot->library->lcd_weights,
                  FT_LCD_FILTER_FIVE_TAPS );
       lcd_filter_func = slot->library->lcd_filter_func;

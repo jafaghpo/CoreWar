@@ -209,7 +209,7 @@
 #define Raster_Err_Invalid      -4
 #define Raster_Err_Unsupported  -5
 
-#define memset  memset
+#define ft_memset  memset
 
 #define FT_DEFINE_RASTER_FUNCS( class_, glyph_format_, raster_new_, \
                                 raster_reset_, raster_set_mode_,    \
@@ -244,7 +244,7 @@
 
 
 #ifndef FT_MEM_SET
-#define FT_MEM_SET( d, s, c )  memset( d, s, c )
+#define FT_MEM_SET( d, s, c )  ft_memset( d, s, c )
 #endif
 
 #ifndef FT_MEM_ZERO

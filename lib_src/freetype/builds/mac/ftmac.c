@@ -244,14 +244,14 @@ typedef short ResourceIndex;
 
 
             /* build up a complete face name */
-            strcpy( fullName, famName );
+            ft_strcpy( fullName, famName );
             if ( style & bold )
-              strcat( fullName, " Bold" );
+              ft_strcat( fullName, " Bold" );
             if ( style & italic )
-              strcat( fullName, " Italic" );
+              ft_strcat( fullName, " Italic" );
 
             /* compare with the name we are looking for */
-            if ( strcmp( fullName, fontName ) == 0 )
+            if ( ft_strcmp( fullName, fontName ) == 0 )
             {
               /* found it! */
               the_font = font;
@@ -493,7 +493,7 @@ typedef short ResourceIndex;
 
     while ( 1 )
     {
-      int  len = strlen( p );
+      int  len = ft_strlen( p );
 
 
       if ( len > 255 )
@@ -504,7 +504,7 @@ typedef short ResourceIndex;
       if ( q == p )
         return 0;
 
-      if ( 255 < strlen( (char *)pathname ) )
+      if ( 255 < ft_strlen( (char *)pathname ) )
       {
         while ( p < q && *q != ':' )
           q--;
@@ -512,12 +512,12 @@ typedef short ResourceIndex;
 
       if ( p < q )
         *(char *)nodeName = q - p;
-      else if ( strlen( p ) < 256 )
-        *(char *)nodeName = strlen( p );
+      else if ( ft_strlen( p ) < 256 )
+        *(char *)nodeName = ft_strlen( p );
       else
         return errFSNameTooLong;
 
-      strncpy( (char *)nodeName + 1, (char *)p, *(char *)nodeName );
+      ft_strncpy( (char *)nodeName + 1, (char *)p, *(char *)nodeName );
       err = FSMakeFSSpec( vRefNum, dirID, nodeName, spec_p );
       if ( err || '\0' == *q )
         return err;
@@ -545,7 +545,7 @@ typedef short ResourceIndex;
     FT_MEM_SET( path, 0, maxPathSize );
     while ( 1 )
     {
-      int             child_namelen = strlen( (char *)path );
+      int             child_namelen = ft_strlen( (char *)path );
       unsigned char   node_namelen  = spec.name[0];
       unsigned char*  node_name     = spec.name + 1;
 
@@ -795,7 +795,7 @@ typedef short ResourceIndex;
 
         if ( ps_name_len != 0 )
         {
-          memcpy(ps_name, names[0] + 1, ps_name_len);
+          ft_memcpy(ps_name, names[0] + 1, ps_name_len);
           ps_name[ps_name_len] = 0;
         }
         if ( style->indexes[face_index] > 1 &&
@@ -817,7 +817,7 @@ typedef short ResourceIndex;
 
               if ( s_len != 0 && ps_name_len + s_len < sizeof ( ps_name ) )
               {
-                memcpy( ps_name + ps_name_len, s + 1, s_len );
+                ft_memcpy( ps_name + ps_name_len, s + 1, s_len );
                 ps_name_len += s_len;
                 ps_name[ps_name_len] = 0;
               }
@@ -857,17 +857,17 @@ typedef short ResourceIndex;
     if ( noErr != FSRefMakePath( &par_ref, path_lwfn, path_size ) )
       return FT_THROW( Invalid_Argument );
 
-    if ( strlen( (char *)path_lwfn ) + 1 + base_lwfn[0] > path_size )
+    if ( ft_strlen( (char *)path_lwfn ) + 1 + base_lwfn[0] > path_size )
       return FT_THROW( Invalid_Argument );
 
     /* now we have absolute dirname in path_lwfn */
     if ( path_lwfn[0] == '/' )
-      strcat( (char *)path_lwfn, "/" );
+      ft_strcat( (char *)path_lwfn, "/" );
     else
-      strcat( (char *)path_lwfn, ":" );
+      ft_strcat( (char *)path_lwfn, ":" );
 
-    dirname_len = strlen( (char *)path_lwfn );
-    strcat( (char *)path_lwfn, (char *)base_lwfn + 1 );
+    dirname_len = ft_strlen( (char *)path_lwfn );
+    ft_strcat( (char *)path_lwfn, (char *)base_lwfn + 1 );
     path_lwfn[dirname_len + base_lwfn[0]] = '\0';
 
     if ( noErr != FSPathMakeRef( path_lwfn, &ref, FALSE ) )
@@ -886,12 +886,12 @@ typedef short ResourceIndex;
 
 
     /* pathname for FSSpec is always HFS format */
-    if ( strlen( (char *)path_fond ) > path_size )
+    if ( ft_strlen( (char *)path_fond ) > path_size )
       return FT_THROW( Invalid_Argument );
 
-    strcpy( (char *)path_lwfn, (char *)path_fond );
+    ft_strcpy( (char *)path_lwfn, (char *)path_fond );
 
-    i = strlen( (char *)path_lwfn ) - 1;
+    i = ft_strlen( (char *)path_lwfn ) - 1;
     while ( i > 0 && ':' != path_lwfn[i] )
       i--;
 
@@ -900,12 +900,12 @@ typedef short ResourceIndex;
 
     if ( ':' == path_lwfn[i] )
     {
-      strcpy( (char *)path_lwfn + i + 1, (char *)base_lwfn + 1 );
+      ft_strcpy( (char *)path_lwfn + i + 1, (char *)base_lwfn + 1 );
       path_lwfn[i + 1 + base_lwfn[0]] = '\0';
     }
     else
     {
-      strcpy( (char *)path_lwfn, (char *)base_lwfn + 1 );
+      ft_strcpy( (char *)path_lwfn, (char *)base_lwfn + 1 );
       path_lwfn[base_lwfn[0]] = '\0';
     }
 
@@ -1060,7 +1060,7 @@ typedef short ResourceIndex;
         }
       }
 
-      memcpy( p, *post_data + 2, post_size );
+      ft_memcpy( p, *post_data + 2, post_size );
       pfb_chunk_size += post_size;
       p += post_size;
       last_code = code;
@@ -1134,12 +1134,12 @@ typedef short ResourceIndex;
     }
 
     HLock( sfnt );
-    memcpy( sfnt_data, *sfnt, sfnt_size );
+    ft_memcpy( sfnt_data, *sfnt, sfnt_size );
     HUnlock( sfnt );
     ReleaseResource( sfnt );
 
-    is_cff     = sfnt_size > 4 && !memcmp( sfnt_data, "OTTO", 4 );
-    is_sfnt_ps = sfnt_size > 4 && !memcmp( sfnt_data, "typ1", 4 );
+    is_cff     = sfnt_size > 4 && !ft_memcmp( sfnt_data, "OTTO", 4 );
+    is_sfnt_ps = sfnt_size > 4 && !ft_memcmp( sfnt_data, "typ1", 4 );
 
     if ( is_sfnt_ps )
     {

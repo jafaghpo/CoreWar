@@ -6,11 +6,12 @@
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/03 22:48:22 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/01/30 12:00:38 by jafaghpo         ###   ########.fr        #
+#    Updated: 2018/02/08 14:55:22 by jafaghpo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS_VISUAL			=	setup_visual.c run_visual.c delete_visual.c visual_error.c
+SRCS_VISUAL			=	setup_visual.c run_visual.c delete_visual.c visual_error.c \
+						clear_tab.c
 
 SRC_VISUAL			=	$(addprefix $(SRC_VISUAL_PATH)/, $(SRCS_VISUAL))
 

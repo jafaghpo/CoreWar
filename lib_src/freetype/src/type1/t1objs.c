@@ -447,8 +447,8 @@
         root->style_flags |= FT_STYLE_FLAG_ITALIC;
       if ( info->weight )
       {
-        if ( !strcmp( info->weight, "Bold"  ) ||
-             !strcmp( info->weight, "Black" ) )
+        if ( !ft_strcmp( info->weight, "Bold"  ) ||
+             !ft_strcmp( info->weight, "Black" ) )
           root->style_flags |= FT_STYLE_FLAG_BOLD;
       }
 

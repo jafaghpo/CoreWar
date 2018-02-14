@@ -408,7 +408,7 @@
 
           if ( !FT_QALLOC( val->u.s, len + 1 ) )
           {
-            memcpy( val->u.s, str, len );
+            ft_memcpy( val->u.s, str, len );
             val->u.s[len] = '\0';
           }
         }
@@ -426,7 +426,7 @@
 
       case AFM_VALUE_TYPE_BOOL:
         val->u.b = FT_BOOL( len == 4                      &&
-                            !strncmp( str, "true", 4 ) );
+                            !ft_strncmp( str, "true", 4 ) );
         break;
 
       case AFM_VALUE_TYPE_INDEX:
@@ -516,7 +516,7 @@
           if ( *( afm_key_table[n] ) != *key )
             return AFM_TOKEN_UNKNOWN;
 
-          if ( strncmp( afm_key_table[n], key, len ) == 0 )
+          if ( ft_strncmp( afm_key_table[n], key, len ) == 0 )
             return (AFM_Token) n;
         }
       }
@@ -874,7 +874,7 @@
 
     key = afm_parser_next_key( parser, 1, &len );
     if ( !key || len != 16                              ||
-         strncmp( key, "StartFontMetrics", 16 ) != 0 )
+         ft_strncmp( key, "StartFontMetrics", 16 ) != 0 )
       return FT_THROW( Unknown_File_Format );
 
     while ( ( key = afm_parser_next_key( parser, 1, &len ) ) != 0 )

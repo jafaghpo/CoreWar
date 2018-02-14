@@ -223,13 +223,13 @@ extern "C++"
 
 
 #define FT_MEM_SET( dest, byte, count )               \
-          memset( dest, byte, (FT_Offset)(count) )
+          ft_memset( dest, byte, (FT_Offset)(count) )
 
 #define FT_MEM_COPY( dest, source, count )              \
-          memcpy( dest, source, (FT_Offset)(count) )
+          ft_memcpy( dest, source, (FT_Offset)(count) )
 
 #define FT_MEM_MOVE( dest, source, count )               \
-          memmove( dest, source, (FT_Offset)(count) )
+          ft_memmove( dest, source, (FT_Offset)(count) )
 
 
 #define FT_MEM_ZERO( dest, count )  FT_MEM_SET( dest, 0, count )
@@ -379,7 +379,7 @@ extern "C++"
                   const char*  src,
                   FT_ULong     size );
 
-#define strcpyN( dst, src, size )                                         \
+#define FT_STRCPYN( dst, src, size )                                         \
           ft_mem_strcpyn( (char*)dst, (const char*)(src), (FT_ULong)(size) )
 
  /* */

@@ -804,7 +804,7 @@
 
     ft_mem_table_set( table, (FT_Byte*)new_block, new_size, delta );
 
-    memcpy( new_block, block, cur_size < new_size ? (size_t)cur_size
+    ft_memcpy( new_block, block, cur_size < new_size ? (size_t)cur_size
                                                      : (size_t)new_size );
 
     ft_mem_table_remove( table, (FT_Byte*)block, delta );

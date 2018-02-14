@@ -121,7 +121,7 @@
     {
       error = FT_Err_Ok;
 
-      if ( memcmp( stream->cursor, header_string, header_length ) != 0 )
+      if ( ft_memcmp( stream->cursor, header_string, header_length ) != 0 )
         error = FT_THROW( Unknown_File_Format );
 
       FT_FRAME_EXIT();
@@ -426,9 +426,9 @@
       /* fine that are violating this limitation, so we add a heuristic  */
       /* test to stop at \r only if it is not used for EOL.              */
 
-      pos_lf  = memchr( cur, '\n', (size_t)( limit - cur ) );
+      pos_lf  = ft_memchr( cur, '\n', (size_t)( limit - cur ) );
       test_cr = FT_BOOL( !pos_lf                                       ||
-                         pos_lf > memchr( cur,
+                         pos_lf > ft_memchr( cur,
                                              '\r',
                                              (size_t)( limit - cur ) ) );
 

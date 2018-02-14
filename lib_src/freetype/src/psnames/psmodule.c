@@ -275,7 +275,7 @@
 
     for ( n = 0; n < EXTRA_GLYPH_LIST_SIZE; n++ )
     {
-      if ( strcmp( ft_extra_glyph_names +
+      if ( ft_strcmp( ft_extra_glyph_names +
                         ft_extra_glyph_name_offsets[n], gname ) == 0 )
       {
         if ( states[n] == 0 )

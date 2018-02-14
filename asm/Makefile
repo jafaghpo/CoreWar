@@ -6,7 +6,7 @@
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/01/27 15:53:31 by jafaghpo         ###   ########.fr        #
+#    Updated: 2018/02/08 14:55:05 by jafaghpo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ endif
 
 OBJ_PATH			=	obj
 SRC_PATH			=	src
-LIB_PATH			=	../lib_src
+LIB_PATH			=	../lib
 
 SRCS				=	main.c debug.c
 SRC					=	$(addprefix $(SRC_PATH)/, $(SRCS))
@@ -45,7 +45,7 @@ include $(SRC_VISUAL_PATH)/visual.mk
 
 INCL_PATH			=	include
 OP_INC_PATH			=	../include
-INCL				=	$(INCL_PATH)/asm.h $(OP_INC_PATH)/op.h $(INCL_PATH)/eval_expr.h
+INCL				=	$(INCL_PATH)/asm.h $(OP_INC_PATH)/op.h $(INCL_PATH)/eval_expr.h $(INCL_PATH)/visual.h
 
 LIBFT_PATH			=	$(LIB_PATH)/libft
 LIBFT				=	$(LIBFT_PATH)/libft.a

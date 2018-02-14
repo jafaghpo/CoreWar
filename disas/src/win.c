@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/22 18:49:37 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/27 18:51:33 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/08 12:05:13 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,20 @@ void		win_put_binary(t_file *file, t_gap gap)
 
 void		win_key_hook(t_file *file)
 {
-	if (file->win.delay)
-		usleep(50000);
+	int		key;
+
+	key = getch();
+	if (key == 27)
+	{
+		endwin();
+		exit(1);
+	}
+	else if (file->win.delay)
+		return ;
 	else
 	{
-		while (getch() != ' ')
-			;
+		while (key != ' ')
+			key = getch();
 	}
 }
 
@@ -89,6 +97,8 @@ void		win_setup(t_file *file)
 	mvprintw(1, ((COLS / 2) - 11) / 2, "Binary file");
 	mvprintw(1, ((COLS / 2) - 8) / 2 + (COLS / 2), "Asm file");
 	attroff(COLOR_PAIR(2));
+	if (file->win.delay)
+		halfdelay(1);
 	win_put_binary(file, (t_gap){0, 3});
 	box(file->win.as, ACS_VLINE, ACS_HLINE);
 	refresh();

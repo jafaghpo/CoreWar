@@ -174,7 +174,7 @@
   /* whether it is a whitespace or NULL.                                 */
   /* `property' is a constant string of length `n' to compare with.      */
 #define _bdf_strncmp( name, property, n )      \
-          ( strncmp( name, property, n ) || \
+          ( ft_strncmp( name, property, n ) || \
             !( name[n] == ' '  ||              \
                name[n] == '\0' ||              \
                name[n] == '\n' ||              \
@@ -855,7 +855,7 @@
     p = font->user_props + font->nuser_props;
     FT_ZERO( p );
 
-    n = strlen( name ) + 1;
+    n = ft_strlen( name ) + 1;
     if ( n > FT_ULONG_MAX )
       return FT_THROW( Invalid_Argument );
 
@@ -990,7 +990,7 @@
 
     font->spacing = opts->font_spacing;
 
-    len = strlen( font->name ) + 1;
+    len = ft_strlen( font->name ) + 1;
     /* Limit ourselves to 256 characters in the font name. */
     if ( len >= 256 )
     {
@@ -1822,7 +1822,7 @@
       if ( bdf_get_font_property( p->font, "FONT_ASCENT" ) == 0 )
       {
         p->font->font_ascent = p->font->bbx.ascent;
-        sprintf( nbuf, "%hd", p->font->bbx.ascent );
+        ft_sprintf( nbuf, "%hd", p->font->bbx.ascent );
         error = _bdf_add_property( p->font, (char *)"FONT_ASCENT",
                                    nbuf, lineno );
         if ( error )
@@ -1835,7 +1835,7 @@
       if ( bdf_get_font_property( p->font, "FONT_DESCENT" ) == 0 )
       {
         p->font->font_descent = p->font->bbx.descent;
-        sprintf( nbuf, "%hd", p->font->bbx.descent );
+        ft_sprintf( nbuf, "%hd", p->font->bbx.descent );
         error = _bdf_add_property( p->font, (char *)"FONT_DESCENT",
                                    nbuf, lineno );
         if ( error )
@@ -2164,7 +2164,7 @@
       /* Add the two standard X11 properties which are required */
       /* for compiling fonts.                                   */
       p->font->font_ascent = p->font->bbx.ascent;
-      sprintf( nbuf, "%hd", p->font->bbx.ascent );
+      ft_sprintf( nbuf, "%hd", p->font->bbx.ascent );
       error = _bdf_add_property( p->font, (char *)"FONT_ASCENT",
                                  nbuf, lineno );
       if ( error )
@@ -2172,7 +2172,7 @@
       FT_TRACE2(( "_bdf_parse_properties: " ACMSG1, p->font->bbx.ascent ));
 
       p->font->font_descent = p->font->bbx.descent;
-      sprintf( nbuf, "%hd", p->font->bbx.descent );
+      ft_sprintf( nbuf, "%hd", p->font->bbx.descent );
       error = _bdf_add_property( p->font, (char *)"FONT_DESCENT",
                                  nbuf, lineno );
       if ( error )

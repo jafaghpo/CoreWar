@@ -171,7 +171,7 @@
 
     error = tt_face_get_ps_name( (TT_Face)face, glyph_index, &gname );
     if ( !error )
-      strcpyN( buffer, gname, buffer_max );
+      FT_STRCPYN( buffer, gname, buffer_max );
 
     return error;
   }
@@ -203,7 +203,7 @@
       if ( error )
         continue;
 
-      if ( !strcmp( glyph_name, gname ) )
+      if ( !ft_strcmp( glyph_name, gname ) )
         return i;
     }
 
@@ -835,7 +835,7 @@
                                    sfnt_is_alphanumeric,
                                    0 );
 
-      len = strlen( result );
+      len = ft_strlen( result );
 
       /* sanitize if necessary; we reserve space for 36 bytes (a 128bit  */
       /* checksum as a hex number, preceded by `-' and followed by three */
@@ -880,7 +880,7 @@
       if ( ps_name )
       {
         result = ps_name;
-        p      = result + strlen( result ) + 1;
+        p      = result + ft_strlen( result ) + 1;
 
         goto check_length;
       }
@@ -907,10 +907,10 @@
         /* after the prefix we have character `-' followed by the   */
         /* subfamily name (using only characters a-z, A-Z, and 0-9) */
         if ( FT_ALLOC( result, face->var_postscript_prefix_len +
-                               1 + strlen( subfamily_name ) + 1 ) )
+                               1 + ft_strlen( subfamily_name ) + 1 ) )
           return NULL;
 
-        strcpy( result, face->var_postscript_prefix );
+        ft_strcpy( result, face->var_postscript_prefix );
 
         p = result + face->var_postscript_prefix_len;
         *p++ = '-';
@@ -942,7 +942,7 @@
 
       p = result;
 
-      strcpy( p, face->var_postscript_prefix );
+      ft_strcpy( p, face->var_postscript_prefix );
       p += face->var_postscript_prefix_len;
 
       for ( i = 0; i < num_coords; i++, coords++, axis++ )

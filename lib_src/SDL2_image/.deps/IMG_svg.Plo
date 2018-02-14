@@ -1,4 +1,5 @@
 IMG_svg.lo: IMG_svg.c SDL_image.h \
+<<<<<<< HEAD
   /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/SDL.h \
   /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/SDL_main.h \
   /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/SDL_stdinc.h \
@@ -8,6 +9,17 @@ IMG_svg.lo: IMG_svg.c SDL_image.h \
   /usr/include/AvailabilityInternal.h /usr/include/TargetConditionals.h \
   /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/begin_code.h \
   /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/close_code.h \
+=======
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_main.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_stdinc.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_config.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_platform.h \
+  /usr/include/AvailabilityMacros.h /usr/include/Availability.h \
+  /usr/include/AvailabilityInternal.h /usr/include/TargetConditionals.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/begin_code.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/close_code.h \
+>>>>>>> jafaghpo
   /usr/include/sys/types.h /usr/include/sys/appleapiopts.h \
   /usr/include/sys/cdefs.h /usr/include/sys/_symbol_aliasing.h \
   /usr/include/sys/_posix_availability.h /usr/include/machine/types.h \
@@ -84,6 +96,7 @@ IMG_svg.lo: IMG_svg.c SDL_image.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include/inttypes.h \
   /usr/include/inttypes.h /usr/include/math.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include/float.h \
+<<<<<<< HEAD
   /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/SDL_assert.h \
   /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/SDL_atomic.h \
   /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/SDL_audio.h \
@@ -94,12 +107,25 @@ IMG_svg.lo: IMG_svg.c SDL_image.h \
   /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/SDL_rwops.h \
   /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/SDL_clipboard.h \
   /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/SDL_cpuinfo.h \
+=======
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_assert.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_atomic.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_audio.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_error.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_endian.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_mutex.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_thread.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_rwops.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_clipboard.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_cpuinfo.h \
+>>>>>>> jafaghpo
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include/mmintrin.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include/xmmintrin.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include/mm_malloc.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include/emmintrin.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include/f16cintrin.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include/pmmintrin.h \
+<<<<<<< HEAD
   /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/SDL_events.h \
   /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/SDL_video.h \
   /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/SDL_pixels.h \
@@ -127,10 +153,40 @@ IMG_svg.lo: IMG_svg.c SDL_image.h \
   /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/SDL_system.h \
   /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/SDL_timer.h \
   /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/SDL_version.h \
+=======
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_events.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_video.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_pixels.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_rect.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_surface.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_blendmode.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_keyboard.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_keycode.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_scancode.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_mouse.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_joystick.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_gamecontroller.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_quit.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_gesture.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_touch.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_filesystem.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_haptic.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_hints.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_loadso.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_log.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_messagebox.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_power.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_render.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_shape.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_system.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_timer.h \
+  /Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_version.h \
+>>>>>>> jafaghpo
   nanosvg.h nanosvgrast.h
 
 SDL_image.h:
 
+<<<<<<< HEAD
 /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/SDL.h:
 
 /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/SDL_main.h:
@@ -140,6 +196,17 @@ SDL_image.h:
 /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/SDL_config.h:
 
 /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/SDL_platform.h:
+=======
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_main.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_stdinc.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_config.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_platform.h:
+>>>>>>> jafaghpo
 
 /usr/include/AvailabilityMacros.h:
 
@@ -149,9 +216,15 @@ SDL_image.h:
 
 /usr/include/TargetConditionals.h:
 
+<<<<<<< HEAD
 /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/begin_code.h:
 
 /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/close_code.h:
+=======
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/begin_code.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/close_code.h:
+>>>>>>> jafaghpo
 
 /usr/include/sys/types.h:
 
@@ -391,6 +464,7 @@ SDL_image.h:
 
 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include/float.h:
 
+<<<<<<< HEAD
 /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/SDL_assert.h:
 
 /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/SDL_atomic.h:
@@ -410,6 +484,27 @@ SDL_image.h:
 /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/SDL_clipboard.h:
 
 /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/SDL_cpuinfo.h:
+=======
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_assert.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_atomic.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_audio.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_error.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_endian.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_mutex.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_thread.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_rwops.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_clipboard.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_cpuinfo.h:
+>>>>>>> jafaghpo
 
 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include/mmintrin.h:
 
@@ -423,6 +518,7 @@ SDL_image.h:
 
 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include/pmmintrin.h:
 
+<<<<<<< HEAD
 /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/SDL_events.h:
 
 /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/SDL_video.h:
@@ -476,6 +572,61 @@ SDL_image.h:
 /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/SDL_timer.h:
 
 /Users/niragne/projects/corewar/vm/../lib/SDL2/include/SDL2/SDL_version.h:
+=======
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_events.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_video.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_pixels.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_rect.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_surface.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_blendmode.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_keyboard.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_keycode.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_scancode.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_mouse.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_joystick.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_gamecontroller.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_quit.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_gesture.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_touch.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_filesystem.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_haptic.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_hints.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_loadso.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_log.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_messagebox.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_power.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_render.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_shape.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_system.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_timer.h:
+
+/Users/jafaghpo/Projects/Corewar/vm/../lib/SDL2/include/SDL2/SDL_version.h:
+>>>>>>> jafaghpo
 
 nanosvg.h:
 

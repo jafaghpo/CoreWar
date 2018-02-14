@@ -151,7 +151,7 @@
           (long)( -(unsigned long)(a) )
 
 
-#define memset   memset
+#define ft_memset   memset
 
 #define ft_setjmp   setjmp
 #define ft_longjmp  longjmp
@@ -290,7 +290,7 @@ typedef ptrdiff_t  FT_PtrDist;
 
 
 #ifndef FT_MEM_SET
-#define FT_MEM_SET( d, s, c )  memset( d, s, c )
+#define FT_MEM_SET( d, s, c )  ft_memset( d, s, c )
 #endif
 
 #ifndef FT_MEM_ZERO

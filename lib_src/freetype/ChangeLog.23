@@ -1119,7 +1119,7 @@
 
 	* src/pcf/pcfread.c (pcf_interpret_style): The types
 	of nn, len, lengths[4] are changed to size_t, because
-	they are loaded by (or compared with) strlen().
+	they are loaded by (or compared with) ft_strlen().
 
 	* src/pcf/pcfutil.c (BitOrderInvert, TwoByteSwap,
 	FourByteSwap): The type of the 2nd argument `nbytes'
@@ -1679,7 +1679,7 @@
 	(bdf_cmap_char_next): Ditto, the type of `code' is
 	matched with BDF_encoding_el.enc.
 	(bdf_interpret_style): The type of `lengths' is changed
-	to size_t, to take the value by strlen().  Also the
+	to size_t, to take the value by ft_strlen().  Also the
 	types of `len', `nn', `mm' are matched.
 
 2009-07-31  suzuki toshiya  <mpsuzuki@hiroshima-u.ac.jp>
@@ -3414,8 +3414,8 @@
 	* include/freetype/config/ftstdlib.h (ft_exit): Removed.  Unused.
 
 	* src/autofit/afhints.c, src/base/ftlcdfil.c, src/smooth/ftsmooth.c:
-	s/memcpy/memcpy/.
-	* src/psaux/t1decode.c: s/memset/memset/, s/memcpy/memcpy/.
+	s/memcpy/ft_memcpy/.
+	* src/psaux/t1decode.c: s/memset/ft_memset/, s/memcpy/ft_memcpy/.
 
 2009-01-11  Werner Lemberg  <wl@gnu.org>
 
@@ -6244,10 +6244,10 @@
 
 2007-03-05  Werner Lemberg  <wl@gnu.org>
 
-	* include/freetype/config/ftstdlib.h (strstr): New wrapper
+	* include/freetype/config/ftstdlib.h (ft_strstr): New wrapper
 	macro for `strstr'.
 
-	* src/truetype/ttobjs.c (tt_face_init): Use strstr for scanning
+	* src/truetype/ttobjs.c (tt_face_init): Use ft_strstr for scanning
 	`trick_names', as suggested by Ivan Nincic.
 
 2007-03-05  David Turner  <david@freetype.org>
@@ -6330,7 +6330,7 @@
 
 	* include/freetype/internal/ftmemory.h (ft_mem_strdup, ft_mem_dup,
 	ft_mem_strcpyn): New declarations.
-	(FT_MEM_STRDUP, FT_STRDUP, FT_MEM_DUP, FT_DUP, strcpyN): New
+	(FT_MEM_STRDUP, FT_STRDUP, FT_MEM_DUP, FT_DUP, FT_STRCPYN): New
 	macros.
 	* src/base/ftutil.c (ft_mem_dup, ft_mem_strdup, ft_mem_strcpyn): New
 	functions.

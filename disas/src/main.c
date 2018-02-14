@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 17:06:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2017/12/27 14:52:06 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/08 12:10:23 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ static void		delete_file(t_file *file)
 	ft_strdel(&g_buf);
 	if (file->win.flag)
 		endwin();
-	exit(0);
 }
 
 int				main(int ac, char **av)
@@ -85,4 +84,5 @@ int				main(int ac, char **av)
 		i++;
 	}
 	delete_file(&file);
+	return (0);
 }

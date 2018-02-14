@@ -658,7 +658,7 @@
       if ( table->CompLength == table->OrigLength )
       {
         /* Uncompressed data; just copy. */
-        memcpy( sfnt + table->OrigOffset,
+        ft_memcpy( sfnt + table->OrigOffset,
                    stream->cursor,
                    table->OrigLength );
       }
@@ -1045,7 +1045,7 @@
                                    instance_values,
                                    num_axes * 4 );
 
-          if ( !memcmp( default_values, instance_values, num_axes * 4 ) )
+          if ( !ft_memcmp( default_values, instance_values, num_axes * 4 ) )
             break;
 
           instance_offset += instance_size;

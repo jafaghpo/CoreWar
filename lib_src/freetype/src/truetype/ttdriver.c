@@ -73,7 +73,7 @@
 #endif
 
 
-    if ( !strcmp( property_name, "interpreter-version" ) )
+    if ( !ft_strcmp( property_name, "interpreter-version" ) )
     {
       FT_UInt  interpreter_version;
 
@@ -127,7 +127,7 @@
     FT_UInt  interpreter_version = driver->interpreter_version;
 
 
-    if ( !strcmp( property_name, "interpreter-version" ) )
+    if ( !ft_strcmp( property_name, "interpreter-version" ) )
     {
       FT_UInt*  val = (FT_UInt*)value;
 

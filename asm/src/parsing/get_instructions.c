@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 21:16:35 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/30 12:09:39 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/08 11:55:40 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ static int	analize_line(char *line, t_label *label, t_tab *current)
 	else if (label_size)
 	{
 		label->lst = add_label(label->lst, line, label_size);
-		current->new_line = 1;
 		line += label_size + 1;
 		ft_delspace(&line);
 		return (parse_instruction(line, label, current));
@@ -68,14 +67,18 @@ int			get_instructions(t_tab *tab, t_label *label, int fd, t_visual *win)
 	{
 		if (ret == -1)
 			return (print_error(strerror(errno)));
-		current = (t_tab){line, g_bin.data + g_bin.i, 0, 0};
+		current = (t_tab){line, g_bin.data + g_bin.i, 0};
 		ft_delspace(&line);
 		if (!*line || *line == COMMENT_CHAR)
+		{
+			free(current.line);
 			continue ;
+		}
 		else if (!analize_line(line, label, &current))
-			return (0);
+			return (free_error((void*)current.line));
 		store_line(tab, &current, win);
 	}
+	ft_memdel((void**)&line);
 	if (g_lines && (g_option & VISUAL_FLAG))
 		run_visual(tab, win);
 	return (1);

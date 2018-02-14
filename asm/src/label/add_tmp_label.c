@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/14 19:19:00 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/15 23:42:16 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/02 16:53:28 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,7 @@ t_tmplb		*add_tmp_label(t_tmplb *label, t_tmplb tmp)
 		print_error(strerror(errno));
 		return (NULL);
 	}
-	if (!(g_option & VISUAL_FLAG))
-		new->name = duplicate_tmp_label(tmp.name, arg_len(tmp.name));
-	else
-		new->name = tmp.name;
+	new->name = duplicate_tmp_label(tmp.name, arg_len(tmp.name));
 	new->cursor = g_bin.i + tmp.cursor;
 	new->size = tmp.size;
 	new->rel = g_bin.i - HEADER_LEN;

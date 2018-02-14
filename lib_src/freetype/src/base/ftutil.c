@@ -186,7 +186,7 @@
 
 
     if ( !error && address )
-      memcpy( p, address, size );
+      ft_memcpy( p, address, size );
 
     *p_error = error;
     return p;
@@ -198,7 +198,7 @@
                  const char*  str,
                  FT_Error    *p_error )
   {
-    FT_ULong  len = str ? (FT_ULong)strlen( str ) + 1
+    FT_ULong  len = str ? (FT_ULong)ft_strlen( str ) + 1
                         : 0;
 
 

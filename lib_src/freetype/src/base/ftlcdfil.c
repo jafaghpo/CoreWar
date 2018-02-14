@@ -252,7 +252,7 @@
     if ( !weights )
       return FT_THROW( Invalid_Argument );
 
-    memcpy( library->lcd_weights, weights, FT_LCD_FILTER_FIVE_TAPS );
+    ft_memcpy( library->lcd_weights, weights, FT_LCD_FILTER_FIVE_TAPS );
     library->lcd_filter_func = ft_lcd_filter_fir;
 
     return FT_Err_Ok;
@@ -279,14 +279,14 @@
       break;
 
     case FT_LCD_FILTER_DEFAULT:
-      memcpy( library->lcd_weights,
+      ft_memcpy( library->lcd_weights,
                  default_weights,
                  FT_LCD_FILTER_FIVE_TAPS );
       library->lcd_filter_func = ft_lcd_filter_fir;
       break;
 
     case FT_LCD_FILTER_LIGHT:
-      memcpy( library->lcd_weights,
+      ft_memcpy( library->lcd_weights,
                  light_weights,
                  FT_LCD_FILTER_FIVE_TAPS );
       library->lcd_filter_func = ft_lcd_filter_fir;

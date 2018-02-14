@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 17:54:54 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/30 13:43:02 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/02 17:53:10 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,14 @@ static void		delete_label(t_label *label)
 	while (label->lst)
 	{
 		lst = label->lst->next;
-		if (!(g_option & VISUAL_FLAG))
-			free(label->lst->name);
+		free(label->lst->name);
 		free(label->lst);
 		label->lst = lst;
 	}
 	while (label->tmp)
 	{
 		tmp = label->tmp->next;
-		if (!(g_option & VISUAL_FLAG))
-			free(label->tmp->name);
+		free(label->tmp->name);
 		free(label->tmp);
 		label->tmp = tmp;
 	}
@@ -55,9 +53,10 @@ int				parse_file(char *name, t_visual *win, t_tab *tab)
 		return (0);
 	if (!check_labels(&label))
 		return (0);
-	if (g_option & VISUAL_FLAG)
+	if (g_lines != 0 && (g_option & VISUAL_FLAG))
 		run_visual(tab, win);
 	delete_label(&label);
+	get_next_line(-fd, NULL);
 	close(fd);
 	return (1);
 }

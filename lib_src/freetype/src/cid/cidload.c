@@ -351,7 +351,7 @@
         for ( ; cur < newlimit; cur++ )
         {
           if ( *cur == '%'                                            &&
-               strncmp( (char*)cur, "%ADOBeginFontDict", 17 ) == 0 )
+               ft_strncmp( (char*)cur, "%ADOBeginFontDict", 17 ) == 0 )
           {
             /* if /FDArray was found, then cid->num_dicts is > 0, and */
             /* we can start increasing parser->num_dict               */
@@ -394,7 +394,7 @@
                 break;
 
               if ( cur[0] == name[0]                     &&
-                   len == strlen( (const char*)name ) )
+                   len == ft_strlen( (const char*)name ) )
               {
                 FT_UInt  n;
 

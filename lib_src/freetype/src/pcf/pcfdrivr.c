@@ -384,13 +384,13 @@ THE SOFTWARE.
              ( s[2] == 'o' || s[2] == 'O' ) )
         {
           s += 3;
-          if ( !strcmp( s, "10646" )                      ||
-               ( !strcmp( s, "8859" ) &&
-                 !strcmp( face->charset_encoding, "1" ) ) )
+          if ( !ft_strcmp( s, "10646" )                      ||
+               ( !ft_strcmp( s, "8859" ) &&
+                 !ft_strcmp( face->charset_encoding, "1" ) ) )
             unicode_charmap = 1;
           /* another name for ASCII */
-          else if ( !strcmp( s, "646.1991" )                 &&
-                    !strcmp( face->charset_encoding, "IRV" ) )
+          else if ( !ft_strcmp( s, "646.1991" )                 &&
+                    !ft_strcmp( face->charset_encoding, "IRV" ) )
             unicode_charmap = 1;
         }
       }
@@ -687,7 +687,7 @@ THE SOFTWARE.
 #endif
 
 
-    if ( !strcmp( property_name, "no-long-family-names" ) )
+    if ( !ft_strcmp( property_name, "no-long-family-names" ) )
     {
 #ifdef FT_CONFIG_OPTION_ENVIRONMENT_PROPERTIES
       if ( value_is_string )
@@ -743,7 +743,7 @@ THE SOFTWARE.
     PCF_Driver  driver = (PCF_Driver)module;
 
 
-    if ( !strcmp( property_name, "no-long-family-names" ) )
+    if ( !ft_strcmp( property_name, "no-long-family-names" ) )
     {
       FT_Bool   no_long_family_names = driver->no_long_family_names;
       FT_Bool*  val                  = (FT_Bool*)value;

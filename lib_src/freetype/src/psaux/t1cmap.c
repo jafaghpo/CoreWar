@@ -83,7 +83,7 @@
 
 
         if ( gname && gname[0] == glyph_name[0]  &&
-             strcmp( gname, glyph_name ) == 0 )
+             ft_strcmp( gname, glyph_name ) == 0 )
         {
           result = n;
           break;

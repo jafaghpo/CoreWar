@@ -4391,10 +4391,10 @@
 	More FT_ZERO usage.
 
 	* src/gxvalid/gxvcommn.c (gxv_ClassTable_validate):
-	s/memset/FT_MEM_ZERO/.
+	s/ft_memset/FT_MEM_ZERO/.
 
 	* src/psaux/t1decode.c (t1_decoder_parse_charstrings):
-	s/memset/FT_ARRAY_ZERO/.
+	s/ft_memset/FT_ARRAY_ZERO/.
 
 	* src/raster/ftraster.c (FT_ZERO): Define.
 	(ft_black_new): Use it.
