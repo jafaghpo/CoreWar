@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/29 20:55:42 by iburel            #+#    #+#             */
-/*   Updated: 2017/09/17 01:52:24 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/14 18:07:18 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ static t_mat4	get_mat_rot(t_vec3 u, float teta)
 	mat_rot[15] = 1.0;
 	return (mat_rot);
 }
-
-#include <stdio.h>
 
 void			rotate(t_mat4 *m, t_vec3 u, float teta)
 {

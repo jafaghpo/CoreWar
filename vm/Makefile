@@ -6,7 +6,7 @@
 #    By: iburel <iburel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/02/13 16:36:48 by iburel           ###   ########.fr        #
+#    Updated: 2018/02/14 15:51:13 by iburel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ SRCS_OP					=	op_live.c op_ld.c op_st.c op_add.c op_sub.c op_and.c \
 
 SRC_DISPLAY_PATH		=	$(SRC_PATH)/display
 SRCS_DISPLAY			=	display.c init_sdl.c init_gl.c shader_build.c load_image.c \
-							get_alpha.c event.c create_prog.c \
+							get_alpha.c event.c create_prog.c numbers2.c init.c \
 							load_screen.c square_texture.c init_freetype.c chat.c \
 							numbers.c load_hud.c add_text.c start_music.c
 

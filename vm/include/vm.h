@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 18:31:33 by niragne           #+#    #+#             */
-/*   Updated: 2018/02/13 16:28:25 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/13 18:50:30 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ struct		s_inst
 	t_int32	real;
 };
 
-extern t_op		op_tab[OP_NB];
+extern t_op		g_op_tab[OP_NB];
 extern t_uint32	g_nb_process;
 extern t_uint32	g_step;
 extern t_uint32 g_nb_live;

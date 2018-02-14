@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/09 15:40:44 by ggregoir          #+#    #+#             */
-/*   Updated: 2018/01/12 16:15:06 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/13 18:50:31 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int		check_type(int op, t_inst *type)
 	int			i;
 
 	i = 0;
-	while (i < op_tab[op].nb_args)
+	while (i < g_op_tab[op].nb_args)
 	{
-		if (!(tab[type[i].type] & op_tab[op].args[i]))
+		if (!(tab[type[i].type] & g_op_tab[op].args[i]))
 			return (0);
 		if (type[i].type == 0)
 			return (0);

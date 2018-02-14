@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_proc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 11:54:03 by root              #+#    #+#             */
-/*   Updated: 2018/02/05 16:16:51 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/13 18:50:33 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	init_proc(t_proc **cycle, int nb)
 	while (i < nb)
 	{
 		proc = new_proc(i, i * step);
-		tmp = op_tab[g_mem[proc->pc]].cycles;
+		tmp = g_op_tab[g_mem[proc->pc]].cycles;
 		proc->next = cycle[tmp];
 		proc->op = g_mem[proc->pc];
 		cycle[tmp] = proc;

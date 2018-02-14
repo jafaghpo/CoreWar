@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   perspective.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/28 22:35:03 by iburel            #+#    #+#             */
-/*   Updated: 2017/08/29 20:51:26 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/14 18:06:53 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,21 @@
 t_mat4	perspective(float angle, float ratio, float near, float far)
 {
 	t_mat4	ret;
-	float	xmax, ymax;
-	float	tmp, tmp2, tmp3, tmp4;
+	float	xmax;
+	float	ymax;
+	float	tmp[4];
 
 	ymax = near * tanf(angle);
 	xmax = ymax * ratio;
-	tmp = 2.f * near;
-	tmp2 = xmax + xmax;
-	tmp3 = ymax + ymax;
-	tmp4 = far - near;
+	tmp[0] = 2.f * near;
+	tmp[1] = xmax + xmax;
+	tmp[2] = ymax + ymax;
+	tmp[3] = far - near;
 	ret = mat4_empty();
-	ret[0] = tmp / tmp2;
-	ret[5] = tmp / tmp3;
-	ret[10] = (-far - near) / tmp4;
+	ret[0] = tmp[0] / tmp[1];
+	ret[5] = tmp[0] / tmp[2];
+	ret[10] = (-far - near) / tmp[3];
 	ret[11] = -1.0;
-	ret[14] = (-tmp * far) / tmp4;
+	ret[14] = (-tmp[0] * far) / tmp[3];
 	return (ret);
 }

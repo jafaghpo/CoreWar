@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:50:56 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/13 15:33:09 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/14 17:50:19 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,9 @@ typedef unsigned char	t_uchar;
 typedef unsigned int	t_uint;
 typedef struct s_sdl	t_sdl;
 typedef struct s_gl		t_gl;
+typedef struct s_text	t_text;
+typedef struct s_loc	t_loc;
+typedef struct s_mats	t_mats;
 
 struct			s_case
 {
@@ -94,9 +97,8 @@ struct			s_sdl
 {
 	SDL_GLContext	glc;
 	SDL_Window		*win;
-	SDL_Event		event;
-	Uint32			time_start;
-	Uint32			time_end;
+	Uint32			frames;
+	int				mouse[2];
 };
 
 struct			s_gl
@@ -122,6 +124,30 @@ struct			s_theme
 	t_case	color_texture;
 	t_case	color_chat;
 	t_case	color_fps;
+};
+
+struct			s_text
+{
+	GLuint	hex_numbers[16];
+	GLuint	background;
+	GLuint	hud_background;
+	GLuint	hud;
+	GLuint	case_texture;
+};
+
+struct			s_loc
+{
+	GLint	model;
+	GLint	first_number;
+	GLint	second_number;
+	GLint	color;
+};
+
+struct			s_mats
+{
+	t_mat4	projection;
+	t_mat4	modelview;
+	t_mat4	all;
 };
 
 extern Uint8	g_mem[MEM_SIZE];
@@ -161,11 +187,17 @@ void			add_line_chat(char *str);
 void			load_numbers(GLuint *police_text);
 int				prog_chat(void);
 int				prog_numbers(void);
-void			update_fps(int fps);
-void			update_nb_cycle(int nb_cycle);
-void			update_speed(int number);
 void			put_numbers(void);
 void			add_text(Uint8 *buf, char *str, int x, int y, t_case *color);
 void			start_music(void);
+void			update_number(int number, int size_max, int i);
+void			init_numbers_coord_text(float *coord_text);
+void			init_numbers_vertices(float *vertices);
+int				init_libs(t_sdl *sdl, t_gl *gl);
+int				load_textures(t_text *text);
+void			init_matrix(t_mat4 *projection, t_mat4 *modelview);
+void			init_location(t_loc *location, GLuint prog);
+int				check_events(t_mats *mats, int *mouse);
+void			init_active_texture(t_text *text);
 
 #endif

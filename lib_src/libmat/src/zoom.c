@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   zoom.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 17:38:30 by iburel            #+#    #+#             */
-/*   Updated: 2017/11/13 17:38:32 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/14 18:07:46 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	zoom(t_mat4 *m, t_vec3 u)
 {
-    t_mat4	trans;
+	t_mat4	trans;
 	t_mat4	tmp;
 
 	trans = mat4_unit();

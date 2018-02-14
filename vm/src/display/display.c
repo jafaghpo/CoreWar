@@ -6,169 +6,93 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:51:33 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/13 17:18:08 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/14 17:55:30 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "display.h"
 
-void	*display(void)
+static void	display_the_frame2(t_loc *location, t_text *text)
+{
+	float	cursor;
+	t_case	*color;
+	int		i;
+
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, text->case_texture);
+	i = 0;
+	while (i < MEM_SIZE)
+	{
+		color = &g_champs[g_infos[i].player].color;
+		cursor = -0.2f * g_infos[i].cursor + 0.2f * g_infos[i].new;
+		glUniform3f(location->color, color->r + cursor,
+			color->g + cursor, color->b + cursor);
+		glUniform1i(location->first_number, (g_mem[i] >> 4) + 1);
+		glUniform1i(location->second_number, (g_mem[i] & 0x0f) + 1);
+		glDrawArrays(GL_TRIANGLE_STRIP, i * 4, 4);
+		i++;
+	}
+	glBindVertexArray(0);
+	glUseProgram(0);
+	display_square((t_vec2){0.4f, -1.f}, (t_vec2){0.6f, 2.f},
+		text->hud_background);
+	display_square((t_vec2){0.4f, -1.f}, (t_vec2){0.6f, 2.f}, text->hud);
+	put_chat();
+}
+
+static void	display_the_frame(t_loc *l, t_text *text, t_mats *mats, t_gl *gl)
+{
+	event(&mats->projection, &mats->modelview);
+	display_square((t_vec2){-1.f, -1.f}, (t_vec2){2.f, 2.f},
+		text->background);
+	glUseProgram(gl->prog);
+	glBindVertexArray(gl->vao);
+	mats->all = mat4_mult(mats->projection, mats->modelview);
+	glUniformMatrix4fv(l->model, 1, GL_FALSE, mats->all);
+	free(mats->all);
+	display_the_frame2(l, text);
+	update_number(g_nb_cycle, 7, 1);
+	update_number((int)(1000000 / g_sleep), 5, 2);
+	put_numbers();
+}
+
+static void	put_fps(t_sdl *sdl)
+{
+	static Uint32	save = 0;
+	Uint32			the_time;
+
+	the_time = SDL_GetTicks();
+	if (the_time - save > 1000)
+	{
+		save = the_time;
+		update_number(sdl->frames, 3, 0);
+		sdl->frames = 0;
+	}
+}
+
+void		*display(void)
 {
 	t_sdl	sdl;
 	t_gl	gl;
-	t_mat4	projection;
-	t_mat4	modelview;
-	t_mat4	all_trans;
-	int		done;
-	GLuint	hud;
-	GLuint	hud_background;
-	GLuint	police_text[16];
-	GLuint	fond;
-	GLuint	case_texture;
-	GLint	model_location;
-	GLint	proj_location;
-	Uint32	i;
-	Uint32	nb_frames;
-	Uint32	fps;
-	int		put_fps = 60;
-	Uint32	tmp;
-	int		right_mouse = 0;
-	int		left_mouse = 0;
-	t_case	*color;
-	float	cursor;
-	float	new;
-	GLint	back_ground_location;
-	GLint	first_number_location;
-	GLint	second_number_location;
-	GLint	color_location;
+	t_text	text;
+	t_loc	location;
+	t_mats	mats;
 
-	start_music();
-	if (!init_sdl(&sdl))
+	if (!init_libs(&sdl, &gl))
 		return (NULL);
-	if (!init_gl(&gl))
+	if (!load_textures(&text))
 		return (NULL);
-	if (!init_load_screen())
-		return (NULL);
-	if (!init_square_texture())
-		return (NULL);
-	if (!(init_freetype()))
-		return (NULL);
-	load_numbers(police_text);
-	if ((fond = load_image(g_theme.background_file)) == UINT_MAX)
-		return (NULL);
-	if ((hud_background = load_image(g_theme.hud_background_file)) == UINT_MAX)
-		return (NULL);
-	if ((hud = load_hud(g_theme.hud_file)) == UINT_MAX)
-		return (NULL);
-	if ((case_texture = load_image(g_theme.case_texture)) == UINT_MAX)
-		return (NULL);
-	projection = mat4_unit();
-	projection[0] = ((float)WIN_Y / (float)WIN_X);
-	projection[5] = 1.f;
-	projection[10] = 0.1f;
-	projection[12] = -0.4f;
-	modelview = mat4_unit();
-	rotate(&modelview, norme(1.f, 0.f, 0.f), M_PI);
-	model_location = glGetUniformLocation(gl.prog, "modelview");
-	proj_location = glGetUniformLocation(gl.prog, "projection");
-	back_ground_location = glGetUniformLocation(gl.prog, "back_ground");
-	first_number_location = glGetUniformLocation(gl.prog, "first_number");
-	second_number_location = glGetUniformLocation(gl.prog, "second_number");
-	color_location = glGetUniformLocation(gl.prog, "color");
-	done = 0;
-	fps = 0;
-	nb_frames = 0;
-	i = 0;
-	while (i < 16)
+	init_matrix(&mats.projection, &mats.modelview);
+	init_location(&location, gl.prog);
+	init_active_texture(&text);
+	while (1)
 	{
-		glActiveTexture(GL_TEXTURE0 + i + 1);
-		glBindTexture(GL_TEXTURE_2D, police_text[i]);
-		i++;
-	}
-	glUseProgram(gl.prog);
-	glUniform1i(back_ground_location, 0);
-	glUseProgram(0);
-	while (!done)
-	{
-		sdl.time_start = SDL_GetTicks();
-		while (SDL_PollEvent(&sdl.event))
-		{
-			if (sdl.event.type == SDL_QUIT)
-				done = 1;
-			else if (sdl.event.type == SDL_KEYDOWN)
-			{
-				if (sdl.event.key.keysym.sym == SDLK_ESCAPE)
-					done = 1;
-				else if (sdl.event.key.keysym.sym == SDLK_j)
-					add_line_chat("t'as appuye sur J, t'es vraiment tres fort");
-				else if (sdl.event.key.keysym.sym == SDLK_k)
-					add_line_chat("t'as appuye sur K, t'es vraiment tres fort");
-				g_key = sdl.event.key.keysym.sym;
-				while (g_key)
-					;
-			}
-			else if (sdl.event.type == SDL_MOUSEBUTTONDOWN)
-			{
-				if (sdl.event.button.button == SDL_BUTTON_LEFT)
-					left_mouse = 1;
-				else if (sdl.event.button.button == SDL_BUTTON_RIGHT)
-					right_mouse = 1;
-			}
-			else if (sdl.event.type == SDL_MOUSEBUTTONUP)
-			{
-				if (sdl.event.button.button == SDL_BUTTON_LEFT)
-					left_mouse = 0;
-				else if (sdl.event.button.button == SDL_BUTTON_RIGHT)
-					right_mouse = 0;
-			}
-			else if (sdl.event.type == SDL_MOUSEMOTION)
-			{
-				if (left_mouse)
-					rotate(&modelview, norme((float)sdl.event.motion.yrel, (float)sdl.event.motion.xrel, 0.f), (M_PI / 512.f) * sqrt(sdl.event.motion.yrel * sdl.event.motion.yrel + sdl.event.motion.xrel * sdl.event.motion.xrel));
-				if (right_mouse)
-					translation(&projection, (t_vec3){(float)sdl.event.motion.xrel / (float)WIN_X * 2.f, -(float)sdl.event.motion.yrel / (float)WIN_Y * 2.f, 0.f});
-			}
-		}
-		event(&projection, &modelview);
-		display_square((t_vec2){-1.f, -1.f}, (t_vec2){2.f, 2.f}, fond);
-		glUseProgram(gl.prog);
-		glBindVertexArray(gl.vao);
-		all_trans = mat4_mult(projection, modelview);
-		glUniformMatrix4fv(model_location, 1, GL_FALSE, all_trans);
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, case_texture);
-		free(all_trans);
-		i = 0;
-		while (i < MEM_SIZE)
-		{
-			color = &g_champs[g_infos[i].player].color;
-			cursor = -0.2f * g_infos[i].cursor;
-			new = 0.2f * g_infos[i].new;
-			glUniform3f(color_location, color->r + cursor + new, color->g + cursor + new, color->b + cursor + new);
-			glUniform1i(first_number_location, (g_mem[i] >> 4) + 1);
-			glUniform1i(second_number_location, (g_mem[i] & 0x0f) + 1);
-			glDrawArrays(GL_TRIANGLE_STRIP, i * 4, 4);
-			i++;
-		};
-		glBindVertexArray(0);
-		glUseProgram(0);
-		display_square((t_vec2){0.4f, -1.f}, (t_vec2){0.6f, 2.f}, hud_background);
-		display_square((t_vec2){0.4f, -1.f}, (t_vec2){0.6f, 2.f}, hud);
-		put_chat();
-		update_nb_cycle(g_nb_cycle);
-		update_speed((int)g_sleep);
-		put_numbers();
+		if (check_events(&mats, sdl.mouse))
+			break ;
+		display_the_frame(&location, &text, &mats, &gl);
 		SDL_GL_SwapWindow(sdl.win);
-		sdl.time_end = SDL_GetTicks();
-		tmp = sdl.time_end - fps;
-		if (tmp > 1000)
-		{
-			fps = sdl.time_end;
-			put_fps = nb_frames;
-			update_fps(put_fps);
-			nb_frames = 0;
-		}
-		nb_frames++;
+		put_fps(&sdl);
+		sdl.frames++;
 	}
 	return (NULL);
 }

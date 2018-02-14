@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/19 18:51:02 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/13 17:02:01 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/14 12:51:30 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,20 @@ static GLuint	g_offset_location;
 static GLuint	g_size_location;
 static GLuint	g_text_location;
 
-int		init_square_texture(void)
+static void	init_uniform_and_vbo(GLuint vbo, float *vertices, float *coord)
+{
+	g_offset_location = glGetUniformLocation(g_prog, "offset");
+	g_size_location = glGetUniformLocation(g_prog, "size");
+	g_text_location = glGetUniformLocation(g_prog, "text");
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 16, 0, GL_STATIC_DRAW);
+	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(float) * 8, vertices);
+	glBufferSubData(GL_ARRAY_BUFFER, sizeof(float) * 8,
+		sizeof(float) * 8, coord);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+
+int			init_square_texture(void)
 {
 	static float	vertices[8] = {0.f, 0.f, 1.f, 0.f, 0.f, 1.f, 1.f, 1.f};
 	static float	coord_text[8] = {0.f, 1.f, 1.f, 1.f, 0.f, 0.f, 1.f, 0.f};
@@ -26,17 +39,8 @@ int		init_square_texture(void)
 
 	if (!(g_prog = create_prog(VERTEX_SQUARE, FRAGMENT_SQUARE)))
 		return (0);
-	g_offset_location = glGetUniformLocation(g_prog, "offset");
-	g_size_location = glGetUniformLocation(g_prog, "size");
-	g_text_location = glGetUniformLocation(g_prog, "text");
 	glGenBuffers(1, &vbo);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices) + sizeof(coord_text),
-		0, GL_STATIC_DRAW);
-	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
-	glBufferSubData(GL_ARRAY_BUFFER, sizeof(vertices),
-		sizeof(coord_text), coord_text);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	init_uniform_and_vbo(vbo, vertices, coord_text);
 	glGenVertexArrays(1, &g_vao);
 	glBindVertexArray(g_vao);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
@@ -50,7 +54,7 @@ int		init_square_texture(void)
 	return (1);
 }
 
-void	display_square(t_vec2 offset, t_vec2 size, GLuint text)
+void		display_square(t_vec2 offset, t_vec2 size, GLuint text)
 {
 	glUseProgram(g_prog);
 	glBindVertexArray(g_vao);

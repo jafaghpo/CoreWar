@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 16:04:48 by niragne           #+#    #+#             */
-/*   Updated: 2018/02/13 17:03:59 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/14 12:45:13 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,15 @@ void	exec_proc(t_proc **cycle, t_proc *tmp)
 	size = get_args(tmp->pc, args, op);
 	if (size <= 0)
 	{
-		tmp->pc = (tmp->pc + -size + 1 + op_tab[op].octal) % MEM_SIZE;
+		tmp->pc = (tmp->pc + -size + 1 + g_op_tab[op].octal) % MEM_SIZE;
 		return ;
 	}
 	g_f[op](tmp, args, cycle);
-	tmp->pc = (tmp->pc + size + 1 + op_tab[op].octal) % MEM_SIZE;
+	tmp->pc = (tmp->pc + size + 1 + g_op_tab[op].octal) % MEM_SIZE;
 	if (g_step && op < 17)
 	{
 		g_pause = 1;
 		g_step = 0;
 	}
-	if (op < 17)
-		g_infos[tmp->pc].cursor = 1;
+	op < 17 ? g_infos[tmp->pc].cursor = 1 : 1;
 }

@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 12:02:27 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/13 16:59:33 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/13 18:50:34 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ void	move_proc(t_proc **cycle, t_proc *tmp)
 		insert_proc(cycle, tmp, (g_nb_cycle + 1) % NB_CYCLE_MAX);
 	else
 		insert_proc(cycle, tmp,
-			(g_nb_cycle + op_tab[tmp->op].cycles) % NB_CYCLE_MAX);
+			(g_nb_cycle + g_op_tab[tmp->op].cycles) % NB_CYCLE_MAX);
 }
