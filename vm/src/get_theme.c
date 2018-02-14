@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 21:44:38 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/13 15:17:55 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/15 00:11:57 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 
 static char	*ft_strdup_spe(char *str)
 {
-	char	*new;
-	int		i;
+	static char	path[] = PATH"/";
+	char		*new;
+	int			i;
 
 	i = 0;
 	while (str[i] && str[i] != '#')
 		i++;
 	while (str[i - 1] == ' ' || str[i - 1] == '\t')
 		i--;
-	if (!(new = malloc(sizeof(*new) * (i + 1))))
+	if (!(new = malloc(sizeof(*new) * i + sizeof(path))))
 		return (NULL);
-	ft_memcpy(new, str, i);
-	new[i] = 0;
+	ft_memcpy(new, path, sizeof(path) - 1);
+	ft_memcpy(new + sizeof(path) - 1, str, i);
+	new[i + sizeof(path) - 1] = 0;
 	return (new);
 }
 
@@ -56,9 +58,9 @@ int			get_theme(t_args *flags, char *str)
 
 	(void)flags;
 	size = ft_strlen(str);
-	if (!(tmp = malloc(sizeof(*tmp) * (6 + size + 1 + size + 1))))
+	if (!(tmp = malloc(sizeof(*tmp) * (60 + size + 1 + size + 1))))
 		return (0);
-	ft_sprintf(tmp, "theme/%s/%s", str, str);
+	ft_sprintf(tmp, PATH"/theme/%s/%s", str, str);
 	if (!(file = ft_fopen(tmp, O_RDONLY)))
 		return (ft_printf("error open theme file\n") * 0);
 	free(tmp);

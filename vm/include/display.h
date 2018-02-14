@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:50:56 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/14 17:50:19 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/15 00:01:59 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,18 @@
 # define WIN_X					2560
 # define WIN_Y					1440
 
-# define VERTEX_DISPLAY			"shader/display.vert"
-# define FRAGMENT_DISPLAY		"shader/display.frag"
-# define VERTEX_LOAD			"shader/load.vert"
-# define FRAGMENT_LOAD			"shader/load.frag"
-# define VERTEX_SQUARE			"shader/square.vert"
-# define FRAGMENT_SQUARE		"shader/square.frag"
-# define VERTEX_TEXT			"shader/text.vert"
-# define FRAGMENT_TEXT			"shader/text.frag"
-# define VERTEX_CHAT			"shader/chat.vert"
-# define FRAGMENT_CHAT			"shader/chat.frag"
-# define VERTEX_NUMBERS			"shader/numbers.vert"
-# define FRAGMENT_NUMBERS		"shader/numbers.frag"
+# define VERTEX_DISPLAY			PATH"/shader/display.vert"
+# define FRAGMENT_DISPLAY		PATH"/shader/display.frag"
+# define VERTEX_LOAD			PATH"/shader/load.vert"
+# define FRAGMENT_LOAD			PATH"/shader/load.frag"
+# define VERTEX_SQUARE			PATH"/shader/square.vert"
+# define FRAGMENT_SQUARE		PATH"/shader/square.frag"
+# define VERTEX_TEXT			PATH"/shader/text.vert"
+# define FRAGMENT_TEXT			PATH"/shader/text.frag"
+# define VERTEX_CHAT			PATH"/shader/chat.vert"
+# define FRAGMENT_CHAT			PATH"/shader/chat.frag"
+# define VERTEX_NUMBERS			PATH"/shader/numbers.vert"
+# define FRAGMENT_NUMBERS		PATH"/shader/numbers.frag"
 
 # define CHAT_SIZE				50
 # define CHAT_LINE_SIZE			100

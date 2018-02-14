@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   win.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/22 18:49:37 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/08 12:05:13 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/14 23:42:09 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "disas.h"
 
-void		win_put_binary(t_file *file, t_gap gap)
+void		win_put_binary(t_dfile *file, t_gap gap)
 {
 	int		i;
 	int		x;
@@ -41,7 +41,7 @@ void		win_put_binary(t_file *file, t_gap gap)
 	wrefresh(file->win.bin);
 }
 
-void		win_key_hook(t_file *file)
+void		win_key_hook(t_dfile *file)
 {
 	int		key;
 
@@ -60,7 +60,7 @@ void		win_key_hook(t_file *file)
 	}
 }
 
-static void	win_delay(t_file *file)
+static void	win_delay(t_dfile *file)
 {
 	int		key;
 
@@ -78,7 +78,7 @@ static void	win_delay(t_file *file)
 	erase();
 }
 
-void		win_setup(t_file *file)
+void		win_setup(t_dfile *file)
 {
 	initscr();
 	noecho();

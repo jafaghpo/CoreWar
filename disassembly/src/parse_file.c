@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 21:50:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/29 15:10:51 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/14 23:42:08 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*g_buf = NULL;
 int		g_i = 0;
 
-static int		octal_args(t_file *file, t_uint8 octal, int size, int nb_args)
+static int		octal_args(t_dfile *file, t_uint8 octal, int size, int nb_args)
 {
 	int		tmp;
 
@@ -38,7 +38,7 @@ static int		octal_args(t_file *file, t_uint8 octal, int size, int nb_args)
 	return (1);
 }
 
-static void		no_octal_args(t_file *file, t_uint8 opcode)
+static void		no_octal_args(t_dfile *file, t_uint8 opcode)
 {
 	int		i;
 	int		tmp;
@@ -62,7 +62,7 @@ static void		no_octal_args(t_file *file, t_uint8 opcode)
 	display_separator(file, "\n", tmp, file->cursor - tmp);
 }
 
-static int		parse_inst(t_file *file)
+static int		parse_inst(t_dfile *file)
 {
 	int		opcode;
 
@@ -87,7 +87,7 @@ static int		parse_inst(t_file *file)
 	return (1);
 }
 
-int				parse_file(t_file *file)
+int				parse_file(t_dfile *file)
 {
 	int		fd;
 

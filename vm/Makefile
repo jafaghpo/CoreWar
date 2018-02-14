@@ -6,7 +6,7 @@
 #    By: iburel <iburel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/02/14 22:34:11 by iburel           ###   ########.fr        #
+#    Updated: 2018/02/14 23:57:43 by iburel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,8 @@ endif
 ifeq ($(TIME), yes)
 	CFLAGS				+=	-pg
 endif
+
+PATH_PROJECT 			=	$(shell pwd)
 
 SRC_PATH				=	src
 SRCS					=	parse_flags.c flags_v.c add_file.c get_nums.c get_dumps.c \
@@ -92,13 +94,13 @@ $(NAME): obj $(OBJ)
 	gcc -o $(NAME) $(OBJ) -L $(LIBFT) -L $(LIBMAT) -L $(LIBSDL2) -L $(LIBFREETYPE) $(LIBOPENGL) $(CFLAGS)
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCL_OP) $(INCL_VM)
-	gcc -o $@ -c $< $(CFLAGS) -I $(INCL_PATH) -I $(OP_INC_PATH) -I $(LIBFT_INCL) -I $(LIBMAT_INCL) -I $(LIBFREETYPE_INCL) -I $(LIBSDL2_INCL)
+	gcc -o $@ -c $< -D PATH=\"$(PATH_PROJECT)\" $(CFLAGS) -I $(INCL_PATH) -I $(OP_INC_PATH) -I $(LIBFT_INCL) -I $(LIBMAT_INCL) -I $(LIBFREETYPE_INCL) -I $(LIBSDL2_INCL)
 
 $(OBJ_PATH)/%.o: $(SRC_OP_PATH)/%.c $(INCL_OP) $(INCL_VM)
-	gcc -o $@ -c $< $(CFLAGS) -I $(INCL_PATH) -I $(OP_INC_PATH) -I $(LIBFT_INCL) -I $(LIBMAT_INCL) -I $(LIBFREETYPE_INCL) -I $(LIBSDL2_INCL)
+	gcc -o $@ -c $< -D PATH=\"$(PATH_PROJECT)\" $(CFLAGS) -I $(INCL_PATH) -I $(OP_INC_PATH) -I $(LIBFT_INCL) -I $(LIBMAT_INCL) -I $(LIBFREETYPE_INCL) -I $(LIBSDL2_INCL)
 
 $(OBJ_PATH)/%.o: $(SRC_DISPLAY_PATH)/%.c $(INCL_OP) $(INCL_VM) $(INCL_DISPLAY)
-	gcc -o $@ -c $< $(CFLAGS) -I $(INCL_PATH) -I $(OP_INC_PATH) -I $(LIBFT_INCL) -I $(LIBMAT_INCL) -I $(LIBFREETYPE_INCL) -I $(LIBSDL2_INCL)
+	gcc -o $@ -c $< -D PATH=\"$(PATH_PROJECT)\" $(CFLAGS) -I $(INCL_PATH) -I $(OP_INC_PATH) -I $(LIBFT_INCL) -I $(LIBMAT_INCL) -I $(LIBFREETYPE_INCL) -I $(LIBSDL2_INCL)
 
 libs: $(LIB_PATH) ft mat sdl2 sdl2_image freetype
 

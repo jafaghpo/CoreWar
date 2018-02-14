@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_binary.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/10 17:22:46 by jafaghpo          #+#    #+#             */
-/*   Updated: 2017/12/26 16:42:27 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/14 23:42:07 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "disas.h"
 
-static int		check_binary_extension(char *filename, t_file *file)
+static int		check_binary_extension(char *filename, t_dfile *file)
 {
 	size_t		len;
 
@@ -61,7 +61,7 @@ static int		check_magic(t_uint8 *str)
 	return (1);
 }
 
-int				get_binary(t_file *file, char *path)
+int				get_binary(t_dfile *file, char *path)
 {
 	int			ret;
 	t_uint8		*str;

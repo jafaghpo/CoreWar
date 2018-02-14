@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shader_build.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 22:25:25 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/12 15:00:55 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/15 00:01:13 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static char	*file_to_str(char *file)
 	}
 	if ((fd = open(file, O_RDONLY)) == -1)
 	{
-		ft_printf(ERROR_OPEN"\n");
+		ft_printf(ERROR_OPEN" : %s\n", file);
 		return (NULL);
 	}
 	if ((ret = read(fd, buf, BUFF_SIZE)) == -1)

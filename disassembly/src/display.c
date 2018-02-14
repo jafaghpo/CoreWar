@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/24 15:44:57 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/29 18:00:03 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/14 23:42:09 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		g_line = 1;
 
-void			display_inst(t_file *file, int opcode)
+void			display_inst(t_dfile *file, int opcode)
 {
 	g_i += sprintf(g_buf + g_i, "%s\t", op_tab[opcode].inst);
 	if (file->win.flag)
@@ -38,7 +38,7 @@ void			display_inst(t_file *file, int opcode)
 	}
 }
 
-void			display_separator(t_file *file, char *sep, int start, int end)
+void			display_separator(t_dfile *file, char *sep, int start, int end)
 {
 	t_gap		gap;
 
@@ -55,7 +55,7 @@ void			display_separator(t_file *file, char *sep, int start, int end)
 	}
 }
 
-void			display_integer(t_file *file, char *format, int arg)
+void			display_integer(t_dfile *file, char *format, int arg)
 {
 	g_i += sprintf(g_buf + g_i, format, arg);
 	if (file->win.flag)
@@ -66,7 +66,7 @@ void			display_integer(t_file *file, char *format, int arg)
 	}
 }
 
-void			display_string(t_file *file, char *format, char *arg)
+void			display_string(t_dfile *file, char *format, char *arg)
 {
 	g_i += sprintf(g_buf + g_i, format, arg);
 	if (file->win.flag)
@@ -76,7 +76,7 @@ void			display_string(t_file *file, char *format, char *arg)
 	}
 }
 
-void			display_header(t_file *file)
+void			display_header(t_dfile *file)
 {
 	t_gap		gap;
 

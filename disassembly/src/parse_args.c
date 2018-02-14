@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 22:00:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2017/12/26 15:26:07 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/14 23:42:08 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "disas.h"
 
-void			short_arg(t_file *file, int isdir)
+void			short_arg(t_dfile *file, int isdir)
 {
 	short	arg;
 
@@ -25,7 +25,7 @@ void			short_arg(t_file *file, int isdir)
 		display_integer(file, "%%%hd", arg);
 }
 
-void			int_arg(t_file *file)
+void			int_arg(t_dfile *file)
 {
 	int		arg;
 
@@ -37,7 +37,7 @@ void			int_arg(t_file *file)
 	display_integer(file, "%%%hd", arg);
 }
 
-int				first_arg(t_file *file, t_uint8 octal, int size)
+int				first_arg(t_dfile *file, t_uint8 octal, int size)
 {
 	int		bitwise;
 
@@ -58,7 +58,7 @@ int				first_arg(t_file *file, t_uint8 octal, int size)
 	return (1);
 }
 
-int				second_arg(t_file *file, t_uint8 octal, int size)
+int				second_arg(t_dfile *file, t_uint8 octal, int size)
 {
 	int		bitwise;
 
@@ -79,7 +79,7 @@ int				second_arg(t_file *file, t_uint8 octal, int size)
 	return (1);
 }
 
-int				third_arg(t_file *file, t_uint8 octal, int size)
+int				third_arg(t_dfile *file, t_uint8 octal, int size)
 {
 	int		bitwise;
 

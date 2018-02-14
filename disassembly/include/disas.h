@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   disas.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/19 21:38:10 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/29 18:02:19 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/14 23:45:24 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <errno.h>
 # include <ncurses.h>
 # include <stdarg.h>
+# include <fcntl.h>
+# include <unistd.h>
 
 # define DISAS_EXT		".s"
 # define COR_EXT		".cor"
@@ -40,7 +42,7 @@
 # define HEADER_SIZE	(NAME_SIZE + COM_SIZE)
 
 typedef unsigned char	t_uint8;
-typedef struct s_file	t_file;
+typedef struct s_dfile	t_dfile;
 typedef struct s_win	t_win;
 typedef struct s_gap	t_gap;
 
@@ -52,7 +54,7 @@ struct		s_win
 	t_uint8	delay : 1;
 };
 
-struct		s_file
+struct		s_dfile
 {
 	char	*path;
 	t_uint8	*prog;
@@ -73,22 +75,22 @@ extern int	g_line;
 extern t_op	op_tab[17];
 
 int			print_error(char *msg);
-int			get_binary(t_file *file, char *path);
-int			parse_file(t_file *file);
-void		short_arg(t_file *file, int isdir);
-void		int_arg(t_file *file);
-int			first_arg(t_file *file, t_uint8 octal, int size);
-int			second_arg(t_file *file, t_uint8 octal, int size);
-int			third_arg(t_file *file, t_uint8 octal, int size);
+int			get_binary(t_dfile *file, char *path);
+int			parse_file(t_dfile *file);
+void		short_arg(t_dfile *file, int isdir);
+void		int_arg(t_dfile *file);
+int			first_arg(t_dfile *file, t_uint8 octal, int size);
+int			second_arg(t_dfile *file, t_uint8 octal, int size);
+int			third_arg(t_dfile *file, t_uint8 octal, int size);
 
-void		display_inst(t_file *file, int opcode);
-void		display_separator(t_file *file, char *sep, int start, int end);
-void		display_integer(t_file *file, char *format, int arg);
-void		display_string(t_file *file, char *format, char *arg);
-void		display_header(t_file *file);
+void		display_inst(t_dfile *file, int opcode);
+void		display_separator(t_dfile *file, char *sep, int start, int end);
+void		display_integer(t_dfile *file, char *format, int arg);
+void		display_string(t_dfile *file, char *format, char *arg);
+void		display_header(t_dfile *file);
 
-void		win_setup(t_file *file);
-void		win_put_binary(t_file *file, t_gap gap);
-void		win_key_hook(t_file *file);
+void		win_setup(t_dfile *file);
+void		win_put_binary(t_dfile *file, t_gap gap);
+void		win_key_hook(t_dfile *file);
 
 #endif

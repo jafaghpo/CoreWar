@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 17:06:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/08 12:10:23 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/14 23:42:07 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int		print_usage(char *exe)
 	return (0);
 }
 
-static void		reset_file(t_file *file, int is_flag)
+static void		reset_dfile(t_dfile *file, int is_flag)
 {
 	if (is_flag)
 		return ;
@@ -55,7 +55,7 @@ static void		reset_file(t_file *file, int is_flag)
 	g_i = 0;
 }
 
-static void		delete_file(t_file *file)
+static void		delete_file(t_dfile *file)
 {
 	ft_strdel(&g_buf);
 	if (file->win.flag)
@@ -64,7 +64,7 @@ static void		delete_file(t_file *file)
 
 int				main(int ac, char **av)
 {
-	t_file	file;
+	t_dfile	file;
 	int		i;
 
 	if (ac < 2)
@@ -80,7 +80,7 @@ int				main(int ac, char **av)
 		else if (!parse_file(&file))
 			;
 		else
-			reset_file(&file, *av[i] == '-');
+			reset_dfile(&file, *av[i] == '-');
 		i++;
 	}
 	delete_file(&file);

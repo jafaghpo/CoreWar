@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 21:00:37 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/13 16:25:30 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/15 00:09:04 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ GLuint		load_image(char *file)
 
 	if (!(image = IMG_Load(file)))
 	{
-		ft_printf(ERROR_LOAD_IMAGE"\n");
+		ft_printf(ERROR_LOAD_IMAGE" : %s\n", file);
 		return (UINT_MAX);
 	}
 	if (!check_format(image, &form, &form_int))

@@ -1,7 +1,12 @@
 vm/corewar
-asm/asm
+assembly/asm
+disasembly/disas
 lib/
 lib_src/
+
+asm
+disas
+corewar
 
 # Prerequisites
 *.d
