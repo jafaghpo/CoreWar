@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 14:38:13 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/30 15:02:13 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/14 22:08:53 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 **	-- Includes --
 */
 # include <errno.h>
+# include <fcntl.h>
+# include <unistd.h>
 # include "libft.h"
 # include "op.h"
 # include "eval_expr.h"
@@ -53,6 +55,18 @@
 # define NAME_LEN		PROG_NAME_LENGTH
 # define COM_LEN		COMMENT_LENGTH
 # define HEADER_LEN		(NAME_LEN + COM_LEN + 16)
+/*
+** -- Color --
+*/
+# define BLK "\x1B[30m"
+# define RED "\x1B[31m"
+# define GRN "\x1B[32m"
+# define YEL "\x1B[33m"
+# define BLU "\x1B[34m"
+# define MAG "\x1B[35m"
+# define CYN "\x1B[36m"
+# define WHT "\x1B[37m"
+# define RES "\x1B[0m"
 /*
 **	-- Typedefs --
 */

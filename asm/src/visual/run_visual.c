@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run_visual.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 22:09:40 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/01 14:33:07 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/14 22:12:47 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void		select_color(t_visual *win)
 	color++;
 }
 
-static void		display_bin(t_tab, t_visual *win, int line)
+static void		display_bin(t_tab *tab, t_visual *win, int line)
 {
 	static t_size	current = {0, 0};
 	int				i;
@@ -70,7 +70,7 @@ static void		display_asm(t_tab *tab, t_visual *win, int line)
 	werase(win->as);
 	wprintw(win->as, "\n\n\n\t");
 	wattron(win->as, COLOR_PAIR(NC_BLACK) | A_BOLD);
-	while (i < g_line)
+	while (i < g_lines)
 	{
 		if (i == line)
 		{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   eval_expr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 20:38:04 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/02 20:38:05 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/14 22:10:13 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static t_stack	*init_stack(int *error)
 
 	if (!(stack = malloc(sizeof(t_stack))))
 	{
-		ft_putendl("Error: malloc failure");
+		ft_printf("Error: malloc failure\n");
 		*error = 1;
 		return (NULL);
 	}
