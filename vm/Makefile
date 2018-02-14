@@ -6,7 +6,7 @@
 #    By: iburel <iburel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/02/14 20:04:14 by iburel           ###   ########.fr        #
+#    Updated: 2018/02/14 22:32:07 by iburel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,7 @@ LIB_PATH				=	../lib
 
 LIBOPENGL				=	-framework openGL
 
-LIBSDL2					=	$(LIB_PATH)/SDL2/lib -lSDL2 -lSDL2_image -lSDL2_mixer
+LIBSDL2					=	$(LIB_PATH)/SDL2/lib -lSDL2 -lSDL2_image
 LIBSDL2_INCL			=	$(LIB_PATH)/SDL2/include
 
 LIBFREETYPE				=	$(LIB_PATH)/freetype/lib -lfreetype
@@ -125,11 +125,6 @@ sdl2_image: $(LIB_PATH)/SDL2 sdl2
 	./configure --prefix=$(shell pwd)/$(LIB_PATH)/SDL2 && \
 	make -j install
 
-sdl2_mixer: $(LIB_PATH)/SDL2 sdl2
-	cd $(LIB_SRC_PATH)/SDL2_mixer && \
-	./configure --prefix=$(shell pwd)/$(LIB_PATH)/SDL2 && \
-	make -j install
-
 freetype: $(LIB_PATH)/freetype
 	cd $(LIB_SRC_PATH)/freetype && \
 	./configure --prefix=$(shell pwd)/$(LIB_PATH)/freetype && \
@@ -156,4 +151,4 @@ fclean: clean
 re: fclean
 	make -j build
 
-.PHONY: all build libs ft mat sdl2 sdl2_image sdl2_mixer freetype clean fclean re
+.PHONY: all build libs ft mat sdl2 sdl2_image freetype clean fclean re
