@@ -6,52 +6,83 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 14:38:13 by iburel            #+#    #+#             */
-/*   Updated: 2018/01/02 20:37:16 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/30 15:02:13 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ASM_H
 # define ASM_H
-
-# include <ncurses.h>
+/*
+**	-- Includes --
+*/
+# include <errno.h>
 # include "libft.h"
 # include "op.h"
 # include "eval_expr.h"
-
-# define ERROR_OPEN_S				"error open s"
-# define ERROR_OPEN_COR				"error open cor"
-# define ERROR_MALLOC				"error malloc"
-# define ERROR_READ					"error read"
-# define ERROR_SYNTAX_LABEL			"error syntax label"
-# define ERROR_SYNTAX_POINT			"error syntax command"
-# define ERROR_INST					"error bad instruction"
-# define ERROR_SYNTAX_REG			"error syntax register"
-# define ERROR_SYNTAX_DIR			"error syntax direct"
-# define ERROR_SYNTAX_IND			"error syntax indirect"
-# define ERROR_REG_NUMBER			"error undefined register"
-# define ERROR_BAD_LABEL			"error undefined label"
-# define ERROR_SYNTAX_SEPARATOR		"error syntax bad separator"
-# define ERROR_SYNTAX_NAME			"error syntax name"
-# define ERROR_SYNTAX_COMMENT		"error syntax comment"
-# define ERROR_NB_ARGS				"error nb args"
-# define ERROR_BAD_TYPE_ARG			"error bad type arg"
-# define ERROR_BAD_FORMAT			"error the file is not a .s"
-
+# include "visual.h"
+/*
+**	-- Error messages --
+*/
+# define NO_PARAMETER	"missing parameters\n%s"	
+# define USAGE			"usage: ./asm [-wv] file ..."
+# define EXTENSION		"invalid file extension: \033[31m%s"
+# define OPTION			"illegal option -- \033[31m%c\033[0m\n%s"
+# define UNKNOWN_FILE	"\033[31m%s: \033[0m%s"
+# define NO_NAME		"missing champion name"
+# define NO_COMMENT		"missing champion comment"
+# define SYNTAX			"invalid syntax: \033[31m\"%s\"\033[0m"
+# define HEADER_LINE	"invalid line in champion header: \033[31m\"%s\"\033[0m"
+# define LABEL_SYNTAX	"invalid label syntax: \033[31m\"%s\"\033[0m"
+# define UNKNOWN_INST	"unknown instruction: \033[31m\"%s\"\033[0m"
+# define REGISTER_ARG	"invalid register: \033[31m\"%s\"\033[0m"
+# define DIRECT_ARG		"invalid direct argument: \033[31m\"%s\"\033[0m"
+# define INDIRECT_ARG	"invalid indirect argument: \033[31m\"%s\"\033[0m"
+# define ARG_NUMBER		"invalid number of argument: \033[31m\"%s\"\033[0m"
+# define NO_SEPARATOR	"missing separator between args: \033[31m\"%s\"\033[0m"
+# define UNDEF_LABEL	"undefined label: \033[31m\"%s\"\033[0m"
+# define MAX_SIZE		"%sWarning:%s too large size [max: %d bytes]\n"
+/*
+**	-- Option masks --
+*/
+# define VISUAL_FLAG	0x01
+# define SIZE_FLAG		0x02
+/*
+**	-- Length macros --
+*/
+# define TAB_SIZE		1000
+# define NAME_LEN		PROG_NAME_LENGTH
+# define COM_LEN		COMMENT_LENGTH
+# define HEADER_LEN		(NAME_LEN + COM_LEN + 16)
+/*
+**	-- Typedefs --
+*/
+typedef unsigned char	t_uint8;
+typedef struct s_tab	t_tab;
 typedef struct s_buf	t_buf;
-typedef struct s_label	t_label;
-typedef struct s_lstlb	t_lstlb;
 typedef struct s_tmplb	t_tmplb;
-typedef struct s_parse	t_parse;
-typedef struct s_token	t_token;
-
-struct	s_buf
+typedef struct s_lstlb	t_lstlb;
+typedef struct s_label	t_label;
+typedef struct s_inst	t_inst;
+typedef struct s_visual	t_visual;
+/*
+**	-- Structures --
+*/
+struct		s_tab
 {
-	t_uchar	*buf;
+	char	*line;
+	t_uint8	*ptr;
+	int		size;
+	int		new_line;
+};
+
+struct		s_buf
+{
+	t_uint8	*data;
 	int		size;
 	int		i;
 };
 
-struct	s_tmplb
+struct		s_tmplb
 {
 	char	*name;
 	int		cursor;
@@ -60,82 +91,66 @@ struct	s_tmplb
 	t_tmplb	*next;
 };
 
-struct	s_lstlb
+struct		s_lstlb
 {
 	char	*name;
 	int		addr;
 	t_lstlb	*next;
 };
 
-struct	s_label
+struct		s_label
 {
 	t_tmplb	*tmp;
 	t_lstlb	*lst;
 };
 
-struct	s_parse
+struct		s_inst
 {
-	char	**ptr;
-	int		*size;
-	int		nb;
+	char	data[20];
+	int		size;
+	int		args;
 };
-
-extern	t_op			op_tab[17];
-
 /*
-**	debug
+**	-- Global variables --
 */
-void		putparse(t_parse *parse);
-void		putlabels(t_label *label);
-
+extern	int		g_lines;
+extern	int		g_option;
+extern	t_buf	g_bin;
+extern	t_op	g_op[17];
 /*
-**	buff
+**	-- Debug --
 */
-void		buff(char *str, int len);
-void		buff_atcursor(int addr, int i, int len);
-void		buff_header(header_t *header, int name_len, int comment_len);
-void		buff_init(void);
-int			buff_getcursor(void);
-void		buff_put(int fd);
-void		display_buff(void);
-
+void		debug_inst(t_inst *inst);
+void		debug_label(t_label *label);
+void		debug_tmplb(t_label *label);
+void		debug_tab(t_tab *tab);
 /*
-**	label
+**	-- General --
 */
-t_lstlb		*add_label(t_lstlb *label, char *name, int addr);
-t_tmplb		*add_tmplb(t_tmplb *label, char *name, int cursor,
-			int size, int rel);
-int			check_label(char *str);
-int			check_tmplb(t_label *labels);
-int			get_label_addr(char *str, t_label *labels, t_token *token);
-int			verif_tmp(t_tmplb *tmp);
-int			labelcmp(char *labe1, char *label2);
-char		*labeldup(char *label);
-
-/*
-**	parse
-*/
-int			split_spe(t_parse *parse, char *line);
-int			fill_size(t_parse *parse);
-int			wordlen(char *line);
-int			arglen(char *str);
-
-/*
-**	resolve
-*/
+int			print_error(const char *msg, ...);
 char		*get_name(char *file);
-int			parse(int fd);
-int			analyze_line(char *line, t_label *labels,
-			header_t *header, int *size);
-int			pars_inst(char *line, int *size, t_label *labels);
-int			pars_args(t_parse *parse, t_label *labels, char *inst,
-			int op, int size);
-int			point(char *line, header_t *header);
-int			get_opcode(char *inst);
-
+int			fill_binary(char *name);
+int			word_equal(char *s1, char *s2);
+int			word_len(char *str);
 /*
-**	error
+**	-- Parsing --
 */
-int			puterror(char *str, int error);
+int			parse_file(char *name, t_visual *win, t_tab *tab);
+int			get_header(t_tab *tab, int fd, t_visual *win);
+int			get_instructions(t_tab *tab, t_label *label, int fd, t_visual *win);
+int			store_line(t_tab *tab, t_tab *current, t_visual *win);
+int			parse_arguments(char *line, t_label *label, t_inst *inst);
+void		store_argument(t_inst *inst, int n, int size);
+int			get_opcode(char *line, int *op);
+int			add_instruction(t_inst *inst);
+int			get_next_arg(char **str);
+/*
+**	-- Labels --
+*/
+int			valid_label(char *str);
+int			check_labels(t_label *label);
+char		*duplicate_label(char *name, int size);
+t_lstlb		*add_label(t_lstlb *label, char *name, int size);
+t_tmplb		*add_tmp_label(t_tmplb *label, t_tmplb tmp);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/19 21:38:10 by iburel            #+#    #+#             */
-/*   Updated: 2017/12/26 21:22:50 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/29 18:02:19 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,33 +44,33 @@ typedef struct s_file	t_file;
 typedef struct s_win	t_win;
 typedef struct s_gap	t_gap;
 
-struct	s_win
+struct		s_win
 {
-	WINDOW		*bin;
-	WINDOW		*as;
-	t_uint8		flag : 1;
-	t_uint8		delay : 1;
+	WINDOW	*bin;
+	WINDOW	*as;
+	t_uint8	flag : 1;
+	t_uint8	delay : 1;
 };
 
-struct	s_file
+struct		s_file
 {
-	char		*path;
-	t_uint8		*prog;
-	int			prog_size;
-	int			cursor;
-	t_win		win;
+	char	*path;
+	t_uint8	*prog;
+	int		prog_size;
+	int		cursor;
+	t_win	win;
 };
 
-struct	s_gap
+struct		s_gap
 {
-	int			start;
-	int			end;
+	int		start;
+	int		end;
 };
 
-extern char		*g_buf;
-extern int		g_i;
-extern int		g_line;
-extern t_op		op_tab[17];
+extern char	*g_buf;
+extern int	g_i;
+extern int	g_line;
+extern t_op	op_tab[17];
 
 int			print_error(char *msg);
 int			get_binary(t_file *file, char *path);

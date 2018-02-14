@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 10:17:36 by iburel            #+#    #+#             */
-/*   Updated: 2017/12/17 20:04:11 by root             ###   ########.fr       */
+/*   Updated: 2018/02/14 21:50:55 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_list	*ft_lstnew(void *content, size_t content_size)
 		tmp->content_size = content_size;
 		if (!(tmp->content = malloc(content_size)))
 			return (NULL);
-		ft_memcpy(tmp->content, content, content_size);
+		ft_memcpy(tmp->content, (void*)content, content_size);
 	}
 	tmp->next = NULL;
 	return (tmp);

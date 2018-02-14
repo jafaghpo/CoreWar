@@ -3,47 +3,65 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/07 15:18:19 by iburel            #+#    #+#             */
-/*   Updated: 2017/09/19 19:21:09 by iburel           ###   ########.fr       */
+/*   Created: 2017/12/29 15:19:44 by jafaghpo          #+#    #+#             */
+/*   Updated: 2018/01/30 12:08:22 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-#include <fcntl.h>
-#include <signal.h>
 
-int		main(int ac, char **av)
+int				g_option = 0;
+
+static int		get_option(char **av)
 {
-	int		fd;
-	char	*name;
-	int		i;
+	int			i;
+	int			j;
 
-	if (ac < 2)
-	{
-		ft_printf("usage: %s file1 [file2 ...]\n", av[0]);
-		return (0);
-	}
 	i = 1;
-	while (i < ac)
+	while (av[i])
 	{
-		ft_printf("compilation of %s\n", av[i]);
-		if (!(name = get_name(av[i])))
-			return (0);
-		if ((fd = open(av[i], O_RDONLY)) == -1)
-			return (puterror(ERROR_OPEN_S, 0));
-		if (parse(fd))
+		j = 1;
+		while (*av[i] == '-' && av[i][j])
 		{
-			close(fd);
-			if ((fd = open(name, O_TRUNC | O_CREAT | O_WRONLY, 0644)) == -1)
-				return (puterror(ERROR_OPEN_COR, 0));
-			buff_put(fd);
-			ft_printf("done in %s\n", name);
+			if (av[i][j] == 'v')
+				g_option |= VISUAL_FLAG;
+			else if (av[i][j] == 's')
+				g_option |= SIZE_FLAG;
+			else
+				return (print_error(OPTION, av[i][j], USAGE));
+			j++;
 		}
-		get_next_line(-fd, NULL);
-		close(fd);
 		i++;
 	}
+	return (1);
+}
+
+int				main(int ac, char **av)
+{
+	t_visual	win;
+	t_tab		*tab;
+	char		*bin_name;
+	int			i;
+
+	if (ac < 2)
+		return (print_error(NO_PARAMETER, USAGE));
+	i = 1;
+	if (!get_option(av))
+		return (0);
+	while (i < ac)
+	{
+		if (*av[i] != '-' && (bin_name = get_name(av[i])))
+		{
+			if ((g_option & VISUAL_FLAG) && !setup_visual(&win, &tab))
+				visual_error(&g_option);
+			if (parse_file(av[i], &win, tab))
+				fill_binary(bin_name);
+		}
+		i++;
+	}
+	if (g_option & VISUAL_FLAG)
+		delete_visual(&win, tab);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 21:50:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2017/12/26 17:33:53 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/01/29 15:10:51 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int		octal_args(t_file *file, t_uint8 octal, int size, int nb_args)
 {
 	int		tmp;
 
-	tmp = file->cursor;
+	tmp = file->cursor - 1;
 	if (!first_arg(file, octal, size))
 		return (0);
 	if (nb_args > 1)
