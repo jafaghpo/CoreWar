@@ -6,7 +6,7 @@
 #    By: iburel <iburel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 19:20:07 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/02/15 00:22:35 by iburel           ###   ########.fr        #
+#    Updated: 2018/02/15 12:51:57 by iburel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,20 +21,20 @@ VM_NAME			=	corewar
 
 all: $(ASM_NAME) $(DISAS_NAME) $(VM_NAME)
 
-$(ASM_NAME): $(ASM_DIR)/asm
-	@cp $(ASM_DIR)/asm .
+$(ASM_NAME): $(ASM_DIR)/$(ASM_NAME)
+	rsync -u $< $@
 
 $(ASM_DIR)/asm:
 	make -C $(ASM_DIR)
 
-$(DISAS_NAME): $(DISAS_DIR)/disas
-	@cp $(DISAS_DIR)/disas .
+$(DISAS_NAME): $(DISAS_DIR)/$(DISAS_NAME)
+	rsync -u $< $@
 
 $(DISAS_DIR)/disas:
 	make -C $(DISAS_DIR)
 
 $(VM_NAME): $(VM_DIR)/corewar
-	@cp $(VM_DIR)/corewar .
+	rsync -u $< $@
 
 $(VM_DIR)/corewar:
 	make -C $(VM_DIR)
