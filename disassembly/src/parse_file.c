@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 21:50:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/14 23:42:08 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/15 20:52:56 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,17 @@ static void		no_octal_args(t_dfile *file, t_uint8 opcode)
 
 	i = 0;
 	tmp = file->cursor;
-	while (i < op_tab[opcode].nb_args)
+	while (i < g_op_tab[opcode].nb_args)
 	{
-		if (op_tab[opcode].args[i] == T_REG)
+		if (g_op_tab[opcode].args[i] == T_REG)
 			display_integer(file, "r%d", file->prog[file->cursor++]);
-		else if (op_tab[opcode].args[i] == T_IND)
+		else if (g_op_tab[opcode].args[i] == T_IND)
 			short_arg(file, 0);
-		else if (op_tab[opcode].args[i] == T_DIR && op_tab[opcode].size)
+		else if (g_op_tab[opcode].args[i] == T_DIR && g_op_tab[opcode].size)
 			short_arg(file, 1);
-		else if (op_tab[opcode].args[i] == T_DIR && !op_tab[opcode].size)
+		else if (g_op_tab[opcode].args[i] == T_DIR && !g_op_tab[opcode].size)
 			int_arg(file);
-		if (i + 1 < op_tab[opcode].nb_args)
+		if (i + 1 < g_op_tab[opcode].nb_args)
 			display_separator(file, ",\t", tmp, file->cursor - tmp);
 		i++;
 	}
@@ -74,10 +74,10 @@ static int		parse_inst(t_dfile *file)
 			display_inst(file, opcode);
 		else
 			return (print_error(ERROR_INST));
-		if (op_tab[opcode].octal)
+		if (g_op_tab[opcode].octal)
 		{
 			if (!octal_args(file, file->prog[++file->cursor],
-				op_tab[opcode].size, op_tab[opcode].nb_args))
+				g_op_tab[opcode].size, g_op_tab[opcode].nb_args))
 				return (0);
 		}
 		else

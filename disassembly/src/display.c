@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/24 15:44:57 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/14 23:42:09 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/15 20:52:31 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		g_line = 1;
 
 void			display_inst(t_dfile *file, int opcode)
 {
-	g_i += sprintf(g_buf + g_i, "%s\t", op_tab[opcode].inst);
+	g_i += sprintf(g_buf + g_i, "%s\t", g_op_tab[opcode].inst);
 	if (file->win.flag)
 	{
 		win_key_hook(file);
@@ -29,7 +29,7 @@ void			display_inst(t_dfile *file, int opcode)
 			wrefresh(file->win.as);
 			g_line = 1;
 		}
-		wprintw(file->win.as, "\t%s\t\t\t", op_tab[opcode].inst);
+		wprintw(file->win.as, "\t%s\t\t\t", g_op_tab[opcode].inst);
 		wattroff(file->win.as, COLOR_PAIR(4));
 		win_put_binary(file, (t_gap){file->cursor, 0});
 		box(file->win.as, ACS_VLINE, ACS_HLINE);

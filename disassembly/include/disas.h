@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/19 21:38:10 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/14 23:45:24 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/15 20:53:46 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ struct		s_gap
 extern char	*g_buf;
 extern int	g_i;
 extern int	g_line;
-extern t_op	op_tab[17];
+extern t_op	g_op_tab[17];
 
 int			print_error(char *msg);
 int			get_binary(t_dfile *file, char *path);
