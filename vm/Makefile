@@ -6,7 +6,7 @@
 #    By: iburel <iburel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/02/15 15:06:08 by iburel           ###   ########.fr        #
+#    Updated: 2018/02/15 19:03:44 by iburel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,13 +17,9 @@ NAME					=	corewar
 CFLAGS					=	-Wall -Wextra -Werror
 
 ifeq ($(DEBUG), yes)
-	CFLAGS				+= -g -D DEBUG# -fsanitize=address
+	CFLAGS				+= -g -D DEBUG -fsanitize=address
 else
 	CFLAGS				+=
-endif
-
-ifeq ($(TIME), yes)
-	CFLAGS				+=	-pg
 endif
 
 PATH_PROJECT 			=	$(shell pwd)
@@ -67,43 +63,59 @@ INCL_VM					=	$(INCL_PATH)/vm.h
 INCL_DISPLAY			=	$(INCL_PATH)/display.h
 INCL_OP					=	$(OP_INC_PATH)/op.h
 
-LIB_SRC_PATH			=	../lib_src
 LIB_PATH				=	../lib
 
 LIBOPENGL				=	-framework openGL
 
-LIBSDL2					=	$(LIB_PATH)/SDL2/lib -lSDL2 -lSDL2_image
-LIBSDL2_INCL			=	$(LIB_PATH)/SDL2/include
+LIBSDL2_DIR				=	~/.brew/Cellar/sdl2/2.0.7
+LIBSDL2					=	$(LIBSDL2_DIR)/lib -lSDL2
+LIBSDL2_INCL			=	$(LIBSDL2_DIR)/include
 
-LIBFREETYPE				=	$(LIB_PATH)/freetype/lib -lfreetype
-LIBFREETYPE_INCL		=	$(LIB_PATH)/freetype/include
+LIBSDL2_IMAGE_DIR		=	~/.brew/Cellar/sdl2_image/2.0.2
+LIBSDL2_IMAGE			=	$(LIBSDL2_IMAGE_DIR)/lib -lSDL2_image
+LIBSDL2_IMAGE_INCL		=	$(LIBSDL2_IMAGE_DIR)/include -I $(LIBSDL2_INCL)/SDL2
 
-LIBFT					=	$(LIB_PATH)/libft -lft
-LIBFT_INCL				=	$(LIB_PATH)/libft/include
+LIBFREETYPE_DIR			=	~/.brew/Cellar/freetype/2.9
+LIBFREETYPE				=	$(LIBFREETYPE_DIR)/lib -lfreetype
+LIBFREETYPE_INCL		=	$(LIBFREETYPE_DIR)/include
 
-LIBMAT					=	$(LIB_PATH)/libmat -lmat
-LIBMAT_INCL				=	$(LIB_PATH)/libmat/include
+LIBFT_DIR				=	$(LIB_PATH)/libft
+LIBFT					=	$(LIBFT_DIR)/libft.a
+LIBFT_INCL				=	$(LIBFT_DIR)/include
 
+LIBMAT_DIR				=	$(LIB_PATH)/libmat
+LIBMAT					=	$(LIBMAT_DIR)/libmat.a
+LIBMAT_INCL				=	$(LIBMAT_DIR)/include
 
 all: $(NAME)
 
-$(NAME): obj $(OBJ)
-	gcc -o $(NAME) $(OBJ) -L $(LIBFT) -L $(LIBMAT) -L $(LIBSDL2) -L $(LIBFREETYPE) $(LIBOPENGL) $(CFLAGS)
+$(NAME): $(LIBFT) $(LIBMAT) $(OBJ)
+	gcc -o $(NAME) $(OBJ) $(LIBFT) $(LIBMAT) -L $(LIBSDL2) -L $(LIBSDL2_IMAGE) -L $(LIBFREETYPE) $(LIBOPENGL) $(CFLAGS)
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCL_OP) $(INCL_VM)
-	gcc -o $@ -c $< -D PATH=\"$(PATH_PROJECT)\" $(CFLAGS) -I $(INCL_PATH) -I $(OP_INC_PATH) -I $(LIBFT_INCL) -I $(LIBMAT_INCL) -I $(LIBFREETYPE_INCL) -I $(LIBSDL2_INCL)
+	gcc -o $@ -c $< -D PATH=\"$(PATH_PROJECT)\" $(CFLAGS) -I $(INCL_PATH) -I $(OP_INC_PATH) -I $(LIBFT_INCL) -I $(LIBMAT_INCL) -I $(LIBFREETYPE_INCL) -I $(LIBSDL2_INCL) -I $(LIBSDL2_IMAGE_INCL)
 
 $(OBJ_PATH)/%.o: $(SRC_OP_PATH)/%.c $(INCL_OP) $(INCL_VM)
-	gcc -o $@ -c $< -D PATH=\"$(PATH_PROJECT)\" $(CFLAGS) -I $(INCL_PATH) -I $(OP_INC_PATH) -I $(LIBFT_INCL) -I $(LIBMAT_INCL) -I $(LIBFREETYPE_INCL) -I $(LIBSDL2_INCL)
+	gcc -o $@ -c $< -D PATH=\"$(PATH_PROJECT)\" $(CFLAGS) -I $(INCL_PATH) -I $(OP_INC_PATH) -I $(LIBFT_INCL) -I $(LIBMAT_INCL) -I $(LIBFREETYPE_INCL) -I $(LIBSDL2_INCL) -I $(LIBSDL2_IMAGE_INCL)
 
 $(OBJ_PATH)/%.o: $(SRC_DISPLAY_PATH)/%.c $(INCL_OP) $(INCL_VM) $(INCL_DISPLAY)
-	gcc -o $@ -c $< -D PATH=\"$(PATH_PROJECT)\" $(CFLAGS) -I $(INCL_PATH) -I $(OP_INC_PATH) -I $(LIBFT_INCL) -I $(LIBMAT_INCL) -I $(LIBFREETYPE_INCL) -I $(LIBSDL2_INCL)
+	gcc -o $@ -c $< -D PATH=\"$(PATH_PROJECT)\" $(CFLAGS) -I $(INCL_PATH) -I $(OP_INC_PATH) -I $(LIBFT_INCL) -I $(LIBMAT_INCL) -I $(LIBFREETYPE_INCL) -I $(LIBSDL2_INCL) -I $(LIBSDL2_IMAGE_INCL)
+
+$(LIBFT):
+	make -j -C $(LIBFT_DIR)
+
+$(LIBMAT):
+	make -j -C $(LIBMAT_DIR)
 
 clean:
 	rm -rf $(OBJ)
+	make -C $(LIBFT_DIR) clean
+	make -C $(LIBMAT_DIR) clean
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f $(LIBFT)
+	rm -f $(LIBMAT)
 
 re: fclean
 	make -j

@@ -1,8 +1,6 @@
 vm/corewar
 assembly/asm
 disasembly/disas
-lib/
-lib_src/
 
 asm
 disas
