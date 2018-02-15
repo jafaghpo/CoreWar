@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:50:56 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/15 19:39:06 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/15 22:39:26 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define DISPLAY_H
 
 # include <SDL2/SDL.h>
+# include <SDL2/SDL_image.h>
 # include <OpenGL/gl3.h>
 # include <CoreFoundation/CoreFoundation.h>
 # define GL3_PROTOTYPE 1
@@ -24,7 +25,6 @@
 # include <ft2build.h>
 # include FT_FREETYPE_H
 # undef ft_fopen
-# include <SDL2/SDL_image.h>
 
 # define ERROR_INIT_SDL			"error: initialisation of sdl failed"
 # define ERROR_CREAT_WIN		"error: creation of the window failed"

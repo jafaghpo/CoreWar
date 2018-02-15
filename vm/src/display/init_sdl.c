@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 18:15:15 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/14 18:00:47 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/15 23:01:46 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int			init_sdl(t_sdl *sdl)
 		ft_printf(ERROR_INIT_SDL"\n");
 		return (0);
 	}
+	if ((IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) != IMG_INIT_PNG)
+		ft_printf("hein?\n");
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK,

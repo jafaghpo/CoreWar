@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_hud.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 18:02:16 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/12 14:47:13 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/15 23:13:25 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ GLuint			load_hud(char *file)
 
 	if (!(image = IMG_Load(file)))
 	{
-		ft_printf(ERROR_LOAD_IMAGE"\n");
+		ft_printf(ERROR_LOAD_IMAGE" : %s\n", file);
 		return (UINT_MAX);
 	}
 	if (!check_format(image, &form, &form_int))
