@@ -6,7 +6,7 @@
 #    By: iburel <iburel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/02/14 23:57:43 by iburel           ###   ########.fr        #
+#    Updated: 2018/02/15 15:06:08 by iburel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,11 +84,8 @@ LIBFT_INCL				=	$(LIB_PATH)/libft/include
 LIBMAT					=	$(LIB_PATH)/libmat -lmat
 LIBMAT_INCL				=	$(LIB_PATH)/libmat/include
 
-all: $(NAME)
-#	@echo "make libs for compile libs"
-#	@echo "make build for compile the vm"
 
-build: $(NAME)
+all: $(NAME)
 
 $(NAME): obj $(OBJ)
 	gcc -o $(NAME) $(OBJ) -L $(LIBFT) -L $(LIBMAT) -L $(LIBSDL2) -L $(LIBFREETYPE) $(LIBOPENGL) $(CFLAGS)
@@ -102,48 +99,6 @@ $(OBJ_PATH)/%.o: $(SRC_OP_PATH)/%.c $(INCL_OP) $(INCL_VM)
 $(OBJ_PATH)/%.o: $(SRC_DISPLAY_PATH)/%.c $(INCL_OP) $(INCL_VM) $(INCL_DISPLAY)
 	gcc -o $@ -c $< -D PATH=\"$(PATH_PROJECT)\" $(CFLAGS) -I $(INCL_PATH) -I $(OP_INC_PATH) -I $(LIBFT_INCL) -I $(LIBMAT_INCL) -I $(LIBFREETYPE_INCL) -I $(LIBSDL2_INCL)
 
-libs: $(LIB_PATH) ft mat sdl2 sdl2_image freetype
-
-$(LIB_PATH):
-	mkdir $(LIB_PATH)
-
-ft: $(LIB_PATH)/libft
-	make -j "DEBUG=$(DEBUG)" "TIME=$(TIME)" -C $(LIB_SRC_PATH)/libft
-	cp $(LIB_SRC_PATH)/libft/libft.a $(LIB_PATH)/libft
-	cp -R $(LIB_SRC_PATH)/libft/include $(LIB_PATH)/libft
-
-mat: $(LIB_PATH)/libmat
-	make -j "DEBUG=$(DEBUG)" "TIME=$(TIME)" -C $(LIB_SRC_PATH)/libmat
-	cp $(LIB_SRC_PATH)/libmat/libmat.a $(LIB_PATH)/libmat
-	cp -R $(LIB_SRC_PATH)/libmat/include $(LIB_PATH)/libmat
-
-sdl2: $(LIB_PATH)/SDL2
-	cd $(LIB_SRC_PATH)/SDL2 && \
-	./configure --prefix=$(shell pwd)/$(LIB_PATH)/SDL2 && \
-	make -j install
-
-sdl2_image: $(LIB_PATH)/SDL2 sdl2
-	cd $(LIB_SRC_PATH)/SDL2_image && \
-	./configure --prefix=$(shell pwd)/$(LIB_PATH)/SDL2 && \
-	make -j install
-
-freetype: $(LIB_PATH)/freetype
-	cd $(LIB_SRC_PATH)/freetype && \
-	./configure --prefix=$(shell pwd)/$(LIB_PATH)/freetype && \
-	make -j install
-
-$(LIB_PATH)/libft: $(LIB_PATH)
-	mkdir $(LIB_PATH)/libft
-
-$(LIB_PATH)/libmat: $(LIB_PATH)
-	mkdir $(LIB_PATH)/libmat
-
-$(LIB_PATH)/SDL2: $(LIB_PATH)
-	mkdir $(LIB_PATH)/SDL2
-
-$(LIB_PATH)/freetype: $(LIB_PATH)
-	mkdir $(LIB_PATH)/freetype
-
 clean:
 	rm -rf $(OBJ)
 
@@ -151,6 +106,6 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean
-	make -j build
+	make -j
 
-.PHONY: all build libs ft mat sdl2 sdl2_image freetype clean fclean re
+.PHONY: all clean fclean re
