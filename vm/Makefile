@@ -6,7 +6,7 @@
 #    By: iburel <iburel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/02/15 19:03:44 by iburel           ###   ########.fr        #
+#    Updated: 2018/02/15 19:22:02 by iburel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,7 +77,7 @@ LIBSDL2_IMAGE_INCL		=	$(LIBSDL2_IMAGE_DIR)/include -I $(LIBSDL2_INCL)/SDL2
 
 LIBFREETYPE_DIR			=	~/.brew/Cellar/freetype/2.9
 LIBFREETYPE				=	$(LIBFREETYPE_DIR)/lib -lfreetype
-LIBFREETYPE_INCL		=	$(LIBFREETYPE_DIR)/include
+LIBFREETYPE_INCL		=	$(LIBFREETYPE_DIR)/include/freetype2
 
 LIBFT_DIR				=	$(LIB_PATH)/libft
 LIBFT					=	$(LIBFT_DIR)/libft.a

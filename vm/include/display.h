@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:50:56 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/15 18:38:10 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/15 19:23:41 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <limits.h>
 # include <ft2build.h>
 # include FT_FREETYPE_H
+# undef ft_fopen
 # include <SDL2/SDL_image.h>
 
 # define ERROR_INIT_SDL			"error: initialisation of sdl failed"
