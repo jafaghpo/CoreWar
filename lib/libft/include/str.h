@@ -3,19 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   str.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/09 14:53:00 by iburel            #+#    #+#             */
-/*   Updated: 2017/12/17 19:53:03 by root             ###   ########.fr       */
+/*   Updated: 2018/02/16 18:54:14 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STR_H
 # define STR_H
 
-#include <wchar.h>
-
-typedef unsigned long int size_t;
+# include <wchar.h>
+# include <unistd.h>
 
 void	ft_delspace(char **str);
 int		ft_strcmp_space(char *s1, char *s2);

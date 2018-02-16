@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 11:29:50 by root              #+#    #+#             */
-/*   Updated: 2018/02/15 00:15:03 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/16 16:47:25 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,19 @@ static t_uint8	*get_binary(char *file, t_uint32 *size)
 	int		ret;
 
 	if ((fd = open(file, O_RDONLY)) == -1)
-		ft_afferror("error open file");
+	{
+		ft_printf("error open file : %s\n", file);
+		exit(1);
+	}
 	if ((ret = read(fd, buf, READ_MAX + 1)) == -1)
-		ft_afferror("error read file");
+	{
+		ft_printf("error read file : %s\n", file);
+		exit(2);
+	}
 	if (ret == READ_MAX + 1 || ret < PROG_NAME_LENGTH + COMMENT_LENGTH + 16)
 		ft_afferror("file bad size");
 	if (!(binary = malloc(sizeof(*binary) * ret)))
-		ft_afferror("error malloc");
+		ft_afferror("error malloc\n");
 	ft_memcpy(binary, buf, ret);
 	*size = ret - PROG_NAME_LENGTH - COMMENT_LENGTH - 16;
 	return (binary);

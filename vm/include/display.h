@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:50:56 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/15 22:39:26 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/16 16:35:47 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,7 +189,7 @@ void			load_numbers(GLuint *police_text);
 int				prog_chat(void);
 int				prog_numbers(void);
 void			put_numbers(void);
-void			add_text(Uint8 *buf, char *str, int x, int y, t_case *color);
+void			add_text(Uint8 *buf, char *str, t_ivec2 coord, t_case *color);
 void			start_music(void);
 void			update_number(int number, int size_max, int i);
 void			init_numbers_coord_text(float *coord_text);

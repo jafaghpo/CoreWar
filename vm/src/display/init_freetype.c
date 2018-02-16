@@ -6,16 +6,18 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 03:11:16 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/12 19:40:58 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/16 17:55:43 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "display.h"
 
+#define POLICESIZE POLICE_SIZE
+
 Uint8		g_font[128][30][16];
 int			g_font_size[128];
 
-static void resize(int i, FT_GlyphSlot slot)
+static void	resize(int i, FT_GlyphSlot slot)
 {
 	Uint32		y;
 
@@ -32,7 +34,7 @@ static void resize(int i, FT_GlyphSlot slot)
 	}
 }
 
-static int  load_font(FT_Face face)
+static int	load_font(FT_Face face)
 {
 	FT_GlyphSlot	slot;
 	int				i;
@@ -59,48 +61,30 @@ int			init_freetype(void)
 	FT_Face			face;
 
 	if (FT_Init_FreeType(&lib))
-	{
-		ft_printf(ERROR_INIT_FREETYPE"\n");
-		return (0);
-	}
+		return (ft_printf(ERROR_INIT_FREETYPE"\n") * 0);
 	if (FT_New_Face(lib, g_theme.police_file, 0, &face))
-	{
-		ft_printf(ERROR_INIT_FONT"\n");
-		return (0);
-	}
-	if (FT_Set_Char_Size(face, 0, POLICE_SIZE * 64, 100, 100))
-	{
-		ft_printf(ERROR_INIT_FONT"\n");
-		return (0);
-	}
+		return (ft_printf(ERROR_INIT_FONT"\n") * 0);
+	if (FT_Set_Char_Size(face, 0, POLICESIZE * 64, 100, 100))
+		return (ft_printf(ERROR_INIT_FONT"\n") * 0);
 	if (!load_font(face))
-	{
-		ft_printf(ERROR_INIT_FONT"\n");
-		return (0);
-	}
+		return (ft_printf(ERROR_INIT_FONT"\n") * 0);
 	FT_Done_Face(face);
 	FT_Done_FreeType(lib);
 	if (!prog_chat())
-	{
-		ft_printf("error\n");
-		return (0);
-	}
+		return (ft_printf("error\n") * 0);
 	if (!prog_numbers())
-	{
-		ft_printf("error\n");
-		return (0);
-	}
+		return (ft_printf("error\n") * 0);
 	return (1);
 }
 
-void			add_line_chat(char *str)
+void		add_line_chat(char *str)
 {
 	int		tmp;
 	int		x;
 	int		y;
 
 	tmp = (g_line_chat + 1) % CHAT_SIZE;
-	ft_bzero(g_chat_buffer[tmp], 30 * 16 * CHAT_LINE_SIZE);    
+	ft_bzero(g_chat_buffer[tmp], 30 * 16 * CHAT_LINE_SIZE);
 	x = 0;
 	while (*str)
 	{
@@ -122,7 +106,7 @@ void			add_line_chat(char *str)
 	g_line_chat = tmp;
 }
 
-void			load_numbers(GLuint *police_text)
+void		load_numbers(GLuint *police_text)
 {
 	Uint8	buf[51][51];
 	int		i;
@@ -136,14 +120,18 @@ void			load_numbers(GLuint *police_text)
 		y = 0;
 		while (y < 30)
 		{
-			ft_memcpy(buf[y + 12] + 20 + y, g_font[i + '0' + ('A' - '0' - 10) * (i >= 10)][y], 16);
+			ft_memcpy(buf[y + 12] + 20 + y,
+				g_font[i + '0' + ('A' - '0' - 10) * (i >= 10)][y], 16);
 			y++;
 		}
 		glBindTexture(GL_TEXTURE_2D, police_text[i]);
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, 50, 50, 0, GL_RED, GL_UNSIGNED_BYTE, buf);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, 50, 50, 0,
+			GL_RED, GL_UNSIGNED_BYTE, buf);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		glBindTexture(GL_TEXTURE_2D, 0);
 		i++;
 	}
 }
+
+#undef POLICESIZE

@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/28 22:12:22 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/14 18:04:02 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/16 16:34:46 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ typedef float*			t_mat4;
 typedef struct s_vec2	t_vec2;
 typedef struct s_vec3	t_vec3;
 typedef struct s_vec4	t_vec4;
+typedef struct s_ivec2	t_ivec2;
+typedef struct s_ivec3	t_ivec3;
+typedef struct s_ivec4	t_ivec4;
 
 struct	s_vec2
 {
@@ -41,6 +44,27 @@ struct	s_vec4
 	float y;
 	float z;
 	float w;
+};
+
+struct	s_ivec2
+{
+	int	x;
+	int	y;
+};
+
+struct	s_ivec3
+{
+	int	x;
+	int	y;
+	int	z;
+};
+
+struct	s_ivec4
+{
+	int	x;
+	int	y;
+	int	z;
+	int	w;
 };
 
 t_mat4	mat4_new(void);

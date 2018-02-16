@@ -6,11 +6,13 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 11:54:03 by root              #+#    #+#             */
-/*   Updated: 2018/02/13 18:50:33 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/16 17:43:21 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
+
+#define REGNUMBER REG_NUMBER
 
 static t_proc	*new_proc(t_uint32 player, t_uint32 pc)
 {
@@ -20,7 +22,7 @@ static t_proc	*new_proc(t_uint32 player, t_uint32 pc)
 		ft_afferror(ERROR_MALLOC);
 	new->pc = pc;
 	new->carry = 0;
-	ft_bzero(new->reg, REG_NUMBER * 4);
+	ft_bzero(new->reg, REGNUMBER * 4);
 	new->reg[0] = g_champs[player + 1].number;
 	new->player = player + 1;
 	new->live = 0;
@@ -28,7 +30,7 @@ static t_proc	*new_proc(t_uint32 player, t_uint32 pc)
 	return (new);
 }
 
-void	init_proc(t_proc **cycle, int nb)
+void			init_proc(t_proc **cycle, int nb)
 {
 	t_proc	*proc;
 	int		tmp;
@@ -47,3 +49,5 @@ void	init_proc(t_proc **cycle, int nb)
 		i++;
 	}
 }
+
+#undef REGNUMBER
