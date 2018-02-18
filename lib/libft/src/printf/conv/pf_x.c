@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pf_x.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 17:58:05 by root              #+#    #+#             */
-/*   Updated: 2018/02/10 15:12:33 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/16 19:33:10 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int			pf_x(va_list arg, t_pfflags *flags)
 	int			size;
 	int			test;
 
-	n = g_type[flags->type](arg);
+	n = g_pf_utype[flags->type](arg);
 	size = pf_uitoa_base(str, n, 16, 0);
 	test = flags->tags.hashtag * 2;
 	flags->prec -= size + test;

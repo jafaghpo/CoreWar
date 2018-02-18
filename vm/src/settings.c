@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/20 17:49:37 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/16 17:55:06 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/16 20:11:36 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_theme		g_theme =
 	PATH"/theme/default/frame.png",
 	PATH"/theme/default/white.jpg",
 	PATH"/theme/default/white.jpg",
-	PATH"/theme/default/music.mp3",
+	NULL,
 	PATH"/theme/default/arial.ttf",
 	{1.f, 1.f, 1.f},
 	{

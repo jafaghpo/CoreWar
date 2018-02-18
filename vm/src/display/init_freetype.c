@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 03:11:16 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/16 17:55:43 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/16 19:24:35 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ void		add_line_chat(char *str)
 	int		x;
 	int		y;
 
+	if (!g_flags.visu)
+		return ;
 	tmp = (g_line_chat + 1) % CHAT_SIZE;
 	ft_bzero(g_chat_buffer[tmp], 30 * 16 * CHAT_LINE_SIZE);
 	x = 0;
@@ -93,12 +95,9 @@ void		add_line_chat(char *str)
 			str++;
 			continue ;
 		}
-		y = 0;
-		while (y < 30)
-		{
+		y = -1;
+		while (++y < 30)
 			ft_memcpy(g_chat_buffer[tmp][y] + x, g_font[(int)*str][y], 16);
-			y++;
-		}
 		x += (int)g_font_size[(int)*str];
 		str++;
 	}

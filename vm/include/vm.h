@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 18:31:33 by niragne           #+#    #+#             */
-/*   Updated: 2018/02/13 18:50:30 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/16 19:24:17 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@
 
 # define LIST_FLAGS				"v"
 # define LIST_ARGS				"bdsnt"
-# define MAX_BREAKPOINTS		10
 
 # define READ_MAX		CHAMP_MAX_SIZE + PROG_NAME_LENGTH + COMMENT_LENGTH + 16
 # define HEADER_SIZE	PROG_NAME_LENGTH + COMMENT_LENGTH + 16
@@ -61,16 +60,6 @@ struct		s_proc
 	t_uint32	id;
 	t_proc		*next;
 	t_uint8		op;
-};
-
-struct		s_args
-{
-	t_uint8		dump : 1;
-	t_uint8		visu : 1;
-	t_uint32	dumps;
-	int			nb_players;
-	t_uint32	breakpoints[MAX_BREAKPOINTS];
-	t_uint8		nb_breakpoints;
 };
 
 struct		s_pfile

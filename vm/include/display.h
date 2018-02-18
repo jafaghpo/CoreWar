@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 17:50:56 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/16 16:35:47 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/16 19:44:36 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@
 # define CHAT_SIZE				50
 # define CHAT_LINE_SIZE			100
 # define POLICE_SIZE			16
+# define MAX_BREAKPOINTS		10
 
 typedef struct s_case	t_case;
 typedef struct s_infos	t_infos;
@@ -70,6 +71,7 @@ typedef struct s_gl		t_gl;
 typedef struct s_text	t_text;
 typedef struct s_loc	t_loc;
 typedef struct s_mats	t_mats;
+typedef struct s_args	t_args;
 
 struct			s_case
 {
@@ -151,6 +153,16 @@ struct			s_mats
 	t_mat4	all;
 };
 
+struct			s_args
+{
+	t_uint8		dump : 1;
+	t_uint8		visu : 1;
+	t_uint32	dumps;
+	int			nb_players;
+	t_uint32	breakpoints[MAX_BREAKPOINTS];
+	t_uint8		nb_breakpoints;
+};
+
 extern Uint8	g_mem[MEM_SIZE];
 extern GLuint	g_chat[CHAT_SIZE];
 extern Uint8	g_line_chat;
@@ -165,6 +177,7 @@ extern t_champ	*g_champs;
 extern t_theme	g_theme;
 extern t_uint32	g_nb_cycle;
 extern t_uint32	g_nb_player;
+extern t_args	g_flags;
 
 int				init_sdl(t_sdl *sdl);
 int				init_gl(t_gl *gl);

@@ -1,0 +1,7 @@
+background            = theme/danette/danette_background.jpg
+hud background		  = theme/danette/hud_danette.jpg
+square texture		  =	theme/danette/case_danette.png
+color player 1        = 223, 109, 20
+color player 2        = 173, 79,  9
+color player 3        = 153, 81, 43
+color player 4        = 141, 64, 36

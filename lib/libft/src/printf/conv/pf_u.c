@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pf_u.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 17:57:56 by root              #+#    #+#             */
-/*   Updated: 2018/02/10 15:13:10 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/16 19:33:08 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		pf_u(va_list arg, t_pfflags *flags)
 	t_int64	n;
 	int		size;
 
-	n = g_utype[flags->type](arg);
+	n = g_pf_utype[flags->type](arg);
 	size = pf_uitoa_base(str, n, 10, 0);
 	flags->prec -= size;
 	flags->prec *= (flags->prec <= INT_MAX);

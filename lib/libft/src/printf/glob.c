@@ -1,20 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_maj_b.c                                         :+:      :+:    :+:   */
+/*   glob.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/16 17:55:34 by root              #+#    #+#             */
-/*   Updated: 2018/02/16 19:31:48 by iburel           ###   ########.fr       */
+/*   Created: 2018/02/16 19:37:09 by iburel            #+#    #+#             */
+/*   Updated: 2018/02/16 19:37:34 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		pf_maj_b(va_list arg, t_pfflags *flags)
+void		(*g_pf_buff)(char *, int);
+t_uint64	(*g_pf_utype[7])(va_list) =
 {
-	(void)arg;
-	(void)flags;
-	return (0);
-}
+	pf_ushort,
+	pf_u2short,
+	pf_ulong,
+	pf_u2long,
+	pf_uintmax,
+	pf_size,
+	pf_uint
+};
+
+t_int64		(*g_pf_type[7])(va_list) =
+{
+	pf_short,
+	pf_2short,
+	pf_long,
+	pf_2long,
+	pf_intmax,
+	pf_ssize,
+	pf_int
+};

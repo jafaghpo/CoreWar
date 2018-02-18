@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pf_d.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 17:20:34 by root              #+#    #+#             */
-/*   Updated: 2018/02/10 15:21:08 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/16 19:33:36 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int			pf_d(va_list arg, t_pfflags *flags)
 	int		test;
 
 	sign = flags->tags.space * ' ' + flags->tags.plus * '+';
-	n = g_type[flags->type](arg);
+	n = g_pf_type[flags->type](arg);
 	if (n >= 0)
 		n = -n;
 	else

@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 15:41:22 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/16 18:52:05 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/16 19:41:08 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@
 typedef struct s_pftags		t_pftags;
 typedef struct s_pfflags	t_pfflags;
 typedef enum e_pftype		t_pftype;
+
+extern void		(*g_pf_buff)(char *, int);
+extern t_uint64	(*g_pf_utype[7])(va_list);
+extern t_int64	(*g_pf_type[7])(va_list);
 
 struct		s_pftags
 {
@@ -141,33 +145,5 @@ int			pf_maj_u(va_list arg, t_pfflags *flags);
 int			pf_x(va_list arg, t_pfflags *flags);
 int			pf_maj_x(va_list arg, t_pfflags *flags);
 int			pf_per(va_list arg, t_pfflags *flags);
-
-# ifndef PF_BUFF
-#  define PF_BUFF
-
-void		(*g_pf_buff)(char *, int);
-t_uint64	(*g_utype[7])(va_list) =
-{
-	pf_ushort,
-	pf_u2short,
-	pf_ulong,
-	pf_u2long,
-	pf_uintmax,
-	pf_size,
-	pf_uint
-};
-
-t_int64		(*g_type[7])(va_list) =
-{
-	pf_short,
-	pf_2short,
-	pf_long,
-	pf_2long,
-	pf_intmax,
-	pf_ssize,
-	pf_int
-};
-
-# endif
 
 #endif
