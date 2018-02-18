@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 03:11:16 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/16 19:24:35 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/18 18:20:43 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	load_font(FT_Face face)
 	{
 		if (FT_Load_Char(face, i, FT_LOAD_RENDER))
 		{
-			ft_printf(ERROR_INIT_FONT"\n");
+			ft_dprintf(2, ERROR_INIT_FONT"\n");
 			return (0);
 		}
 		g_font_size[i] = slot->advance.x >> 6;
@@ -61,19 +61,19 @@ int			init_freetype(void)
 	FT_Face			face;
 
 	if (FT_Init_FreeType(&lib))
-		return (ft_printf(ERROR_INIT_FREETYPE"\n") * 0);
+		return (ft_dprintf(2, ERROR_INIT_FREETYPE"\n") * 0);
 	if (FT_New_Face(lib, g_theme.police_file, 0, &face))
-		return (ft_printf(ERROR_INIT_FONT"\n") * 0);
+		return (ft_dprintf(2, ERROR_INIT_FONT"\n") * 0);
 	if (FT_Set_Char_Size(face, 0, POLICESIZE * 64, 100, 100))
-		return (ft_printf(ERROR_INIT_FONT"\n") * 0);
+		return (ft_dprintf(2, ERROR_INIT_FONT"\n") * 0);
 	if (!load_font(face))
-		return (ft_printf(ERROR_INIT_FONT"\n") * 0);
+		return (ft_dprintf(2, ERROR_INIT_FONT"\n") * 0);
 	FT_Done_Face(face);
 	FT_Done_FreeType(lib);
 	if (!prog_chat())
-		return (ft_printf("error\n") * 0);
+		return (ft_dprintf(2, "error\n") * 0);
 	if (!prog_numbers())
-		return (ft_printf("error\n") * 0);
+		return (ft_dprintf(2, "error\n") * 0);
 	return (1);
 }
 

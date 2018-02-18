@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fpf_buff.c                                         :+:      :+:    :+:   */
+/*   dpf_buff.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 15:47:29 by root              #+#    #+#             */
-/*   Updated: 2018/02/10 15:30:27 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/18 18:18:20 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ static char	g_buf[PF_BUFF_SIZE];
 static int	g_fd = 0;
 static int	g_i = 0;
 
-void	fpf_init_buff(int in_fd)
+void	dpf_init_buff(int in_fd)
 {
 	if (g_fd != 0 && g_fd != in_fd)
-		fpf_putbuff();
+		dpf_putbuff();
 	g_fd = in_fd;
 	g_i = 0;
 }
 
-void	fpf_buff(char *str, int len)
+void	dpf_buff(char *str, int len)
 {
 	if (g_i + len > PF_BUFF_SIZE)
 	{
@@ -36,7 +36,7 @@ void	fpf_buff(char *str, int len)
 	g_i += len;
 }
 
-void	fpf_putbuff(void)
+void	dpf_putbuff(void)
 {
 	write(g_fd, g_buf, g_i);
 	g_i = 0;

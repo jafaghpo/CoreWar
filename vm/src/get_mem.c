@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_mem.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/11 20:37:34 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/05 15:16:41 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/18 18:07:55 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void			check_magic(unsigned char *buffer)
 	octets |= (t_uint)(buffer[1]) << 16;
 	octets |= (t_uint)(buffer[0]) << 24;
 	if (octets != COREWAR_EXEC_MAGIC)
-		ft_afferror(ERROR_MAGIC_NUMBER);
+		ft_afferror(ERROR_MAGIC_NUMBER"\n");
 }
 
 t_uint			get_champ_size(t_uchar *buffer)
@@ -43,13 +43,13 @@ t_player		get_mem(char *name)
 
 	fd = open(name, O_RDONLY);
 	if (fd == -1)
-		ft_afferror("error open");
+		ft_afferror("error open\n");
 	rd = read(fd, buffer, READ_MAX);
 	if (rd == READ_MAX || rd == -1)
-		ft_afferror("error get meme");
+		ft_afferror("error get meme\n");
 	check_magic(buffer);
 	if (((size = get_champ_size(buffer)) < 1) || size > CHAMP_MAX_SIZE)
-		ft_afferror(ERROR_CHAMP_SIZE);
+		ft_afferror(ERROR_CHAMP_SIZE"\n");
 	new.size = size;
 	ft_memcpy(new.buffer, buffer + HEADER_SIZE, size);
 	ft_memcpy(new.header.prog_name, buffer + 4, PROG_NAME_LENGTH);

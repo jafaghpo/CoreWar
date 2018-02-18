@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/11 14:20:31 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/13 14:28:55 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/18 18:55:47 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	parse_noargs(t_args *flags, char *str)
 	while (str[i])
 	{
 		if (!f[(int)str[i]])
-			ft_afferror("invalid argument2");
+			ft_afferror("invalid argument2\n");
 		f[(int)str[i]](flags);
 		i++;
 	}
@@ -41,7 +41,7 @@ static int	parse_args(t_args *flags, char **av, int *i)
 	int			tmp;
 
 	if (!g_f[(int)av[0][1]] || av[0][2])
-		ft_afferror("invalid argument");
+		ft_afferror("invalid argument\n");
 	tmp = g_f[(int)av[0][1]](flags, av[1], av, i);
 	return (tmp);
 }
@@ -62,7 +62,7 @@ t_pfile		*parse_flags(t_args *flags, char **av, int ac)
 			if (ft_strchr(LIST_ARGS, av[i][1]))
 			{
 				if (i + 1 >= ac)
-					ft_afferror("bad args");
+					ft_afferror("bad args\n");
 				tmp = parse_args(flags, av + i, &i);
 				i++;
 			}

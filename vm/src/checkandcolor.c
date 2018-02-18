@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 15:13:41 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/13 15:37:33 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/18 18:19:29 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,5 @@ void		check_line_theme(char *line, char *tmp, int i)
 	else
 		test = check2(line);
 	if (!test && line[0] != '#' && line[0])
-		ft_printf("l%-2d : \"%s\" ignored\n", i, tmp);
+		ft_dprintf(2, "l%-2d : \"%s\" ignored\n", i, tmp);
 }

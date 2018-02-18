@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 17:11:38 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/13 15:38:36 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/18 18:20:03 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ SDL_Surface		*get_alpha(SDL_Surface *image, Uint32 rgb)
 	(void)rgb;
 	if (!(alpha = SDL_CreateRGBSurface(0, image->w, image->h, 32, 0, 0, 0, 0)))
 	{
-		ft_printf(ERROR_CREAT_IMAGE"\n");
+		ft_dprintf(2, ERROR_CREAT_IMAGE"\n");
 		return (NULL);
 	}
 	tmp1 = image->pixels;

@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 23:51:17 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/13 16:31:50 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/18 18:22:02 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ static void	get_used(t_pfile *files, int nb_players, char *tab)
 		if (files->pos != -1)
 		{
 			if (files->pos >= nb_players || tab[files->pos])
-				ft_afferror("error pos player");
+			{
+				ft_dprintf(2, "error pos player\n");
+				exit(1);
+			}
 			tab[files->pos] = 1;
 		}
 		files = files->next;

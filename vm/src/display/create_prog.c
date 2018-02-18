@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_prog.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/18 23:06:46 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/12 14:34:42 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/18 18:19:57 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ static int	check_prog(GLuint prog)
 		glGetProgramiv(prog, GL_INFO_LOG_LENGTH, &size);
 		if (!(str = malloc(sizeof(*str) * (size + 1))))
 		{
-			ft_printf(ERROR_MALLOC);
+			ft_dprintf(2, ERROR_MALLOC);
 			return (0);
 		}
 		glGetProgramInfoLog(prog, size, &size, str);
 		str[size] = 0;
-		ft_printf("error: %s\n", str);
+		ft_dprintf(2, "error: %s\n", str);
 		free(str);
 		glDeleteProgram(prog);
 		return (0);

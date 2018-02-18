@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/09 20:49:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/14 23:53:55 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/18 18:40:26 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,15 @@ static int	init(int ac, char **av, t_pfile **files)
 {
 	if (ac < 2)
 	{
-		ft_printf("usage: %s [-d cycles -v] [[-n nbr] champ.cor] ...\n", av[0]);
+		ft_printf("usage: %s [-d dump -s [0-20000]] -b break1 [break2 ...]"
+			"-t theme -v] [-n pos] champ1 [[-n pos] champ2 ...]\n", av[0]);
 		return (0);
 	}
 	g_flags.dumps = UINT_MAX;
 	*files = parse_flags(&g_flags, av, ac);
 	if (g_flags.nb_players == 0)
 	{
-		ft_printf("error: no players\n");
+		ft_dprintf(2, "error: no players\n");
 		return (0);
 	}
 	if (!(g_champs = malloc(sizeof(*g_champs) * (g_flags.nb_players + 1))))

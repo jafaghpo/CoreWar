@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/05 22:25:25 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/15 00:01:13 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/18 18:21:57 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@ static char	*file_to_str(char *file)
 
 	if (!(buf = malloc(sizeof(*buf) * BUFF_SIZE)))
 	{
-		ft_printf(ERROR_MALLOC"\n");
+		ft_dprintf(2, ERROR_MALLOC"\n");
 		return (NULL);
 	}
 	if ((fd = open(file, O_RDONLY)) == -1)
 	{
-		ft_printf(ERROR_OPEN" : %s\n", file);
+		ft_dprintf(2, ERROR_OPEN" : %s\n", file);
 		return (NULL);
 	}
 	if ((ret = read(fd, buf, BUFF_SIZE)) == -1)
 	{
-		ft_printf(ERROR_READ"\n");
+		ft_dprintf(2, ERROR_READ"\n");
 		return (NULL);
 	}
 	if (ret == BUFF_SIZE)
@@ -52,12 +52,12 @@ static int	check_shader(GLuint shader)
 		glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &size);
 		if (!(str = malloc(sizeof(*str) * (size + 1))))
 		{
-			ft_printf(ERROR_MALLOC"\n");
+			ft_dprintf(2, ERROR_MALLOC"\n");
 			return (0);
 		}
 		glGetShaderInfoLog(shader, size, &size, str);
 		str[size] = 0;
-		ft_printf("%s\n", str);
+		ft_dprintf(2, "%s\n", str);
 		free(str);
 		return (0);
 	}
@@ -70,7 +70,7 @@ int			shader_build(GLuint *shader, GLenum type, char *file)
 
 	if (!(*shader = glCreateShader(type)))
 	{
-		ft_printf(ERROR_TYPE_SHADER"\n");
+		ft_dprintf(2, ERROR_TYPE_SHADER"\n");
 		return (0);
 	}
 	if (!(buf = file_to_str(file)))

@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 15:31:41 by niragne           #+#    #+#             */
-/*   Updated: 2018/02/13 14:23:40 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/18 18:11:07 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	fill_players(t_args *flags, t_pfile **fil, t_player **p, int *used)
 			while (used[flags->nb_players - 1 - i])
 			{
 				if (i > flags->nb_players)
-					ft_afferror(ERROR_TOO_MANY_PLAYERS);
+					ft_afferror(ERROR_TOO_MANY_PLAYERS"\n");
 				i++;
 			}
 			(*p)[flags->nb_players - 1 - i] = get_mem((*fil)->name);
@@ -56,7 +56,7 @@ static void	verif_players(t_args *flags, t_player *players)
 	while (i < flags->nb_players)
 	{
 		if (!players[i].size)
-			ft_afferror(ERROR_CHAMP_POS);
+			ft_afferror(ERROR_CHAMP_POS"\n");
 		i++;
 	}
 }
@@ -71,13 +71,13 @@ void		get_players(t_args *flags, t_pfile **files, t_player **players)
 	backup = *files;
 	ft_bzero(used, sizeof(used));
 	if (!(*players = ft_memalloc(sizeof(t_player) * flags->nb_players)))
-		ft_afferror(ERROR_MALLOC);
+		ft_afferror(ERROR_MALLOC"\n");
 	while (*files)
 	{
 		if ((*files)->pos != -1)
 		{
 			if (used[(*files)->pos - 1] == 1)
-				ft_afferror(ERROR_DUPLICATE_POS);
+				ft_afferror(ERROR_DUPLICATE_POS"\n");
 			(*players)[(*files)->pos - 1] = get_mem((*files)->name);
 			used[(*files)->pos - 1] = 1;
 		}

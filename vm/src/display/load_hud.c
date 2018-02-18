@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 18:02:16 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/16 18:02:45 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/18 18:21:11 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int		check_format(SDL_Surface *image, GLenum *form, GLenum *form_int)
 	}
 	else
 	{
-		ft_printf(ERROR_BAD_FORMAT"\n");
+		ft_dprintf(2, ERROR_BAD_FORMAT"\n");
 		return (0);
 	}
 	return (1);
@@ -103,7 +103,7 @@ GLuint			load_hud(char *file)
 
 	if (!(image = IMG_Load(file)))
 	{
-		ft_printf(ERROR_LOAD_IMAGE" : %s\n", file);
+		ft_dprintf(2, ERROR_LOAD_IMAGE" : %s\n", file);
 		return (UINT_MAX);
 	}
 	if (!check_format(image, &form, &form_int))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   end_game.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 13:12:53 by niragne           #+#    #+#             */
-/*   Updated: 2018/02/05 14:32:01 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/02/18 18:57:45 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ void		end_game(void)
 	ft_memset(str, '-', sizeof(str) - 1);
 	str[sizeof(str) - 1] = 0;
 	add_line_chat(str);
-	ft_sprintf(str, "%.20s won the game.", g_champs[pick_winner()].name);
+	if (g_flags.visu)
+		ft_sprintf(str, "%.20s won the game.", g_champs[pick_winner()].name);
+	else
+		ft_printf("%.20s won the game.", g_champs[pick_winner()].name);
 	add_line_chat(str);
 }

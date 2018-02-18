@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 11:54:03 by root              #+#    #+#             */
-/*   Updated: 2018/02/16 17:43:21 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/18 18:09:40 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static t_proc	*new_proc(t_uint32 player, t_uint32 pc)
 	t_proc		*new;
 
 	if (!(new = malloc(sizeof(*new))))
-		ft_afferror(ERROR_MALLOC);
+		ft_afferror(ERROR_MALLOC"\n");
 	new->pc = pc;
 	new->carry = 0;
 	ft_bzero(new->reg, REGNUMBER * 4);

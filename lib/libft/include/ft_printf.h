@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 15:41:22 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/16 19:41:08 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/18 18:17:34 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,12 @@ struct		s_pfflags
 };
 
 int			ft_printf(char *format, ...);
-int			ft_fprintf(int fd, char *format, ...);
+int			ft_dprintf(int fd, char *format, ...);
 int			ft_sprintf(char *str, char *format, ...);
 int			ft_snprintf(char *str, int size, char *format, ...);
 
 int			ft_vprintf(char *format, va_list arg);
-int			ft_vfprintf(int fd, char *format, va_list arg);
+int			ft_vdprintf(int fd, char *format, va_list arg);
 int			ft_vsprintf(char *str, char *format, va_list arg);
 int			ft_vsnprintf(char *str, int size, char *format, va_list arg);
 
@@ -79,9 +79,9 @@ void		pf_buff(char *str, int len);
 void		pf_putbuff(void);
 void		spf_init_buff(char *str);
 void		spf_buff(char *str, int len);
-void		fpf_init_buff(int fd);
-void		fpf_buff(char *str, int len);
-void		fpf_putbuff(void);
+void		dpf_init_buff(int fd);
+void		dpf_buff(char *str, int len);
+void		dpf_putbuff(void);
 
 int			pf_putchar(wchar_t c);
 

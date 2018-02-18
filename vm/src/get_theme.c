@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 21:44:38 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/15 00:11:57 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/18 18:54:15 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int			get_theme(t_args *flags, char *str)
 		return (0);
 	ft_sprintf(tmp, PATH"/theme/%s/%s", str, str);
 	if (!(file = ft_fopen(tmp, O_RDONLY)))
-		return (ft_printf("error open theme file\n") * 0);
+		return (ft_dprintf(2, "error open theme file\n") * 0);
 	free(tmp);
 	i = 1;
 	while (ft_getline(&tmp, file))
@@ -73,5 +73,5 @@ int			get_theme(t_args *flags, char *str)
 		free(tmp);
 		i++;
 	}
-	return (1);
+	return (-1);
 }

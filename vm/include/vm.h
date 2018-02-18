@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 18:31:33 by niragne           #+#    #+#             */
-/*   Updated: 2018/02/16 19:24:17 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/18 18:11:41 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ t_int32		get_dir(t_uint32 pc, t_inst *args, t_int8 index, t_int8 octal);
 t_int32		get_void(t_uint32 pc, t_inst *args, t_int8 index, t_int8 octal);
 void		live(t_uint32 value);
 void		put_uint32(t_uint32 x, t_uint32 i);
-t_proc		*create_proc(t_proc *p, t_int32 pc, t_int32 g_nb_cycle);
+t_proc		*create_proc(t_proc *p, t_int32 pc);
 t_int32		get_real_value(t_inst *args, t_proc *p, t_uint8 mod);
 t_int32		ft_abs(t_int32 x);
 t_uint8		check_reg(t_inst *args);
