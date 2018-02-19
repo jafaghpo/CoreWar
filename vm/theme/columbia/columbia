@@ -1,0 +1,15 @@
+background          	= theme/columbia/columbiabg.jpg
+hud background      	= theme/columbia/columbiahudbg.jpg    #ouais c'est le fond de l'hud
+hud  					= theme/hello_kitty/framewhite.png     		#ouais c'est le cadre de l'hud
+#square texture			= theme/columbia/columbiacase.jpg
+music              	= theme/columbia/columbia.mp3        				#c'est la musique mais c'est pas géré encore
+#font                  	= theme/columbia/columbia.ttf
+color empty         	= 255, 240, 175
+color player 1      	= 0, 102, 102
+color player 2      	= 204, 0, 0
+color player 3      	= 102, 51, 0
+color player 4      	= 0, 51, 102
+color numbers       	= 180, 150, 0
+color square texture	= 153, 0,   76
+color chat          	= 204, 0, 0
+color hud numbers   	= 102, 51, 0

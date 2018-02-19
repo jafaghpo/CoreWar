@@ -1,0 +1,15 @@
+background          	= theme/kids/kidsbg.jpg
+#hud background      	= theme/kids/kidshudbg.jpg    #ouais c'est le fond de l'hud
+hud  					= theme/kids/kidsframe.png     		#ouais c'est le cadre de l'hud
+#square texture			= theme/kids/kidscase.jpg
+music              	= theme/kids/kids.mp3        				#c'est la musique mais c'est pas géré encore
+font                  	= theme/kids/kids.ttf
+color empty         	= 255, 255, 255
+color player 1        	= 178, 255, 102
+color player 2        	= 233, 70,  70
+color player 3        	= 102, 255, 255
+color player 4        	= 255, 204, 255
+color numbers       	= 0, 0, 0
+color square texture	= 153, 0,   76
+color chat          	= 0, 0, 0
+color hud numbers   	= 0, 0, 0
