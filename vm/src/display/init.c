@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 15:49:53 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/14 16:35:30 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/19 16:28:58 by ggregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int		init_libs(t_sdl *sdl, t_gl *gl)
 {
-	start_music();
 	if (!init_sdl(sdl))
 		return (0);
 	if (!init_gl(gl))

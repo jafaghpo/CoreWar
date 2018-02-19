@@ -1,0 +1,15 @@
+background          	= theme/witcher/witcherbg.jpg
+hud background      	= theme/witcher/witcherhudbg.jpg    #ouais c'est le fond de l'hud
+hud  					= theme/default/frame.png     		#ouais c'est le cadre de l'hud
+#square texture			= theme/witcher/witchercase.jpg
+music              	= theme/witcher/witcher.mp3        				#c'est la musique mais c'est pas géré encore
+font                  	= theme/witcher/MORPHEUS.ttf
+color empty         	= 0, 0, 0
+color player 1      	= 102, 51, 0
+color player 2      	= 204, 0,  0
+color player 3      	= 128, 128, 128
+color player 4      	= 102, 0, 102
+color numbers       	= 192, 192, 192
+color square texture	= 153, 0,   76
+color chat          	= 255, 234,  91
+color hud numbers   	= 255, 234,  91

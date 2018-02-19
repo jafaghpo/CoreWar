@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyhook.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 15:03:53 by niragne           #+#    #+#             */
-/*   Updated: 2018/02/14 13:34:22 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/19 16:48:24 by ggregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,35 @@ static void	loop_hook(t_uint8 *key)
 	}
 }
 
+static void	manage_pause(int *start, char str[CHAT_LINE_SIZE])
+{
+	if (!g_pause)
+	{
+		ft_sprintf(str, "[%6d] Game paused by user.", g_nb_cycle);
+		add_line_chat(str);
+	}
+	else
+	{
+		if (*start == 0)
+			ft_sprintf(str, "[%6d] Game unpaused by user.", g_nb_cycle);
+		else
+		{
+			ft_sprintf(str, "[%6d] Game started by user.", g_nb_cycle);
+			start_music();
+			*start = 0;
+		}
+		add_line_chat(str);
+	}
+	g_pause = !g_pause;
+}
+
 void		*keyhook(void *av)
 {
 	t_uint8 *key;
 	char	str[CHAT_LINE_SIZE];
+	int		start;
 
+	start = 1;
 	(void)av;
 	key = (Uint8 *)SDL_GetKeyboardState(NULL);
 	while (1)
@@ -66,17 +90,7 @@ void		*keyhook(void *av)
 		loop_hook(key);
 		if (g_key == SDLK_SPACE)
 		{
-			if (!g_pause)
-			{
-				ft_sprintf(str, "[%6d] Game paused by user.", g_nb_cycle);
-				add_line_chat(str);
-			}
-			else
-			{
-				ft_sprintf(str, "[%6d] Game unpaused by user.", g_nb_cycle);
-				add_line_chat(str);
-			}
-			g_pause = !g_pause;
+			manage_pause(&start, str);
 		}
 		g_key = 0;
 	}

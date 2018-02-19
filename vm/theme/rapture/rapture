@@ -1,0 +1,15 @@
+background          	= theme/rapture/rapturebg.jpg
+hud background      	= theme/rapture/rapturehudbg.jpg    #ouais c'est le fond de l'hud
+hud  					= theme/default/frame.png     		#ouais c'est le cadre de l'hud
+#square texture			= theme/rapture/rapturecase.jpg
+music              	= theme/rapture/rapture.mp3        				#c'est la musique mais c'est pas géré encore
+font                  	= theme/rapture/rapture.ttf
+color empty         	= 0, 51, 25
+color player 1      	= 0, 102, 102
+color player 2      	= 0, 102,  51
+color player 3      	= 102, 102, 0
+color player 4      	= 0, 51, 102
+color numbers       	= 178, 255, 251
+color square texture	= 153, 0,   76
+color chat          	= 178, 255, 251
+color hud numbers   	= 178, 255, 251
