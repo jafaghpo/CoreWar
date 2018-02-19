@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 15:19:56 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/10 18:16:04 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/19 18:05:33 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,10 @@ static void	init(t_file *file)
 	}
 }
 
-static int	check_buffer(char **line, t_file *file)
+static int	check_buffer(char **line, t_file *file, int size)
 {
 	char	*tmp;
-	int		size;
 
-	size = file->len - file->i;
 	if ((tmp = ft_memchr(file->buf + file->i, '\n', size)))
 	{
 		size = tmp - file->buf - file->i;
@@ -84,12 +82,14 @@ static int	search_newline(char **line, t_file *file, int size)
 int			ft_getline(char **line, t_file *file)
 {
 	int		size;
+	int		tmp;
 
 	init(file);
 	if (file->len <= 0)
 		return (file->len);
-	if ((size = check_buffer(line, file)))
-		return (size);
+	size = file->len - file->i;
+	if ((tmp = check_buffer(line, file, size)))
+		return (tmp);
 	if (!(*line = malloc(size + 1)))
 		return (-1);
 	ft_memcpy(*line, file->buf + file->i, size);
