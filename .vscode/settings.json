@@ -20,6 +20,7 @@
 		"unordered_map": "c",
 		"utility": "c",
 		"vector": "c",
-		"__bit_reference": "c"
+		"__bit_reference": "c",
+		"visual.h": "c"
 	}
 }

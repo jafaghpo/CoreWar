@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 16:05:11 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/08 14:59:54 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/22 16:49:27 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,26 +85,32 @@ static int		parse_header(char *line, t_tab *cur, t_tab *tab, t_visual *win)
 	else if (*line == '.' && g_state < 2)
 	{
 		if (!analize_header(line, cur))
-			return (free_error((void*)cur->line));
+		{
+			free(cur->line);
+			return (0);
+		}
 		store_line(tab, cur, win);
 	}
 	else
 	{
-		free_error((void*)cur->line);
+		free(cur->line);
 		return (print_error(HEADER_LINE, line));
 	}
 	return (1);
 }
 
-int				get_header(t_tab *tab, int fd, t_visual *win)
+int				get_header(t_tab *tab, t_file *file, t_visual *win)
 {
 	t_tab	current;
 	char	*line;
+	int		ret;
 
 	g_state = 0;
 	write_magic_number();
-	while (get_next_line(fd, &line) > 0)
+	while ((ret = ft_getline(&line, file)))
 	{
+		if (ret == -1)
+			return (print_error(strerror(errno)));
 		current = (t_tab){line, g_bin.data + g_bin.i, 0};
 		ft_delspace(&line);
 		if (!parse_header(line, &current, tab, win))
@@ -112,6 +118,5 @@ int				get_header(t_tab *tab, int fd, t_visual *win)
 		if (g_state == 2)
 			return (1);
 	}
-	free(current.line);
 	return (print_error(!g_state ? NO_NAME : NO_COMMENT));
 }

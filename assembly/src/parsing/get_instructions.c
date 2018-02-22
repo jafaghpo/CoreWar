@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 21:16:35 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/08 11:55:40 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/22 16:48:54 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,28 +57,30 @@ static int	analize_line(char *line, t_label *label, t_tab *current)
 	return (1);
 }
 
-int			get_instructions(t_tab *tab, t_label *label, int fd, t_visual *win)
+int			get_inst(t_tab *tab, t_label *label, t_file *file, t_visual *win)
 {
 	t_tab	current;
 	char	*line;
 	int		ret;
 
-	while ((ret = get_next_line(fd, &line)))
+	while ((ret = ft_getline(&line, file)))
 	{
 		if (ret == -1)
 			return (print_error(strerror(errno)));
 		current = (t_tab){line, g_bin.data + g_bin.i, 0};
 		ft_delspace(&line);
-		if (!*line || *line == COMMENT_CHAR)
+		if (!*line || *line == COMMENT_CHAR || *line == '.')
 		{
 			free(current.line);
 			continue ;
 		}
 		else if (!analize_line(line, label, &current))
-			return (free_error((void*)current.line));
+		{
+			free(current.line);
+			return (0);
+		}
 		store_line(tab, &current, win);
 	}
-	ft_memdel((void**)&line);
 	if (g_lines && (g_option & VISUAL_FLAG))
 		run_visual(tab, win);
 	return (1);

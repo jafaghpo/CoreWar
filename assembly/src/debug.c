@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/16 16:26:07 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/08 11:55:19 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/19 20:59:58 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ void		debug_tab(t_tab *tab)
 	}
 }
 
-void		debug_tmplb(t_label *label)
+void		debug_tmplb(t_tmplb *label)
 {
 	t_tmplb		*tmp;
 
-	tmp = label->tmp;
+	tmp = label;
 	ft_printf("\nundefined labels:\n");
 	while (tmp)
 	{
@@ -47,11 +47,11 @@ void		debug_tmplb(t_label *label)
 	}
 }
 
-void		debug_label(t_label *label)
+void		debug_label(t_lstlb *label)
 {
 	t_lstlb		*tmp;
 
-	tmp = label->lst;
+	tmp = label;
 	ft_printf("\ndefined labels:\n");
 	while (tmp)
 	{

@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_error.c                                       :+:      :+:    :+:   */
+/*   reset_visual.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/04 17:24:41 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/04 17:26:03 by jafaghpo         ###   ########.fr       */
+/*   Created: 2018/02/19 15:46:28 by jafaghpo          #+#    #+#             */
+/*   Updated: 2018/02/19 15:47:41 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "visual.h"
 
-int			free_error(void *elem)
+void	reset_visual(t_visual *win)
 {
-	ft_memdel(&elem);
-	return (0);
+	wait_end();
+	werase(win->as);
+	werase(win->bin);
+	wprintw(win->bin, "\n\n\n\t");
+	win->cur.x = 0;
+	win->cur.y = 0;
 }

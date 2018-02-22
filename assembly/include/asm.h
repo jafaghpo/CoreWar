@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 14:38:13 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/15 20:49:03 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/22 17:07:30 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 # define NO_PARAMETER	"missing parameters\n%s"
 # define USAGE			"usage: ./asm [-wv] file ..."
-# define EXTENSION		"invalid file extension: \033[31m%s"
+# define EXTENSION		"invalid file extension: \033[31m\"%s\"\033[0m"
 # define OPTION			"illegal option -- \033[31m%c\033[0m\n%s"
 # define UNKNOWN_FILE	"\033[31m%s: \033[0m%s"
 # define NO_NAME		"missing champion name"
@@ -44,6 +44,7 @@
 # define SIZE_FLAG		0x02
 
 # define TAB_SIZE		1000
+# define BSIZE			1 << 16
 # define NAME_LEN		PROG_NAME_LENGTH
 # define COM_LEN		COMMENT_LENGTH
 # define HEADER_LEN		(NAME_LEN + COM_LEN + 16)
@@ -116,26 +117,26 @@ extern	t_buf	g_bin;
 extern	t_op	g_op[17];
 
 void		debug_inst(t_inst *inst);
-void		debug_label(t_label *label);
-void		debug_tmplb(t_label *label);
+void		debug_label(t_lstlb *label);
+void		debug_tmplb(t_tmplb *label);
 void		debug_tab(t_tab *tab);
 
 int			print_error(const char *msg, ...);
-int			free_error(void *elem);
 char		*get_name(char *file);
 int			fill_binary(char *name);
 int			word_equal(char *s1, char *s2);
 int			word_len(char *str);
 
 int			parse_file(char *name, t_visual *win, t_tab *tab);
-int			get_header(t_tab *tab, int fd, t_visual *win);
-int			get_instructions(t_tab *tab, t_label *label, int fd, t_visual *win);
+int			get_header(t_tab *tab, t_file *file, t_visual *win);
+int			get_inst(t_tab *tab, t_label *label, t_file *file,
+														t_visual *win);
 int			store_line(t_tab *tab, t_tab *current, t_visual *win);
 int			parse_arguments(char *line, t_label *label, t_inst *inst);
 void		store_argument(t_inst *inst, int n, int size);
 int			get_opcode(char *line, int *op);
 int			add_instruction(t_inst *inst);
-int			get_next_arg(char **str);
+void		get_next_arg(char **str);
 
 int			valid_label(char *str);
 int			check_labels(t_label *label);

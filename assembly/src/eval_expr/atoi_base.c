@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/09 17:00:30 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/02 20:37:16 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/22 18:37:04 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,7 @@ static int	get_base(char *str, t_token *token)
 		token->cursor += 2;
 		return (2);
 	}
-	else
-		return (10);
-	return (-1);
+	return (10);
 }
 
 static int	get_nb(char c)

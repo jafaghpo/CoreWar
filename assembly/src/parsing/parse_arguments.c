@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 01:11:56 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/16 16:21:18 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/22 18:36:58 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,27 @@
 
 static int	get_register(char **line, t_inst *inst)
 {
+	char	*str;
 	int		reg;
+	int		i;
 
 	reg = 0;
-	(*line)++;
+	i = 1;
+	str = *line;
 	if (g_op[inst->data[0]].octal)
 		inst->data[1] |= REG_CODE << (6 - 2 * inst->args);
-	while (ft_isdigit(**line))
+	while (ft_isdigit(str[i]))
 	{
-		reg = reg * 10 + **line - '0';
-		(*line)++;
+		reg = reg * 10 + str[i] - '0';
+		i++;
 	}
-	if (**line != ' ' && **line != '\t' && **line != SEPARATOR_CHAR && **line)
+	if ((str[i] != ' ' && str[i] != '\t' && str[i] != SEPARATOR_CHAR && str[i])
+												|| reg > REG_NUMBER || reg < 1)
+	{
+		print_error(REGISTER_ARG, str);
+		str += i;
 		return (0);
-	if (reg > REG_NUMBER || reg < 1)
-		return (0);
+	}
 	inst->data[inst->size++] = (char)reg;
 	return (1);
 }
@@ -74,7 +80,7 @@ static int	get_indirect(char **line, t_label *label, t_inst *inst)
 		tmp = (t_tmplb){*line, inst->size, 1, 0, 0};
 		label->tmp = add_tmp_label(label->tmp, tmp);
 		inst->size += 2;
-		return (0);
+		return (1);
 	}
 	store_argument(inst, n, 1);
 	return (1);
@@ -88,7 +94,7 @@ int			parse_arguments(char *line, t_label *label, t_inst *inst)
 		{
 			if (!(g_op[(int)inst->data[0]].args[inst->args] & T_REG)
 			|| !get_register(&line, inst))
-				return (print_error(REGISTER_ARG, line));
+				return (0);
 		}
 		else if (*line == DIRECT_CHAR)
 		{
@@ -102,8 +108,7 @@ int			parse_arguments(char *line, t_label *label, t_inst *inst)
 			|| !get_indirect(&line, label, inst))
 				return (print_error(INDIRECT_ARG, line));
 		}
-		if (!get_next_arg(&line))
-			return (print_error(NO_SEPARATOR, line));
+		get_next_arg(&line);
 		inst->args++;
 	}
 	return (1);

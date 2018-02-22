@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 18:03:45 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/04 17:02:27 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/19 18:01:04 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,7 @@ int				fill_binary(char *name)
 		if (g_bin.i - HEADER_LEN > CHAMP_MAX_SIZE)
 			ft_printf(MAX_SIZE, RED, RES, CHAMP_MAX_SIZE);
 	}
-	ft_bzero((void*)g_bin.data, (size_t)g_bin.i);
-	g_bin.i = 0;
 	close(fd);
-	free(name);
 	if (!(g_option & VISUAL_FLAG))
 		ft_printf("Compilation done in %s\n", name);
 	return (1);

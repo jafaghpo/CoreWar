@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   visual_error.c                                     :+:      :+:    :+:   */
+/*   wait_end.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/29 16:07:32 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/30 13:03:14 by jafaghpo         ###   ########.fr       */
+/*   Created: 2018/02/19 15:53:02 by jafaghpo          #+#    #+#             */
+/*   Updated: 2018/02/19 15:53:15 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visual.h"
 
-void		visual_error(int *option)
+void		wait_end(void)
 {
-	dprintf(2, ERROR_VISUAL);
-	dprintf(2, "\n");
-	*option &= ~(VISUAL_FLAG);
+	int		key;
+
+	key = 0;
+	while (key != 27)
+	{
+		key = getch();
+		if (key == ' ')
+			return ;
+	}
+	endwin();
+	exit(1);
 }

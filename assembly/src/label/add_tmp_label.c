@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/14 19:19:00 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/02 16:53:28 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/22 15:29:09 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static char	*duplicate_tmp_label(char *name, int size)
 	char	*new;
 	int		i;
 
-	if (!(new = malloc(sizeof(*new) * size)))
+	if (!(new = malloc(sizeof(*new) * (size + 1))))
 	{
 		print_error(strerror(errno));
 		return (NULL);

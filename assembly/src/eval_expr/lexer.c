@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/06 18:56:54 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/16 18:19:23 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/22 18:12:40 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,14 @@
 
 static int	compare_label(char *s1, char *s2, int i)
 {
-	while (s1[i] == *s2 && s1[i] && *s2
-		&& s1[i] != SEPARATOR_CHAR && *s2 != LABEL_CHAR)
+	while (s1[i] == *s2 && s1[i] && *s2 && ft_strchr(LABEL_CHARS, s1[i]))
 	{
 		i++;
 		s2++;
 	}
-	if (s1[i] == ' ' || s1[i] == '\t' || s1[i] == SEPARATOR_CHAR || !s1[i])
-	{
-		if (*s2 == ' ' || *s2 == '\t' || *s2 == LABEL_CHAR || !*s2)
-			return (i);
-	}
+	if ((s1[i] == ' ' || s1[i] == '\t' || s1[i] == SEPARATOR_CHAR || !s1[i]
+	|| !ft_strchr(LABEL_CHARS, s1[i])) && !*s2)
+		return (i);
 	return (0);
 }
 
