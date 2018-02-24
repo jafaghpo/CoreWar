@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/06 18:56:54 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/22 18:12:40 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/24 17:31:33 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,13 @@ static void	label_value(char *expr, t_token *t, t_heap *s, t_label *labels)
 {
 	int		nb;
 
-	if (t->next == operator)
+	if (t->next == OPERATOR)
 		t->error = 1;
 	else
 	{
 		nb = islabel(labels, expr, t);
-		push_token(nb, t, &s->nb, number);
-		t->next = operator;
+		push_token(nb, t, &s->nb, NUMBER);
+		t->next = OPERATOR;
 	}
 }
 
@@ -88,8 +88,8 @@ int			lexer(char *expr, t_token *token, t_heap *stack, t_label *labels)
 			return (0);
 		token->cursor++;
 	}
-	if (token->bracket || token->next != operator)
+	if (token->bracket || token->next != OPERATOR)
 		token->error = 1;
-	eval_stack(expr, token, stack, final);
+	eval_stack(expr, token, stack, FINAL);
 	return (stack->nb->token);
 }

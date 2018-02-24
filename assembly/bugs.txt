@@ -1,5 +1,6 @@
 - pas de gestion des commentaires / noms sur plusieurs lignes (ultima / Explosive kitty)		[NOT FIXED]
-- pas de gestion des caracteres speciaux (\n, \t)												[NOT FIXED]
+- le visuel quitte quand il y a une erreur														[NOT FIXED]
+
 - probleme de parsing du nom de label quand l'expression est à la suite. (ex: ":debut+400")		[FIXED]
 - 1 leak à la fin de la compilation du champion. 												[FIXED]
 - ft_getline pas encore implementé																[FIXED]

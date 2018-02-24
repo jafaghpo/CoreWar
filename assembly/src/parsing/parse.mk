@@ -6,13 +6,13 @@
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/03 22:39:09 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/02/08 14:55:32 by jafaghpo         ###   ########.fr        #
+#    Updated: 2018/02/24 17:03:34 by jafaghpo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS_PARSE			=	parse_file.c get_header.c get_instructions.c store_line.c \
 						parse_arguments.c store_argument.c get_opcode.c \
-						add_instruction.c get_next_arg.c
+						add_instruction.c get_next_arg.c word_equal.c
 
 SRC_PARSE			=	$(addprefix $(SRC_PARSE_PATH)/, $(SRCS_PARSE))
 

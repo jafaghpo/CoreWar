@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/16 18:10:12 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/14 21:34:32 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/24 17:40:25 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,27 @@ typedef struct s_label	t_label;
 
 enum	e_flag
 {
-	inferior_op,
-	closed_bracket,
-	final
+	INFERIOR_OP,
+	CLOSED_BRACKET,
+	FINAL
 };
 
 enum	e_next
 {
-	operand,
-	operator
+	OPERAND,
+	OPERATOR
 };
 
 enum	e_type
 {
-	invalid,
-	whitespace,
-	number,
-	label,
-	bracket,
-	low_op,
-	high_op,
-	delimiter
+	INVALID,
+	WHITESPACE,
+	NUMBER,
+	LABEL,
+	BRACKET,
+	LOW_OP,
+	HIGH_OP,
+	DELIMITER
 };
 
 struct	s_stack
@@ -73,7 +73,6 @@ struct	s_token
 };
 
 int		eval_expr(char *expr, t_label *labels, int *error, int size);
-
 int		lexer(char *expr, t_token *token, t_heap *stack, t_label *labels);
 
 void	eval_number(char *expr, t_token *token, t_heap *stack);

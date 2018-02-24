@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   duplicate_label.c                                  :+:      :+:    :+:   */
+/*   delete_label.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/12 16:32:09 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/22 15:29:00 by jafaghpo         ###   ########.fr       */
+/*   Created: 2018/02/24 17:11:27 by jafaghpo          #+#    #+#             */
+/*   Updated: 2018/02/24 17:11:36 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-char		*duplicate_label(char *name, int size)
+void		delete_label(t_label *label)
 {
-	char	*new;
-	int		i;
+	t_tmplb		*tmp;
+	t_lstlb		*lst;
 
-	if (!(new = malloc(sizeof(*new) * (size + 1))))
+	while (label->lst)
 	{
-		print_error(strerror(errno));
-		return (NULL);
+		lst = label->lst->next;
+		free(label->lst->name);
+		free(label->lst);
+		label->lst = lst;
 	}
-	i = 0;
-	while (name[i] != LABEL_CHAR)
+	while (label->tmp)
 	{
-		new[i] = name[i];
-		i++;
+		tmp = label->tmp->next;
+		free(label->tmp->name);
+		free(label->tmp);
+		label->tmp = tmp;
 	}
-	new[i] = 0;
-	return (new);
 }

@@ -21,6 +21,7 @@
 		"utility": "c",
 		"vector": "c",
 		"__bit_reference": "c",
-		"visual.h": "c"
+		"visual.h": "c",
+		"asm.h": "c"
 	}
 }

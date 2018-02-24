@@ -6,21 +6,21 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 17:48:21 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/22 17:48:22 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/24 17:39:25 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "eval_expr.h"
 
-static void		init_next(t_type *type)
+static void		init_type_next(t_type *type)
 {
-	type['&'] = low_op;
-	type['|'] = low_op;
-	type['^'] = low_op;
-	type['<'] = low_op;
-	type['>'] = low_op;
-	type['%'] = high_op;
-	type[LABEL_CHAR] = label;
+	type['&'] = LOW_OP;
+	type['|'] = LOW_OP;
+	type['^'] = LOW_OP;
+	type['<'] = LOW_OP;
+	type['>'] = LOW_OP;
+	type['%'] = HIGH_OP;
+	type[LABEL_CHAR] = LABEL;
 }
 
 static void		init_type(t_type *type)
@@ -29,25 +29,25 @@ static void		init_type(t_type *type)
 
 	i = -1;
 	while (++i < 256)
-		type[i] = invalid;
+		type[i] = INVALID;
 	i = '0' - 1;
 	while (++i <= '9')
-		type[i] = number;
+		type[i] = NUMBER;
 	i = 'a' - 1;
 	while (++i <= 'f')
-		type[i] = number;
+		type[i] = NUMBER;
 	i = 'A' - 1;
 	while (++i <= 'F')
-		type[i] = number;
-	type[' '] = whitespace;
-	type['\t'] = whitespace;
-	type['+'] = low_op;
-	type['-'] = low_op;
-	type['*'] = high_op;
-	type['/'] = high_op;
-	type['('] = bracket;
-	type[')'] = bracket;
-	init_next(type);
+		type[i] = NUMBER;
+	type[' '] = WHITESPACE;
+	type['\t'] = WHITESPACE;
+	type['+'] = LOW_OP;
+	type['-'] = LOW_OP;
+	type['*'] = HIGH_OP;
+	type['/'] = HIGH_OP;
+	type['('] = BRACKET;
+	type[')'] = BRACKET;
+	init_type_next(type);
 }
 
 static t_stack	*init_stack(int *error)
@@ -61,7 +61,7 @@ static t_stack	*init_stack(int *error)
 		return (NULL);
 	}
 	stack->token = 0;
-	stack->rank = delimiter;
+	stack->rank = DELIMITER;
 	stack->next = NULL;
 	return (stack);
 }
@@ -93,7 +93,7 @@ int				eval_expr(char *expr, t_label *labels, int *error, int size)
 
 	if (type[0] == 1)
 		init_type(type);
-	token = (t_token){type, operand, 0, 0, 1, 0, size};
+	token = (t_token){type, OPERAND, 0, 0, 1, 0, size};
 	stack = (t_heap){init_stack(error), init_stack(error)};
 	result = lexer(expr, &token, &stack, labels);
 	free_stack(&stack);

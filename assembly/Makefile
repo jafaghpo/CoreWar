@@ -6,7 +6,7 @@
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/02/08 14:55:05 by jafaghpo         ###   ########.fr        #
+#    Updated: 2018/02/24 16:54:29 by jafaghpo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,8 @@ include $(SRC_VISUAL_PATH)/visual.mk
 
 INCL_PATH			=	include
 OP_INC_PATH			=	../include
-INCL				=	$(INCL_PATH)/asm.h $(OP_INC_PATH)/op.h $(INCL_PATH)/eval_expr.h $(INCL_PATH)/visual.h
+INCL				=	$(INCL_PATH)/asm.h $(OP_INC_PATH)/op.h $(INCL_PATH)/eval_expr.h \
+						$(INCL_PATH)/visual.h $(INCL_PATH)/msg.h
 
 LIBFT_PATH			=	$(LIB_PATH)/libft
 LIBFT				=	$(LIBFT_PATH)/libft.a
