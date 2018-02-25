@@ -6,11 +6,13 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 17:19:42 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/24 17:43:29 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/25 15:10:22 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+int			g_option = 0;
 
 void		get_options(char **av, t_visual *win, t_tab **tab)
 {

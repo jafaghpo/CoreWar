@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 21:50:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/15 20:52:56 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/25 15:21:54 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static int		parse_inst(t_dfile *file)
 	while (file->cursor < file->prog_size)
 	{
 		opcode = file->prog[file->cursor];
-		if (opcode > 0 && opcode < 17)
+		if (opcode > 0 && opcode < OP_NB)
 			display_inst(file, opcode);
 		else
 			return (print_error(ERROR_INST));

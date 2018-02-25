@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run_visual.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 22:09:40 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/14 22:17:54 by iburel           ###   ########.fr       */
+/*   Updated: 2018/02/25 18:16:27 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,8 @@ void			run_visual(t_tab *tab, t_visual *win)
 		run = wait_event(win);
 		if (run)
 		{
+			mvprintw(1, ((COLS / 2) - 8) / 2, "Asm file");
+			mvprintw(1, ((COLS / 2) - 11) / 2 + (COLS / 2), "Binary file");
 			display_asm(tab, win, line);
 			display_bin(tab, win, line);
 			wrefresh(win->as);

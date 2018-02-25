@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 18:44:08 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/08 11:57:06 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/25 18:16:09 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,6 @@ static void		create_window(t_visual *win)
 	mvprintw(LINES / 2, (COLS - 33) / 2, AUTO_MODE);
 	mvprintw(LINES / 2 + 1, (COLS - 34) / 2, STEP_MODE);
 	win->delay = select_mode();
-	mvprintw(1, ((COLS / 2) - 8) / 2, "Asm file");
-	mvprintw(1, ((COLS / 2) - 11) / 2 + (COLS / 2), "Binary file");
 	attroff(COLOR_PAIR(NC_GREEN));
 	wprintw(win->bin, "\n\n\n\t");
 	box(win->as, ACS_VLINE, ACS_HLINE);

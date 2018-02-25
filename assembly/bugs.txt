@@ -1,7 +1,1 @@
-- pas de gestion des commentaires / noms sur plusieurs lignes (ultima / Explosive kitty)		[NOT FIXED]
-- le visuel quitte quand il y a une erreur														[NOT FIXED]
-
-- probleme de parsing du nom de label quand l'expression est à la suite. (ex: ":debut+400")		[FIXED]
-- 1 leak à la fin de la compilation du champion. 												[FIXED]
-- ft_getline pas encore implementé																[FIXED]
-- probleme de liste dans le nom sur sam_2.0.cor => "pointer been freed was not allocated"		[FIXED]
+- pas de gestion des commentaires / noms sur plusieurs lignes (ultima / Explosive kitty)

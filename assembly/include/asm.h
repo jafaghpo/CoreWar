@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 14:38:13 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/24 17:43:36 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/25 17:56:26 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 
 # define TAB_SIZE		1000
 # define BSIZE			1 << 16
+# define ERROR_SIZE		100
 # define NAME_LEN		PROG_NAME_LENGTH
 # define COM_LEN		COMMENT_LENGTH
 # define HEADER_LEN		(NAME_LEN + COM_LEN + 16)
@@ -52,6 +53,7 @@ typedef struct s_lstlb	t_lstlb;
 typedef struct s_label	t_label;
 typedef struct s_inst	t_inst;
 typedef struct s_visual	t_visual;
+typedef struct s_error	t_error;
 
 struct		s_tab
 {
@@ -96,10 +98,17 @@ struct		s_inst
 	int		args;
 };
 
+struct		s_error
+{
+	char	data[ERROR_SIZE];
+	va_list	ap;
+};
+
 extern	int		g_lines;
 extern	int		g_option;
+extern	t_op	g_op[OP_NB];
 extern	t_buf	g_bin;
-extern	t_op	g_op[17];
+extern	char	g_error[ERROR_SIZE];
 
 void		debug_inst(t_inst *inst);
 void		debug_label(t_lstlb *label);
@@ -110,6 +119,7 @@ int			print_error(const char *msg, ...);
 char		*get_name(char *file);
 int			fill_binary(char *name);
 void		get_options(char **av, t_visual *win, t_tab **tab);
+void		reset_bin_buffer(void);
 
 int			parse_file(char *name, t_visual *win, t_tab *tab);
 int			get_header(t_tab *tab, t_file *file, t_visual *win);

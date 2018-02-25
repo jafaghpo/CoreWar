@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 17:54:54 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/24 17:12:33 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/25 17:56:34 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 t_buf			g_bin = {NULL, BUFF_SIZE, 0};
 int				g_lines = 0;
+char			g_error[ERROR_SIZE];
 
 int				parse_file(char *name, t_visual *win, t_tab *tab)
 {
@@ -22,6 +23,7 @@ int				parse_file(char *name, t_visual *win, t_tab *tab)
 
 	if (!(g_option & VISUAL_FLAG))
 		ft_printf(COMPILATION_START, name);
+	ft_bzero((void*)g_error, ERROR_SIZE);
 	if (!(file = ft_fopen(name, O_RDONLY)))
 		return (print_error(UNKNOWN_FILE, name, strerror(errno)));
 	ft_bzero((void*)&label, (size_t)sizeof(label));

@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 16:26:33 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/19 16:17:10 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/25 17:56:19 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@ int			print_error(const char *msg, ...)
 {
 	va_list	ap;
 
-	if (g_option & VISUAL_FLAG)
-	{
-		g_option &= ~(VISUAL_FLAG);
-		endwin();
-	}
 	va_start(ap, msg);
-	dprintf(2, "asm: ");
-	vdprintf(2, msg, ap);
-	dprintf(2, "\n");
-	va_end(ap);
+	if (g_option & VISUAL_FLAG)
+		ft_vsprintf(g_error, (char*)msg, ap);
+	else
+	{
+		ft_dprintf(2, "asm: ");
+		ft_vdprintf(2, (char*)msg, ap);
+		ft_dprintf(2, "\n");
+		va_end(ap);
+	}
 	return (0);
 }
