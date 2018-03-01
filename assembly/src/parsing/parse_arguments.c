@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 01:11:56 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/22 18:36:58 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/01 19:53:10 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,18 @@ static int	get_register(char **line, t_inst *inst)
 	int		i;
 
 	reg = 0;
-	i = 1;
+	i = 0;
 	str = *line;
 	if (g_op[inst->data[0]].octal)
 		inst->data[1] |= REG_CODE << (6 - 2 * inst->args);
-	while (ft_isdigit(str[i]))
-	{
+	while (ft_isdigit(str[++i]))
 		reg = reg * 10 + str[i] - '0';
-		i++;
-	}
-	if ((str[i] != ' ' && str[i] != '\t' && str[i] != SEPARATOR_CHAR && str[i])
-												|| reg > REG_NUMBER || reg < 1)
-	{
-		print_error(REGISTER_ARG, str);
-		str += i;
+	str += i;
+	ft_delspace(&str);
+	if (reg > REG_NUMBER || reg < 1)
 		return (0);
-	}
+	if ((*str != SEPARATOR_CHAR && *str != COMMENT_CHAR) && *str)
+		return (0);
 	inst->data[inst->size++] = (char)reg;
 	return (1);
 }
@@ -94,7 +90,7 @@ int			parse_arguments(char *line, t_label *label, t_inst *inst)
 		{
 			if (!(g_op[(int)inst->data[0]].args[inst->args] & T_REG)
 			|| !get_register(&line, inst))
-				return (0);
+				return (print_error(REGISTER_ARG, line));
 		}
 		else if (*line == DIRECT_CHAR)
 		{

@@ -6,15 +6,11 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 17:54:54 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/25 17:56:34 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/01 20:07:21 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-
-t_buf			g_bin = {NULL, BUFF_SIZE, 0};
-int				g_lines = 0;
-char			g_error[ERROR_SIZE];
 
 int				parse_file(char *name, t_visual *win, t_tab *tab)
 {

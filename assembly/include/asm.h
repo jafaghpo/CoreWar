@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 14:38:13 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/25 17:56:26 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/02/28 17:20:56 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 
 # define TAB_SIZE		1000
 # define BSIZE			1 << 16
-# define ERROR_SIZE		100
+# define ERROR_SIZE		1000
 # define NAME_LEN		PROG_NAME_LENGTH
 # define COM_LEN		COMMENT_LENGTH
 # define HEADER_LEN		(NAME_LEN + COM_LEN + 16)

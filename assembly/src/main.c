@@ -6,11 +6,15 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/29 15:19:44 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/25 17:14:55 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/01 20:09:15 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+t_buf			g_bin = {NULL, BUFF_SIZE, 0};
+int				g_lines = 0;
+char			g_error[ERROR_SIZE];
 
 int				main(int ac, char **av)
 {
@@ -36,7 +40,7 @@ int				main(int ac, char **av)
 		}
 		i++;
 	}
-	free(g_bin.data);
+	ft_memdel((void**)&g_bin.data);
 	if (g_option & VISUAL_FLAG)
 		delete_visual(&win, tab);
 }
