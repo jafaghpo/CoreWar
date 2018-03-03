@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 18:44:08 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/25 18:16:09 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/03 16:41:40 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static void		setup_color(void)
 	init_pair(NC_YELLOW, COLOR_YELLOW, COLOR_BLACK);
 	init_pair(NC_BLUE, COLOR_BLUE, COLOR_BLACK);
 	init_pair(NC_RED, COLOR_RED, COLOR_BLACK);
+	init_pair(NC_WHITE, COLOR_WHITE, COLOR_BLACK);
 }
 
 static t_size	get_win_size(void)
@@ -78,6 +79,7 @@ int				setup_visual(t_visual *win, t_tab **tab)
 	win->as = subwin(stdscr, LINES - 2, (COLS / 2), 2, 0);
 	win->bin = subwin(stdscr, LINES - 2, (COLS / 2), 2, (COLS / 2));
 	create_window(win);
+	attron(COLOR_PAIR(NC_WHITE));
 	if (win->delay)
 		halfdelay(1);
 	if (!(*tab = ft_memalloc(sizeof(**tab) * win->size.y)))

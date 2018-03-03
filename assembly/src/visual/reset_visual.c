@@ -6,12 +6,11 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 15:46:28 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/28 17:16:38 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/03 19:07:06 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visual.h"
-
 
 void		reset_visual(t_visual *win, char *name)
 {

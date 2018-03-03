@@ -6,7 +6,7 @@
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/28 22:30:15 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/03/01 17:00:24 by jafaghpo         ###   ########.fr        #
+#    Updated: 2018/03/03 22:08:21 by jafaghpo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,16 +32,26 @@ BG_BLUE="\033[44m";
 
 echo "$HIGH$GREEN--- Welcome to disas_tester ---$EOC"
 
+echo "$HIGH$YELLOW\n> Compiling my_champs assembly files:$EOC"
+for i in $CORE_PATH/$TEST_DIR/my_champs/*.s
+do $CORE_PATH/$TEST_DIR/asm $i;
+done;
+
+echo "$HIGH$YELLOW\n> Compiling true_champs assembly files:$EOC"
+for i in $CORE_PATH/$TEST_DIR/true_champs/*.s
+do $CORE_PATH/$TEST_DIR/asm $i;
+done;
+
 echo "$HIGH$YELLOW\n> Disassembling my_champs binary files:$EOC"
-$CORE_PATH/disas $CORE_PATH/$TEST_DIR/my_champs/*.cor 2>/dev/null;
+$CORE_PATH/disas $CORE_PATH/$TEST_DIR/my_champs/*.cor;
 
 echo "$HIGH$YELLOW\n> Reompiling my_champs assembly files:$EOC"
 for i in $CORE_PATH/$TEST_DIR/my_champs/*.s
-do $CORE_PATH/$TEST_DIR/asm $i 2>/dev/null;
+do $CORE_PATH/$TEST_DIR/asm $i;
 done;
 
-rm $CORE_PATH/$TEST_DIR/my_champs/*.s
 rm $CORE_PATH/$TEST_DIR/true_champs/*.s
+rm $CORE_PATH/$TEST_DIR/my_champs/*.s
 
 echo "$HIGH$YELLOW\n> Comparing folders:$EOC"
 diff $CORE_PATH/$TEST_DIR/true_champs $CORE_PATH/$TEST_DIR/my_champs;
@@ -49,5 +59,4 @@ if [[ $? -eq 0 ]]; then
 	echo "There is no differences"
 fi;
 
-echo $EOC;
 echo "done."

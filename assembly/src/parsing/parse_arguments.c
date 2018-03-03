@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 01:11:56 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/01 19:53:10 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/03 15:59:36 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	get_direct(char **line, t_label *label, t_inst *inst)
 	{
 		tmp = (t_tmplb){*line, inst->size, g_op[inst->data[0]].size, 0, 0};
 		label->tmp = add_tmp_label(label->tmp, tmp);
-		inst->size += 2 + (!g_op[inst->data[0]].size);
+		inst->size += 2 + 2 * (!g_op[inst->data[0]].size);
 		return (1);
 	}
 	store_argument(inst, n, g_op[inst->data[0]].size);

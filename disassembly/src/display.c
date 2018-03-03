@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/24 15:44:57 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/15 20:52:31 by iburel           ###   ########.fr       */
+/*   Updated: 2018/03/03 22:20:23 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void			display_header(t_dfile *file)
 	}
 	if (file->win.flag)
 		wprintw(file->win.as, "\t");
-	display_string(file, ".comment \"%s\"\n\n", (char*)file->prog + MAGIC_SIZE);
+	display_string(file, ".comment \"%s\"\n\n", (char*)file->prog + NAME_SIZE);
 	if (file->win.flag)
 	{
 		win_key_hook(file);

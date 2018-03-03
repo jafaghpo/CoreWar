@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 17:54:54 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/01 20:07:21 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/02 16:28:24 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int				parse_file(char *name, t_visual *win, t_tab *tab)
 	ft_bzero((void*)&label, (size_t)sizeof(label));
 	if (!g_bin.data && !(g_bin.data = ft_memalloc(sizeof(*g_bin.data) * BSIZE)))
 		return (print_error(strerror(errno)));
-	if (!get_header(tab, file, win) || !get_inst(tab, &label, file, win) ||
-		!check_labels(&label))
+	if (!get_prog_name(tab, file, win) || !get_prog_comment(tab, file, win)
+	|| !get_inst(tab, &label, file, win) || !check_labels(&label))
 	{
 		delete_label(&label);
 		free(file);

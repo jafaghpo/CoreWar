@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 22:09:40 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/25 18:16:27 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/03 17:01:35 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ static void		display_asm(t_tab *tab, t_visual *win, int line)
 	i = 0;
 	werase(win->as);
 	wprintw(win->as, "\n\n\n\t");
-	wattron(win->as, COLOR_PAIR(NC_BLACK) | A_BOLD);
 	while (i < g_lines)
 	{
 		if (i == line)

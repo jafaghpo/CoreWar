@@ -6,7 +6,7 @@
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/28 22:30:09 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/03/01 16:32:05 by jafaghpo         ###   ########.fr        #
+#    Updated: 2018/03/02 18:31:18 by jafaghpo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,4 +41,5 @@ cd -
 mkdir -p $CORE_PATH/$TEST_DIR/true_champs
 mkdir -p $CORE_PATH/$TEST_DIR/true_champs
 cp $CORE_PATH/$TEST_DIR/champs/**/**/**/*.s tests/true_champs/.
+cp $CORE_PATH/$TEST_DIR/champs/*.s tests/true_champs/.
 cp -R $CORE_PATH/$TEST_DIR/true_champs tests/my_champs

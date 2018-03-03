@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 21:16:35 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/01 18:36:00 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/03 18:10:44 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ static int	analize_line(char *line, t_label *label, t_tab *current)
 	else if (label_size)
 	{
 		label->lst = add_label(label->lst, line, label_size);
+		if (!label->lst)
+			return (0);
 		line += label_size + 1;
 		ft_delspace(&line);
 		return (parse_instruction(line, label, current));

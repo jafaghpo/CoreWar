@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 16:26:33 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/28 17:22:13 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/03 18:48:27 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ int			print_error(const char *msg, ...)
 	else
 	{
 		ft_dprintf(2, "asm: ");
+		ft_dprintf(2, RED);
 		ft_vdprintf(2, (char*)msg, ap);
 		ft_dprintf(2, "\n");
+		ft_dprintf(2, RES);
 		va_end(ap);
 	}
 	return (0);

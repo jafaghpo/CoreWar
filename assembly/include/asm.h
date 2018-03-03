@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 14:38:13 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/28 17:20:56 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/03 18:42:08 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,8 @@ void		get_options(char **av, t_visual *win, t_tab **tab);
 void		reset_bin_buffer(void);
 
 int			parse_file(char *name, t_visual *win, t_tab *tab);
-int			get_header(t_tab *tab, t_file *file, t_visual *win);
+int			get_prog_name(t_tab *tab, t_file *file, t_visual *win);
+int			get_prog_comment(t_tab *tab, t_file *file, t_visual *win);
 int			get_inst(t_tab *tab, t_label *label, t_file *file, t_visual *win);
 int			store_line(t_tab *tab, t_tab *current, t_visual *win);
 int			parse_arguments(char *line, t_label *label, t_inst *inst);

@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:03:21 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/25 17:36:16 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/03 16:40:42 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define NC_YELLOW		2
 # define NC_BLUE		3
 # define NC_RED			4
+# define NC_WHITE		5
 
 # define AUTO_MODE		"Automatic mode: [press enter key]"
 # define STEP_MODE		"Step by step mode: [press any key]"
