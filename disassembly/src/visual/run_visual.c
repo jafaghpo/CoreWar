@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 22:09:40 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/08 20:37:03 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/08 21:55:38 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void			run_visual(t_tab *tab, t_visual *win)
 		if (run)
 		{
 			mvprintw(1, ((COLS / 2) - 11) / 2, "Binary file");
-			mvprintw(1, ((COLS / 2) - 8) / 2 + (COLS / 2), "Asm file");			
+			mvprintw(1, ((COLS / 2) - 8) / 2 + (COLS / 2), "Asm file");
 			display_asm(tab, win, line);
 			display_bin(tab, win, line);
 			box(win->as, ACS_VLINE, ACS_HLINE);

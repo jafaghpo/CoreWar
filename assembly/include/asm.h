@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 14:38:13 by iburel            #+#    #+#             */
-/*   Updated: 2018/03/08 21:47:36 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/08 21:54:03 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include "op.h"
 # include "eval_expr.h"
 # include "visual.h"
-# include "msg.h"
 
 /*
 **	-- Colors --
