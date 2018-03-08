@@ -6,12 +6,12 @@
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/03 23:04:30 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/02/25 16:55:55 by jafaghpo         ###   ########.fr        #
+#    Updated: 2018/03/08 21:35:27 by jafaghpo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS_GEN			=	get_name.c op.c print_error.c fill_binary.c get_options.c \
-						reset_bin_buffer.c
+SRCS_GEN			=	get_path.c op.c print_error.c fill_binary.c check_argv.c \
+						reset_buffer.c
 
 SRC_GEN				=	$(addprefix $(SRC_GEN_PATH)/, $(SRCS_GEN))
 

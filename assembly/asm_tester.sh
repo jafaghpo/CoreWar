@@ -6,7 +6,7 @@
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/28 15:37:51 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/03/02 16:37:00 by jafaghpo         ###   ########.fr        #
+#    Updated: 2018/03/08 19:19:19 by jafaghpo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,8 @@
 
 CORE_PATH=/Users/jafaghpo/Projects/Corewar
 TEST_DIR=tests
+MY_DIR=my_champs
+REAL_DIR=real_champs
 
 #====== Colors ======#
 
@@ -32,16 +34,19 @@ BG_BLUE="\033[44m";
 
 echo "$HIGH$GREEN--- Welcome to asm_tester ---$EOC"
 
-echo "$HIGH$YELLOW\n> Compiling true_champs assembly files:$EOC"
-for i in $CORE_PATH/$TEST_DIR/true_champs/*.s
+echo "$HIGH$YELLOW\n> Compiling real assembly files:$EOC"
+for i in $CORE_PATH/$TEST_DIR/$REAL_DIR/*.s
 do $CORE_PATH/$TEST_DIR/asm $i;
 done;
 
-echo "$HIGH$YELLOW\n> Compiling my_champs assembly files:$EOC"
-$CORE_PATH/asm $CORE_PATH/$TEST_DIR/my_champs/*.s;
+echo "$HIGH$YELLOW\n> Compiling my assembly files:$EOC"
+$CORE_PATH/asm $CORE_PATH/$TEST_DIR/$MY_DIR/*.s;
+
+rm $CORE_PATH/$TEST_DIR/$MY_DIR/*.cor
+rm $CORE_PATH/$TEST_DIR/$REAL_DIR/*.cor
 
 echo "$HIGH$YELLOW\n> Comparing folders:$EOC"
-diff $CORE_PATH/$TEST_DIR/true_champs $CORE_PATH/$TEST_DIR/my_champs;
+diff $CORE_PATH/$TEST_DIR/$REAL_DIR $CORE_PATH/$TEST_DIR/$MY_DIR;
 if [[ $? -eq 0 ]]; then
 	echo "There is no differences"
 fi;

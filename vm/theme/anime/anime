@@ -1,0 +1,15 @@
+background          	= theme/anime/animebg.jpg
+hud background      	= theme/anime/animehudbg.jpg    #ouais c'est le fond de l'hud
+hud  					= theme/hello_kitty/framewhite.png     		#ouais c'est le cadre de l'hud
+#square texture			= theme/anime/animecase.jpg
+music              		= theme/anime/anime.mp3        				#c'est la musique mais c'est pas géré encore
+font                  	= theme/anime/anime.ttf
+color empty         	= 255, 160, 40
+color player 1      	= 255, 204, 255
+color player 2      	= 102, 178, 255
+color player 3      	= 255, 255, 153
+color player 4      	= 0, 51, 102
+color numbers       	= 255, 80, 20
+color square texture	= 153, 0,   76
+color chat          	= 255, 51, 51
+color hud numbers   	= 255, 80, 20

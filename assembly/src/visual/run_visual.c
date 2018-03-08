@@ -6,13 +6,13 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 22:09:40 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/03 17:01:35 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/08 20:38:53 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static void		set_attribute(t_visual *win, char *status)
+static void		set_bin_attribute(t_visual *win, char *status)
 {
 	static int	color = 1;
 
@@ -27,32 +27,46 @@ static void		set_attribute(t_visual *win, char *status)
 	}
 }
 
+static void		set_asm_attribute(t_visual *win, char *status)
+{
+	static int	color = 1;
+
+	if (color > 4)
+		color = 1;
+	if (!ft_strcmp(status, "ON"))
+		wattron(win->as, COLOR_PAIR(color));
+	else
+	{
+		wattroff(win->as, COLOR_PAIR(color));
+		color++;
+	}
+}
+
 static void		display_bin(t_tab *tab, t_visual *win, int line)
 {
 	int				i;
 
 	i = -1;
-	set_attribute(win, "ON");
+	set_bin_attribute(win, "ON");
 	while (++i < tab[line].size)
 	{
 		if (win->cur.x >= win->size.x)
 		{
-			wprintw(win->bin, "\n\t");
+			wprintw(win->bin, GO_NEXT);
 			win->cur.x = 0;
 			win->cur.y++;
 		}
 		if (win->cur.y >= win->size.y)
 		{
 			werase(win->bin);
-			wprintw(win->bin, "\n\n\n\t");
+			wprintw(win->bin, GO_START);
 			win->cur.y = 0;
 			win->cur.x = 0;
 		}
 		wprintw(win->bin, "%.2X ", tab[line].ptr[i]);
 		win->cur.x += 3;
 	}
-	set_attribute(win, "OFF");
-	box(win->bin, ACS_VLINE, ACS_HLINE);
+	set_bin_attribute(win, "OFF");
 }
 
 static void		display_asm(t_tab *tab, t_visual *win, int line)
@@ -61,38 +75,15 @@ static void		display_asm(t_tab *tab, t_visual *win, int line)
 
 	i = 0;
 	werase(win->as);
-	wprintw(win->as, "\n\n\n\t");
-	while (i < g_lines)
+	wprintw(win->as, GO_START);
+	while (i < line)
 	{
-		if (i == line)
-		{
-			wattron(win->as, COLOR_PAIR(NC_YELLOW));
-			wprintw(win->as, "%s", tab[i].line);
-			wattroff(win->as, COLOR_PAIR(NC_YELLOW));
-		}
-		else
-			wprintw(win->as, "%s", tab[i].line);
-		wprintw(win->as, "\n\t");
+		wprintw(win->as, "%s\n\t", tab[i].line);
 		i++;
 	}
-	box(win->as, ACS_VLINE, ACS_HLINE);
-}
-
-static int		wait_event(t_visual *win)
-{
-	int			key;
-
-	key = getch();
-	if (key == 27)
-	{
-		endwin();
-		exit(1);
-	}
-	else if (win->delay)
-		return (1);
-	else if (key == ' ')
-		return (1);
-	return (0);
+	set_asm_attribute(win, "ON");
+	wprintw(win->as, "%s\n\t", tab[i].line);
+	set_asm_attribute(win, "OFF");
 }
 
 void			run_visual(t_tab *tab, t_visual *win)
@@ -110,6 +101,8 @@ void			run_visual(t_tab *tab, t_visual *win)
 			mvprintw(1, ((COLS / 2) - 11) / 2 + (COLS / 2), "Binary file");
 			display_asm(tab, win, line);
 			display_bin(tab, win, line);
+			box(win->bin, ACS_VLINE, ACS_HLINE);
+			box(win->as, ACS_VLINE, ACS_HLINE);
 			wrefresh(win->as);
 			wrefresh(win->bin);
 			line++;

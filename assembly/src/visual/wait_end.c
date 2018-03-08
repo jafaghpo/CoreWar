@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 15:53:02 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/19 15:53:15 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/08 20:47:36 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void		wait_end(void)
 	while (key != 27)
 	{
 		key = getch();
-		if (key == ' ')
+		if (key == '\n')
 			return ;
 	}
 	endwin();

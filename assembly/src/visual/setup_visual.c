@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 18:44:08 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/03 16:41:40 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/08 20:20:03 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static t_size	get_win_size(void)
 	t_size		size;
 
 	getmaxyx(stdscr, size.y, size.x);
-	size.y -= 8;
+	size.y -= 10;
 	size.x = (size.x / 2) - 16;
 	if (size.y < 0)
 		size.y = 1;
@@ -59,7 +59,7 @@ static void		create_window(t_visual *win)
 	mvprintw(LINES / 2 + 1, (COLS - 34) / 2, STEP_MODE);
 	win->delay = select_mode();
 	attroff(COLOR_PAIR(NC_GREEN));
-	wprintw(win->bin, "\n\n\n\t");
+	wprintw(win->bin, GO_START);
 	box(win->as, ACS_VLINE, ACS_HLINE);
 	box(win->bin, ACS_VLINE, ACS_HLINE);
 	refresh();

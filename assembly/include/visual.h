@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 16:03:21 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/03 16:40:42 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/08 21:40:46 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,13 @@
 # define NC_RED			4
 # define NC_WHITE		5
 
+# define GO_START		"\n\n\n\t"
+# define GO_NEXT		"\n\t"
 # define AUTO_MODE		"Automatic mode: [press enter key]"
 # define STEP_MODE		"Step by step mode: [press any key]"
 # define NEXT_MANUAL	"press enter key to go to next champion"
 # define ERROR_VISUAL	"Failed to run visual"
 # define ERROR_MSG		"Failed to compile %s"
-# define COMPILE_MSG	"Compilation done in %s"
 
 /*
 **	-- Typedefs --
@@ -61,9 +62,10 @@ struct			s_visual
 */
 int				setup_visual(t_visual *win, t_tab **tab);
 void			run_visual(t_tab *tab, t_visual *win);
-void			reset_visual(t_visual *win, char *name);
+void			reset_visual(t_visual *win, char *name, char *arg);
 void			delete_visual(t_visual *win, t_tab *tab);
 void			clear_tab(t_tab *tab);
 void			wait_end(void);
+int				wait_event(t_visual *win);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 15:39:31 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/03 18:06:14 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/08 21:25:07 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@
 **	-- Error messages --
 */
 
-# define NO_PARAMETER		"missing parameters\n%s"
+# define NO_PARAMETER		"missing parameters"
 # define USAGE				"usage: ./asm [-wv] file ..."
 # define EXTENSION			"invalid file extension: \"%s\""
-# define OPTION				"illegal option -- %c\n%s"
+# define OPTION				"illegal option -- %c"
 # define UNKNOWN_FILE		"%s: %s"
 # define SYNTAX				"invalid syntax: \"%s\""
 # define HEADER_LINE		"invalid line in champion header: \"%s\""

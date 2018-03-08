@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 14:38:13 by iburel            #+#    #+#             */
-/*   Updated: 2018/03/03 18:42:08 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/08 21:47:36 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,29 +22,72 @@
 # include "visual.h"
 # include "msg.h"
 
-# define VISUAL_FLAG	0x01
-# define SIZE_FLAG		0x02
-
-# define TAB_SIZE		1000
-# define BSIZE			1 << 16
-# define ERROR_SIZE		1000
-# define NAME_LEN		PROG_NAME_LENGTH
-# define COM_LEN		COMMENT_LENGTH
-# define HEADER_LEN		(NAME_LEN + COM_LEN + 16)
-
 /*
 **	-- Colors --
 */
-# define BLK "\x1B[30m"
-# define RED "\x1B[31m"
-# define GRN "\x1B[32m"
-# define YEL "\x1B[33m"
-# define BLU "\x1B[34m"
-# define MAG "\x1B[35m"
-# define CYN "\x1B[36m"
-# define WHT "\x1B[37m"
-# define RES "\x1B[0m"
+# define BLK 	"\x1B[30m"
+# define RED 	"\x1B[31m"
+# define GRN 	"\x1B[32m"
+# define YEL 	"\x1B[33m"
+# define BLU 	"\x1B[34m"
+# define MAG 	"\x1B[35m"
+# define CYN 	"\x1B[36m"
+# define WHT 	"\x1B[37m"
+# define RES 	"\x1B[0m"
 
+/*
+**	-- Flag masks --
+*/
+# define VISUAL_FLAG		0x01
+# define SIZE_FLAG			0x02
+
+/*
+**	-- Length macros --
+*/
+# define BSIZE				1 << 16
+# define ERROR_SIZE			4096
+# define NAME_LEN			PROG_NAME_LENGTH
+# define COM_LEN			COMMENT_LENGTH
+# define HEADER_LEN			(NAME_LEN + COM_LEN + 16)
+
+/*
+**	-- Compilation messages --
+*/
+
+# define COMPILATION_START	"Compiling %s\n"
+# define COMPILATION_END	"Compilation done in %s\n"
+
+/*
+**	-- Error messages --
+*/
+# define NO_PARAMETER		"missing parameters"
+# define USAGE				"usage: ./asm [-wv] file ..."
+# define EXTENSION			"invalid file extension: \"%s\""
+# define OPTION				"illegal option -- %c"
+# define UNKNOWN_FILE		"%s: %s"
+# define SYNTAX				"invalid syntax: \"%s\""
+# define HEADER_LINE		"invalid line in champion header: \"%s\""
+# define NAME_SIZE			"invalid name size\n"
+# define COMMENT_SIZE		"invalid comment size\n"
+# define LABEL_SYNTAX		"invalid label syntax: \"%s\""
+# define UNKNOWN_INST		"unknown instruction: \"%s\""
+# define REGISTER_ARG		"invalid register: \"%s\""
+# define DIRECT_ARG			"invalid direct argument: \"%s\""
+# define INDIRECT_ARG		"invalid indirect argument: \"%s\""
+# define ARG_NUMBER			"invalid number of argument: \"%s\""
+# define NO_SEPARATOR		"missing separator between args: \"%s\""
+# define UNDEF_LABEL		"undefined label: \"%s\""
+# define DUPLICATE_LABEL	"duplicate label name: \"%s\""
+
+/*
+**	-- Size flag messages --
+*/
+# define PROG_SIZE_MSG		"Program size is \033[31m%d\033[0m bytes\n"
+# define PROG_SIZE_WARNING	"%sWarning:%s too large size [max: %d bytes]\n"
+
+/*
+**	-- Typedefs --
+*/
 typedef unsigned char	t_uint8;
 typedef struct s_tab	t_tab;
 typedef struct s_buf	t_buf;
@@ -53,7 +96,6 @@ typedef struct s_lstlb	t_lstlb;
 typedef struct s_label	t_label;
 typedef struct s_inst	t_inst;
 typedef struct s_visual	t_visual;
-typedef struct s_error	t_error;
 
 struct		s_tab
 {
@@ -104,23 +146,27 @@ struct		s_error
 	va_list	ap;
 };
 
+/*
+**	-- Global variables --
+*/
 extern	int		g_lines;
 extern	int		g_option;
 extern	t_op	g_op[OP_NB];
 extern	t_buf	g_bin;
 extern	char	g_error[ERROR_SIZE];
 
-void		debug_inst(t_inst *inst);
-void		debug_label(t_lstlb *label);
-void		debug_tmplb(t_tmplb *label);
-void		debug_tab(t_tab *tab);
-
+/*
+**	-- General --
+*/
 int			print_error(const char *msg, ...);
-char		*get_name(char *file);
+char		*get_path(char *file);
 int			fill_binary(char *name);
-void		get_options(char **av, t_visual *win, t_tab **tab);
-void		reset_bin_buffer(void);
+int			check_argv(char **av, t_visual *win, t_tab **tab);
+void		reset_buffer(void);
 
+/*
+**	-- Parsing --
+*/
 int			parse_file(char *name, t_visual *win, t_tab *tab);
 int			get_prog_name(t_tab *tab, t_file *file, t_visual *win);
 int			get_prog_comment(t_tab *tab, t_file *file, t_visual *win);
@@ -133,6 +179,9 @@ int			add_instruction(t_inst *inst);
 void		get_next_arg(char **str);
 int			word_equal(char *s1, char *s2);
 
+/*
+**	-- Labels --
+*/
 int			valid_label(char *str);
 int			check_labels(t_label *label);
 t_lstlb		*add_label(t_lstlb *label, char *name, int size);

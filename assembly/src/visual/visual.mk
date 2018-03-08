@@ -6,12 +6,12 @@
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/03 22:48:22 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/02/25 16:52:34 by jafaghpo         ###   ########.fr        #
+#    Updated: 2018/03/08 20:35:41 by jafaghpo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS_VISUAL			=	setup_visual.c run_visual.c clear_tab.c reset_visual.c \
-						wait_end.c delete_visual.c
+						wait_end.c wait_event.c delete_visual.c
 
 SRC_VISUAL			=	$(addprefix $(SRC_VISUAL_PATH)/, $(SRCS_VISUAL))
 
