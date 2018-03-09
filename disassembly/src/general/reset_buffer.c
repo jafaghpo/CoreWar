@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 14:43:25 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/08 19:45:55 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/09 13:27:41 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void			reset_buffer(void)
 {
 	if (g_bin.data)
 	{
-		free(g_bin.data);
+		ft_memdel((void**)&g_bin.data);
 		g_bin.size = 0;
 		g_bin.i = 0;
 	}

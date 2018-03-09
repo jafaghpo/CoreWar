@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/02 17:54:00 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/08 16:31:49 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/09 13:30:18 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void		clear_tab(t_tab *tab)
 	int		i;
 
 	i = 0;
-	while (i < g_lines)
+	while (tab[i].line)
 	{
 		free(tab[i].line);
 		tab[i].line = 0;

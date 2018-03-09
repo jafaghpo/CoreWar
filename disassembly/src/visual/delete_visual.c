@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/25 16:33:50 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/25 16:35:30 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/09 13:24:15 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void		delete_visual(t_visual *win, t_tab *tab)
 {
-	free(tab);
+	ft_memdel((void**)&tab);
 	delwin(win->as);
 	delwin(win->bin);
 	endwin();

@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 16:47:10 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/08 17:28:09 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/09 13:56:34 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ struct			s_visual
 void			store_line(t_visual *win, t_tab *tab, t_tab current);
 int				setup_visual(t_visual *win, t_tab **tab);
 void			run_visual(t_tab *tab, t_visual *win);
-void			reset_visual(t_visual *win, char *name, char *arg);
+void			reset_visual(t_visual *win, t_tab *tab, char *name, char *arg);
 void			delete_visual(t_visual *win, t_tab *tab);
 void			clear_tab(t_tab *tab);
 int				wait_event(t_visual *win);

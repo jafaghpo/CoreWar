@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 15:02:18 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/08 21:31:06 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/09 13:57:07 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int				main(int ac, char **av)
 			if ((path = get_path(av[i])) && get_binary(av[i]))
 				parse_binary(path, &win, tab);
 			if (g_option & VISUAL_FLAG)
-				reset_visual(&win, path, av[i]);
+				reset_visual(&win, tab, path, av[i]);
 			reset_buffer();
 			ft_memdel((void**)&path);
 		}

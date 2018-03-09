@@ -6,15 +6,16 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 15:46:28 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/08 19:57:51 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/09 13:57:02 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visual.h"
 
-static void	reset_window(t_visual *win)
+static void	reset_window(t_visual *win, t_tab *tab)
 {
 	wait_end();
+	clear_tab(tab);
 	werase(win->as);
 	werase(win->bin);
 	erase();
@@ -24,7 +25,7 @@ static void	reset_window(t_visual *win)
 	attron(COLOR_PAIR(NC_YELLOW) | A_BOLD);
 }
 
-void		reset_visual(t_visual *win, char *name, char *arg)
+void		reset_visual(t_visual *win, t_tab *tab, char *name, char *arg)
 {
 	int		size;
 	char	*path;
@@ -34,7 +35,7 @@ void		reset_visual(t_visual *win, char *name, char *arg)
 	else
 		path = arg;
 	size = ft_strlen(path);
-	reset_window(win);
+	reset_window(win, tab);
 	if (g_error[0])
 	{
 		mvprintw(LINES / 2, (COLS - ft_strlen(g_error)) / 2, g_error);
