@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 15:16:57 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/08 21:45:36 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/09 11:34:07 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@
 **	-- Error messages--
 */
 # define NO_PARAMETER		"missing parameters"
-# define USAGE				"usage: ./asm [-w] file ..."
+# define USAGE				"usage: %s [-w] file ..."
 # define OPTION				"illegal option -- %c"
 # define BAD_EXTENSION		"invalid file extension: \"%s\""
 # define UNKNOWN_FILE		"%s: %s"
@@ -104,6 +104,7 @@ int			check_argv(char **av, t_visual *win, t_tab **tab);
 void		reset_buffer(void);
 char		*get_path(char *file);
 char		*line_dup(t_uint8 *line, size_t n);
+char		*line_dup_endl(char *line, size_t n);
 
 /*
 **	-- Parsing --

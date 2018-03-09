@@ -6,7 +6,7 @@
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/03/08 21:56:58 by jafaghpo         ###   ########.fr        #
+#    Updated: 2018/03/08 22:05:51 by jafaghpo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ NCURSE				=	-lncurses
 DEBUG				=	no
 
 ifeq ($(DEBUG), yes)
-	CFLAGS			+=	-g -D DEBUG
+	CFLAGS			+=	-g -D DEBUG -fsanitize=address
 else
 	CFLAGS			+=	-Ofast
 endif

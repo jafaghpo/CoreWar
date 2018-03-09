@@ -6,7 +6,7 @@
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/03/08 19:23:28 by jafaghpo         ###   ########.fr        #
+#    Updated: 2018/03/08 22:06:18 by jafaghpo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,9 @@ OBJ_PATH			=	obj
 SRC_PATH			=	src
 LIB_PATH			=	../lib
 
-OBJ					=
+SRCS				=	main.c
+SRC					=	$(addprefix $(SRC_PATH)/, $(SRCS))
+OBJ					=	$(addprefix $(OBJ_PATH)/, $(SRCS:.c=.o))
 
 SRC_GEN_PATH		=	$(SRC_PATH)/general
 SRC_PARSE_PATH		=	$(SRC_PATH)/parsing

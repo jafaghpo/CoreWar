@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 15:11:20 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/08 11:41:55 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/09 12:23:34 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,20 @@
 
 int			g_option = 0;
 
-static void	check_visual(t_visual *win, t_tab **tab)
+static void	check_visual(t_visual *win, t_tab **tab, int option)
 {
-	if (g_option & VISUAL_FLAG)
+	if (option & VISUAL_FLAG)
 	{
 		if (!setup_visual(win, tab))
 		{
 			print_error(ERROR_VISUAL);
-			g_option &= ~(VISUAL_FLAG);
+			option &= ~(VISUAL_FLAG);
 		}
 	}
+	g_option = option;
 }
 
-static int	parse_option(char *av)
+static int	parse_option(char *av, int *option)
 {
 	int		i;
 
@@ -34,13 +35,9 @@ static int	parse_option(char *av)
 	while (av[i])
 	{
 		if (av[i] == 'v')
-			g_option |= VISUAL_FLAG;
+			*option |= VISUAL_FLAG;
 		else
-		{
-			print_error(OPTION, av[i]);
-			ft_dprintf(2, USAGE"\n");
-			return (0);
-		}
+			return (print_error(OPTION, av[i]));
 		i++;
 	}
 	return (1);
@@ -50,26 +47,27 @@ int			check_argv(char **av, t_visual *win, t_tab **tab)
 {
 	int		i;
 	int		file;
+	int		option;
 
-	i = 1;
+	i = 0;
 	file = 0;
-	while (av[i])
+	option = 0;
+	while (av[++i])
 	{
-		if (*av[i] == '-')
+		if (*av[i] == '-' && !(parse_option(av[i], &option)))
 		{
-			if (!parse_option(av[i]))
-				return (0);
+			ft_dprintf(2, USAGE"\n", av[0]);
+			return (0);
 		}
-		else
+		else if (*av[i] != '-')
 			file++;
-		i++;
 	}
 	if (!file)
 	{
 		print_error(NO_PARAMETER);
-		ft_dprintf(2, USAGE"\n");
+		ft_dprintf(2, USAGE"\n", av[0]);
 		return (0);
 	}
-	check_visual(win, tab);
+	check_visual(win, tab, option);
 	return (1);
 }
