@@ -1,6 +1,8 @@
 vm/corewar
 assembly/asm
 disasembly/disas
+.vs_code/
+vm_champs/
 
 asm
 disas
