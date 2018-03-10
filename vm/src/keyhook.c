@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyhook.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 15:03:53 by niragne           #+#    #+#             */
-/*   Updated: 2018/02/19 16:48:24 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/03/10 14:24:04 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	loop_hook(t_uint8 *key)
 {
 	while (!g_key)
 	{
-		if (key[SDL_SCANCODE_X] && g_sleep <= 1000000.f)
+		if (key[SDL_SCANCODE_X] && g_sleep <= 900000.f)
 			g_sleep *= 1.000005;
 		if (key[SDL_SCANCODE_Z])
 		{

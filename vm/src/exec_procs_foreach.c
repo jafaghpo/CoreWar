@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_procs_foreach.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggregoir <ggregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 15:55:44 by niragne           #+#    #+#             */
-/*   Updated: 2018/02/05 14:38:17 by ggregoir         ###   ########.fr       */
+/*   Updated: 2018/03/10 14:19:28 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ void	exec_procs_foreach(t_proc **cycle)
 	tmp = cycle[g_nb_cycle % NB_CYCLE_MAX];
 	while (tmp)
 	{
+		g_infos[tmp->pc].cursor = 0;
 		exec_proc(cycle, tmp);
+		if (tmp->op < 17)
+			g_infos[tmp->pc].cursor = 1;
 		while (g_pause)
 			;
 		tmp = tmp->next;
