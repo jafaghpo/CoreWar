@@ -6,13 +6,13 @@
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/28 22:30:09 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/03/08 19:26:43 by jafaghpo         ###   ########.fr        #
+#    Updated: 2018/03/10 14:42:26 by iburel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #!/bin/zsh
 
-CORE_PATH=/Users/jafaghpo/Projects/Corewar
+CORE_PATH=$(pwd)
 TEST_DIR=tests
 MY_ASM=my_champs
 REAL_ASM=real_champs
@@ -36,7 +36,6 @@ BG_BLUE="\033[44m";
 
 echo "$HIGH$YELLOW> Downloading ressources:$EOC"
 mkdir -p $CORE_PATH/$TEST_DIR
-rm $CORE_PATH/$TEST_DIR/*.tar*
 cd $CORE_PATH/$TEST_DIR
 wget "https://projects.intra.42.fr/uploads/document/document/391/vm_champs.tar"
 tar xvf vm_champs.tar

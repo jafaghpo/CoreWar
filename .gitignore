@@ -3,6 +3,7 @@ assembly/asm
 disasembly/disas
 .vs_code/
 vm_champs/
+tests/
 
 asm
 disas
