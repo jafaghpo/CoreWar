@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_live.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 11:12:19 by root              #+#    #+#             */
-/*   Updated: 2018/02/13 16:57:15 by iburel           ###   ########.fr       */
+/*   Updated: 2018/03/10 14:04:00 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	op_live(t_proc *p, t_inst *args)
 	}
 	if (player != -1)
 	{
-		ft_sprintf(str, "[%6d] %.10s is alive !", g_nb_cycle, tmp);
+		ft_sprintf(str, "[%6d] %.20s is alive !", g_nb_cycle, tmp);
 		add_line_chat(str);
 	}
 }
