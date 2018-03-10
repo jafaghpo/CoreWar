@@ -6,7 +6,7 @@
 #    By: iburel <iburel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/03/10 15:19:35 by iburel           ###   ########.fr        #
+#    Updated: 2018/03/10 16:55:42 by iburel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CFLAGS					=	-Wall -Wextra -Werror
 ifeq ($(DEBUG), yes)
 	CFLAGS				+= -g -D DEBUG -fsanitize=address
 else
-	CFLAGS				+= -g
+	CFLAGS				+=
 endif
 
 PATH_PROJECT 			=	$(shell pwd)
