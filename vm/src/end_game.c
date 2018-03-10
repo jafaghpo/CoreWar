@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 13:12:53 by niragne           #+#    #+#             */
-/*   Updated: 2018/02/18 18:57:45 by iburel           ###   ########.fr       */
+/*   Updated: 2018/03/10 12:40:31 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ void		end_game(void)
 	if (g_flags.visu)
 		ft_sprintf(str, "%.20s won the game.", g_champs[pick_winner()].name);
 	else
-		ft_printf("%.20s won the game.", g_champs[pick_winner()].name);
+		ft_printf("%.20s won the game.\n", g_champs[pick_winner()].name);
 	add_line_chat(str);
 }
