@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_live.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 11:12:19 by root              #+#    #+#             */
-/*   Updated: 2018/03/10 14:04:00 by niragne          ###   ########.fr       */
+/*   Updated: 2018/03/10 16:37:01 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	op_live(t_proc *p, t_inst *args)
 {
-	static char	err[] = "UNDEFINED";
 	char		str[CHAT_LINE_SIZE];
 	char		*tmp;
 	t_int32		player;
@@ -28,7 +27,7 @@ void	op_live(t_proc *p, t_inst *args)
 		g_champs[player].live = g_nb_cycle;
 		tmp = g_champs[player].name;
 	}
-	if (player != -1)
+	if (player != -1 && g_flags.visu)
 	{
 		ft_sprintf(str, "[%6d] %.20s is alive !", g_nb_cycle, tmp);
 		add_line_chat(str);

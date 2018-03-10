@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   end_game.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 13:12:53 by niragne           #+#    #+#             */
-/*   Updated: 2018/03/10 15:13:36 by niragne          ###   ########.fr       */
+/*   Updated: 2018/03/10 16:10:32 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void		print_scores(char *str)
 	if (g_flags.visu)
 	{
 		ft_sprintf(str, "[%6d] %.20s won the game.",
-		g_nb_cycle, g_champs[pick_winner()].name);
+			g_nb_cycle, g_champs[pick_winner()].name);
 		add_line_chat(str);
 		i = 1;
 		while (i <= g_nb_player)

@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 19:01:27 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/16 17:21:16 by iburel           ###   ########.fr       */
+/*   Updated: 2018/03/10 15:30:25 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void		add_text(Uint8 *b, char *str, t_ivec2 v, t_case *color)
 	t_ivec2	p;
 	int		t;
 
+	if (v.y > WIN_Y - 900)
+		return ;
 	offset = 0;
 	while (*str)
 	{

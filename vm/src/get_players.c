@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 11:29:50 by root              #+#    #+#             */
-/*   Updated: 2018/03/10 13:51:18 by iburel           ###   ########.fr       */
+/*   Updated: 2018/03/10 15:14:28 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static t_uint8	*get_binary(char *file, t_uint32 *size)
 	}
 	close(fd);
 	if (ret == READ_MAX + 1 || ret < PROG_NAME_LENGTH + COMMENT_LENGTH + 16)
-		ft_afferror("file bad size\n");
+		exit(ft_dprintf(2, "file bad size : %s\n", file));
 	if (!(binary = malloc(sizeof(*binary) * ret)))
 		ft_afferror("error malloc\n");
 	ft_memcpy(binary, buf, ret);
