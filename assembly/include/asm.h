@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 14:38:13 by iburel            #+#    #+#             */
-/*   Updated: 2018/03/09 11:34:19 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/11 14:53:25 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,14 @@
 # define CYN 	"\x1B[36m"
 # define WHT 	"\x1B[37m"
 # define RES 	"\x1B[0m"
+
+/*
+**	-- Header flag masks --
+*/
+# define NAME_DONE			0x01
+# define COMMENT_DONE		0x02
+# define NEXT_LINE			0x04
+# define ALL_DONE			0x08
 
 /*
 **	-- Flag masks --
@@ -64,17 +72,18 @@
 # define EXTENSION			"invalid file extension: \"%s\""
 # define OPTION				"illegal option -- %c"
 # define UNKNOWN_FILE		"%s: %s"
-# define SYNTAX				"invalid syntax: \"%s\""
+# define NO_NAME			"missing name in champion header"
+# define NO_COMMENT			"missing comment in champion header"
+# define NO_HEADER			"missing header"
+# define SYNTAX				"invalid syntax in header: \"%s\""
 # define HEADER_LINE		"invalid line in champion header: \"%s\""
-# define NAME_SIZE			"invalid name size\n"
-# define COMMENT_SIZE		"invalid comment size\n"
 # define LABEL_SYNTAX		"invalid label syntax: \"%s\""
 # define UNKNOWN_INST		"unknown instruction: \"%s\""
 # define REGISTER_ARG		"invalid register: \"%s\""
 # define DIRECT_ARG			"invalid direct argument: \"%s\""
 # define INDIRECT_ARG		"invalid indirect argument: \"%s\""
 # define ARG_NUMBER			"invalid number of argument: \"%s\""
-# define NO_SEPARATOR		"missing separator between args: \"%s\""
+# define NO_SEPARATOR		"missing separator: \"%s\""
 # define UNDEF_LABEL		"undefined label: \"%s\""
 # define DUPLICATE_LABEL	"duplicate label name: \"%s\""
 
@@ -148,6 +157,7 @@ struct		s_error
 /*
 **	-- Global variables --
 */
+extern	int		g_state;
 extern	int		g_lines;
 extern	int		g_option;
 extern	t_op	g_op[OP_NB];
@@ -167,8 +177,10 @@ void		reset_buffer(void);
 **	-- Parsing --
 */
 int			parse_file(char *name, t_visual *win, t_tab *tab);
-int			get_prog_name(t_tab *tab, t_file *file, t_visual *win);
-int			get_prog_comment(t_tab *tab, t_file *file, t_visual *win);
+int			get_header(t_tab *tab, t_file *file, t_visual *win);
+int			parse_name(char *line, t_file *file, t_tab *tab, t_visual *win);
+int			parse_comment(char *line, t_file *file, t_tab *tab, t_visual *win);
+int			check_syntax(t_uint8 *dest, char *line);
 int			get_inst(t_tab *tab, t_label *label, t_file *file, t_visual *win);
 int			store_line(t_tab *tab, t_tab *current, t_visual *win);
 int			parse_arguments(char *line, t_label *label, t_inst *inst);

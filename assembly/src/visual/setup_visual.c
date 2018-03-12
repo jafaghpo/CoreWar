@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 18:44:08 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/08 20:20:03 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/11 15:19:55 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,22 @@ static int		select_mode(void)
 	int		key;
 
 	key = 0;
-	mvprintw(LINES / 2, (COLS - 33) / 2, AUTO_MODE);
-	mvprintw(LINES / 2 + 1, (COLS - 34) / 2, STEP_MODE);
-	while (!key)
+	while (key != 27)
+	{
 		key = getch();
-	erase();
-	if (key == '\n')
-		return (1);
+		if (key == '\n')
+		{
+			erase();
+			return (1);
+		}
+		else if (key == ' ')
+		{
+			erase();
+			return (0);
+		}
+	}
+	endwin();
+	exit(1);
 	return (0);
 }
 
@@ -56,7 +65,8 @@ static void		create_window(t_visual *win)
 {
 	attron(COLOR_PAIR(NC_GREEN));
 	mvprintw(LINES / 2, (COLS - 33) / 2, AUTO_MODE);
-	mvprintw(LINES / 2 + 1, (COLS - 34) / 2, STEP_MODE);
+	mvprintw(LINES / 2 + 2, (COLS - 36) / 2, STEP_MODE);
+	mvprintw(LINES / 2 + 4, (COLS - 45) / 2, END_MANUAL);
 	win->delay = select_mode();
 	attroff(COLOR_PAIR(NC_GREEN));
 	wprintw(win->bin, GO_START);

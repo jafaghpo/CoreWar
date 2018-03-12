@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 21:16:35 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/03 18:10:44 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/11 14:31:57 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static int	parse_instruction(char *line, t_label *label, t_tab *current)
 	ft_bzero((void*)inst.data, 20);
 	inst.data[0] = (char)op;
 	inst.args = 0;
+	if (line[len] != ' ' && line[len] != '\t')
+		return (print_error(NO_SEPARATOR, line));
 	line += len;
 	ft_delspace(&line);
 	if (!parse_arguments(line, label, &inst))

@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 15:16:57 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/09 11:34:07 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/10 13:55:16 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@
 # define MAGIC_NUMBER		"invalid magic number: %d [real = %d]"
 # define PROG_SIZE			"invalid program size: %d [real = %d]"
 # define ERROR_MSG			"Failed to compile %s"
-# define COMPILATION_START	"Compiling %s\n"
-# define COMPILATION_END	"Compilation done in %s\n"
+# define COMPILATION_START	"Disassembling %s\n"
+# define COMPILATION_END	"Creation of champion done in %s\n"
 # define UNKNOWN_INST		"invalid opcode %x at position %d in binary"
 # define BAD_ARGUMENT		"invalid argument %.2X at position %d in binary"
 

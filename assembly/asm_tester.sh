@@ -6,7 +6,7 @@
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/28 15:37:51 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/03/08 19:19:19 by jafaghpo         ###   ########.fr        #
+#    Updated: 2018/03/11 14:34:57 by jafaghpo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,16 +40,17 @@ do $CORE_PATH/$TEST_DIR/asm $i;
 done;
 
 echo "$HIGH$YELLOW\n> Compiling my assembly files:$EOC"
-$CORE_PATH/asm $CORE_PATH/$TEST_DIR/$MY_DIR/*.s;
+$CORE_PATH/asm $CORE_PATH/$TEST_DIR/$MY_DIR/*.s 1>/dev/null;
 
-rm $CORE_PATH/$TEST_DIR/$MY_DIR/*.cor
-rm $CORE_PATH/$TEST_DIR/$REAL_DIR/*.cor
 
 echo "$HIGH$YELLOW\n> Comparing folders:$EOC"
 diff $CORE_PATH/$TEST_DIR/$REAL_DIR $CORE_PATH/$TEST_DIR/$MY_DIR;
 if [[ $? -eq 0 ]]; then
 	echo "There is no differences"
 fi;
+
+rm $CORE_PATH/$TEST_DIR/$MY_DIR/*.cor
+rm $CORE_PATH/$TEST_DIR/$REAL_DIR/*.cor
 
 echo $EOC;
 echo "done."

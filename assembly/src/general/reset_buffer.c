@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/25 15:25:58 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/08 21:35:22 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/11 14:30:58 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void		reset_buffer(void)
 {
 	if (g_bin.data)
 	{
+		g_state = 0;
 		if (g_bin.i < HEADER_LEN)
 			ft_bzero((void*)g_bin.data, HEADER_LEN);
 		else
