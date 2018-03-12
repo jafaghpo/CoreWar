@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 14:05:03 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/11 14:52:16 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/12 13:46:21 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,18 @@
 
 int			g_state = 0;
 
-static void	magic_number(void)
+static void	magic_number(t_tab *tab, t_visual *win)
 {
+	t_tab	current;
+
 	g_bin.data[0] = (t_uint8)(COREWAR_EXEC_MAGIC >> 24);
 	g_bin.data[1] = (t_uint8)(COREWAR_EXEC_MAGIC >> 16);
 	g_bin.data[2] = (t_uint8)(COREWAR_EXEC_MAGIC >> 8);
 	g_bin.data[3] = (t_uint8)(COREWAR_EXEC_MAGIC >> 0);
+	current = (t_tab){NULL, g_bin.data, 4};
 	g_bin.i = 4;
+	if (g_option & VISUAL_FLAG)
+		store_line(tab, &current, win);
 }
 
 static int	parse_other(char *line)
@@ -74,7 +79,7 @@ int			get_header(t_tab *tab, t_file *file, t_visual *win)
 	char	*tmp;
 	int		ret;
 
-	magic_number();
+	magic_number(tab, win);
 	while (!(g_state & ALL_DONE) && (ret = ft_getline(&line, file) > 0))
 	{
 		if (ret == -1)

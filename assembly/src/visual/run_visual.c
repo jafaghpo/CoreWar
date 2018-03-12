@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 22:09:40 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/08 20:38:53 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/12 14:00:19 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,13 @@ static void		display_asm(t_tab *tab, t_visual *win, int line)
 	wprintw(win->as, GO_START);
 	while (i < line)
 	{
-		wprintw(win->as, "%s\n\t", tab[i].line);
+		if (tab[i].line)
+			wprintw(win->as, "%s\n\t", tab[i].line);
 		i++;
 	}
 	set_asm_attribute(win, "ON");
-	wprintw(win->as, "%s\n\t", tab[i].line);
+	if (tab[i].line)
+		wprintw(win->as, "%s\n\t", tab[i].line);
 	set_asm_attribute(win, "OFF");
 }
 

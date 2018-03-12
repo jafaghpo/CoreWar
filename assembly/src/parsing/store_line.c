@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 16:42:50 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/08 11:54:23 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/12 13:26:41 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int			store_line(t_tab *tab, t_tab *current, t_visual *win)
 {
 	if (!(g_option & VISUAL_FLAG))
 	{
-		free(current->line);
+		ft_memdel((void**)&current->line);
 		current->line = 0;
 		return (1);
 	}
