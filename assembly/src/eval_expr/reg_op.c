@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/09 17:37:26 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/01/14 21:37:18 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/12 14:29:39 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int			div_calc(int a, int b, int *error)
 
 int			mod_calc(int a, int b, int *error)
 {
-	(void)error;
+	if (b == 0)
+		return (*error = 1);
 	return (a % b);
 }
