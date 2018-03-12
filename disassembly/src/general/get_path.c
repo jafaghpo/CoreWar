@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 17:08:42 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/06 17:28:51 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/12 14:17:57 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*get_path(char *file)
 		print_error(BAD_EXTENSION, file);
 		return (NULL);
 	}
-	if (!(name = malloc(sizeof(*name) * (len - 2))))
+	if (!(name = malloc(sizeof(*name) * (len - 1))))
 	{
 		print_error(strerror(errno));
 		return (NULL);
