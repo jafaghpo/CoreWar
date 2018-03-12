@@ -6,7 +6,7 @@
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/03/08 22:06:18 by jafaghpo         ###   ########.fr        #
+#    Updated: 2018/03/12 14:52:11 by iburel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,13 +34,13 @@ SRC_GEN_PATH		=	$(SRC_PATH)/general
 SRC_PARSE_PATH		=	$(SRC_PATH)/parsing
 SRC_VISUAL_PATH		=	$(SRC_PATH)/visual
 
-include $(SRC_PARSE_PATH)/parse.mk
-include $(SRC_GEN_PATH)/general.mk
-include $(SRC_VISUAL_PATH)/visual.mk
-
 INCL_PATH			=	include
 OP_INC_PATH			=	../include
 INCL				=	$(INCL_PATH)/disas.h $(OP_INC_PATH)/op.h $(INCL_PATH)/visual.h
+
+include $(SRC_PARSE_PATH)/parse.mk
+include $(SRC_GEN_PATH)/general.mk
+include $(SRC_VISUAL_PATH)/visual.mk
 
 LIBFT_PATH			=	$(LIB_PATH)/libft
 LIBFT				=	$(LIBFT_PATH)/libft.a

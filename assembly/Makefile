@@ -6,7 +6,7 @@
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/03/08 22:05:51 by jafaghpo         ###   ########.fr        #
+#    Updated: 2018/03/12 14:51:50 by iburel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,16 +37,16 @@ SRC_LABEL_PATH		=	$(SRC_PATH)/label
 SRC_EVAL_PATH		=	$(SRC_PATH)/eval_expr
 SRC_VISUAL_PATH		=	$(SRC_PATH)/visual
 
+INCL_PATH			=	include
+OP_INC_PATH			=	../include
+INCL				=	$(INCL_PATH)/asm.h $(OP_INC_PATH)/op.h $(INCL_PATH)/eval_expr.h \
+						$(INCL_PATH)/visual.h
+
 include $(SRC_GEN_PATH)/general.mk
 include $(SRC_PARSE_PATH)/parse.mk
 include $(SRC_LABEL_PATH)/label.mk
 include $(SRC_EVAL_PATH)/eval_expr.mk
 include $(SRC_VISUAL_PATH)/visual.mk
-
-INCL_PATH			=	include
-OP_INC_PATH			=	../include
-INCL				=	$(INCL_PATH)/asm.h $(OP_INC_PATH)/op.h $(INCL_PATH)/eval_expr.h \
-						$(INCL_PATH)/visual.h
 
 LIBFT_PATH			=	$(LIB_PATH)/libft
 LIBFT				=	$(LIBFT_PATH)/libft.a
