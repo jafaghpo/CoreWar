@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:43:01 by zaz               #+#    #+#             */
-/*   Updated: 2018/03/09 19:53:02 by iburel           ###   ########.fr       */
+/*   Updated: 2018/03/12 15:28:47 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,5 @@ t_op	g_op_tab[OP_NB] =
 	{"lldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 14, 50,
 		"long load index", 1, 1},
 	{"lfork", 1, {T_DIR}, 15, 1000, "long fork", 0, 1},
-	{"aff", 1, {T_REG}, 16, 2, "aff", 1, 0},
-	{"win", 2, {T_DIR, T_DIR, T_DIR}, 17, 1000, "win the game", 0, 1}
+	{"aff", 1, {T_REG}, 16, 2, "aff", 1, 0}
 };
