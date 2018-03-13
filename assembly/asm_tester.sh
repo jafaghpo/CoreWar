@@ -6,7 +6,7 @@
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/28 15:37:51 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/03/11 14:34:57 by jafaghpo         ###   ########.fr        #
+#    Updated: 2018/03/12 17:09:35 by jafaghpo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,8 +40,7 @@ do $CORE_PATH/$TEST_DIR/asm $i;
 done;
 
 echo "$HIGH$YELLOW\n> Compiling my assembly files:$EOC"
-$CORE_PATH/asm $CORE_PATH/$TEST_DIR/$MY_DIR/*.s 1>/dev/null;
-
+$CORE_PATH/asm $CORE_PATH/$TEST_DIR/$MY_DIR/*.s;
 
 echo "$HIGH$YELLOW\n> Comparing folders:$EOC"
 diff $CORE_PATH/$TEST_DIR/$REAL_DIR $CORE_PATH/$TEST_DIR/$MY_DIR;

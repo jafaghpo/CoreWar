@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/11 14:20:31 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/18 18:55:47 by iburel           ###   ########.fr       */
+/*   Updated: 2018/03/12 16:46:30 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	parse_noargs(t_args *flags, char *str)
 	while (str[i])
 	{
 		if (!f[(int)str[i]])
-			ft_afferror("invalid argument2\n");
+			ft_afferror("invalid argument\n");
 		f[(int)str[i]](flags);
 		i++;
 	}

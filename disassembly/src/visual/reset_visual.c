@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 15:46:28 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/09 13:57:02 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/12 17:03:38 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void		reset_visual(t_visual *win, t_tab *tab, char *name, char *arg)
 		mvprintw(LINES / 2 + 2, (COLS - size - 18) / 2, ERROR_MSG, path);
 	}
 	else
-		mvprintw(LINES / 2, (COLS - size - 20) / 2, COMPILATION_END, path);
+		mvprintw(LINES / 2, (COLS - size - 29) / 2, COMPILATION_END, path);
 	mvprintw(LINES / 2 + 4, (COLS - 38) / 2, NEXT_MANUAL);
 	attroff(COLOR_PAIR(NC_YELLOW));
 	wait_end();

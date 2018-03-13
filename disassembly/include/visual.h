@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 16:47:10 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/09 13:56:34 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/12 16:59:43 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@
 
 # define GO_START		"\n\n\n\t"
 # define GO_NEXT		"\n\t"
-# define AUTO_MODE		"Automatic mode: [press enter key]"
-# define STEP_MODE		"Step by step mode: [press any key]"
-# define NEXT_MANUAL	"press enter key to go to next champion"
+# define AUTO_MODE		"Automatic mode: press <ENTER> key"
+# define STEP_MODE		"Step by step mode: press <SPACE> key"
+# define END_MANUAL		"At the end of the champion: press <ENTER> key"
+# define NEXT_MANUAL	"Go to next champion: press <ENTER> key"
 # define ERROR_VISUAL	"Failed to run visual mode"
 # define ERROR_CHAMP	"Failed to compile %s"
 
