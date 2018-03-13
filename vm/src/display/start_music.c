@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/03 15:27:45 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/16 20:12:27 by iburel           ###   ########.fr       */
+/*   Updated: 2018/03/13 20:56:57 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	start_music(void)
 		* (70 + ft_strlen(g_theme.music_file) + 2))))
 		return ;
 	ft_sprintf(music_command, "afplay %s&", g_theme.music_file);
-	printf("%s\n", music_command);
 	system(music_command);
 	free(music_command);
 }

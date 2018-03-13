@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/25 11:54:03 by root              #+#    #+#             */
-/*   Updated: 2018/03/13 19:22:22 by iburel           ###   ########.fr       */
+/*   Updated: 2018/03/13 20:09:23 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void			init_proc(t_proc **cycle, int nb)
 		tmp = g_op_tab[g_mem[proc->pc]].cycles;
 		proc->next = cycle[tmp];
 		proc->op = g_mem[proc->pc] * (g_mem[proc->pc] < 17);
+		g_infos[proc->pc].cursor = 1;
 		cycle[tmp] = proc;
 		i++;
 	}

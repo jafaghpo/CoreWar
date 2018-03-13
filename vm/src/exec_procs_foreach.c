@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 15:55:44 by niragne           #+#    #+#             */
-/*   Updated: 2018/03/13 16:57:34 by iburel           ###   ########.fr       */
+/*   Updated: 2018/03/13 20:57:31 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void	exec_procs_foreach(t_proc **cycle)
 	while (tmp)
 	{
 		g_infos[tmp->pc].cursor = 0;
-		if (tmp->op == 17)
-			printf("%d\n", tmp->pc);
 		exec_proc(cycle, tmp);
 		if (tmp->op < 17)
 			g_infos[tmp->pc].cursor = 1;
