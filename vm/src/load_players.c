@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 13:50:56 by root              #+#    #+#             */
-/*   Updated: 2018/03/10 15:40:08 by iburel           ###   ########.fr       */
+/*   Updated: 2018/03/13 19:57:57 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,14 @@ void	load_players(t_player *players, int nb_players)
 	i = 0;
 	while (i < nb_players)
 	{
-		if (i * step + players[i].size < MEM_SIZE)
+		if (i * step + players[i].size >= MEM_SIZE)
+			players[i].size = MEM_SIZE - i * step;
+		ft_memcpy(g_mem + i * step, players[i].buffer, players[i].size);
+		j = 0;
+		while (j < players[i].size)
 		{
-			ft_memcpy(g_mem + i * step, players[i].buffer, players[i].size);
-			j = 0;
-			while (j < players[i].size)
-			{
-				g_infos[j + i * step].player = i + 1;
-				j++;
-			}
+			g_infos[j + i * step].player = i + 1;
+			j++;
 		}
 		i++;
 	}

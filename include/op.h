@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/03/12 15:25:48 by iburel           ###   ########.fr       */
+/*   Updated: 2018/03/13 20:05:36 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # define IND_CODE				3
 
 # define MAX_ARGS_NUMBER		4
-# define MAX_PLAYERS			255
 # define MEM_SIZE				((4*1024) * 1)
+# define MAX_PLAYERS			MEM_SIZE
 # define IDX_MOD				(MEM_SIZE / 8)
 # define CHAMP_MAX_SIZE			(MEM_SIZE / 6)
 
