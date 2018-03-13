@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 16:04:48 by niragne           #+#    #+#             */
-/*   Updated: 2018/03/13 18:28:59 by iburel           ###   ########.fr       */
+/*   Updated: 2018/03/13 18:33:07 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	exec_proc(t_proc **cycle, t_proc *tmp)
 	}
 	g_f[op](tmp, args, cycle);
 	tmp->pc = (tmp->pc + size + 1 + g_op_tab[op].octal) % MEM_SIZE;
-	if (g_step && op < 17)
+	if (g_step)
 	{
 		g_pause = 1;
 		g_step = 0;
