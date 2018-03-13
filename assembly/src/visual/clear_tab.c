@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/02 17:54:00 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/08 11:54:30 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/13 22:55:33 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		clear_tab(t_tab *tab)
 	i = 0;
 	while (i < g_lines)
 	{
-		free(tab[i].line);
+		ft_memdel((void**)&tab[i].line);
 		tab[i].line = 0;
 		tab[i].ptr = 0;
 		tab[i].size = 0;

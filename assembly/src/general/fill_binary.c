@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 18:03:45 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/03 15:18:54 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/13 18:02:09 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int				fill_binary(char *name)
 	{
 		ft_printf(PROG_SIZE_MSG, g_bin.i - HEADER_LEN);
 		if (g_bin.i - HEADER_LEN > CHAMP_MAX_SIZE)
-			ft_printf(PROG_SIZE_WARNING, RED, RES, CHAMP_MAX_SIZE);
+			ft_printf(PROG_SIZE_WARNING, MAG, RES, CHAMP_MAX_SIZE);
 	}
 	close(fd);
 	if (!(g_option & VISUAL_FLAG))

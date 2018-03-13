@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 18:44:08 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/13 14:12:47 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/13 18:06:49 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static t_size	get_win_size(void)
 
 static void		create_window(t_visual *win)
 {
-	attron(COLOR_PAIR(NC_GREEN));
+	attron(COLOR_PAIR(NC_GREEN) | A_BOLD);
 	mvprintw(LINES / 2, (COLS - 33) / 2, AUTO_MODE);
 	mvprintw(LINES / 2 + 2, (COLS - 36) / 2, STEP_MODE);
 	mvprintw(LINES / 2 + 4, (COLS - 45) / 2, END_MANUAL);

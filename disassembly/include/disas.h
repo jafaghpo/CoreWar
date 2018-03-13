@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 15:16:57 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/10 13:55:16 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/13 21:52:51 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,7 @@ int			buf_to_file(char *path);
 int			check_argv(char **av, t_visual *win, t_tab **tab);
 void		reset_buffer(void);
 char		*get_path(char *file);
-char		*line_dup(t_uint8 *line, size_t n);
-char		*line_dup_endl(char *line, size_t n);
+char		*line_dup(char *line, size_t n);
 
 /*
 **	-- Parsing --

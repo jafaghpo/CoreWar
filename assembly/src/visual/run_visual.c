@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 22:09:40 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/13 14:23:37 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/13 17:44:44 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void		set_bin_attribute(t_visual *win, char *status)
 	if (color > 4)
 		color = 1;
 	if (!ft_strcmp(status, "ON"))
-		wattron(win->bin, COLOR_PAIR(color));
+		wattron(win->bin, COLOR_PAIR(color) | A_BOLD);
 	else
 	{
 		wattroff(win->bin, COLOR_PAIR(color));
@@ -34,7 +34,7 @@ static void		set_asm_attribute(t_visual *win, char *status)
 	if (color > 4)
 		color = 1;
 	if (!ft_strcmp(status, "ON"))
-		wattron(win->as, COLOR_PAIR(color));
+		wattron(win->as, COLOR_PAIR(color) | A_BOLD);
 	else
 	{
 		wattroff(win->as, COLOR_PAIR(color));

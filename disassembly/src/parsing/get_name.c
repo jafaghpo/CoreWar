@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 16:25:36 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/09 11:30:16 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/13 22:28:27 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	parse_name(t_visual *win, t_tab *tab)
 	char	*tmp;
 	int		i;
 
-	if (!(line = line_dup(g_asm.data, g_asm.i)))
+	if (!(line = line_dup((char*)g_asm.data, g_asm.i)))
 		return (0);
 	tmp = line;
 	i = 0;
@@ -27,8 +27,7 @@ static int	parse_name(t_visual *win, t_tab *tab)
 	{
 		if (line[i] == '\n')
 		{
-			line[i] = 0;
-			current = (t_tab){line_dup_endl(line, i), g_bin.i, i};
+			current = (t_tab){line_dup(line, i + 1), g_bin.i, i};
 			store_line(win, tab, current);
 			line += i + 1;
 			g_bin.i += i;
@@ -43,13 +42,25 @@ static int	parse_name(t_visual *win, t_tab *tab)
 
 int			get_name(t_visual *win, t_tab *tab)
 {
+	t_tab	current;
+
 	g_asm.i += ft_sprintf((char*)g_asm.data, NAME_CMD_STRING);
 	g_asm.i += ft_sprintf((char*)g_asm.data + g_asm.i, " \"%s\"\n", \
 	g_bin.data + MAGIC_LEN);
 	if (g_option & VISUAL_FLAG)
 	{
-		if (!parse_name(win, tab))
+		current = (t_tab){NULL, 0, MAGIC_LEN};
+		store_line(win, tab, current);
+		if (!ft_memchr(g_bin.data + 4, '\n', PROG_NAME_LENGTH))
+		{
+			current = (t_tab){line_dup((char*)g_asm.data, g_asm.i),
+				g_bin.i, PROG_NAME_LENGTH};
+			store_line(win, tab, current);
+		}
+		else if (!parse_name(win, tab))
 			return (0);
+		current = (t_tab){NULL, PROG_NAME_LENGTH + 8, 4};
+		store_line(win, tab, current);
 	}
 	g_bin.i = PROG_NAME_LENGTH + 12;
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 14:38:13 by iburel            #+#    #+#             */
-/*   Updated: 2018/03/12 14:50:51 by iburel           ###   ########.fr       */
+/*   Updated: 2018/03/13 18:03:23 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@
 /*
 **	-- Size flag messages --
 */
-# define PROG_SIZE_MSG		"Program size is \033[31m%d\033[0m bytes\n"
+# define PROG_SIZE_MSG		"Program size is "GRN"%d"RES" bytes\n"
 # define PROG_SIZE_WARNING	"%sWarning:%s too large size [max: %d bytes]\n"
 
 /*
