@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 18:44:08 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/12 16:59:15 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/13 14:12:45 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,6 @@ static void		create_window(t_visual *win)
 	win->delay = select_mode();
 	attroff(COLOR_PAIR(NC_GREEN));
 	wprintw(win->bin, GO_START);
-	box(win->as, ACS_VLINE, ACS_HLINE);
-	box(win->bin, ACS_VLINE, ACS_HLINE);
-	refresh();
 }
 
 int				setup_visual(t_visual *win, t_tab **tab)

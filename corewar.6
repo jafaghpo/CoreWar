@@ -1,0 +1,45 @@
+.TH man 6 "March 14, 2018" "2.1" "corewar man page"
+.SH NAME
+corewar
+.SH SYNOPSIS
+corewar [-d dump -s [0-20000]] -b break1 [break2 ...] -t theme -v] [-n pos] champ1 [[-n pos] champ2 ...]
+.SH DESCRIPTION
+corewar takes one or more programs and executes them in a pseudo parallel way inside the same memory area. When all programs are dead, the last one having executed the 'live' instruction is declared winner. The programs are written in a custom assembly code and have to be compiled with asm.
+.SH OPTIONS
+.IP "-n [pos]"
+The next specified champion will start at pos [pos] in the simulation.
+.IP "-d [nb]"
+Dumps the memory at [nb] cycles and ends the simulation.
+.IP "-t [theme]"
+Sets a theme to be used for the visual mode. Themes have to be placed in vm/theme/[theme]/[theme].
+.IP "-v"
+Enables OpenGL 3D visual mode.
+.IP "-s [0-20000]"
+Sets the initial cycles per second.
+.IP "-b [break1 [break2 ...]]
+Sets one or more breakpoints to be used with the visual mode. The simulation will pause at given breakpoints and pressing space will resume.
+.SH KEY BINDINGS
+.IP "O"
+Zooms out.
+.IP "P"
+Zooms in.
+.IP "E"
+Rotates right.
+.IP "Q"
+Rotates left.
+.IP "S"
+Moves down.
+.IP "W"
+Moves up.
+.IP "A"
+Rotates on the y axis.
+.IP "D"
+Rotates on the y axis.
+.IP "Mouse1"
+Rotates using the mouse cursor.
+.IP "Mouse2"
+Move around using the mouse cursor.
+.SH BUGS
+si tenleve le .h sa compile pu
+.SH AUTHOR
+niragne el kingos

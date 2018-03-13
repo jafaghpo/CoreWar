@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 16:04:48 by niragne           #+#    #+#             */
-/*   Updated: 2018/03/10 14:18:49 by iburel           ###   ########.fr       */
+/*   Updated: 2018/03/13 17:09:02 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ void	exec_proc(t_proc **cycle, t_proc *tmp)
 	if (op == 0)
 	{
 		tmp->pc = (tmp->pc + 1) % MEM_SIZE;
+		return ;
+	}
+	if (op >= 17)
+	{
+		g_f[op](tmp, args, cycle);
 		return ;
 	}
 	size = get_args(tmp->pc, args, op);

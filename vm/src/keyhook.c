@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 15:03:53 by niragne           #+#    #+#             */
-/*   Updated: 2018/03/10 14:24:04 by iburel           ###   ########.fr       */
+/*   Updated: 2018/03/13 16:48:49 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 static void	check_breakpoints(void)
 {
-	static int	i;
+	static int	i = 0;
 	char		str[CHAT_LINE_SIZE];
 
-	i = 0;
 	if (g_flags.breakpoints[i] == g_nb_cycle && g_nb_cycle)
 	{
 		ft_sprintf(str, "[%6d] Game paused (breakpoint %d / %d)",

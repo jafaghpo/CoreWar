@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/09 20:49:51 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/02/18 18:40:26 by iburel           ###   ########.fr       */
+/*   Updated: 2018/03/13 16:50:03 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	init(int ac, char **av, t_pfile **files)
 {
 	if (ac < 2)
 	{
-		ft_printf("usage: %s [-d dump -s [0-20000]] -b break1 [break2 ...]"
+		ft_printf("usage: %s [-d dump -s [0-20000]] -b break1 [break2 ...] "
 			"-t theme -v] [-n pos] champ1 [[-n pos] champ2 ...]\n", av[0]);
 		return (0);
 	}
@@ -31,6 +31,7 @@ static int	init(int ac, char **av, t_pfile **files)
 	if (!(g_champs = malloc(sizeof(*g_champs) * (g_flags.nb_players + 1))))
 		return (0);
 	g_champs[0].color = g_theme.color_empty;
+	printf("%d\n", g_flags.nb_breakpoints);
 	bubble_tab(g_flags.breakpoints, g_flags.nb_breakpoints);
 	fill_pos_players(*files, g_flags.nb_players + 1);
 	return (1);

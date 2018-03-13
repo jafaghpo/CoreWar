@@ -6,7 +6,7 @@
 #    By: iburel <iburel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/06 20:51:34 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/03/13 12:51:54 by iburel           ###   ########.fr        #
+#    Updated: 2018/03/13 13:22:04 by iburel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,10 +100,10 @@ $(OBJ_PATH)/%.o: $(SRC_DISPLAY_PATH)/%.c $(INCL_OP) $(INCL_VM) $(INCL_DISPLAY)
 	gcc -o $@ -c $< -D PATH=\"$(PATH_PROJECT)\" $(CFLAGS) -I $(INCL_PATH) -I $(OP_INC_PATH) -I $(LIBFT_INCL) -I $(LIBMAT_INCL) -I $(BREW_INCL) -I $(LIBFREETYPE_INCL)
 
 $(LIBFT):
-	make -j -C $(LIBFT_DIR)
+	make -C $(LIBFT_DIR)
 
 $(LIBMAT):
-	make -j -C $(LIBMAT_DIR)
+	make -C $(LIBMAT_DIR)
 
 clean:
 	rm -rf $(OBJ)
@@ -116,6 +116,6 @@ fclean: clean
 	rm -f $(LIBMAT)
 
 re: fclean
-	make -j
+	make
 
 .PHONY: all clean fclean re

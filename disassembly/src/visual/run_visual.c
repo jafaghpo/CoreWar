@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 22:09:40 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/08 21:55:38 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/13 14:25:54 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,9 @@ void			run_visual(t_tab *tab, t_visual *win)
 	int		run;
 
 	line = 0;
+	run = 1;
 	while (line < g_lines)
 	{
-		run = wait_event(win);
 		if (run)
 		{
 			mvprintw(1, ((COLS / 2) - 11) / 2, "Binary file");
@@ -107,6 +107,7 @@ void			run_visual(t_tab *tab, t_visual *win)
 			wrefresh(win->bin);
 			line++;
 		}
+		run = wait_event(win);
 	}
 	clear_tab(tab);
 }

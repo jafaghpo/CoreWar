@@ -6,13 +6,13 @@
 #    By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/28 15:37:51 by jafaghpo          #+#    #+#              #
-#    Updated: 2018/03/08 19:22:25 by jafaghpo         ###   ########.fr        #
+#    Updated: 2018/03/13 13:16:11 by iburel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #!/bin/zsh
 
-CORE_PATH=/Users/jafaghpo/Projects/Corewar
+CORE_PATH=$(pwd)/..
 TEST_DIR=tests
 MY_DIR=my_bin
 REAL_DIR=real_bin
