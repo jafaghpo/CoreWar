@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 13:12:53 by niragne           #+#    #+#             */
-/*   Updated: 2018/03/10 17:10:18 by iburel           ###   ########.fr       */
+/*   Updated: 2018/03/16 18:37:26 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static void		print_scores(char *str)
 			ft_sprintf(str, "Player %d (%.20s): %d", i, g_champs[i].name,
 				g_champs[i].live);
 			add_line_chat(str);
-			i++;
 		}
 	}
 	else
