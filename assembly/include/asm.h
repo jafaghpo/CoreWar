@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 14:38:13 by iburel            #+#    #+#             */
-/*   Updated: 2018/03/13 18:03:23 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/22 15:05:53 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@
 **	-- Error messages --
 */
 # define NO_PARAMETER		"missing parameters"
-# define USAGE				"usage: %s [-wv] file ..."
+# define USAGE				"usage: %s [-sv] file ..."
 # define EXTENSION			"invalid file extension: \"%s\""
 # define OPTION				"illegal option -- %c"
 # define UNKNOWN_FILE		"%s: %s"

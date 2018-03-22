@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 17:19:42 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/09 12:23:04 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/22 15:09:46 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ static int	parse_option(char *av, int *option)
 	int		i;
 
 	i = 1;
+	if (!av[1])
+		return (print_error(OPTION, av[0]));
 	while (av[i])
 	{
 		if (av[i] == 'v')
