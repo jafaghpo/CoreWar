@@ -6,7 +6,7 @@
 /*   By: iburel <iburel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 15:41:22 by iburel            #+#    #+#             */
-/*   Updated: 2018/02/18 18:17:34 by iburel           ###   ########.fr       */
+/*   Updated: 2018/03/22 15:47:51 by iburel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,17 @@
 
 # define PF_BUFF_SIZE 1000000
 
+# define OUAISLANORME1 extern void (*g_pf_buff)(char *, int)
+# define OUAISLANORME2 extern t_uint64 (*g_pf_utype[7])(va_list)
+# define OUAISLANORME3 extern t_int64 (*g_pf_type[7])(va_list)
+
 typedef struct s_pftags		t_pftags;
 typedef struct s_pfflags	t_pfflags;
 typedef enum e_pftype		t_pftype;
 
-extern void		(*g_pf_buff)(char *, int);
-extern t_uint64	(*g_pf_utype[7])(va_list);
-extern t_int64	(*g_pf_type[7])(va_list);
+OUAISLANORME1;
+OUAISLANORME2;
+OUAISLANORME3;
 
 struct		s_pftags
 {
