@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 15:16:57 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/13 21:52:51 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/22 14:46:55 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,13 @@
 **	-- Error messages--
 */
 # define NO_PARAMETER		"missing parameters"
-# define USAGE				"usage: %s [-w] file ..."
+# define USAGE				"usage: %s [-v] file ..."
 # define OPTION				"illegal option -- %c"
 # define BAD_EXTENSION		"invalid file extension: \"%s\""
 # define UNKNOWN_FILE		"%s: %s"
 # define BINARY_SIZE		"invalid size for binary file: over %d bytes"
 # define EMPTY_FILE			"empty binary file"
-# define MAGIC_NUMBER		"invalid magic number: %d [real = %d]"
+# define MAGIC_NUMBER		"invalid magic number: %.2X [real: %.2X]"
 # define PROG_SIZE			"invalid program size: %d [real = %d]"
 # define ERROR_MSG			"Failed to compile %s"
 # define COMPILATION_START	"Disassembling %s\n"

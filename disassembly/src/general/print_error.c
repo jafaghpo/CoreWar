@@ -6,7 +6,7 @@
 /*   By: jafaghpo <jafaghpo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 16:11:01 by jafaghpo          #+#    #+#             */
-/*   Updated: 2018/03/05 16:49:13 by jafaghpo         ###   ########.fr       */
+/*   Updated: 2018/03/22 14:42:29 by jafaghpo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int			print_error(const char *msg, ...)
 		ft_vsprintf(g_error, (char*)msg, ap);
 	else
 	{
-		ft_dprintf(2, "asm: ");
+		ft_dprintf(2, "disas: ");
 		ft_dprintf(2, RED);
 		ft_vdprintf(2, (char*)msg, ap);
 		ft_dprintf(2, "\n");
